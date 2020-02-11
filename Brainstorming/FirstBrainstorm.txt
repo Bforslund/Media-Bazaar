@@ -17,5 +17,6 @@ Koen: Programming, Database
 Oli: Programming, Git 
 Ryan: Programming
 
-Task Week1: brainstroming(ideas, functionalities, features), Ask questions to the client, project building/architecture, 
-time estimates
+Task Week1: 
+brainstroming(ideas, functionalities, features), Ask questions to the client, project building/architecture, 
+time estimates, we need to conduct a User study and create a profile of the different users, along with the client
