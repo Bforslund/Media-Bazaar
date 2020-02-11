@@ -1,0 +1,3 @@
+git branch <Name of the branch>
+git add . (because why not)
+git push --set-upstream origin <Name of branch>
