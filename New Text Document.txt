@@ -1,0 +1,21 @@
+Name: Pear
+
+Tasks:
+
+Git structure
+Work division
+UML
+brainstorm (Purpose, features of the tool/project)
+Meeting planning
+implement some scrum concepts
+Divide requirements based on importance(what's)
+
+Work Division:
+
+Bea: Project management, programming	
+Koen: Programming, Database
+Oli: Programming, Git 
+Ryan: Programming
+
+Task Week1: brainstroming(ideas, functionalities, features), Ask questions to the client, project building/architecture, 
+time estimates
