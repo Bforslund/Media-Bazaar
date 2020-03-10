@@ -51,9 +51,34 @@
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lsbAssignedEmployees = new System.Windows.Forms.ListBox();
+            this.lsbEmployees = new System.Windows.Forms.ListBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -65,7 +90,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(798, 503);
+            this.tabControl1.Size = new System.Drawing.Size(845, 503);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -73,7 +98,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(790, 474);
+            this.tabPage1.Size = new System.Drawing.Size(837, 474);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Employees";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -103,7 +128,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(790, 474);
+            this.tabPage2.Size = new System.Drawing.Size(837, 474);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Products";
             // 
@@ -269,33 +294,260 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label19);
+            this.tabPage3.Controls.Add(this.textBox6);
+            this.tabPage3.Controls.Add(this.groupBox2);
+            this.tabPage3.Controls.Add(this.lsbEmployees);
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Controls.Add(this.monthCalendar1);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(790, 474);
+            this.tabPage3.Size = new System.Drawing.Size(837, 474);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Schedule";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.lsbAssignedEmployees);
+            this.groupBox2.Location = new System.Drawing.Point(9, 228);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(555, 233);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Information for selected date";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 116);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(222, 17);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Number of employees for the day:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(267, 116);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(24, 17);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "09";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 50);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(99, 17);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Selected date:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(111, 50);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(95, 17);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "5 march 2020";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Morning",
+            "Evening",
+            "Night"});
+            this.comboBox1.Location = new System.Drawing.Point(114, 70);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(145, 24);
+            this.comboBox1.TabIndex = 10;
+            // 
+            // lsbAssignedEmployees
+            // 
+            this.lsbAssignedEmployees.FormattingEnabled = true;
+            this.lsbAssignedEmployees.ItemHeight = 16;
+            this.lsbAssignedEmployees.Location = new System.Drawing.Point(327, 21);
+            this.lsbAssignedEmployees.Name = "lsbAssignedEmployees";
+            this.lsbAssignedEmployees.Size = new System.Drawing.Size(222, 196);
+            this.lsbAssignedEmployees.TabIndex = 0;
+            // 
+            // lsbEmployees
+            // 
+            this.lsbEmployees.FormattingEnabled = true;
+            this.lsbEmployees.ItemHeight = 16;
+            this.lsbEmployees.Location = new System.Drawing.Point(570, 35);
+            this.lsbEmployees.Name = "lsbEmployees";
+            this.lsbEmployees.Size = new System.Drawing.Size(252, 436);
+            this.lsbEmployees.TabIndex = 11;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.comboBox3);
+            this.groupBox1.Location = new System.Drawing.Point(230, 9);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(334, 207);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Assigning Schedule";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 17);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Selected date:";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(20, 128);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(293, 23);
+            this.button7.TabIndex = 9;
+            this.button7.Text = "Assign employee to shift";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 60);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(133, 17);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Selected Employee:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(168, 60);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(121, 17);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Henk Steenkamer";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 90);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(99, 17);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Selected Shift:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(168, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(95, 17);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "5 march 2020";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Morning",
+            "Evening",
+            "Night"});
+            this.comboBox3.Location = new System.Drawing.Point(168, 87);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(145, 24);
+            this.comboBox3.TabIndex = 6;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(9, 9);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
             // 
             // tabPage4
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(790, 474);
+            this.tabPage4.Size = new System.Drawing.Size(837, 474);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Statistics";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 73);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(99, 17);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Selected Shift:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 133);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(258, 17);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "Number of employees for selected shift:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(267, 133);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(24, 17);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "03";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(627, 13);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(195, 22);
+            this.textBox6.TabIndex = 13;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(570, 16);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(57, 17);
+            this.label19.TabIndex = 14;
+            this.label19.Text = "Search:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 527);
+            this.ClientSize = new System.Drawing.Size(883, 527);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -326,6 +578,28 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ListBox lsbAssignedEmployees;
+        private System.Windows.Forms.ListBox lsbEmployees;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }
 
