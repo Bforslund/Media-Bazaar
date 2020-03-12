@@ -8,33 +8,41 @@ namespace WindowsFormsApp1
 {
    public class ProductController
     {
-        public class ProductController
+            private List<Product> products = new List<Product>();
+        private List<Product> deletedProducts = new List<Product>();
+
+        public void AddProduct(Product p)
         {
-            private List<UMLDesign.Product> products;
+            products.Add(p);
+        }
 
-            public void RemoveProduct(Product product)
+            public void RemoveProduct(Product p)
             {
-                throw new System.NotImplementedException();
+            products.Remove(p);
+            deletedProducts.Add(p);
             }
 
-            public void Setproduct()
+
+            public List<Product> RemoveListOfProducts()
             {
-                throw new System.NotImplementedException();
+            return deletedProducts;
             }
 
-            public void RemoveListOfProducts(List<Product> products)
+            public Product GetProduct(int id)
             {
-                throw new System.NotImplementedException();
-            }
-
-            public Product GetProduct()
-            {
-                throw new System.NotImplementedException();
+                foreach(Product p in products)
+                {
+                if(p.Id == id)
+                {
+                    return p;
+                }
+                }
+            return null;
             }
 
             public List<Product> GetListOfProducts()
             {
-                throw new System.NotImplementedException();
+            return products;
             }
         }
 }
