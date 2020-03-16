@@ -13,16 +13,51 @@ namespace WindowsFormsApp1
     public partial class Increase : Form
     {
         Product p;
-        public Increase(Product p)
+        ProductController pc;
+        public Increase(Product p, ProductController pc)
         {
             InitializeComponent();
             this.p = p;
-            lblSelected.Text = $"{p.Type}, {p.Name}, {p.Price} {p.Stock} {p.Department}";
+            this.pc = pc;
+            lblSelected.Text = $"{p.Type}, {p.Name} with current stock: {p.Stock}";
         }
 
         private void btConfirm_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                bool value = false;
+                int howMuch = Convert.ToInt32(nUDStock.Value);
+                if (rbDecrease.Checked)
+                {
+                    value = pc.DecreaseStock(p, howMuch);
+                }
+                else if (rbIncrease.Checked)
+                {
+                    value = pc.IncreaseStock(p, howMuch);
+                }
+                else
+                {
+                    MessageBox.Show("Please select whether to increase or decrease");
+                }
+                if (value == false)
+                {
+                    MessageBox.Show("Please enter a vailed number!");
+                }
+                else
+                {
+                    MessageBox.Show($"Success! You have now updated {p}'s stock!");
+                    this.Close();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong");
+            }
+        
+            
         }
+
+      
     }
 }

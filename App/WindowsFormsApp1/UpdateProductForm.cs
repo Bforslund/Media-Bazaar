@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    // ADD SQL & TRY CATCH
+
     public partial class UpdateProductForm : Form
     {
         ProductController pc;
@@ -27,49 +27,92 @@ namespace WindowsFormsApp1
         {
             edit = true;
             this.p = p;
-            tbStock.ReadOnly = true;
-            
+            this.Text = "Update existing product";
+            btAddUpdate.Text = "Update product";
+            this.BackColor = Color.IndianRed;
+
+
             tbType.Text = p.Type;
             tbName.Text = p.Name;
             tbPrice.Text = p.Price.ToString();
-            tbStock.Text = p.Stock.ToString();
+            
             tbDepartment.Text = p.Department;
         }
 
-        private void UpdateProduct()
+        private bool UpdateProduct()
         {
-            p.Stock = Convert.ToInt32(tbStock.Text);
-            p.Type = tbType.Text;
-            p.Name = tbName.Text;
-            p.Price = Convert.ToDouble(tbPrice.Text);
-            p.Department = tbDepartment.Text;
-            MessageBox.Show("Product successfully updated!");
-            this.Close();
+            bool success;
+            try
+            {
+                p.Type = tbType.Text;
+                p.Name = tbName.Text;
+                p.Price = Convert.ToDouble(tbPrice.Text);
+                p.Department = tbDepartment.Text;
+                pc.UpdateProduct(p);
+                success = true;
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong");
+                success = false;
+            }
+            return success;
         }
-        private void AddProduct()
+        private bool AddProduct()
         {
-            // add try thing
-            string type = tbType.Text;
-            string name = tbName.Text;
+            bool success;
+            try
+            {
+                string type = tbType.Text;
+                string name = tbName.Text;
 
-            double price = Convert.ToDouble(tbPrice.Text);
-            int stock = Convert.ToInt32(tbStock.Text);
-            string department = tbDepartment.Text;
+                double price = Convert.ToDouble(tbPrice.Text);
 
-            Product newProduct = new Product(type, name, price, stock, department);
-            pc.AddProduct(newProduct);
-            MessageBox.Show("Product successfully added!");
-            this.Close();
+                string department = tbDepartment.Text;
+
+                Product newProduct = new Product(type, name, price, 0, department);
+                pc.AddProduct(newProduct);
+                success = true;
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong");
+                success = false;
+            }
+            return success;
+
         }
         private void btAddUpdate_Click(object sender, EventArgs e)
         {
+           
             if (edit)
             {
-                UpdateProduct();
+                bool success;
+                success = UpdateProduct();
+                if (success)
+                {
+                    MessageBox.Show("Product successfully Updated!");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Try again!");
+                }
+                
             }
             else
             {
-                AddProduct();
+                bool success;
+                success = AddProduct();
+                if (success)
+                {
+                    MessageBox.Show("Product successfully added!");
+                this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Try again!");
+                }
             }
         }
     }

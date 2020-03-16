@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nUDStock = new System.Windows.Forms.NumericUpDown();
             this.btConfirm = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rbIncrease = new System.Windows.Forms.RadioButton();
+            this.rbDecrease = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblSelected = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDStock)).BeginInit();
             this.SuspendLayout();
             // 
-            // numericUpDown1
+            // nUDStock
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(30, 172);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown1.TabIndex = 0;
+            this.nUDStock.Location = new System.Drawing.Point(30, 172);
+            this.nUDStock.Name = "nUDStock";
+            this.nUDStock.Size = new System.Drawing.Size(120, 22);
+            this.nUDStock.TabIndex = 0;
             // 
             // btConfirm
             // 
@@ -55,27 +55,27 @@
             this.btConfirm.UseVisualStyleBackColor = true;
             this.btConfirm.Click += new System.EventHandler(this.btConfirm_Click);
             // 
-            // radioButton1
+            // rbIncrease
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(40, 135);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(120, 21);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Increase stock";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbIncrease.AutoSize = true;
+            this.rbIncrease.Location = new System.Drawing.Point(40, 135);
+            this.rbIncrease.Name = "rbIncrease";
+            this.rbIncrease.Size = new System.Drawing.Size(120, 21);
+            this.rbIncrease.TabIndex = 3;
+            this.rbIncrease.TabStop = true;
+            this.rbIncrease.Text = "Increase stock";
+            this.rbIncrease.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbDecrease
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(177, 135);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(127, 21);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Decrease stock";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbDecrease.AutoSize = true;
+            this.rbDecrease.Location = new System.Drawing.Point(177, 135);
+            this.rbDecrease.Name = "rbDecrease";
+            this.rbDecrease.Size = new System.Drawing.Size(127, 21);
+            this.rbDecrease.TabIndex = 4;
+            this.rbDecrease.TabStop = true;
+            this.rbDecrease.Text = "Decrease stock";
+            this.rbDecrease.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -113,13 +113,13 @@
             this.Controls.Add(this.lblSelected);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.rbDecrease);
+            this.Controls.Add(this.rbIncrease);
             this.Controls.Add(this.btConfirm);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.nUDStock);
             this.Name = "Increase";
-            this.Text = "Increase";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.Text = "Increase/Decrease stock";
+            ((System.ComponentModel.ISupportInitialize)(this.nUDStock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,10 +127,10 @@
 
         #endregion
 
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nUDStock;
         private System.Windows.Forms.Button btConfirm;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rbIncrease;
+        private System.Windows.Forms.RadioButton rbDecrease;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblSelected;

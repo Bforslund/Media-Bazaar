@@ -9,7 +9,6 @@ namespace WindowsFormsApp1
    public class Product
     {
         private int id;
-        private static int IdSeeder = 1;
         private string type;
       
         private string name;
@@ -21,20 +20,41 @@ namespace WindowsFormsApp1
         
         public string Name { get => name; set => name = value; }
         public double Price { get => price; set => price = value; }
-        public int Stock { get => stock; set => stock = value; }
+        public int Stock 
+        { 
+            get
+            {
+                return stock;
+            } 
+            set 
+            { 
+                if(value < 0)
+                {
+                    throw new ArgumentException();
+                }
+                else
+                {
+                    stock = value;
+                }
+            }
+        }
         public int Id { get => id; set => id = value; }
         public string Department { get => department; set => department = value; }
 
-        public Product(string type,  string name, double price, int stock, string department)
+        public Product(string type, string name, double price, int stock, string department) 
+            : this(0, type, name, price, stock, department)
         {
-            this.Id = IdSeeder;
+        }
+
+        public Product(int id, string type,  string name, double price, int stock, string department)
+        {
+            this.id = id;
             this.Type = type;
-           
+            this.Stock = stock;
             this.Name = name;
             this.Price = price;
-            this.Stock = stock;
+           
             this.Department = department;
-            IdSeeder++;
         }
 
       
