@@ -52,36 +52,36 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabSchedule = new System.Windows.Forms.TabPage();
             this.mcdSchedule = new Pabo.Calendar.MonthCalendar();
-            this.label19 = new System.Windows.Forms.Label();
+            this.lblSSearch = new System.Windows.Forms.Label();
             this.txbScheduleEmployeeSearch = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupSInformation = new System.Windows.Forms.GroupBox();
             this.btnScheduleUnassign = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblSMaxEmployee = new System.Windows.Forms.Label();
+            this.labelSMinEmployee = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.labelSNumEmployeeShift = new System.Windows.Forms.Label();
+            this.labelSShift1 = new System.Windows.Forms.Label();
+            this.labelSNumEmployeeDay = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.labelSDate1 = new System.Windows.Forms.Label();
             this.lblScheduleDateInfo = new System.Windows.Forms.Label();
             this.cmbScheduleAssignedShift = new System.Windows.Forms.ComboBox();
             this.lsbAssignedEmployees = new System.Windows.Forms.ListBox();
             this.lsbScheduleEmployees = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.groupBoxSAssign = new System.Windows.Forms.GroupBox();
+            this.labelSDate2 = new System.Windows.Forms.Label();
             this.btnScheduleAssign = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelSEmployee = new System.Windows.Forms.Label();
             this.lblScheduleAssignedEmployee = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.labelSShift2 = new System.Windows.Forms.Label();
             this.lblScheduleDateAssign = new System.Windows.Forms.Label();
             this.cmbScheduleAssign = new System.Windows.Forms.ComboBox();
             this.tabStatistics = new System.Windows.Forms.TabPage();
             this.tbcMain.SuspendLayout();
             this.tabProducts.SuspendLayout();
             this.tabSchedule.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupSInformation.SuspendLayout();
+            this.groupBoxSAssign.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcMain
@@ -299,11 +299,11 @@
             // tabSchedule
             // 
             this.tabSchedule.Controls.Add(this.mcdSchedule);
-            this.tabSchedule.Controls.Add(this.label19);
+            this.tabSchedule.Controls.Add(this.lblSSearch);
             this.tabSchedule.Controls.Add(this.txbScheduleEmployeeSearch);
-            this.tabSchedule.Controls.Add(this.groupBox2);
+            this.tabSchedule.Controls.Add(this.groupSInformation);
             this.tabSchedule.Controls.Add(this.lsbScheduleEmployees);
-            this.tabSchedule.Controls.Add(this.groupBox1);
+            this.tabSchedule.Controls.Add(this.groupBoxSAssign);
             this.tabSchedule.Location = new System.Drawing.Point(4, 25);
             this.tabSchedule.Name = "tabSchedule";
             this.tabSchedule.Size = new System.Drawing.Size(837, 474);
@@ -337,14 +337,14 @@
             this.mcdSchedule.MonthChanged += new Pabo.Calendar.MonthChangedEventHandler(this.mcdSchedule_MonthChanged);
             this.mcdSchedule.DayClick += new Pabo.Calendar.DayClickEventHandler(this.mcdSchedule_DayClick);
             // 
-            // label19
+            // lblSSearch
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(570, 15);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 17);
-            this.label19.TabIndex = 14;
-            this.label19.Text = "Search:";
+            this.lblSSearch.AutoSize = true;
+            this.lblSSearch.Location = new System.Drawing.Point(570, 15);
+            this.lblSSearch.Name = "lblSSearch";
+            this.lblSSearch.Size = new System.Drawing.Size(57, 17);
+            this.lblSSearch.TabIndex = 14;
+            this.lblSSearch.Text = "Search:";
             // 
             // txbScheduleEmployeeSearch
             // 
@@ -354,26 +354,26 @@
             this.txbScheduleEmployeeSearch.TabIndex = 13;
             this.txbScheduleEmployeeSearch.TextChanged += new System.EventHandler(this.txbScheduleEmployeeSearch_TextChanged);
             // 
-            // groupBox2
+            // groupSInformation
             // 
-            this.groupBox2.Controls.Add(this.btnScheduleUnassign);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.lblScheduleDateInfo);
-            this.groupBox2.Controls.Add(this.cmbScheduleAssignedShift);
-            this.groupBox2.Controls.Add(this.lsbAssignedEmployees);
-            this.groupBox2.Location = new System.Drawing.Point(9, 228);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(555, 233);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Information for selected date";
+            this.groupSInformation.Controls.Add(this.btnScheduleUnassign);
+            this.groupSInformation.Controls.Add(this.lblSMaxEmployee);
+            this.groupSInformation.Controls.Add(this.labelSMinEmployee);
+            this.groupSInformation.Controls.Add(this.label18);
+            this.groupSInformation.Controls.Add(this.labelSNumEmployeeShift);
+            this.groupSInformation.Controls.Add(this.labelSShift1);
+            this.groupSInformation.Controls.Add(this.labelSNumEmployeeDay);
+            this.groupSInformation.Controls.Add(this.label15);
+            this.groupSInformation.Controls.Add(this.labelSDate1);
+            this.groupSInformation.Controls.Add(this.lblScheduleDateInfo);
+            this.groupSInformation.Controls.Add(this.cmbScheduleAssignedShift);
+            this.groupSInformation.Controls.Add(this.lsbAssignedEmployees);
+            this.groupSInformation.Location = new System.Drawing.Point(9, 228);
+            this.groupSInformation.Name = "groupSInformation";
+            this.groupSInformation.Size = new System.Drawing.Size(555, 233);
+            this.groupSInformation.TabIndex = 12;
+            this.groupSInformation.TabStop = false;
+            this.groupSInformation.Text = "Information for selected date";
             // 
             // btnScheduleUnassign
             // 
@@ -385,23 +385,23 @@
             this.btnScheduleUnassign.UseVisualStyleBackColor = true;
             this.btnScheduleUnassign.Click += new System.EventHandler(this.btnScheduleUnassign_Click);
             // 
-            // label13
+            // lblSMaxEmployee
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 171);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(197, 17);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "Max num employees assigned";
+            this.lblSMaxEmployee.AutoSize = true;
+            this.lblSMaxEmployee.Location = new System.Drawing.Point(6, 171);
+            this.lblSMaxEmployee.Name = "lblSMaxEmployee";
+            this.lblSMaxEmployee.Size = new System.Drawing.Size(197, 17);
+            this.lblSMaxEmployee.TabIndex = 17;
+            this.lblSMaxEmployee.Text = "Max num employees assigned";
             // 
-            // label10
+            // labelSMinEmployee
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 154);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(194, 17);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Min num employees assigned";
+            this.labelSMinEmployee.AutoSize = true;
+            this.labelSMinEmployee.Location = new System.Drawing.Point(6, 154);
+            this.labelSMinEmployee.Name = "labelSMinEmployee";
+            this.labelSMinEmployee.Size = new System.Drawing.Size(194, 17);
+            this.labelSMinEmployee.TabIndex = 16;
+            this.labelSMinEmployee.Text = "Min num employees assigned";
             // 
             // label18
             // 
@@ -412,32 +412,32 @@
             this.label18.TabIndex = 15;
             this.label18.Text = "03";
             // 
-            // label17
+            // labelSNumEmployeeShift
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 133);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(258, 17);
-            this.label17.TabIndex = 14;
-            this.label17.Text = "Number of employees for selected shift:";
+            this.labelSNumEmployeeShift.AutoSize = true;
+            this.labelSNumEmployeeShift.Location = new System.Drawing.Point(6, 133);
+            this.labelSNumEmployeeShift.Name = "labelSNumEmployeeShift";
+            this.labelSNumEmployeeShift.Size = new System.Drawing.Size(258, 17);
+            this.labelSNumEmployeeShift.TabIndex = 14;
+            this.labelSNumEmployeeShift.Text = "Number of employees for selected shift:";
             // 
-            // label16
+            // labelSShift1
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 73);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(99, 17);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "Selected Shift:";
+            this.labelSShift1.AutoSize = true;
+            this.labelSShift1.Location = new System.Drawing.Point(6, 73);
+            this.labelSShift1.Name = "labelSShift1";
+            this.labelSShift1.Size = new System.Drawing.Size(99, 17);
+            this.labelSShift1.TabIndex = 10;
+            this.labelSShift1.Text = "Selected Shift:";
             // 
-            // label14
+            // labelSNumEmployeeDay
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 116);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(222, 17);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "Number of employees for the day:";
+            this.labelSNumEmployeeDay.AutoSize = true;
+            this.labelSNumEmployeeDay.Location = new System.Drawing.Point(6, 116);
+            this.labelSNumEmployeeDay.Name = "labelSNumEmployeeDay";
+            this.labelSNumEmployeeDay.Size = new System.Drawing.Size(222, 17);
+            this.labelSNumEmployeeDay.TabIndex = 12;
+            this.labelSNumEmployeeDay.Text = "Number of employees for the day:";
             // 
             // label15
             // 
@@ -448,14 +448,14 @@
             this.label15.TabIndex = 13;
             this.label15.Text = "09";
             // 
-            // label12
+            // labelSDate1
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 50);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(99, 17);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "Selected date:";
+            this.labelSDate1.AutoSize = true;
+            this.labelSDate1.Location = new System.Drawing.Point(6, 50);
+            this.labelSDate1.Name = "labelSDate1";
+            this.labelSDate1.Size = new System.Drawing.Size(99, 17);
+            this.labelSDate1.TabIndex = 10;
+            this.labelSDate1.Text = "Selected date:";
             // 
             // lblScheduleDateInfo
             // 
@@ -498,30 +498,30 @@
             this.lsbScheduleEmployees.TabIndex = 11;
             this.lsbScheduleEmployees.SelectedIndexChanged += new System.EventHandler(this.lsbScheduleEmployees_SelectedIndexChanged);
             // 
-            // groupBox1
+            // groupBoxSAssign
             // 
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.btnScheduleAssign);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.lblScheduleAssignedEmployee);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.lblScheduleDateAssign);
-            this.groupBox1.Controls.Add(this.cmbScheduleAssign);
-            this.groupBox1.Location = new System.Drawing.Point(260, 9);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(304, 207);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Assigning Schedule";
+            this.groupBoxSAssign.Controls.Add(this.labelSDate2);
+            this.groupBoxSAssign.Controls.Add(this.btnScheduleAssign);
+            this.groupBoxSAssign.Controls.Add(this.labelSEmployee);
+            this.groupBoxSAssign.Controls.Add(this.lblScheduleAssignedEmployee);
+            this.groupBoxSAssign.Controls.Add(this.labelSShift2);
+            this.groupBoxSAssign.Controls.Add(this.lblScheduleDateAssign);
+            this.groupBoxSAssign.Controls.Add(this.cmbScheduleAssign);
+            this.groupBoxSAssign.Location = new System.Drawing.Point(260, 9);
+            this.groupBoxSAssign.Name = "groupBoxSAssign";
+            this.groupBoxSAssign.Size = new System.Drawing.Size(304, 207);
+            this.groupBoxSAssign.TabIndex = 10;
+            this.groupBoxSAssign.TabStop = false;
+            this.groupBoxSAssign.Text = "Assigning Schedule";
             // 
-            // label5
+            // labelSDate2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 17);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Selected date:";
+            this.labelSDate2.AutoSize = true;
+            this.labelSDate2.Location = new System.Drawing.Point(8, 30);
+            this.labelSDate2.Name = "labelSDate2";
+            this.labelSDate2.Size = new System.Drawing.Size(99, 17);
+            this.labelSDate2.TabIndex = 1;
+            this.labelSDate2.Text = "Selected date:";
             // 
             // btnScheduleAssign
             // 
@@ -533,14 +533,14 @@
             this.btnScheduleAssign.UseVisualStyleBackColor = true;
             this.btnScheduleAssign.Click += new System.EventHandler(this.btnScheduleAssign_Click);
             // 
-            // label8
+            // labelSEmployee
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 60);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(133, 17);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Selected Employee:";
+            this.labelSEmployee.AutoSize = true;
+            this.labelSEmployee.Location = new System.Drawing.Point(8, 60);
+            this.labelSEmployee.Name = "labelSEmployee";
+            this.labelSEmployee.Size = new System.Drawing.Size(133, 17);
+            this.labelSEmployee.TabIndex = 2;
+            this.labelSEmployee.Text = "Selected Employee:";
             // 
             // lblScheduleAssignedEmployee
             // 
@@ -551,14 +551,14 @@
             this.lblScheduleAssignedEmployee.TabIndex = 8;
             this.lblScheduleAssignedEmployee.Text = "Not Selected";
             // 
-            // label9
+            // labelSShift2
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 90);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 17);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Selected Shift:";
+            this.labelSShift2.AutoSize = true;
+            this.labelSShift2.Location = new System.Drawing.Point(8, 90);
+            this.labelSShift2.Name = "labelSShift2";
+            this.labelSShift2.Size = new System.Drawing.Size(99, 17);
+            this.labelSShift2.TabIndex = 4;
+            this.labelSShift2.Text = "Selected Shift:";
             // 
             // lblScheduleDateAssign
             // 
@@ -604,10 +604,10 @@
             this.tabProducts.PerformLayout();
             this.tabSchedule.ResumeLayout(false);
             this.tabSchedule.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupSInformation.ResumeLayout(false);
+            this.groupSInformation.PerformLayout();
+            this.groupBoxSAssign.ResumeLayout(false);
+            this.groupBoxSAssign.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -638,31 +638,31 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TabPage tabSchedule;
         private System.Windows.Forms.TabPage tabStatistics;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.GroupBox groupSInformation;
+        private System.Windows.Forms.Label labelSNumEmployeeDay;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelSDate1;
         private System.Windows.Forms.Label lblScheduleDateInfo;
         private System.Windows.Forms.ComboBox cmbScheduleAssignedShift;
         private System.Windows.Forms.ListBox lsbAssignedEmployees;
         private System.Windows.Forms.ListBox lsbScheduleEmployees;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBoxSAssign;
+        private System.Windows.Forms.Label labelSDate2;
         private System.Windows.Forms.Button btnScheduleAssign;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelSEmployee;
         private System.Windows.Forms.Label lblScheduleAssignedEmployee;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelSShift2;
         private System.Windows.Forms.Label lblScheduleDateAssign;
         private System.Windows.Forms.ComboBox cmbScheduleAssign;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label labelSNumEmployeeShift;
+        private System.Windows.Forms.Label labelSShift1;
+        private System.Windows.Forms.Label lblSSearch;
         private System.Windows.Forms.TextBox txbScheduleEmployeeSearch;
         private Pabo.Calendar.MonthCalendar mcdSchedule;
         private System.Windows.Forms.Button btnScheduleUnassign;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblSMaxEmployee;
+        private System.Windows.Forms.Label labelSMinEmployee;
     }
 }
 
