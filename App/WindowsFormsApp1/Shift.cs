@@ -94,6 +94,11 @@ namespace WindowsFormsApp1
             return shiftType;
         }
 
+        public int Id()
+        {
+            return id;
+        }
+
         public List<Personal> GetPersonal()
         {
             return assignedEmployees;

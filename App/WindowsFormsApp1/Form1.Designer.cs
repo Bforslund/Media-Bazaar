@@ -383,6 +383,7 @@
             this.btnScheduleUnassign.TabIndex = 16;
             this.btnScheduleUnassign.Text = "Unassign Employee";
             this.btnScheduleUnassign.UseVisualStyleBackColor = true;
+            this.btnScheduleUnassign.Click += new System.EventHandler(this.btnScheduleUnassign_Click);
             // 
             // label13
             // 

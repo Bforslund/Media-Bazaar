@@ -94,9 +94,9 @@ namespace WindowsFormsApp1
             switch (succesCounter)
             {
                 case 0: color = Color.Red; break; // no shifts filled
-                case 1: color = Color.Yellow; break; // 1 out of 3 shifts filled
-                case 2: color = Color.Orange; break; // 2 out of 3 shifts filled
-                default: color = Color.Red; break; // all shifts filled
+                case 1: color = Color.OrangeRed; break; // 1 out of 3 shifts filled
+                case 2: color = Color.GreenYellow; break; // 2 out of 3 shifts filled
+                default: color = Color.Green; break; // all shifts filled
             }
 
             return color;

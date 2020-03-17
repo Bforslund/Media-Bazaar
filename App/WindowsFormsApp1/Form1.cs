@@ -85,6 +85,13 @@ namespace WindowsFormsApp1
         {
             calenderManager.SetShift(mcdSchedule.SelectedDates[0], cmbScheduleAssign.SelectedIndex, ((Personal)lsbScheduleEmployees.SelectedItem).Id(), mcdSchedule.ActiveMonth);
             LoadAssignedEmployees();
+            LoadCalenderColors();
+        }
+        private void btnScheduleUnassign_Click(object sender, EventArgs e)
+        {
+            calenderManager.RemoveEmployee(mcdSchedule.SelectedDates[0], cmbScheduleAssignedShift.SelectedIndex, ((Personal)lsbAssignedEmployees.SelectedItem).Id(), mcdSchedule.ActiveMonth);
+            LoadAssignedEmployees();
+            LoadCalenderColors();
         }
 
         #region functions
@@ -136,6 +143,7 @@ namespace WindowsFormsApp1
                 btnScheduleUnassign.Show();
             }
         }
+
         #endregion
 
         #endregion

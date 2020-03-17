@@ -134,7 +134,7 @@ namespace WindowsFormsApp1
                 databaseConnection.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
                 //commandDatabase.Parameters.AddWithValue("@day", date.ToString("yyyy-MM-dd"));
-                commandDatabase.ExecuteNonQuery(); 
+                commandDatabase.ExecuteNonQuery();
                 dayId = commandDatabase.LastInsertedId;
 
                 //if (result != null) { dayId = Convert.ToInt32(result); }
@@ -163,7 +163,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                string sql = $"SELECT id FROM shift WHERE day_id = {dayId} AND shifttype = {shift};"; 
+                string sql = $"SELECT id FROM shift WHERE day_id = {dayId} AND shifttype = {shift};";
                 MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
                 databaseConnection.Open();
                 Object result = cmd.ExecuteScalar();
@@ -171,12 +171,43 @@ namespace WindowsFormsApp1
                 databaseConnection.Close();
             }
 
-            if(shiftId >= 0 && person >= 0)
+            if (shiftId >= 0 && person >= 0)
             {
                 string insertQuery = $"INSERT INTO users_has_shift(users_id, shift_id) VALUES(@userId, @shiftId); select last_insert_id();";
                 databaseConnection.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
                 commandDatabase.Parameters.AddWithValue("@userId", person);
+                commandDatabase.Parameters.AddWithValue("@shiftId", shiftId);
+                commandDatabase.ExecuteNonQuery();
+                databaseConnection.Close();
+            }
+
+            LoadShifts(activeMonth);
+        }
+
+        public void RemoveEmployee(DateTime date, int shiftType, int employeeId, ActiveMonth activeMonth)
+        {
+            int shiftId = -1;
+            foreach (Day day in days)
+            {
+                if (day.Date() == date)
+                {
+                    foreach (Shift shift in day.GetShifts())
+                    {
+                        if (shift.GetshiftType() == shiftType)
+                        {
+                            shiftId = shift.Id();
+                        }
+                    }
+                }
+            }
+
+            if (shiftId >= 0 && employeeId >= 0)
+            {
+                string insertQuery = $"DELETE FROM `users_has_shift` WHERE users_id = @userId AND shift_id = @shiftId;";
+                databaseConnection.Open();
+                MySqlCommand commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
+                commandDatabase.Parameters.AddWithValue("@userId", employeeId);
                 commandDatabase.Parameters.AddWithValue("@shiftId", shiftId);
                 commandDatabase.ExecuteNonQuery();
                 databaseConnection.Close();
