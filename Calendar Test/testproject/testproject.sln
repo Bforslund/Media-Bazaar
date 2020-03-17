@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testproject", "testproject\testproject.csproj", "{97CD3EC4-7675-4EA2-8B37-2842EB1EF107}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testproject", "testproject\testproject.csproj", "{2441F377-606B-47FC-AEF3-E4C2E17DF370}"
+>>>>>>> AppRyan
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +15,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< HEAD
 		{97CD3EC4-7675-4EA2-8B37-2842EB1EF107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{97CD3EC4-7675-4EA2-8B37-2842EB1EF107}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97CD3EC4-7675-4EA2-8B37-2842EB1EF107}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97CD3EC4-7675-4EA2-8B37-2842EB1EF107}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{2441F377-606B-47FC-AEF3-E4C2E17DF370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2441F377-606B-47FC-AEF3-E4C2E17DF370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2441F377-606B-47FC-AEF3-E4C2E17DF370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2441F377-606B-47FC-AEF3-E4C2E17DF370}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> AppRyan
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+<<<<<<< HEAD
 		SolutionGuid = {4F943829-7C0E-41DA-BC84-47E4E233156B}
+=======
+		SolutionGuid = {80B8B1F4-7F93-40F0-99E4-1F2A59A48133}
+>>>>>>> AppRyan
 	EndGlobalSection
 EndGlobal
