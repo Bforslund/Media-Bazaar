@@ -81,6 +81,11 @@ namespace WindowsFormsApp1
         {
             LoadAssignedEmployees();
         }
+        private void btnScheduleAssign_Click(object sender, EventArgs e)
+        {
+            calenderManager.SetShift(mcdSchedule.SelectedDates[0], cmbScheduleAssign.SelectedIndex, ((Personal)lsbScheduleEmployees.SelectedItem).Id(), mcdSchedule.ActiveMonth);
+            LoadAssignedEmployees();
+        }
 
         #region functions
         private void LoadCalenderColors()
@@ -95,7 +100,7 @@ namespace WindowsFormsApp1
 
         private void LoadAssignedEmployees()
         {
-            if(lblScheduleAssignedEmployee.Text != "Not Selected" && cmbScheduleAssignedShift.SelectedIndex >= 0)
+            if(cmbScheduleAssignedShift.SelectedIndex >= 0)
             {
                 SelectedDatesCollection sdc = mcdSchedule.SelectedDates;
                 if(sdc.Count > 0)
@@ -135,5 +140,6 @@ namespace WindowsFormsApp1
 
         #endregion
 
+        
     }
 }

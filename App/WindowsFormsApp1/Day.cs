@@ -73,6 +73,11 @@ namespace WindowsFormsApp1
             return date;
         }
 
+        public int Id()
+        {
+            return dbId;
+        }
+
         public Color SetDayColor()
         {
             int succesCounter = 0;
@@ -88,9 +93,6 @@ namespace WindowsFormsApp1
 
             switch (succesCounter)
             {
-                //case 0: color = Color.FromArgb(241, 23, 0, 1); break; // no shifts filled
-                //case 1: color = Color.FromArgb(158, 162, 0, 1); break; // 1 out of 3 shifts filled
-                //case 2: color = Color.FromArgb(199, 93, 0, 1); break; // 2 out of 3 shifts filled
                 case 0: color = Color.Red; break; // no shifts filled
                 case 1: color = Color.Yellow; break; // 1 out of 3 shifts filled
                 case 2: color = Color.Orange; break; // 2 out of 3 shifts filled

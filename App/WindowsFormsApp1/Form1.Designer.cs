@@ -530,6 +530,7 @@
             this.btnScheduleAssign.TabIndex = 9;
             this.btnScheduleAssign.Text = "Assign employee to shift";
             this.btnScheduleAssign.UseVisualStyleBackColor = true;
+            this.btnScheduleAssign.Click += new System.EventHandler(this.btnScheduleAssign_Click);
             // 
             // label8
             // 

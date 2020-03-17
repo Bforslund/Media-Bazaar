@@ -48,6 +48,7 @@ namespace WindowsFormsApp1
                     assignedEmployees.Clear();
                     while (reader.Read()) //read each individual row
                     {
+                        int id = Convert.ToInt32(reader["id"]);
                         string username = reader["username"].ToString();
                         string firstname = reader["firstname"].ToString();
                         string lastname = reader["lastname"].ToString();
@@ -62,7 +63,7 @@ namespace WindowsFormsApp1
                         //int department = Convert.ToInt32(reader["department_id"]);
                         int department = 0;
 
-                        assignedEmployees.Add(new Employee(email, firstname, lastname, privilage, username, adress, birthday, contract, department, hiredate, phone, wage));
+                        assignedEmployees.Add(new Employee(id, email, firstname, lastname, privilage, username, adress, birthday, contract, department, hiredate, phone, wage));
                     }
 
                     databaseConnection.Close();

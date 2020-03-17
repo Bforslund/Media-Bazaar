@@ -17,8 +17,8 @@ namespace WindowsFormsApp1
         private string phonenumber;
         private double wage;
 
-        public Employee(string email, string firstname, string lastname, int privilage, string username,
-                        string adress, DateTime birthday, bool contract, int department, DateTime hiredate, string phonenumber, double wage) : base(email, firstname, lastname, privilage, username)
+        public Employee(int id, string email, string firstname, string lastname, int privilage, string username,
+                        string adress, DateTime birthday, bool contract, int department, DateTime hiredate, string phonenumber, double wage) : base(id, email, firstname, lastname, privilage, username)
         {
             this.adress = adress;
             this.birthday = birthday;

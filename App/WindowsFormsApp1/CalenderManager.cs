@@ -60,13 +60,13 @@ namespace WindowsFormsApp1
                 databaseConnection.Close();
             }
 
-            foreach(Day day in days)
+            foreach (Day day in days)
             {
                 day.LoadShifts();
             }
         }
 
-        public DateItem[] SetDaysForMonth (ActiveMonth activeMonth)
+        public DateItem[] SetDaysForMonth(ActiveMonth activeMonth)
         {
             int days = DateTime.DaysInMonth(activeMonth.Year, activeMonth.Month);
 
@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
                 DateTime date = new DateTime(activeMonth.Year, activeMonth.Month, (i + 1));
 
                 dateItems[i] = new DateItem();
-                dateItems[i].Date = new DateTime(activeMonth.Year, activeMonth.Month, (i+1));
+                dateItems[i].Date = new DateTime(activeMonth.Year, activeMonth.Month, (i + 1));
 
                 foreach (Day day in this.days)
                 {
@@ -97,13 +97,13 @@ namespace WindowsFormsApp1
 
         public List<Personal> GetPersonalAssigned(DateTime date, int shiftType)
         {
-            foreach(Day day in days)
+            foreach (Day day in days)
             {
-                if(day.Date() == date)
+                if (day.Date() == date)
                 {
                     foreach (Shift shift in day.GetShifts())
                     {
-                        if(shift.GetshiftType() == shiftType)
+                        if (shift.GetshiftType() == shiftType)
                         {
                             return shift.GetPersonal();
                         }
@@ -112,6 +112,77 @@ namespace WindowsFormsApp1
             }
 
             return null;
+        }
+
+        public void SetShift(DateTime date, int shift, int person, ActiveMonth activeMonth)
+        {
+            long dayId = -1;
+            long shiftId = -1;
+
+            foreach (Day day in days)
+            {
+                if (day.Date() == date)
+                {
+                    dayId = day.Id();
+                }
+            }
+
+            if (dayId < 0)
+            {
+                //insert new day and shifts
+                string insertQuery = $"INSERT INTO day(day) VALUES(CAST(N'{date.ToString("yyyy-MM-dd")}' AS Date));";
+                databaseConnection.Open();
+                MySqlCommand commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
+                //commandDatabase.Parameters.AddWithValue("@day", date.ToString("yyyy-MM-dd"));
+                commandDatabase.ExecuteNonQuery(); 
+                dayId = commandDatabase.LastInsertedId;
+
+                //if (result != null) { dayId = Convert.ToInt32(result); }
+                databaseConnection.Close();
+
+                for (int i = 0; i < 3; i++)
+                {
+                    int max = 5;
+                    if (i == 2) { max = 2; }
+
+                    insertQuery = $"INSERT INTO shift(shifttype, min, max, day_id) VALUES(@shifttype, 2, @max, @dayId); select last_insert_id();";
+                    databaseConnection.Open();
+                    commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
+                    commandDatabase.Parameters.AddWithValue("@shifttype", i);
+                    commandDatabase.Parameters.AddWithValue("@max", max);
+                    commandDatabase.Parameters.AddWithValue("@dayId", dayId);
+                    commandDatabase.ExecuteNonQuery();
+
+                    if (shift == i)
+                    {
+                        shiftId = commandDatabase.LastInsertedId;
+                    }
+
+                    databaseConnection.Close();
+                }
+            }
+            else
+            {
+                string sql = $"SELECT id FROM shift WHERE day_id = {dayId} AND shifttype = {shift};"; 
+                MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
+                databaseConnection.Open();
+                Object result = cmd.ExecuteScalar();
+                if (result != null) { shiftId = Convert.ToInt32(result); }
+                databaseConnection.Close();
+            }
+
+            if(shiftId >= 0 && person >= 0)
+            {
+                string insertQuery = $"INSERT INTO users_has_shift(users_id, shift_id) VALUES(@userId, @shiftId); select last_insert_id();";
+                databaseConnection.Open();
+                MySqlCommand commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
+                commandDatabase.Parameters.AddWithValue("@userId", person);
+                commandDatabase.Parameters.AddWithValue("@shiftId", shiftId);
+                commandDatabase.ExecuteNonQuery();
+                databaseConnection.Close();
+            }
+
+            LoadShifts(activeMonth);
         }
     }
 }
