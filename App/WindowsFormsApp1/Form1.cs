@@ -1,5 +1,4 @@
-﻿using Pabo.Calendar;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,16 +13,9 @@ namespace WindowsFormsApp1
 {
     public partial class MediaBazaar : Form
     {
-<<<<<<< HEAD
         ProductController pc;
      
         public MediaBazaar()
-=======
-        CalenderManager calenderManager = new CalenderManager();
-        EmployeeController employeeController = new EmployeeController();
-
-        public Form1()
->>>>>>> AppRyan
         {
             InitializeComponent();
             pc = new ProductController();
@@ -114,7 +106,6 @@ namespace WindowsFormsApp1
             UpdateList();
         }
 
-<<<<<<< HEAD
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
             
@@ -122,135 +113,5 @@ namespace WindowsFormsApp1
            
         }
 
-=======
-        private void tbcMain_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tbcMain.SelectedTab == tabSchedule)
-            {
-                lsbScheduleEmployees.DataSource = employeeController.GetEmployees();
-
-                ScheduleEnableButton();
-                calenderManager.LoadShifts(mcdSchedule.ActiveMonth);
-                LoadCalenderColors();
-                ScheduleUnassignEnabble();
-            }
-        }
-
-        #region schedule tab
-        private void mcdSchedule_DayClick(object sender, Pabo.Calendar.DayClickEventArgs e)
-        {
-            try
-            {
-                string selectedDate = mcdSchedule.SelectedDates[0].ToString("MMMM dd yyyy");
-                lblScheduleDateAssign.Text = selectedDate;
-                lblScheduleDateInfo.Text = selectedDate;
-            }
-            catch
-            {
-                lblScheduleDateAssign.Text = "Not Selected";
-                lblScheduleDateInfo.Text = "Not Selected";
-            }
-            finally
-            {
-                ScheduleEnableButton();
-                LoadAssignedEmployees();
-                ScheduleUnassignEnabble();
-            }
-        }
-
-        private void lsbScheduleEmployees_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lblScheduleAssignedEmployee.Text = lsbScheduleEmployees.SelectedItem.ToString();
-
-            ScheduleEnableButton();
-        }
-
-        private void cmbScheduleAssign_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ScheduleEnableButton();
-        }
-
-        private void txbScheduleEmployeeSearch_TextChanged(object sender, EventArgs e)
-        {
-            lsbScheduleEmployees.DataSource = employeeController.FilterEmployees(txbScheduleEmployeeSearch.Text);
-        }
-
-        private void mcdSchedule_MonthChanged(object sender, Pabo.Calendar.MonthChangedEventArgs e)
-        {
-            LoadCalenderColors();
-        }
-        private void cmbScheduleAssignedShift_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadAssignedEmployees();
-        }
-        private void btnScheduleAssign_Click(object sender, EventArgs e)
-        {
-            calenderManager.SetShift(mcdSchedule.SelectedDates[0], cmbScheduleAssign.SelectedIndex, ((Personal)lsbScheduleEmployees.SelectedItem).Id(), mcdSchedule.ActiveMonth);
-            LoadAssignedEmployees();
-            LoadCalenderColors();
-        }
-        private void btnScheduleUnassign_Click(object sender, EventArgs e)
-        {
-            calenderManager.RemoveEmployee(mcdSchedule.SelectedDates[0], cmbScheduleAssignedShift.SelectedIndex, ((Personal)lsbAssignedEmployees.SelectedItem).Id(), mcdSchedule.ActiveMonth);
-            LoadAssignedEmployees();
-            LoadCalenderColors();
-        }
-
-        #region functions
-        private void LoadCalenderColors()
-        {
-            DateItem[] dateItems = calenderManager.SetDaysForMonth(mcdSchedule.ActiveMonth);
-            foreach(DateItem dt in dateItems)
-            {
-                mcdSchedule.RemoveDateInfo(dt.Date);
-                mcdSchedule.AddDateInfo(dt);
-            }
-        }
-
-        private void LoadAssignedEmployees()
-        {
-            if(cmbScheduleAssignedShift.SelectedIndex >= 0)
-            {
-                SelectedDatesCollection sdc = mcdSchedule.SelectedDates;
-                if(sdc.Count > 0)
-                {
-                    lsbAssignedEmployees.DataSource = calenderManager.GetPersonalAssigned(sdc[0], cmbScheduleAssignedShift.SelectedIndex);
-
-                }
-
-                ScheduleUnassignEnabble();
-            }
-        }
-
-        private void ScheduleEnableButton()
-        {
-            if (lblScheduleAssignedEmployee.Text != "Not Selected" && lblScheduleDateAssign.Text != "Not Selected" && cmbScheduleAssign.SelectedIndex >= 0)
-            {
-                btnScheduleAssign.Enabled = true;
-            }
-            else
-            {
-                btnScheduleAssign.Enabled = false;
-            }
-        }
-
-        private void ScheduleUnassignEnabble()
-        {
-            if (lsbAssignedEmployees.Items.Count <= 0)
-            {
-                btnScheduleUnassign.Hide();
-            }
-            else
-            {
-                btnScheduleUnassign.Show();
-            }
-        }
-
-        #endregion
-
-        #endregion
-
-        
->>>>>>> AppRyan
     }
 }

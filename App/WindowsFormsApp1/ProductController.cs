@@ -8,7 +8,6 @@ namespace WindowsFormsApp1
 {
     public class ProductController
     {
-<<<<<<< HEAD
         SQLhelper sql = new SQLhelper();
 
         public void AddProduct(Product p)
@@ -169,33 +168,6 @@ namespace WindowsFormsApp1
                 sql.CloseConnection();
             }
 
-=======
-        private List<Product> products;
-
-        public void RemoveProduct(Product product)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Setproduct()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RemoveListOfProducts(List<Product> products)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Product GetProduct()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<Product> GetListOfProducts()
-        {
-            throw new System.NotImplementedException();
->>>>>>> AppRyan
         }
     }
 }
