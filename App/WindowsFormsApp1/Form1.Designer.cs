@@ -51,14 +51,9 @@
             this.labelSShift2 = new System.Windows.Forms.Label();
             this.lblScheduleDateAssign = new System.Windows.Forms.Label();
             this.cmbScheduleAssign = new System.Windows.Forms.ComboBox();
-            this.groupSInformation.SuspendLayout();
-            this.groupBoxSAssign.SuspendLayout();
-
             this.tbcMain = new System.Windows.Forms.TabControl();
             this.tabEmployees = new System.Windows.Forms.TabPage();
             this.tabProducts = new System.Windows.Forms.TabPage();
-            this.tabSchedule = new System.Windows.Forms.TabPage();
-            this.tabStatistics = new System.Windows.Forms.TabPage();
             this.lblPSearch = new System.Windows.Forms.Label();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.lblDepartment = new System.Windows.Forms.Label();
@@ -79,10 +74,265 @@
             this.btRemove = new System.Windows.Forms.Button();
             this.btCrease = new System.Windows.Forms.Button();
             this.lbProducts = new System.Windows.Forms.ListBox();
+            this.tabSchedule = new System.Windows.Forms.TabPage();
+            this.tabStatistics = new System.Windows.Forms.TabPage();
+            this.groupSInformation.SuspendLayout();
+            this.groupBoxSAssign.SuspendLayout();
             this.tbcMain.SuspendLayout();
             this.tabProducts.SuspendLayout();
             this.tabSchedule.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // mcdSchedule
+            // 
+            this.mcdSchedule.ActiveMonth.Month = 3;
+            this.mcdSchedule.ActiveMonth.Year = 2020;
+            this.mcdSchedule.Culture = new System.Globalization.CultureInfo("en");
+            this.mcdSchedule.Footer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.mcdSchedule.Header.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.mcdSchedule.Header.TextColor = System.Drawing.Color.White;
+            this.mcdSchedule.ImageList = null;
+            this.mcdSchedule.Location = new System.Drawing.Point(3, 16);
+            this.mcdSchedule.MaxDate = new System.DateTime(2030, 3, 11, 10, 12, 7, 673);
+            this.mcdSchedule.MinDate = new System.DateTime(2010, 3, 11, 10, 12, 7, 673);
+            this.mcdSchedule.Month.BackgroundImage = null;
+            this.mcdSchedule.Month.DateFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.mcdSchedule.Month.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.mcdSchedule.Name = "mcdSchedule";
+            this.mcdSchedule.SelectionMode = Pabo.Calendar.mcSelectionMode.One;
+            this.mcdSchedule.SelectTrailingDates = false;
+            this.mcdSchedule.ShowTrailingDates = false;
+            this.mcdSchedule.Size = new System.Drawing.Size(251, 200);
+            this.mcdSchedule.TabIndex = 15;
+            this.mcdSchedule.Weekdays.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F);
+            this.mcdSchedule.Weeknumbers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.mcdSchedule.MonthChanged += new Pabo.Calendar.MonthChangedEventHandler(this.mcdSchedule_MonthChanged);
+            this.mcdSchedule.DayClick += new Pabo.Calendar.DayClickEventHandler(this.mcdSchedule_DayClick);
+            // 
+            // lblSSearch
+            // 
+            this.lblSSearch.AutoSize = true;
+            this.lblSSearch.Location = new System.Drawing.Point(642, 16);
+            this.lblSSearch.Name = "lblSSearch";
+            this.lblSSearch.Size = new System.Drawing.Size(67, 20);
+            this.lblSSearch.TabIndex = 14;
+            this.lblSSearch.Text = "Search:";
+            // 
+            // txbScheduleEmployeeSearch
+            // 
+            this.txbScheduleEmployeeSearch.Location = new System.Drawing.Point(715, 12);
+            this.txbScheduleEmployeeSearch.Name = "txbScheduleEmployeeSearch";
+            this.txbScheduleEmployeeSearch.Size = new System.Drawing.Size(195, 27);
+            this.txbScheduleEmployeeSearch.TabIndex = 13;
+            this.txbScheduleEmployeeSearch.TextChanged += new System.EventHandler(this.txbScheduleEmployeeSearch_TextChanged);
+            // 
+            // groupSInformation
+            // 
+            this.groupSInformation.Controls.Add(this.btnScheduleUnassign);
+            this.groupSInformation.Controls.Add(this.lblSMaxEmployee);
+            this.groupSInformation.Controls.Add(this.labelSMinEmployee);
+            this.groupSInformation.Controls.Add(this.labelSNumEmployeeShift);
+            this.groupSInformation.Controls.Add(this.labelSShift1);
+            this.groupSInformation.Controls.Add(this.labelSNumEmployeeDay);
+            this.groupSInformation.Controls.Add(this.labelSDate1);
+            this.groupSInformation.Controls.Add(this.lblScheduleDateInfo);
+            this.groupSInformation.Controls.Add(this.cmbScheduleAssignedShift);
+            this.groupSInformation.Controls.Add(this.lsbAssignedEmployees);
+            this.groupSInformation.Location = new System.Drawing.Point(9, 228);
+            this.groupSInformation.Name = "groupSInformation";
+            this.groupSInformation.Size = new System.Drawing.Size(631, 233);
+            this.groupSInformation.TabIndex = 12;
+            this.groupSInformation.TabStop = false;
+            this.groupSInformation.Text = "Information for selected date";
+            // 
+            // btnScheduleUnassign
+            // 
+            this.btnScheduleUnassign.Location = new System.Drawing.Point(394, 191);
+            this.btnScheduleUnassign.Name = "btnScheduleUnassign";
+            this.btnScheduleUnassign.Size = new System.Drawing.Size(222, 36);
+            this.btnScheduleUnassign.TabIndex = 16;
+            this.btnScheduleUnassign.Text = "Unassign Employee";
+            this.btnScheduleUnassign.UseVisualStyleBackColor = true;
+            this.btnScheduleUnassign.Click += new System.EventHandler(this.btnScheduleUnassign_Click);
+            // 
+            // lblSMaxEmployee
+            // 
+            this.lblSMaxEmployee.AutoSize = true;
+            this.lblSMaxEmployee.Location = new System.Drawing.Point(6, 200);
+            this.lblSMaxEmployee.Name = "lblSMaxEmployee";
+            this.lblSMaxEmployee.Size = new System.Drawing.Size(234, 20);
+            this.lblSMaxEmployee.TabIndex = 17;
+            this.lblSMaxEmployee.Text = "Max num employees assigned";
+            // 
+            // labelSMinEmployee
+            // 
+            this.labelSMinEmployee.AutoSize = true;
+            this.labelSMinEmployee.Location = new System.Drawing.Point(6, 178);
+            this.labelSMinEmployee.Name = "labelSMinEmployee";
+            this.labelSMinEmployee.Size = new System.Drawing.Size(230, 20);
+            this.labelSMinEmployee.TabIndex = 16;
+            this.labelSMinEmployee.Text = "Min num employees assigned";
+            // 
+            // labelSNumEmployeeShift
+            // 
+            this.labelSNumEmployeeShift.AutoSize = true;
+            this.labelSNumEmployeeShift.Location = new System.Drawing.Point(6, 138);
+            this.labelSNumEmployeeShift.Name = "labelSNumEmployeeShift";
+            this.labelSNumEmployeeShift.Size = new System.Drawing.Size(307, 20);
+            this.labelSNumEmployeeShift.TabIndex = 14;
+            this.labelSNumEmployeeShift.Text = "Number of employees for selected shift:";
+            // 
+            // labelSShift1
+            // 
+            this.labelSShift1.AutoSize = true;
+            this.labelSShift1.Location = new System.Drawing.Point(6, 77);
+            this.labelSShift1.Name = "labelSShift1";
+            this.labelSShift1.Size = new System.Drawing.Size(118, 20);
+            this.labelSShift1.TabIndex = 10;
+            this.labelSShift1.Text = "Selected Shift:";
+            // 
+            // labelSNumEmployeeDay
+            // 
+            this.labelSNumEmployeeDay.AutoSize = true;
+            this.labelSNumEmployeeDay.Location = new System.Drawing.Point(6, 116);
+            this.labelSNumEmployeeDay.Name = "labelSNumEmployeeDay";
+            this.labelSNumEmployeeDay.Size = new System.Drawing.Size(261, 20);
+            this.labelSNumEmployeeDay.TabIndex = 12;
+            this.labelSNumEmployeeDay.Text = "Number of employees for the day:";
+            // 
+            // labelSDate1
+            // 
+            this.labelSDate1.AutoSize = true;
+            this.labelSDate1.Location = new System.Drawing.Point(6, 50);
+            this.labelSDate1.Name = "labelSDate1";
+            this.labelSDate1.Size = new System.Drawing.Size(116, 20);
+            this.labelSDate1.TabIndex = 10;
+            this.labelSDate1.Text = "Selected date:";
+            // 
+            // lblScheduleDateInfo
+            // 
+            this.lblScheduleDateInfo.AutoSize = true;
+            this.lblScheduleDateInfo.Location = new System.Drawing.Point(179, 50);
+            this.lblScheduleDateInfo.Name = "lblScheduleDateInfo";
+            this.lblScheduleDateInfo.Size = new System.Drawing.Size(105, 20);
+            this.lblScheduleDateInfo.TabIndex = 11;
+            this.lblScheduleDateInfo.Text = "Not Selected";
+            // 
+            // cmbScheduleAssignedShift
+            // 
+            this.cmbScheduleAssignedShift.FormattingEnabled = true;
+            this.cmbScheduleAssignedShift.Items.AddRange(new object[] {
+            "Morning",
+            "Evening",
+            "Night"});
+            this.cmbScheduleAssignedShift.Location = new System.Drawing.Point(183, 74);
+            this.cmbScheduleAssignedShift.Name = "cmbScheduleAssignedShift";
+            this.cmbScheduleAssignedShift.Size = new System.Drawing.Size(145, 28);
+            this.cmbScheduleAssignedShift.TabIndex = 10;
+            this.cmbScheduleAssignedShift.SelectedIndexChanged += new System.EventHandler(this.cmbScheduleAssignedShift_SelectedIndexChanged);
+            // 
+            // lsbAssignedEmployees
+            // 
+            this.lsbAssignedEmployees.FormattingEnabled = true;
+            this.lsbAssignedEmployees.ItemHeight = 20;
+            this.lsbAssignedEmployees.Location = new System.Drawing.Point(394, 21);
+            this.lsbAssignedEmployees.Name = "lsbAssignedEmployees";
+            this.lsbAssignedEmployees.Size = new System.Drawing.Size(222, 164);
+            this.lsbAssignedEmployees.TabIndex = 0;
+            // 
+            // lsbScheduleEmployees
+            // 
+            this.lsbScheduleEmployees.FormattingEnabled = true;
+            this.lsbScheduleEmployees.ItemHeight = 20;
+            this.lsbScheduleEmployees.Location = new System.Drawing.Point(646, 37);
+            this.lsbScheduleEmployees.Name = "lsbScheduleEmployees";
+            this.lsbScheduleEmployees.Size = new System.Drawing.Size(264, 424);
+            this.lsbScheduleEmployees.TabIndex = 11;
+            this.lsbScheduleEmployees.SelectedIndexChanged += new System.EventHandler(this.lsbScheduleEmployees_SelectedIndexChanged);
+            // 
+            // groupBoxSAssign
+            // 
+            this.groupBoxSAssign.Controls.Add(this.labelSDate2);
+            this.groupBoxSAssign.Controls.Add(this.btnScheduleAssign);
+            this.groupBoxSAssign.Controls.Add(this.labelSEmployee);
+            this.groupBoxSAssign.Controls.Add(this.lblScheduleAssignedEmployee);
+            this.groupBoxSAssign.Controls.Add(this.labelSShift2);
+            this.groupBoxSAssign.Controls.Add(this.lblScheduleDateAssign);
+            this.groupBoxSAssign.Controls.Add(this.cmbScheduleAssign);
+            this.groupBoxSAssign.Location = new System.Drawing.Point(260, 9);
+            this.groupBoxSAssign.Name = "groupBoxSAssign";
+            this.groupBoxSAssign.Size = new System.Drawing.Size(380, 207);
+            this.groupBoxSAssign.TabIndex = 10;
+            this.groupBoxSAssign.TabStop = false;
+            this.groupBoxSAssign.Text = "Assigning Schedule";
+            // 
+            // labelSDate2
+            // 
+            this.labelSDate2.AutoSize = true;
+            this.labelSDate2.Location = new System.Drawing.Point(8, 30);
+            this.labelSDate2.Name = "labelSDate2";
+            this.labelSDate2.Size = new System.Drawing.Size(116, 20);
+            this.labelSDate2.TabIndex = 1;
+            this.labelSDate2.Text = "Selected date:";
+            // 
+            // btnScheduleAssign
+            // 
+            this.btnScheduleAssign.Location = new System.Drawing.Point(11, 128);
+            this.btnScheduleAssign.Name = "btnScheduleAssign";
+            this.btnScheduleAssign.Size = new System.Drawing.Size(330, 33);
+            this.btnScheduleAssign.TabIndex = 9;
+            this.btnScheduleAssign.Text = "Assign employee to shift";
+            this.btnScheduleAssign.UseVisualStyleBackColor = true;
+            this.btnScheduleAssign.Click += new System.EventHandler(this.btnScheduleAssign_Click);
+            // 
+            // labelSEmployee
+            // 
+            this.labelSEmployee.AutoSize = true;
+            this.labelSEmployee.Location = new System.Drawing.Point(8, 60);
+            this.labelSEmployee.Name = "labelSEmployee";
+            this.labelSEmployee.Size = new System.Drawing.Size(157, 20);
+            this.labelSEmployee.TabIndex = 2;
+            this.labelSEmployee.Text = "Selected Employee:";
+            // 
+            // lblScheduleAssignedEmployee
+            // 
+            this.lblScheduleAssignedEmployee.AutoSize = true;
+            this.lblScheduleAssignedEmployee.Location = new System.Drawing.Point(171, 60);
+            this.lblScheduleAssignedEmployee.Name = "lblScheduleAssignedEmployee";
+            this.lblScheduleAssignedEmployee.Size = new System.Drawing.Size(105, 20);
+            this.lblScheduleAssignedEmployee.TabIndex = 8;
+            this.lblScheduleAssignedEmployee.Text = "Not Selected";
+            // 
+            // labelSShift2
+            // 
+            this.labelSShift2.AutoSize = true;
+            this.labelSShift2.Location = new System.Drawing.Point(8, 90);
+            this.labelSShift2.Name = "labelSShift2";
+            this.labelSShift2.Size = new System.Drawing.Size(118, 20);
+            this.labelSShift2.TabIndex = 4;
+            this.labelSShift2.Text = "Selected Shift:";
+            // 
+            // lblScheduleDateAssign
+            // 
+            this.lblScheduleDateAssign.AutoSize = true;
+            this.lblScheduleDateAssign.Location = new System.Drawing.Point(171, 30);
+            this.lblScheduleDateAssign.Name = "lblScheduleDateAssign";
+            this.lblScheduleDateAssign.Size = new System.Drawing.Size(105, 20);
+            this.lblScheduleDateAssign.TabIndex = 7;
+            this.lblScheduleDateAssign.Text = "Not Selected";
+            // 
+            // cmbScheduleAssign
+            // 
+            this.cmbScheduleAssign.FormattingEnabled = true;
+            this.cmbScheduleAssign.Items.AddRange(new object[] {
+            "Morning",
+            "Evening",
+            "Night"});
+            this.cmbScheduleAssign.Location = new System.Drawing.Point(169, 87);
+            this.cmbScheduleAssign.Name = "cmbScheduleAssign";
+            this.cmbScheduleAssign.Size = new System.Drawing.Size(170, 28);
+            this.cmbScheduleAssign.TabIndex = 6;
+            this.cmbScheduleAssign.SelectedIndexChanged += new System.EventHandler(this.cmbScheduleAssign_SelectedIndexChanged);
             // 
             // tbcMain
             // 
@@ -94,21 +344,21 @@
             this.tbcMain.Location = new System.Drawing.Point(12, 12);
             this.tbcMain.Name = "tbcMain";
             this.tbcMain.SelectedIndex = 0;
-            this.tbcMain.Size = new System.Drawing.Size(845, 503);
+            this.tbcMain.Size = new System.Drawing.Size(934, 503);
             this.tbcMain.TabIndex = 0;
-            //ixf this.tbcMain.SelectedIndexChanged += new System.EventHandler(this.tbcMain_SelectedIndexChanged);
+            this.tbcMain.SelectedIndexChanged += new System.EventHandler(this.tbcMain_SelectedIndexChanged);
             // 
-            // tabPage1
+            // tabEmployees
             // 
             this.tabEmployees.Location = new System.Drawing.Point(4, 29);
-            this.tabEmployees.Name = "tabPage1";
+            this.tabEmployees.Name = "tabEmployees";
             this.tabEmployees.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEmployees.Size = new System.Drawing.Size(790, 470);
+            this.tabEmployees.Size = new System.Drawing.Size(837, 470);
             this.tabEmployees.TabIndex = 0;
             this.tabEmployees.Text = "Employees";
             this.tabEmployees.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tabProducts
             // 
             this.tabProducts.BackColor = System.Drawing.Color.Salmon;
             this.tabProducts.Controls.Add(this.lblPSearch);
@@ -132,9 +382,9 @@
             this.tabProducts.Controls.Add(this.btCrease);
             this.tabProducts.Controls.Add(this.lbProducts);
             this.tabProducts.Location = new System.Drawing.Point(4, 29);
-            this.tabProducts.Name = "tabPage2";
+            this.tabProducts.Name = "tabProducts";
             this.tabProducts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProducts.Size = new System.Drawing.Size(790, 470);
+            this.tabProducts.Size = new System.Drawing.Size(837, 470);
             this.tabProducts.TabIndex = 1;
             this.tabProducts.Text = "Products";
             // 
@@ -338,269 +588,18 @@
             this.tabSchedule.Controls.Add(this.groupSInformation);
             this.tabSchedule.Controls.Add(this.lsbScheduleEmployees);
             this.tabSchedule.Controls.Add(this.groupBoxSAssign);
-            this.tabSchedule.Location = new System.Drawing.Point(4, 25);
+            this.tabSchedule.Location = new System.Drawing.Point(4, 29);
             this.tabSchedule.Name = "tabSchedule";
-            this.tabSchedule.Size = new System.Drawing.Size(837, 474);
+            this.tabSchedule.Size = new System.Drawing.Size(926, 470);
             this.tabSchedule.TabIndex = 2;
             this.tabSchedule.Text = "Schedule";
             this.tabSchedule.UseVisualStyleBackColor = true;
             // 
-            // mcdSchedule
-            // 
-            this.mcdSchedule.ActiveMonth.Month = 3;
-            this.mcdSchedule.ActiveMonth.Year = 2020;
-            this.mcdSchedule.Culture = new System.Globalization.CultureInfo("en");
-            this.mcdSchedule.Footer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.mcdSchedule.Header.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.mcdSchedule.Header.TextColor = System.Drawing.Color.White;
-            this.mcdSchedule.ImageList = null;
-            this.mcdSchedule.Location = new System.Drawing.Point(3, 16);
-            this.mcdSchedule.MaxDate = new System.DateTime(2030, 3, 11, 10, 12, 7, 673);
-            this.mcdSchedule.MinDate = new System.DateTime(2010, 3, 11, 10, 12, 7, 673);
-            this.mcdSchedule.Month.BackgroundImage = null;
-            this.mcdSchedule.Month.DateFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.mcdSchedule.Month.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.mcdSchedule.Name = "mcdSchedule";
-            this.mcdSchedule.SelectionMode = Pabo.Calendar.mcSelectionMode.One;
-            this.mcdSchedule.SelectTrailingDates = false;
-            this.mcdSchedule.ShowTrailingDates = false;
-            this.mcdSchedule.Size = new System.Drawing.Size(251, 200);
-            this.mcdSchedule.TabIndex = 15;
-            this.mcdSchedule.Weekdays.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F);
-            this.mcdSchedule.Weeknumbers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            //ixf this.mcdSchedule.MonthChanged += new Pabo.Calendar.MonthChangedEventHandler(this.mcdSchedule_MonthChanged);
-            //ixf this.mcdSchedule.DayClick += new Pabo.Calendar.DayClickEventHandler(this.mcdSchedule_DayClick);
-            // 
-            // lblSSearch
-            // 
-            this.lblSSearch.AutoSize = true;
-            this.lblSSearch.Location = new System.Drawing.Point(570, 15);
-            this.lblSSearch.Name = "lblSSearch";
-            this.lblSSearch.Size = new System.Drawing.Size(57, 17);
-            this.lblSSearch.TabIndex = 14;
-            this.lblSSearch.Text = "Search:";
-            // 
-            // txbScheduleEmployeeSearch
-            // 
-            this.txbScheduleEmployeeSearch.Location = new System.Drawing.Point(629, 11);
-            this.txbScheduleEmployeeSearch.Name = "txbScheduleEmployeeSearch";
-            this.txbScheduleEmployeeSearch.Size = new System.Drawing.Size(195, 22);
-            this.txbScheduleEmployeeSearch.TabIndex = 13;
-            //ixf this.txbScheduleEmployeeSearch.TextChanged += new System.EventHandler(this.txbScheduleEmployeeSearch_TextChanged);
-            // 
-            // groupSInformation
-            // 
-            this.groupSInformation.Controls.Add(this.btnScheduleUnassign);
-            this.groupSInformation.Controls.Add(this.lblSMaxEmployee);
-            this.groupSInformation.Controls.Add(this.labelSMinEmployee);
-            this.groupSInformation.Controls.Add(this.labelSNumEmployeeShift);
-            this.groupSInformation.Controls.Add(this.labelSShift1);
-            this.groupSInformation.Controls.Add(this.labelSNumEmployeeDay);
-            this.groupSInformation.Controls.Add(this.labelSDate1);
-            this.groupSInformation.Controls.Add(this.lblScheduleDateInfo);
-            this.groupSInformation.Controls.Add(this.cmbScheduleAssignedShift);
-            this.groupSInformation.Controls.Add(this.lsbAssignedEmployees);
-            this.groupSInformation.Location = new System.Drawing.Point(9, 228);
-            this.groupSInformation.Name = "groupSInformation";
-            this.groupSInformation.Size = new System.Drawing.Size(555, 233);
-            this.groupSInformation.TabIndex = 12;
-            this.groupSInformation.TabStop = false;
-            this.groupSInformation.Text = "Information for selected date";
-            // 
-            // btnScheduleUnassign
-            // 
-            this.btnScheduleUnassign.Location = new System.Drawing.Point(327, 204);
-            this.btnScheduleUnassign.Name = "btnScheduleUnassign";
-            this.btnScheduleUnassign.Size = new System.Drawing.Size(222, 23);
-            this.btnScheduleUnassign.TabIndex = 16;
-            this.btnScheduleUnassign.Text = "Unassign Employee";
-            this.btnScheduleUnassign.UseVisualStyleBackColor = true;
-            //ixf this.btnScheduleUnassign.Click += new System.EventHandler(this.btnScheduleUnassign_Click);
-            // 
-            // lblSMaxEmployee
-            // 
-            this.lblSMaxEmployee.AutoSize = true;
-            this.lblSMaxEmployee.Location = new System.Drawing.Point(6, 171);
-            this.lblSMaxEmployee.Name = "lblSMaxEmployee";
-            this.lblSMaxEmployee.Size = new System.Drawing.Size(197, 17);
-            this.lblSMaxEmployee.TabIndex = 17;
-            this.lblSMaxEmployee.Text = "Max num employees assigned";
-            // 
-            // labelSMinEmployee
-            // 
-            this.labelSMinEmployee.AutoSize = true;
-            this.labelSMinEmployee.Location = new System.Drawing.Point(6, 154);
-            this.labelSMinEmployee.Name = "labelSMinEmployee";
-            this.labelSMinEmployee.Size = new System.Drawing.Size(194, 17);
-            this.labelSMinEmployee.TabIndex = 16;
-            this.labelSMinEmployee.Text = "Min num employees assigned";
-            // 
-            // labelSNumEmployeeShift
-            // 
-            this.labelSNumEmployeeShift.AutoSize = true;
-            this.labelSNumEmployeeShift.Location = new System.Drawing.Point(6, 133);
-            this.labelSNumEmployeeShift.Name = "labelSNumEmployeeShift";
-            this.labelSNumEmployeeShift.Size = new System.Drawing.Size(258, 17);
-            this.labelSNumEmployeeShift.TabIndex = 14;
-            this.labelSNumEmployeeShift.Text = "Number of employees for selected shift:";
-            // 
-            // labelSShift1
-            // 
-            this.labelSShift1.AutoSize = true;
-            this.labelSShift1.Location = new System.Drawing.Point(6, 73);
-            this.labelSShift1.Name = "labelSShift1";
-            this.labelSShift1.Size = new System.Drawing.Size(99, 17);
-            this.labelSShift1.TabIndex = 10;
-            this.labelSShift1.Text = "Selected Shift:";
-            // 
-            // labelSNumEmployeeDay
-            // 
-            this.labelSNumEmployeeDay.AutoSize = true;
-            this.labelSNumEmployeeDay.Location = new System.Drawing.Point(6, 116);
-            this.labelSNumEmployeeDay.Name = "labelSNumEmployeeDay";
-            this.labelSNumEmployeeDay.Size = new System.Drawing.Size(222, 17);
-            this.labelSNumEmployeeDay.TabIndex = 12;
-            this.labelSNumEmployeeDay.Text = "Number of employees for the day:";
-            // 
-            // labelSDate1
-            // 
-            this.labelSDate1.AutoSize = true;
-            this.labelSDate1.Location = new System.Drawing.Point(6, 50);
-            this.labelSDate1.Name = "labelSDate1";
-            this.labelSDate1.Size = new System.Drawing.Size(99, 17);
-            this.labelSDate1.TabIndex = 10;
-            this.labelSDate1.Text = "Selected date:";
-            // 
-            // lblScheduleDateInfo
-            // 
-            this.lblScheduleDateInfo.AutoSize = true;
-            this.lblScheduleDateInfo.Location = new System.Drawing.Point(111, 50);
-            this.lblScheduleDateInfo.Name = "lblScheduleDateInfo";
-            this.lblScheduleDateInfo.Size = new System.Drawing.Size(89, 17);
-            this.lblScheduleDateInfo.TabIndex = 11;
-            this.lblScheduleDateInfo.Text = "Not Selected";
-            // 
-            // cmbScheduleAssignedShift
-            // 
-            this.cmbScheduleAssignedShift.FormattingEnabled = true;
-            this.cmbScheduleAssignedShift.Items.AddRange(new object[] {
-            "Morning",
-            "Evening",
-            "Night"});
-            this.cmbScheduleAssignedShift.Location = new System.Drawing.Point(114, 70);
-            this.cmbScheduleAssignedShift.Name = "cmbScheduleAssignedShift";
-            this.cmbScheduleAssignedShift.Size = new System.Drawing.Size(145, 24);
-            this.cmbScheduleAssignedShift.TabIndex = 10;
-            //ixf this.cmbScheduleAssignedShift.SelectedIndexChanged += new System.EventHandler(this.cmbScheduleAssignedShift_SelectedIndexChanged);
-            // 
-            // lsbAssignedEmployees
-            // 
-            this.lsbAssignedEmployees.FormattingEnabled = true;
-            this.lsbAssignedEmployees.ItemHeight = 16;
-            this.lsbAssignedEmployees.Location = new System.Drawing.Point(327, 21);
-            this.lsbAssignedEmployees.Name = "lsbAssignedEmployees";
-            this.lsbAssignedEmployees.Size = new System.Drawing.Size(222, 180);
-            this.lsbAssignedEmployees.TabIndex = 0;
-            // 
-            // lsbScheduleEmployees
-            // 
-            this.lsbScheduleEmployees.FormattingEnabled = true;
-            this.lsbScheduleEmployees.ItemHeight = 16;
-            this.lsbScheduleEmployees.Location = new System.Drawing.Point(570, 35);
-            this.lsbScheduleEmployees.Name = "lsbScheduleEmployees";
-            this.lsbScheduleEmployees.Size = new System.Drawing.Size(252, 436);
-            this.lsbScheduleEmployees.TabIndex = 11;
-            //ixf this.lsbScheduleEmployees.SelectedIndexChanged += new System.EventHandler(this.lsbScheduleEmployees_SelectedIndexChanged);
-            // 
-            // groupBoxSAssign
-            // 
-            this.groupBoxSAssign.Controls.Add(this.labelSDate2);
-            this.groupBoxSAssign.Controls.Add(this.btnScheduleAssign);
-            this.groupBoxSAssign.Controls.Add(this.labelSEmployee);
-            this.groupBoxSAssign.Controls.Add(this.lblScheduleAssignedEmployee);
-            this.groupBoxSAssign.Controls.Add(this.labelSShift2);
-            this.groupBoxSAssign.Controls.Add(this.lblScheduleDateAssign);
-            this.groupBoxSAssign.Controls.Add(this.cmbScheduleAssign);
-            this.groupBoxSAssign.Location = new System.Drawing.Point(260, 9);
-            this.groupBoxSAssign.Name = "groupBoxSAssign";
-            this.groupBoxSAssign.Size = new System.Drawing.Size(304, 207);
-            this.groupBoxSAssign.TabIndex = 10;
-            this.groupBoxSAssign.TabStop = false;
-            this.groupBoxSAssign.Text = "Assigning Schedule";
-            // 
-            // labelSDate2
-            // 
-            this.labelSDate2.AutoSize = true;
-            this.labelSDate2.Location = new System.Drawing.Point(8, 30);
-            this.labelSDate2.Name = "labelSDate2";
-            this.labelSDate2.Size = new System.Drawing.Size(99, 17);
-            this.labelSDate2.TabIndex = 1;
-            this.labelSDate2.Text = "Selected date:";
-            // 
-            // btnScheduleAssign
-            // 
-            this.btnScheduleAssign.Location = new System.Drawing.Point(11, 128);
-            this.btnScheduleAssign.Name = "btnScheduleAssign";
-            this.btnScheduleAssign.Size = new System.Drawing.Size(284, 23);
-            this.btnScheduleAssign.TabIndex = 9;
-            this.btnScheduleAssign.Text = "Assign employee to shift";
-            this.btnScheduleAssign.UseVisualStyleBackColor = true;
-            //ixf this.btnScheduleAssign.Click += new System.EventHandler(this.btnScheduleAssign_Click);
-            // 
-            // labelSEmployee
-            // 
-            this.labelSEmployee.AutoSize = true;
-            this.labelSEmployee.Location = new System.Drawing.Point(8, 60);
-            this.labelSEmployee.Name = "labelSEmployee";
-            this.labelSEmployee.Size = new System.Drawing.Size(133, 17);
-            this.labelSEmployee.TabIndex = 2;
-            this.labelSEmployee.Text = "Selected Employee:";
-            // 
-            // lblScheduleAssignedEmployee
-            // 
-            this.lblScheduleAssignedEmployee.AutoSize = true;
-            this.lblScheduleAssignedEmployee.Location = new System.Drawing.Point(147, 60);
-            this.lblScheduleAssignedEmployee.Name = "lblScheduleAssignedEmployee";
-            this.lblScheduleAssignedEmployee.Size = new System.Drawing.Size(89, 17);
-            this.lblScheduleAssignedEmployee.TabIndex = 8;
-            this.lblScheduleAssignedEmployee.Text = "Not Selected";
-            // 
-            // labelSShift2
-            // 
-            this.labelSShift2.AutoSize = true;
-            this.labelSShift2.Location = new System.Drawing.Point(8, 90);
-            this.labelSShift2.Name = "labelSShift2";
-            this.labelSShift2.Size = new System.Drawing.Size(99, 17);
-            this.labelSShift2.TabIndex = 4;
-            this.labelSShift2.Text = "Selected Shift:";
-            // 
-            // lblScheduleDateAssign
-            // 
-            this.lblScheduleDateAssign.AutoSize = true;
-            this.lblScheduleDateAssign.Location = new System.Drawing.Point(147, 30);
-            this.lblScheduleDateAssign.Name = "lblScheduleDateAssign";
-            this.lblScheduleDateAssign.Size = new System.Drawing.Size(89, 17);
-            this.lblScheduleDateAssign.TabIndex = 7;
-            this.lblScheduleDateAssign.Text = "Not Selected";
-            // 
-            // cmbScheduleAssign
-            // 
-            this.cmbScheduleAssign.FormattingEnabled = true;
-            this.cmbScheduleAssign.Items.AddRange(new object[] {
-            "Morning",
-            "Evening",
-            "Night"});
-            this.cmbScheduleAssign.Location = new System.Drawing.Point(150, 87);
-            this.cmbScheduleAssign.Name = "cmbScheduleAssign";
-            this.cmbScheduleAssign.Size = new System.Drawing.Size(145, 24);
-            this.cmbScheduleAssign.TabIndex = 6;
-            //ixf this.cmbScheduleAssign.SelectedIndexChanged += new System.EventHandler(this.cmbScheduleAssign_SelectedIndexChanged);
-            // 
-            // tabPage4
+            // tabStatistics
             // 
             this.tabStatistics.Location = new System.Drawing.Point(4, 29);
-            this.tabStatistics.Name = "tabPage4";
-            this.tabStatistics.Size = new System.Drawing.Size(790, 470);
+            this.tabStatistics.Name = "tabStatistics";
+            this.tabStatistics.Size = new System.Drawing.Size(837, 470);
             this.tabStatistics.TabIndex = 3;
             this.tabStatistics.Text = "Statistics";
             this.tabStatistics.UseVisualStyleBackColor = true;
@@ -609,13 +608,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 527);
+            this.ClientSize = new System.Drawing.Size(955, 527);
             this.Controls.Add(this.tbcMain);
             this.Name = "MediaBazaar";
             this.Text = "MediaBazaar";
+            this.groupSInformation.ResumeLayout(false);
+            this.groupSInformation.PerformLayout();
+            this.groupBoxSAssign.ResumeLayout(false);
+            this.groupBoxSAssign.PerformLayout();
             this.tbcMain.ResumeLayout(false);
             this.tabProducts.ResumeLayout(false);
             this.tabProducts.PerformLayout();
+            this.tabSchedule.ResumeLayout(false);
+            this.tabSchedule.PerformLayout();
             this.ResumeLayout(false);
 
         }

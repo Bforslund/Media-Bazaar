@@ -8,30 +8,30 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp1
 {
-   public class SQLhelper
+    public class SQLhelper
     {
-   
 
-            MySqlConnection conn = new MySqlConnection("Server = studmysql01.fhict.local; Uid=dbi431685;Database=dbi431685;Pwd=");
+        MySqlConnection conn = DatabaseInfo.sqlConnection;
+        //MySqlConnection conn = new MySqlConnection("Server = studmysql01.fhict.local; Uid=dbi431685;Database=dbi431685;Pwd=");
 
-            public void OpenConnection()
-            {
-                conn.Open();
-            }
+        public void OpenConnection()
+        {
+            conn.Open();
+        }
 
-            public void AddProducts(Product p)
-            {
-                string sql = "INSERT INTO products (type, name, price, stock, department ) VALUES(@type, @name, @price, @stock, @department)";
+        public void AddProducts(Product p)
+        {
+            string sql = "INSERT INTO products (type, name, price, stock, department ) VALUES(@type, @name, @price, @stock, @department)";
 
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@type", p.Type);
-                cmd.Parameters.AddWithValue("@name", p.Name);
-                cmd.Parameters.AddWithValue("@price", p.Price);
-                cmd.Parameters.AddWithValue("@stock", p.Stock);
-                cmd.Parameters.AddWithValue("@department", p.Department);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@type", p.Type);
+            cmd.Parameters.AddWithValue("@name", p.Name);
+            cmd.Parameters.AddWithValue("@price", p.Price);
+            cmd.Parameters.AddWithValue("@stock", p.Stock);
+            cmd.Parameters.AddWithValue("@department", p.Department);
 
-                cmd.ExecuteNonQuery();
-            }
+            cmd.ExecuteNonQuery();
+        }
 
         public void UpdateProduct(Product p)
         {
@@ -47,34 +47,34 @@ namespace WindowsFormsApp1
         }
 
         public void CloseConnection()
+        {
+            conn.Close();
+        }
+
+        public List<Product> GetAllProducts()
+        {
+            string sql = "SELECT id, type, name, price, stock, department FROM Products";
+            List<Product> returnedProducts = new List<Product>();
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+
+
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+
+            while (dr.Read())
             {
-                conn.Close();
+                Product p = new Product(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDouble(dr[3]), Convert.ToInt32(dr[4]), dr[5].ToString());
+                returnedProducts.Add(p);
+
             }
-
-         public List<Product> GetAllProducts()
-            {
-                string sql = "SELECT id, type, name, price, stock, department FROM Products";
-                List<Product> returnedProducts = new List<Product>();
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-
-
-                MySqlDataReader dr = cmd.ExecuteReader(); 
-
-
-                while (dr.Read())
-                {
-                    Product p = new Product(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDouble(dr[3]), Convert.ToInt32(dr[4]), dr[5].ToString());
-                    returnedProducts.Add(p);
-                  
-                }
-                return returnedProducts;
-            }
+            return returnedProducts;
+        }
         public void DeleteProduct(Product p)
         {
             string sql = "DELETE FROM products WHERE products.id = @id";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
-          
+
             cmd.Parameters.AddWithValue("@id", p.Id);
             cmd.ExecuteNonQuery();
         }
@@ -99,7 +99,7 @@ namespace WindowsFormsApp1
         }
 
     }
- 
 
-    }
+
+}
 
