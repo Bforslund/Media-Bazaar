@@ -393,11 +393,9 @@
             this.groupSInformation.Controls.Add(this.btnScheduleUnassign);
             this.groupSInformation.Controls.Add(this.lblSMaxEmployee);
             this.groupSInformation.Controls.Add(this.labelSMinEmployee);
-            this.groupSInformation.Controls.Add(this.label18);
             this.groupSInformation.Controls.Add(this.labelSNumEmployeeShift);
             this.groupSInformation.Controls.Add(this.labelSShift1);
             this.groupSInformation.Controls.Add(this.labelSNumEmployeeDay);
-            this.groupSInformation.Controls.Add(this.label15);
             this.groupSInformation.Controls.Add(this.labelSDate1);
             this.groupSInformation.Controls.Add(this.lblScheduleDateInfo);
             this.groupSInformation.Controls.Add(this.cmbScheduleAssignedShift);
