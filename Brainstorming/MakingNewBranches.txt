@@ -1,0 +1,7 @@
+git branch <Name of the branch>				creates the branch
+git checkout <Name of the branch>			enters the branch
+
+git add . (because why not)				adds the files
+git commit -m "<Message of the commit>"		
+git push --set-upstream origin <Name of branch>		Since the branch has no starting point, this is needed to show the 							origin
+
