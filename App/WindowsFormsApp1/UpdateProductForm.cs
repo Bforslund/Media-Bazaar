@@ -70,7 +70,7 @@ namespace WindowsFormsApp1
 
                 string department = tbDepartment.Text;
 
-                Product newProduct = new Product(type, name, price, 0, department);
+                Product newProduct = new Product(type, name, price, 0, 0, department);
                 pc.AddProduct(newProduct);
                 success = true;
             }

@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MediaBazaar));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mcdSchedule = new Pabo.Calendar.MonthCalendar();
             this.lblSSearch = new System.Windows.Forms.Label();
             this.txbScheduleEmployeeSearch = new System.Windows.Forms.TextBox();
@@ -54,11 +58,19 @@
             this.cmbScheduleAssign = new System.Windows.Forms.ComboBox();
             this.tbcMain = new System.Windows.Forms.TabControl();
             this.tabEmployees = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpEmployeeHire = new System.Windows.Forms.DateTimePicker();
+            this.dtpEmployeeBirthday = new System.Windows.Forms.DateTimePicker();
+            this.cmbGender = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.PictureBox();
             this.deleteEmpButton = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.usernameBox = new System.Windows.Forms.TextBox();
@@ -108,14 +120,18 @@
             this.lbProducts = new System.Windows.Forms.ListBox();
             this.tabSchedule = new System.Windows.Forms.TabPage();
             this.tabStatistics = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbGender = new System.Windows.Forms.ComboBox();
-            this.dtpEmployeeBirthday = new System.Windows.Forms.DateTimePicker();
-            this.dtpEmployeeHire = new System.Windows.Forms.DateTimePicker();
+            this.chartProd = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lbNight = new System.Windows.Forms.ListBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblmorshift = new System.Windows.Forms.Label();
+            this.lbAfternoon = new System.Windows.Forms.ListBox();
+            this.lbLowProd = new System.Windows.Forms.ListBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupSInformation.SuspendLayout();
             this.groupBoxSAssign.SuspendLayout();
             this.tbcMain.SuspendLayout();
@@ -126,6 +142,8 @@
             this.groupBox3.SuspendLayout();
             this.tabProducts.SuspendLayout();
             this.tabSchedule.SuspendLayout();
+            this.tabStatistics.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartProd)).BeginInit();
             this.SuspendLayout();
             // 
             // mcdSchedule
@@ -408,6 +426,22 @@
             this.tabEmployees.Text = "Employees";
             this.tabEmployees.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 20);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Search:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(79, 26);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(195, 27);
+            this.textBox1.TabIndex = 15;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dtpEmployeeHire);
@@ -446,6 +480,52 @@
             this.groupBox1.Size = new System.Drawing.Size(776, 454);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
+            // 
+            // dtpEmployeeHire
+            // 
+            this.dtpEmployeeHire.Location = new System.Drawing.Point(519, 17);
+            this.dtpEmployeeHire.Name = "dtpEmployeeHire";
+            this.dtpEmployeeHire.Size = new System.Drawing.Size(133, 27);
+            this.dtpEmployeeHire.TabIndex = 49;
+            // 
+            // dtpEmployeeBirthday
+            // 
+            this.dtpEmployeeBirthday.Location = new System.Drawing.Point(169, 90);
+            this.dtpEmployeeBirthday.Name = "dtpEmployeeBirthday";
+            this.dtpEmployeeBirthday.Size = new System.Drawing.Size(133, 27);
+            this.dtpEmployeeBirthday.TabIndex = 48;
+            // 
+            // cmbGender
+            // 
+            this.cmbGender.FormattingEnabled = true;
+            this.cmbGender.Items.AddRange(new object[] {
+            "Male",
+            "Female",
+            "Other"});
+            this.cmbGender.Location = new System.Drawing.Point(169, 216);
+            this.cmbGender.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbGender.Name = "cmbGender";
+            this.cmbGender.Size = new System.Drawing.Size(131, 28);
+            this.cmbGender.TabIndex = 47;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 219);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 20);
+            this.label4.TabIndex = 46;
+            this.label4.Text = "Gender";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(358, 120);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 20);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Department";
             // 
             // label1
             // 
@@ -497,6 +577,15 @@
             this.groupBox3.TabIndex = 41;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Login info";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(305, 22);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(173, 59);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Generate Username and Password";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // passwordBox
             // 
@@ -986,6 +1075,18 @@
             // 
             // tabStatistics
             // 
+            this.tabStatistics.Controls.Add(this.chartProd);
+            this.tabStatistics.Controls.Add(this.label6);
+            this.tabStatistics.Controls.Add(this.label11);
+            this.tabStatistics.Controls.Add(this.lbNight);
+            this.tabStatistics.Controls.Add(this.label8);
+            this.tabStatistics.Controls.Add(this.label7);
+            this.tabStatistics.Controls.Add(this.lblmorshift);
+            this.tabStatistics.Controls.Add(this.lbAfternoon);
+            this.tabStatistics.Controls.Add(this.lbLowProd);
+            this.tabStatistics.Controls.Add(this.label16);
+            this.tabStatistics.Controls.Add(this.listBox2);
+            this.tabStatistics.Controls.Add(this.dateTimePicker1);
             this.tabStatistics.Location = new System.Drawing.Point(4, 29);
             this.tabStatistics.Name = "tabStatistics";
             this.tabStatistics.Size = new System.Drawing.Size(1094, 470);
@@ -993,76 +1094,139 @@
             this.tabStatistics.Text = "Statistics";
             this.tabStatistics.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // chartProd
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(358, 120);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 20);
-            this.label2.TabIndex = 45;
-            this.label2.Text = "Department";
+            chartArea1.Name = "ChartArea1";
+            this.chartProd.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartProd.Legends.Add(legend1);
+            this.chartProd.Location = new System.Drawing.Point(14, 87);
+            this.chartProd.Margin = new System.Windows.Forms.Padding(4);
+            this.chartProd.Name = "chartProd";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Stock";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Min_stock";
+            this.chartProd.Series.Add(series1);
+            this.chartProd.Series.Add(series2);
+            this.chartProd.Size = new System.Drawing.Size(400, 369);
+            this.chartProd.TabIndex = 0;
+            this.chartProd.Text = "chart1";
             // 
-            // label3
+            // label6
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 20);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Search:";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.label6.Location = new System.Drawing.Point(785, 87);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(127, 30);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Night shift";
             // 
-            // textBox1
+            // label11
             // 
-            this.textBox1.Location = new System.Drawing.Point(79, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(195, 27);
-            this.textBox1.TabIndex = 15;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.label11.Location = new System.Drawing.Point(756, 270);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(177, 30);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Afternoon shift";
             // 
-            // button1
+            // lbNight
             // 
-            this.button1.Location = new System.Drawing.Point(305, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(173, 59);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "Generate Username and Password";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lbNight.FormattingEnabled = true;
+            this.lbNight.ItemHeight = 20;
+            this.lbNight.Location = new System.Drawing.Point(490, 326);
+            this.lbNight.Margin = new System.Windows.Forms.Padding(4);
+            this.lbNight.Name = "lbNight";
+            this.lbNight.Size = new System.Drawing.Size(159, 104);
+            this.lbNight.TabIndex = 22;
             // 
-            // label4
+            // label8
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 219);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 20);
-            this.label4.TabIndex = 46;
-            this.label4.Text = "Gender";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(508, 87);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(162, 20);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Running out if stock:";
             // 
-            // cmbGender
+            // label7
             // 
-            this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.Items.AddRange(new object[] {
-            "Male",
-            "Female",
-            "Other"});
-            this.cmbGender.Location = new System.Drawing.Point(169, 216);
-            this.cmbGender.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(131, 28);
-            this.cmbGender.TabIndex = 47;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.label7.Location = new System.Drawing.Point(483, 263);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(160, 30);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Morning shift";
             // 
-            // dtpEmployeeBirthday
+            // lblmorshift
             // 
-            this.dtpEmployeeBirthday.Location = new System.Drawing.Point(169, 90);
-            this.dtpEmployeeBirthday.Name = "dtpEmployeeBirthday";
-            this.dtpEmployeeBirthday.Size = new System.Drawing.Size(133, 27);
-            this.dtpEmployeeBirthday.TabIndex = 48;
+            this.lblmorshift.AutoSize = true;
+            this.lblmorshift.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.lblmorshift.Location = new System.Drawing.Point(713, 131);
+            this.lblmorshift.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblmorshift.Name = "lblmorshift";
+            this.lblmorshift.Size = new System.Drawing.Size(68, 22);
+            this.lblmorshift.TabIndex = 17;
+            this.lblmorshift.Text = "label10";
             // 
-            // dtpEmployeeHire
+            // lbAfternoon
             // 
-            this.dtpEmployeeHire.Location = new System.Drawing.Point(519, 17);
-            this.dtpEmployeeHire.Name = "dtpEmployeeHire";
-            this.dtpEmployeeHire.Size = new System.Drawing.Size(133, 27);
-            this.dtpEmployeeHire.TabIndex = 49;
+            this.lbAfternoon.FormattingEnabled = true;
+            this.lbAfternoon.ItemHeight = 20;
+            this.lbAfternoon.Location = new System.Drawing.Point(797, 333);
+            this.lbAfternoon.Margin = new System.Windows.Forms.Padding(4);
+            this.lbAfternoon.Name = "lbAfternoon";
+            this.lbAfternoon.Size = new System.Drawing.Size(159, 104);
+            this.lbAfternoon.TabIndex = 21;
+            // 
+            // lbLowProd
+            // 
+            this.lbLowProd.FormattingEnabled = true;
+            this.lbLowProd.ItemHeight = 20;
+            this.lbLowProd.Location = new System.Drawing.Point(488, 107);
+            this.lbLowProd.Margin = new System.Windows.Forms.Padding(4);
+            this.lbLowProd.Name = "lbLowProd";
+            this.lbLowProd.Size = new System.Drawing.Size(159, 104);
+            this.lbLowProd.TabIndex = 13;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.label16.Location = new System.Drawing.Point(104, 34);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(208, 30);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "Store information";
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 20;
+            this.listBox2.Location = new System.Drawing.Point(831, 150);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(159, 104);
+            this.listBox2.TabIndex = 18;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(668, 42);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(265, 27);
+            this.dateTimePicker1.TabIndex = 15;
             // 
             // MediaBazaar
             // 
@@ -1089,6 +1253,9 @@
             this.tabProducts.PerformLayout();
             this.tabSchedule.ResumeLayout(false);
             this.tabSchedule.PerformLayout();
+            this.tabStatistics.ResumeLayout(false);
+            this.tabStatistics.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartProd)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1184,6 +1351,18 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpEmployeeHire;
         private System.Windows.Forms.DateTimePicker dtpEmployeeBirthday;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartProd;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ListBox lbNight;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblmorshift;
+        private System.Windows.Forms.ListBox lbAfternoon;
+        private System.Windows.Forms.ListBox lbLowProd;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 

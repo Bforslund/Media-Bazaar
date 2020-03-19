@@ -64,7 +64,7 @@ namespace WindowsFormsApp1
 
             while (dr.Read())
             {
-                Product p = new Product(Convert.ToInt32(dr[0]), dr[1].ToString(), dr[2].ToString(), Convert.ToDouble(dr[3]), Convert.ToInt32(dr[4]), dr[5].ToString());
+                Product p = new Product(dr["type"].ToString(), dr["name"].ToString(), Convert.ToDouble(dr["price"]), Convert.ToInt32(dr["stock"]), Convert.ToInt32(dr["min_stock"]), dr["department"].ToString());
                 returnedProducts.Add(p);
 
             }

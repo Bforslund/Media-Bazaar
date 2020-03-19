@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         ProductController pc;
         CalenderManager calenderManager;
         EmployeeController employeeController;
+        Stats stats;
 
         public MediaBazaar()
         {
@@ -27,6 +28,7 @@ namespace WindowsFormsApp1
             pc = new ProductController();
             calenderManager = new CalenderManager();
             employeeController = new EmployeeController();
+            stats = new Stats();
 
             employeesListBox.DataSource = employeeController.GetEmployees();
         }
@@ -45,7 +47,7 @@ namespace WindowsFormsApp1
                 }
                 catch (MySqlException ex)
                 {
-                    NoDatabaseConnection();
+                    NoDatabaseConnection(ex);
                 }
 
                 LoadCalenderColors();
@@ -59,9 +61,13 @@ namespace WindowsFormsApp1
                 btCrease.Hide();
                 btRequest.Hide();
             }
-            if(tbcMain.SelectedTab == tabEmployees)
+            if (tbcMain.SelectedTab == tabEmployees)
             {
                 employeesListBox.DataSource = employeeController.GetEmployees();
+            }
+            if(tbcMain.SelectedTab == tabStatistics)
+            {
+                loadData();
             }
         }
 
@@ -149,7 +155,7 @@ namespace WindowsFormsApp1
             }
             catch (MySqlException ex)
             {
-                NoDatabaseConnection();
+                NoDatabaseConnection(ex);
             }
         }
         #endregion
@@ -211,7 +217,7 @@ namespace WindowsFormsApp1
             }
             catch (MySqlException ex)
             {
-                NoDatabaseConnection();
+                NoDatabaseConnection(ex);
             }
             LoadAssignedEmployees();
             LoadCalenderColors();
@@ -276,9 +282,9 @@ namespace WindowsFormsApp1
         #endregion
         #endregion
 
-        public void NoDatabaseConnection()
+        public void NoDatabaseConnection(MySqlException ex)
         {
-            MessageBox.Show("No connection to Database\nAppliction will be closed");
+            MessageBox.Show("No connection to Database\nAppliction will be closed\n"+ex.ToString());
             this.Close();
         }
 
@@ -341,7 +347,7 @@ namespace WindowsFormsApp1
             string password = passwordBox.Text;
             double wage = Convert.ToDouble(wageBox.Text);
 
-            employeeController.saveEmployeeData(email, firstname,lastname,privilage,username,password,adress,birthDay,contract,department,hiredate,phoneNumber,wage);
+            employeeController.saveEmployeeData(email, firstname, lastname, privilage, username, password, adress, birthDay, contract, department, hiredate, phoneNumber, wage);
             employeesListBox.DataSource = employeeController.GetEmployees();
         }
 
@@ -351,6 +357,43 @@ namespace WindowsFormsApp1
         }
         #endregion
 
+        #endregion
+
+        #region stats tab
+
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            string theDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+            foreach (var item in stats.loadSchedule(theDate, 0))
+            {
+                lbNight.Items.Add(item);
+            }
+            lblmorshift.Text = theDate;
+        }
+        #region functions
+        private void loadData()
+        {
+            try
+            {
+                foreach (Product item in stats.GetData())
+                {
+                    chartProd.Series["Stock"].Points.AddXY(item.Name, item.Stock);
+                    chartProd.Series["Min_stock"].Points.AddXY(item.Name, item.Min_stock);
+
+                    //Business logic for low_on_stock products
+                    if (item.Stock < (item.Min_stock * 1.25))
+                    {
+                        lbLowProd.Items.Add(item.Name);
+                    }
+                }
+            }
+            catch(MySqlException ex)
+            {
+                NoDatabaseConnection(ex);
+            }
+        }
+        #endregion
         #endregion
     }
 }
