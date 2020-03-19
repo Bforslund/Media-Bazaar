@@ -55,6 +55,10 @@ namespace WindowsFormsApp1
                 }
                 databaseConnection.Close();
             }
+            catch(MySqlException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 databaseConnection.Close();
@@ -182,7 +186,14 @@ namespace WindowsFormsApp1
                 databaseConnection.Close();
             }
 
-            LoadShifts(activeMonth);
+            try
+            {
+                LoadShifts(activeMonth);
+            }
+            catch(MySqlException ex)
+            {
+                throw ex;
+            }
         }
 
         public void RemoveEmployee(DateTime date, int shiftType, int employeeId, ActiveMonth activeMonth)

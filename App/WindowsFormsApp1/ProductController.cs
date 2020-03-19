@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -72,13 +73,16 @@ namespace WindowsFormsApp1
 
                 return sql.GetAllProducts();
             }
+            catch(MySqlException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw ex;
             }
             finally
             {
-
                 sql.CloseConnection();
             }
         }

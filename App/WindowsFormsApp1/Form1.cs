@@ -1,4 +1,5 @@
-﻿using Pabo.Calendar;
+﻿using MySql.Data.MySqlClient;
+using Pabo.Calendar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,20 +16,17 @@ namespace WindowsFormsApp1
     public partial class MediaBazaar : Form
     {
         ProductController pc;
-        CalenderManager calenderManager = new CalenderManager();
-        EmployeeController employeeController = new EmployeeController();
+        CalenderManager calenderManager;
+        EmployeeController employeeController;
 
         public MediaBazaar()
         {
             InitializeComponent();
+
+            //initialize the controller objects
             pc = new ProductController();
-               
-           
-            UpdateList();
-            btRemove.Hide();
-            btUpdate.Hide();
-            btCrease.Hide();
-            btRequest.Hide();
+            calenderManager = new CalenderManager();
+            employeeController = new EmployeeController();
         }
 
         private void tbcMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,9 +36,26 @@ namespace WindowsFormsApp1
                 lsbScheduleEmployees.DataSource = employeeController.GetEmployees();
 
                 ScheduleEnableButton();
-                calenderManager.LoadShifts(mcdSchedule.ActiveMonth);
+
+                try
+                {
+                    calenderManager.LoadShifts(mcdSchedule.ActiveMonth);
+                }
+                catch (MySqlException ex)
+                {
+                    NoDatabaseConnection();
+                }
+
                 LoadCalenderColors();
                 ScheduleUnassignEnabble();
+            }
+            if(tbcMain.SelectedTab == tabProducts)
+            {
+                UpdateProductsList();
+                btRemove.Hide();
+                btUpdate.Hide();
+                btCrease.Hide();
+                btRequest.Hide();
             }
         }
 
@@ -50,17 +65,8 @@ namespace WindowsFormsApp1
             UpdateProductForm addForm = new UpdateProductForm(pc);
             addForm.Show();
             addForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
-            UpdateList();
+            UpdateProductsList();
         }
-
-
-        public void UpdateList()
-        {
-            lbProducts.DataSource = null;
-
-            lbProducts.DataSource = pc.GetListOfProducts();
-        }
-
 
         private void lbProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -89,13 +95,12 @@ namespace WindowsFormsApp1
                 // If 'Yes', do something here.
                 Product selectedProduct = (Product)lbProducts.SelectedItem;
                 pc.DeleteProduct(selectedProduct);
-                UpdateList();
+                UpdateProductsList();
             }
             else
             {
-                UpdateList();
+                UpdateProductsList();
             }
-            
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
@@ -112,21 +117,36 @@ namespace WindowsFormsApp1
         {
             Product selectedProduct = (Product)lbProducts.SelectedItem;
             Increase creaseForm = new Increase(selectedProduct, pc);
-           
+
             creaseForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
             creaseForm.Show();
         }
+
         private void ChildFormClosing(object sender, FormClosingEventArgs e)
         {
-            UpdateList();
+            UpdateProductsList();
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            
-          lbProducts.DataSource = pc.FilterProducts(tbSearch.Text);
-           
+            lbProducts.DataSource = pc.FilterProducts(tbSearch.Text);
         }
+
+        #region functions
+        public void UpdateProductsList()
+        {
+            lbProducts.DataSource = null;
+
+            try
+            {
+                lbProducts.DataSource = pc.GetListOfProducts();
+            }
+            catch(MySqlException ex)
+            {
+                NoDatabaseConnection();
+            }
+        }
+        #endregion
         #endregion
 
 
@@ -179,7 +199,14 @@ namespace WindowsFormsApp1
         }
         private void btnScheduleAssign_Click(object sender, EventArgs e)
         {
-            calenderManager.SetShift(mcdSchedule.SelectedDates[0], cmbScheduleAssign.SelectedIndex, ((Personal)lsbScheduleEmployees.SelectedItem).Id(), mcdSchedule.ActiveMonth);
+            try
+            {
+                calenderManager.SetShift(mcdSchedule.SelectedDates[0], cmbScheduleAssign.SelectedIndex, ((Personal)lsbScheduleEmployees.SelectedItem).Id(), mcdSchedule.ActiveMonth);
+            }
+            catch(MySqlException ex)
+            {
+                NoDatabaseConnection();
+            }
             LoadAssignedEmployees();
             LoadCalenderColors();
         }
@@ -241,7 +268,12 @@ namespace WindowsFormsApp1
         }
 
         #endregion
-
         #endregion
+
+        public void NoDatabaseConnection()
+        {
+            MessageBox.Show("No connection to Database\nAppliction will be closed");
+            this.Close();
+        }
     }
 }
