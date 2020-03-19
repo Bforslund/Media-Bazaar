@@ -95,5 +95,31 @@ namespace WindowsFormsApp1
 
             return filterPersonals;
         }
+
+        public void RemoveEmployee(Employee employeeToRemove)
+        {
+            foreach (Employee employee in personals)
+            {
+                if(employee == employeeToRemove)
+                {
+                    personals.Remove(employee);
+                }
+            }
+        }
+
+        public void saveEmployeeData(string email, string firstname, string lastname, int privilage, string username, string password, string adress, DateTime birthday, bool contract, int department, DateTime hiredate, string phonenumber, double wage)
+        {
+            //insert new day and shifts
+            string insertQuery = $"INSERT INTO `users`( `username`, `password`, `firstname`, `lastname`, `privilage`, `wage`, `hiredate`, `birthday`, `adress`, `email`, `phone`, `contract`) " +
+                                    $"VALUES ({username},{password},{firstname},{lastname},{privilage},{wage},CAST(N'{hiredate.ToString("yyyy-MM-dd")}' AS Date),CAST(N'{birthday.ToString("yyyy-MM-dd")}' AS Date),{adress}, {email},{phonenumber},{contract});";
+            databaseConnection.Open();
+            MySqlCommand commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
+            commandDatabase.ExecuteNonQuery();
+            long employeeId = commandDatabase.LastInsertedId;
+
+            databaseConnection.Close();
+
+            //personals.Add(new Employee(Convert.ToInt32(employeeId), email, firstname, lastname, privilage, username, adress, birthday, contract, department, hiredate, phonenumber, wage));
+        }
     }
 }

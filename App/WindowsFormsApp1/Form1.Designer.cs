@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MediaBazaar));
             this.mcdSchedule = new Pabo.Calendar.MonthCalendar();
             this.lblSSearch = new System.Windows.Forms.Label();
             this.txbScheduleEmployeeSearch = new System.Windows.Forms.TextBox();
@@ -53,6 +54,37 @@
             this.cmbScheduleAssign = new System.Windows.Forms.ComboBox();
             this.tbcMain = new System.Windows.Forms.TabControl();
             this.tabEmployees = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.PictureBox();
+            this.deleteEmpButton = new System.Windows.Forms.PictureBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.passwordBox = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.usernameBox = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.phoneNoBox = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.contractComboBox = new System.Windows.Forms.ComboBox();
+            this.emailBox = new System.Windows.Forms.TextBox();
+            this.wageBox = new System.Windows.Forms.TextBox();
+            this.allergies_issuesBox = new System.Windows.Forms.TextBox();
+            this.addressBox = new System.Windows.Forms.TextBox();
+            this.lastNameBox = new System.Windows.Forms.TextBox();
+            this.firstNameBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.privilegeComboBox = new System.Windows.Forms.ComboBox();
+            this.departmentComboBox = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.employeesListBox = new System.Windows.Forms.ListBox();
             this.tabProducts = new System.Windows.Forms.TabPage();
             this.lblPSearch = new System.Windows.Forms.Label();
             this.tbSearch = new System.Windows.Forms.TextBox();
@@ -76,9 +108,22 @@
             this.lbProducts = new System.Windows.Forms.ListBox();
             this.tabSchedule = new System.Windows.Forms.TabPage();
             this.tabStatistics = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbGender = new System.Windows.Forms.ComboBox();
+            this.dtpEmployeeBirthday = new System.Windows.Forms.DateTimePicker();
+            this.dtpEmployeeHire = new System.Windows.Forms.DateTimePicker();
             this.groupSInformation.SuspendLayout();
             this.groupBoxSAssign.SuspendLayout();
             this.tbcMain.SuspendLayout();
+            this.tabEmployees.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.saveButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteEmpButton)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.tabProducts.SuspendLayout();
             this.tabSchedule.SuspendLayout();
             this.SuspendLayout();
@@ -344,19 +389,363 @@
             this.tbcMain.Location = new System.Drawing.Point(12, 12);
             this.tbcMain.Name = "tbcMain";
             this.tbcMain.SelectedIndex = 0;
-            this.tbcMain.Size = new System.Drawing.Size(934, 503);
+            this.tbcMain.Size = new System.Drawing.Size(1102, 503);
             this.tbcMain.TabIndex = 0;
             this.tbcMain.SelectedIndexChanged += new System.EventHandler(this.tbcMain_SelectedIndexChanged);
             // 
             // tabEmployees
             // 
+            this.tabEmployees.Controls.Add(this.label3);
+            this.tabEmployees.Controls.Add(this.textBox1);
+            this.tabEmployees.Controls.Add(this.groupBox1);
+            this.tabEmployees.Controls.Add(this.label5);
+            this.tabEmployees.Controls.Add(this.employeesListBox);
             this.tabEmployees.Location = new System.Drawing.Point(4, 29);
             this.tabEmployees.Name = "tabEmployees";
             this.tabEmployees.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEmployees.Size = new System.Drawing.Size(837, 470);
+            this.tabEmployees.Size = new System.Drawing.Size(1094, 470);
             this.tabEmployees.TabIndex = 0;
             this.tabEmployees.Text = "Employees";
             this.tabEmployees.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dtpEmployeeHire);
+            this.groupBox1.Controls.Add(this.dtpEmployeeBirthday);
+            this.groupBox1.Controls.Add(this.cmbGender);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.saveButton);
+            this.groupBox1.Controls.Add(this.deleteEmpButton);
+            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.phoneNoBox);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.contractComboBox);
+            this.groupBox1.Controls.Add(this.emailBox);
+            this.groupBox1.Controls.Add(this.wageBox);
+            this.groupBox1.Controls.Add(this.allergies_issuesBox);
+            this.groupBox1.Controls.Add(this.addressBox);
+            this.groupBox1.Controls.Add(this.lastNameBox);
+            this.groupBox1.Controls.Add(this.firstNameBox);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.privilegeComboBox);
+            this.groupBox1.Controls.Add(this.departmentComboBox);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Location = new System.Drawing.Point(296, 3);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(776, 454);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(358, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 20);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Contract";
+            // 
+            // saveButton
+            // 
+            this.saveButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
+            this.saveButton.Location = new System.Drawing.Point(313, 367);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(69, 64);
+            this.saveButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.saveButton.TabIndex = 43;
+            this.saveButton.TabStop = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // deleteEmpButton
+            // 
+            this.deleteEmpButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteEmpButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteEmpButton.Image")));
+            this.deleteEmpButton.Location = new System.Drawing.Point(721, 402);
+            this.deleteEmpButton.Margin = new System.Windows.Forms.Padding(4);
+            this.deleteEmpButton.Name = "deleteEmpButton";
+            this.deleteEmpButton.Size = new System.Drawing.Size(47, 43);
+            this.deleteEmpButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.deleteEmpButton.TabIndex = 42;
+            this.deleteEmpButton.TabStop = false;
+            this.deleteEmpButton.Click += new System.EventHandler(this.deleteEmpButton_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.passwordBox);
+            this.groupBox3.Controls.Add(this.label24);
+            this.groupBox3.Controls.Add(this.usernameBox);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Location = new System.Drawing.Point(8, 269);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(642, 91);
+            this.groupBox3.TabIndex = 41;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Login info";
+            // 
+            // passwordBox
+            // 
+            this.passwordBox.Location = new System.Drawing.Point(163, 54);
+            this.passwordBox.Margin = new System.Windows.Forms.Padding(4);
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.Size = new System.Drawing.Size(131, 27);
+            this.passwordBox.TabIndex = 36;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(11, 58);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(83, 20);
+            this.label24.TabIndex = 35;
+            this.label24.Text = "Password";
+            // 
+            // usernameBox
+            // 
+            this.usernameBox.Location = new System.Drawing.Point(163, 22);
+            this.usernameBox.Margin = new System.Windows.Forms.Padding(4);
+            this.usernameBox.Name = "usernameBox";
+            this.usernameBox.Size = new System.Drawing.Size(131, 27);
+            this.usernameBox.TabIndex = 30;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(11, 25);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(86, 20);
+            this.label22.TabIndex = 19;
+            this.label22.Text = "Username";
+            // 
+            // phoneNoBox
+            // 
+            this.phoneNoBox.Location = new System.Drawing.Point(169, 183);
+            this.phoneNoBox.Margin = new System.Windows.Forms.Padding(4);
+            this.phoneNoBox.Name = "phoneNoBox";
+            this.phoneNoBox.Size = new System.Drawing.Size(131, 27);
+            this.phoneNoBox.TabIndex = 34;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(8, 187);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(120, 20);
+            this.label23.TabIndex = 33;
+            this.label23.Text = "Phone Number";
+            // 
+            // contractComboBox
+            // 
+            this.contractComboBox.FormattingEnabled = true;
+            this.contractComboBox.Items.AddRange(new object[] {
+            "False",
+            "True"});
+            this.contractComboBox.Location = new System.Drawing.Point(519, 53);
+            this.contractComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.contractComboBox.Name = "contractComboBox";
+            this.contractComboBox.Size = new System.Drawing.Size(131, 28);
+            this.contractComboBox.TabIndex = 32;
+            // 
+            // emailBox
+            // 
+            this.emailBox.Location = new System.Drawing.Point(169, 153);
+            this.emailBox.Margin = new System.Windows.Forms.Padding(4);
+            this.emailBox.Name = "emailBox";
+            this.emailBox.Size = new System.Drawing.Size(131, 27);
+            this.emailBox.TabIndex = 29;
+            // 
+            // wageBox
+            // 
+            this.wageBox.Location = new System.Drawing.Point(519, 184);
+            this.wageBox.Margin = new System.Windows.Forms.Padding(4);
+            this.wageBox.Name = "wageBox";
+            this.wageBox.Size = new System.Drawing.Size(131, 27);
+            this.wageBox.TabIndex = 28;
+            // 
+            // allergies_issuesBox
+            // 
+            this.allergies_issuesBox.Location = new System.Drawing.Point(519, 85);
+            this.allergies_issuesBox.Margin = new System.Windows.Forms.Padding(4);
+            this.allergies_issuesBox.Name = "allergies_issuesBox";
+            this.allergies_issuesBox.Size = new System.Drawing.Size(131, 27);
+            this.allergies_issuesBox.TabIndex = 27;
+            // 
+            // addressBox
+            // 
+            this.addressBox.Location = new System.Drawing.Point(169, 121);
+            this.addressBox.Margin = new System.Windows.Forms.Padding(4);
+            this.addressBox.Name = "addressBox";
+            this.addressBox.Size = new System.Drawing.Size(131, 27);
+            this.addressBox.TabIndex = 25;
+            // 
+            // lastNameBox
+            // 
+            this.lastNameBox.Location = new System.Drawing.Point(169, 58);
+            this.lastNameBox.Margin = new System.Windows.Forms.Padding(4);
+            this.lastNameBox.Name = "lastNameBox";
+            this.lastNameBox.Size = new System.Drawing.Size(131, 27);
+            this.lastNameBox.TabIndex = 21;
+            // 
+            // firstNameBox
+            // 
+            this.firstNameBox.Location = new System.Drawing.Point(169, 26);
+            this.firstNameBox.Margin = new System.Windows.Forms.Padding(4);
+            this.firstNameBox.Name = "firstNameBox";
+            this.firstNameBox.Size = new System.Drawing.Size(131, 27);
+            this.firstNameBox.TabIndex = 20;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(8, 63);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(91, 20);
+            this.label21.TabIndex = 18;
+            this.label21.Text = "Last Name";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(8, 31);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(89, 20);
+            this.label20.TabIndex = 17;
+            this.label20.Text = "First name";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(8, 156);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(116, 20);
+            this.label19.TabIndex = 16;
+            this.label19.Text = "Email address";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(358, 154);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 20);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "Privilege";
+            // 
+            // privilegeComboBox
+            // 
+            this.privilegeComboBox.FormattingEnabled = true;
+            this.privilegeComboBox.Items.AddRange(new object[] {
+            "User",
+            "Admin",
+            "Manager"});
+            this.privilegeComboBox.Location = new System.Drawing.Point(519, 151);
+            this.privilegeComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.privilegeComboBox.Name = "privilegeComboBox";
+            this.privilegeComboBox.Size = new System.Drawing.Size(131, 28);
+            this.privilegeComboBox.TabIndex = 13;
+            // 
+            // departmentComboBox
+            // 
+            this.departmentComboBox.FormattingEnabled = true;
+            this.departmentComboBox.Items.AddRange(new object[] {
+            "Electronics"});
+            this.departmentComboBox.Location = new System.Drawing.Point(519, 117);
+            this.departmentComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.departmentComboBox.Name = "departmentComboBox";
+            this.departmentComboBox.Size = new System.Drawing.Size(131, 28);
+            this.departmentComboBox.TabIndex = 7;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(358, 187);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(52, 20);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Wage";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(359, 24);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(82, 20);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "Hire Date";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(358, 88);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(128, 20);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Issues/Allergies";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 124);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 20);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Address";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 93);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(105, 20);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Date of Birth";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 3);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 20);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Employees";
+            // 
+            // employeesListBox
+            // 
+            this.employeesListBox.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.employeesListBox.FormattingEnabled = true;
+            this.employeesListBox.ItemHeight = 20;
+            this.employeesListBox.Location = new System.Drawing.Point(11, 63);
+            this.employeesListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.employeesListBox.Name = "employeesListBox";
+            this.employeesListBox.Size = new System.Drawing.Size(263, 384);
+            this.employeesListBox.TabIndex = 3;
             // 
             // tabProducts
             // 
@@ -384,7 +773,7 @@
             this.tabProducts.Location = new System.Drawing.Point(4, 29);
             this.tabProducts.Name = "tabProducts";
             this.tabProducts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabProducts.Size = new System.Drawing.Size(837, 470);
+            this.tabProducts.Size = new System.Drawing.Size(1094, 470);
             this.tabProducts.TabIndex = 1;
             this.tabProducts.Text = "Products";
             // 
@@ -590,7 +979,7 @@
             this.tabSchedule.Controls.Add(this.groupBoxSAssign);
             this.tabSchedule.Location = new System.Drawing.Point(4, 29);
             this.tabSchedule.Name = "tabSchedule";
-            this.tabSchedule.Size = new System.Drawing.Size(926, 470);
+            this.tabSchedule.Size = new System.Drawing.Size(1094, 470);
             this.tabSchedule.TabIndex = 2;
             this.tabSchedule.Text = "Schedule";
             this.tabSchedule.UseVisualStyleBackColor = true;
@@ -599,16 +988,87 @@
             // 
             this.tabStatistics.Location = new System.Drawing.Point(4, 29);
             this.tabStatistics.Name = "tabStatistics";
-            this.tabStatistics.Size = new System.Drawing.Size(837, 470);
+            this.tabStatistics.Size = new System.Drawing.Size(1094, 470);
             this.tabStatistics.TabIndex = 3;
             this.tabStatistics.Text = "Statistics";
             this.tabStatistics.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(358, 120);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 20);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Department";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 20);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Search:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(79, 26);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(195, 27);
+            this.textBox1.TabIndex = 15;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(305, 22);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(173, 59);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "Generate Username and Password";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 219);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 20);
+            this.label4.TabIndex = 46;
+            this.label4.Text = "Gender";
+            // 
+            // cmbGender
+            // 
+            this.cmbGender.FormattingEnabled = true;
+            this.cmbGender.Items.AddRange(new object[] {
+            "Male",
+            "Female",
+            "Other"});
+            this.cmbGender.Location = new System.Drawing.Point(169, 216);
+            this.cmbGender.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbGender.Name = "cmbGender";
+            this.cmbGender.Size = new System.Drawing.Size(131, 28);
+            this.cmbGender.TabIndex = 47;
+            // 
+            // dtpEmployeeBirthday
+            // 
+            this.dtpEmployeeBirthday.Location = new System.Drawing.Point(169, 90);
+            this.dtpEmployeeBirthday.Name = "dtpEmployeeBirthday";
+            this.dtpEmployeeBirthday.Size = new System.Drawing.Size(133, 27);
+            this.dtpEmployeeBirthday.TabIndex = 48;
+            // 
+            // dtpEmployeeHire
+            // 
+            this.dtpEmployeeHire.Location = new System.Drawing.Point(519, 17);
+            this.dtpEmployeeHire.Name = "dtpEmployeeHire";
+            this.dtpEmployeeHire.Size = new System.Drawing.Size(133, 27);
+            this.dtpEmployeeHire.TabIndex = 49;
             // 
             // MediaBazaar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(955, 527);
+            this.ClientSize = new System.Drawing.Size(1155, 527);
             this.Controls.Add(this.tbcMain);
             this.Name = "MediaBazaar";
             this.Text = "MediaBazaar";
@@ -617,6 +1077,14 @@
             this.groupBoxSAssign.ResumeLayout(false);
             this.groupBoxSAssign.PerformLayout();
             this.tbcMain.ResumeLayout(false);
+            this.tabEmployees.ResumeLayout(false);
+            this.tabEmployees.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.saveButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteEmpButton)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.tabProducts.ResumeLayout(false);
             this.tabProducts.PerformLayout();
             this.tabSchedule.ResumeLayout(false);
@@ -677,6 +1145,45 @@
         private System.Windows.Forms.Button btnScheduleUnassign;
         private System.Windows.Forms.Label lblSMaxEmployee;
         private System.Windows.Forms.Label labelSMinEmployee;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox saveButton;
+        private System.Windows.Forms.PictureBox deleteEmpButton;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox passwordBox;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox usernameBox;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox phoneNoBox;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox contractComboBox;
+        private System.Windows.Forms.TextBox emailBox;
+        private System.Windows.Forms.TextBox wageBox;
+        private System.Windows.Forms.TextBox allergies_issuesBox;
+        private System.Windows.Forms.TextBox addressBox;
+        private System.Windows.Forms.TextBox lastNameBox;
+        private System.Windows.Forms.TextBox firstNameBox;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox privilegeComboBox;
+        private System.Windows.Forms.ComboBox departmentComboBox;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox employeesListBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cmbGender;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dtpEmployeeHire;
+        private System.Windows.Forms.DateTimePicker dtpEmployeeBirthday;
     }
 }
 

@@ -27,6 +27,8 @@ namespace WindowsFormsApp1
             pc = new ProductController();
             calenderManager = new CalenderManager();
             employeeController = new EmployeeController();
+
+            employeesListBox.DataSource = employeeController.GetEmployees();
         }
 
         private void tbcMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,13 +51,17 @@ namespace WindowsFormsApp1
                 LoadCalenderColors();
                 ScheduleUnassignEnabble();
             }
-            if(tbcMain.SelectedTab == tabProducts)
+            if (tbcMain.SelectedTab == tabProducts)
             {
                 UpdateProductsList();
                 btRemove.Hide();
                 btUpdate.Hide();
                 btCrease.Hide();
                 btRequest.Hide();
+            }
+            if(tbcMain.SelectedTab == tabEmployees)
+            {
+                employeesListBox.DataSource = employeeController.GetEmployees();
             }
         }
 
@@ -141,7 +147,7 @@ namespace WindowsFormsApp1
             {
                 lbProducts.DataSource = pc.GetListOfProducts();
             }
-            catch(MySqlException ex)
+            catch (MySqlException ex)
             {
                 NoDatabaseConnection();
             }
@@ -203,7 +209,7 @@ namespace WindowsFormsApp1
             {
                 calenderManager.SetShift(mcdSchedule.SelectedDates[0], cmbScheduleAssign.SelectedIndex, ((Personal)lsbScheduleEmployees.SelectedItem).Id(), mcdSchedule.ActiveMonth);
             }
-            catch(MySqlException ex)
+            catch (MySqlException ex)
             {
                 NoDatabaseConnection();
             }
@@ -275,5 +281,76 @@ namespace WindowsFormsApp1
             MessageBox.Show("No connection to Database\nAppliction will be closed");
             this.Close();
         }
+
+        #region employee tab
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            if (employeesListBox.SelectedItem != null) //! when an emloyee IS selected, change his data
+            {
+                saveEmployeeData(); //TODO add the shift preference
+                refreshListView();
+            }
+
+            //TODO add try catch for empty fields and display error message
+            //TODO display confirmation for creation or saving
+        }
+
+        private void deleteEmpButton_Click(object sender, EventArgs e)
+        {
+            employeeController.RemoveEmployee((Employee)employeesListBox.SelectedItem);
+        }
+
+        void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender; // TODO explain and understand
+            string currentValue = (string)checkBox.Tag; // assign the value of the checkbox with the passed tag to the string currentValue
+            //switch (checkBox.Checked) // TODO make sure this works
+            //{
+            //    case true:
+            //        preferredShift += "," + currentValue;
+            //        break;
+            //    case false:
+            //        preferredShift = preferredShift.Replace(currentValue, ""); // IF false, remove the string of that case with nothing
+            //        break;
+            //    default:
+            //        break;
+            //}
+        }
+
+        private void saveButton_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.saveButton, "Save changes");
+        }
+
+        #region function
+        public void saveEmployeeData()
+        {
+            //convert form fields to data
+            string email = emailBox.Text;
+            string firstname = firstNameBox.Text;
+            string lastname = lastNameBox.Text;
+            int privilage = privilegeComboBox.SelectedIndex;
+            string username = usernameBox.Text;
+            string adress = addressBox.Text;
+            DateTime birthDay = dtpEmployeeBirthday.Value;
+            bool contract = Convert.ToBoolean(contractComboBox.SelectedIndex);
+            int department = 0/*departmentComboBox.SelectedIndex*/;
+            DateTime hiredate = dtpEmployeeHire.Value;
+            string phoneNumber = phoneNoBox.Text;
+            string password = passwordBox.Text;
+            double wage = Convert.ToDouble(wageBox.Text);
+
+            employeeController.saveEmployeeData(email, firstname,lastname,privilage,username,password,adress,birthDay,contract,department,hiredate,phoneNumber,wage);
+            employeesListBox.DataSource = employeeController.GetEmployees();
+        }
+
+        private void refreshListView()
+        {
+            employeeController.GetEmployees();
+        }
+        #endregion
+
+        #endregion
     }
 }
