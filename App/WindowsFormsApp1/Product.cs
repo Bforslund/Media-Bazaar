@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
         private string name;
         private double price;
         private int stock;
-        private int min_stock;
+        private int min_stock = 0;
         private string department;
 
         public string Type { get => type; set => type = value; }

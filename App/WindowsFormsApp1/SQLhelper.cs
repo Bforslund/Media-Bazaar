@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
 
         public void AddProducts(Product p)
         {
-            string sql = "INSERT INTO products (type, name, price, stock, department ) VALUES(@type, @name, @price, @stock, @department)";
+            string sql = "INSERT INTO products (type, name, price, stock, department, min_stock) VALUES(@type, @name, @price, @stock, @department, @min_stock)";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@type", p.Type);
@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
             cmd.Parameters.AddWithValue("@price", p.Price);
             cmd.Parameters.AddWithValue("@stock", p.Stock);
             cmd.Parameters.AddWithValue("@department", p.Department);
+            cmd.Parameters.AddWithValue("@min_stock", p.Min_stock);
 
             cmd.ExecuteNonQuery();
         }
@@ -53,7 +54,7 @@ namespace WindowsFormsApp1
 
         public List<Product> GetAllProducts()
         {
-            string sql = "SELECT id, type, name, price, stock, department FROM Products";
+            string sql = "SELECT id, type, name, price, stock, min_stock, department FROM Products";
             List<Product> returnedProducts = new List<Product>();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -64,7 +65,7 @@ namespace WindowsFormsApp1
 
             while (dr.Read())
             {
-                Product p = new Product(dr["type"].ToString(), dr["name"].ToString(), Convert.ToDouble(dr["price"]), Convert.ToInt32(dr["stock"]), Convert.ToInt32(dr["min_stock"]), dr["department"].ToString());
+                Product p = new Product(Convert.ToInt32(dr["id"]), dr["type"].ToString(), dr["name"].ToString(), Convert.ToDouble(dr["price"]), Convert.ToInt32(dr["stock"]), Convert.ToInt32(dr["min_stock"]), dr["department"].ToString());
                 returnedProducts.Add(p);
 
             }
