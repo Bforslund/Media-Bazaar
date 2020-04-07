@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
 
         public void AddProducts(Product p)
         {
-            string sql = "INSERT INTO products (type, name, price, stock, department, min_stock) VALUES(@type, @name, @price, @stock, @department, @min_stock)";
+            string sql = "INSERT INTO products (type, name, price, stock, department, min_stock ) VALUES(@type, @name, @price, @stock, @department, 0)";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@type", p.Type);
@@ -29,14 +29,13 @@ namespace WindowsFormsApp1
             cmd.Parameters.AddWithValue("@price", p.Price);
             cmd.Parameters.AddWithValue("@stock", p.Stock);
             cmd.Parameters.AddWithValue("@department", p.Department);
-            cmd.Parameters.AddWithValue("@min_stock", p.Min_stock);
 
             cmd.ExecuteNonQuery();
         }
 
         public void UpdateProduct(Product p)
         {
-            string sql = "UPDATE products SET type = @type, name = @name, price = @price, department = @department WHERE id = @id";
+            string sql = "UPDATE products SET type = @type, name = @name, price = @price, department = @department, min_stock = 0 WHERE id = @id";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@type", p.Type);
             cmd.Parameters.AddWithValue("@id", p.Id);
@@ -54,7 +53,7 @@ namespace WindowsFormsApp1
 
         public List<Product> GetAllProducts()
         {
-            string sql = "SELECT id, type, name, price, stock, min_stock, department FROM Products";
+            string sql = "SELECT id, type, name, price, stock, department, min_stock FROM Products";
             List<Product> returnedProducts = new List<Product>();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -67,6 +66,7 @@ namespace WindowsFormsApp1
             {
                 Product p = new Product(Convert.ToInt32(dr["id"]), dr["type"].ToString(), dr["name"].ToString(), Convert.ToDouble(dr["price"]), Convert.ToInt32(dr["stock"]), Convert.ToInt32(dr["min_stock"]), dr["department"].ToString());
                 returnedProducts.Add(p);
+
 
             }
             return returnedProducts;

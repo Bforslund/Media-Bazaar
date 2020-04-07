@@ -96,22 +96,42 @@ namespace WindowsFormsApp1
             return filterPersonals;
         }
 
-        public void RemoveEmployee(Employee employeeToRemove)
+        public void RemoveEmployee(Personal employeeToRemove)
         {
-            foreach (Employee employee in personals)
+            for (int i = 0; i < personals.Count; i++)
             {
-                if(employee == employeeToRemove)
+                if (personals[i] == employeeToRemove) 
                 {
-                    personals.Remove(employee);
+                    string Queryable = "DELETE FROM users WHERE id = @id";
+                    try
+                    {
+                        databaseConnection.Open();
+                        MySqlCommand commandDatabase = new MySqlCommand(Queryable, databaseConnection);
+                        commandDatabase.Parameters.AddWithValue("@id", personals[i].Id());
+                        MySqlDataReader reader = commandDatabase.ExecuteReader();
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+                    finally
+                    {
+                        personals.RemoveAt(i);
+                        databaseConnection.Close();
+                    }
+
+                    
                 }
             }
+           
         }
 
         public void saveEmployeeData(string email, string firstname, string lastname, int privilage, string username, string password, string adress, DateTime birthday, bool contract, int department, DateTime hiredate, string phonenumber, double wage)
         {
             //insert new day and shifts
             string insertQuery = $"INSERT INTO `users`( `username`, `password`, `firstname`, `lastname`, `privilage`, `wage`, `hiredate`, `birthday`, `adress`, `email`, `phone`, `contract`) " +
-                                    $"VALUES ({username},{password},{firstname},{lastname},{privilage},{wage},CAST(N'{hiredate.ToString("yyyy-MM-dd")}' AS Date),CAST(N'{birthday.ToString("yyyy-MM-dd")}' AS Date),{adress}, {email},{phonenumber},{contract});";
+                                    $"VALUES ('{username}','{password}','{firstname}','{lastname}',{privilage},{wage},CAST(N'{hiredate.ToString("yyyy-MM-dd")}' AS Date),CAST(N'{birthday.ToString("yyyy-MM-dd")}' AS Date),'{adress}', '{email}','{phonenumber}',{contract});";
             databaseConnection.Open();
             MySqlCommand commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
             commandDatabase.ExecuteNonQuery();

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Mail;
 
 
 namespace WindowsFormsApp1
@@ -19,6 +20,7 @@ namespace WindowsFormsApp1
         CalenderManager calenderManager;
         EmployeeController employeeController;
         Stats stats;
+        User usr;
 
         public MediaBazaar()
         {
@@ -29,12 +31,38 @@ namespace WindowsFormsApp1
             calenderManager = new CalenderManager();
             employeeController = new EmployeeController();
             stats = new Stats();
+            usr = new User();
 
             employeesListBox.DataSource = employeeController.GetEmployees();
+            cbEmployees.DataSource = employeeController.GetEmployees();
+
+            //Comment out this to disable the login
+            tbcMain.TabPages.Remove(tabEmployees);
+            tbcMain.TabPages.Remove(tabProducts);
+            tbcMain.TabPages.Remove(tabSchedule);
+            tbcMain.TabPages.Remove(tabStatistics);
+            tbcMain.TabPages.Remove(tabLogout);
+
         }
 
         private void tbcMain_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            if (tbcMain.SelectedTab == tabLogout)
+            {
+                //Reset user permissions
+                stats.userRole = 0;
+
+                tbcMain.TabPages.Remove(tabEmployees);
+                tbcMain.TabPages.Remove(tabProducts);
+                tbcMain.TabPages.Remove(tabSchedule);
+                tbcMain.TabPages.Remove(tabStatistics);
+                tbcMain.TabPages.Remove(tabLogout);
+
+                tbcMain.TabPages.Add(tabLogin);
+                tbcMain.TabPages.Add(tabRegister);
+            }
+
             if (tbcMain.SelectedTab == tabSchedule)
             {
                 lsbScheduleEmployees.DataSource = employeeController.GetEmployees();
@@ -65,7 +93,7 @@ namespace WindowsFormsApp1
             {
                 employeesListBox.DataSource = employeeController.GetEmployees();
             }
-            if(tbcMain.SelectedTab == tabStatistics)
+            if (tbcMain.SelectedTab == tabStatistics)
             {
                 loadData();
             }
@@ -284,13 +312,18 @@ namespace WindowsFormsApp1
 
         public void NoDatabaseConnection(MySqlException ex)
         {
-            MessageBox.Show("No connection to Database\nAppliction will be closed\n"+ex.ToString());
+            MessageBox.Show("No connection to Database\nAppliction will be closed\n" + ex.ToString());
             this.Close();
         }
 
         #region employee tab
         private void saveButton_Click(object sender, EventArgs e)
         {
+            if (!IsNumeric(wageBox.Text))
+            {
+                MessageBox.Show("Fill in a correct wage amount!");
+                return;
+            }
             if (employeesListBox.SelectedItem != null) //! when an emloyee IS selected, change his data
             {
                 saveEmployeeData(); //TODO add the shift preference
@@ -299,11 +332,16 @@ namespace WindowsFormsApp1
 
             //TODO add try catch for empty fields and display error message
             //TODO display confirmation for creation or saving
+
+            employeesListBox.DataSource = employeeController.GetEmployees();
         }
 
         private void deleteEmpButton_Click(object sender, EventArgs e)
         {
-            employeeController.RemoveEmployee((Employee)employeesListBox.SelectedItem);
+            employeeController.RemoveEmployee((Personal)employeesListBox.SelectedItem);
+            
+            employeesListBox.DataSource = employeeController.GetEmployees();
+
         }
 
         void checkBox_CheckedChanged(object sender, EventArgs e)
@@ -388,12 +426,152 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-            catch(MySqlException ex)
+            catch (MySqlException ex)
             {
                 NoDatabaseConnection(ex);
             }
         }
         #endregion
+
         #endregion
+
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            stats.login(tbUsr.Text, tbPwd.Text);
+
+            //Manager
+            if (stats.userRole == 2)
+            {
+                tbcMain.TabPages.Remove(tabRegister);
+                tbcMain.TabPages.Remove(tabLogin);
+
+                tbcMain.TabPages.Add(tabEmployees);
+                tbcMain.TabPages.Add(tabProducts);
+                tbcMain.TabPages.Add(tabSchedule);
+                tbcMain.TabPages.Add(tabStatistics);
+                tbcMain.TabPages.Add(tabLogout);
+            }
+            //Administrator
+            else if (stats.userRole == 1)
+            {
+                tbcMain.TabPages.Remove(tabRegister);
+                tbcMain.TabPages.Remove(tabLogin);
+
+                tbcMain.TabPages.Add(tabEmployees);
+                tbcMain.TabPages.Add(tabSchedule);
+                tbcMain.TabPages.Add(tabLogout);
+            }
+            //Employee
+            else if (stats.userRole == 0)
+            {
+                tbcMain.TabPages.Remove(tabRegister);
+                tbcMain.TabPages.Remove(tabLogin);
+
+                tbcMain.TabPages.Add(tabProducts);
+                tbcMain.TabPages.Add(tabLogout);
+            }
+        }
+
+        private void btRegConfirm_Click(object sender, EventArgs e)
+        {
+
+            string theDate = dpRegDob.Value.ToString("yyyy-MM-dd");
+
+            //Cant find a good way to check without checking ALL textboxes
+            if (IsNumeric(tbRegPhone.Text) && !string.IsNullOrEmpty(tbRegUsr.Text) && !string.IsNullOrEmpty(tbRegPwd.Text) && !string.IsNullOrEmpty(tbRegPhone.Text) && !string.IsNullOrEmpty(tbRegEmail.Text) && !string.IsNullOrEmpty(tbRegFn.Text) && !string.IsNullOrEmpty(tbRegLn.Text) && !string.IsNullOrEmpty(tbRegAdr.Text))
+            {
+                if (IsValid(tbRegEmail.Text))
+                {
+                    usr.registerUser(tbRegUsr.Text, tbRegPwd.Text, tbRegFn.Text, tbRegLn.Text, theDate, tbRegAdr.Text, tbRegEmail.Text, tbRegPhone.Text);
+                    MessageBox.Show("User successfully registed!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fill in the forms correctly!");
+            }
+        }
+        public static bool IsNumeric(string s)
+        {
+            foreach (char c in s)
+            {
+                if (!char.IsDigit(c) && c != '.')
+                {
+                    MessageBox.Show("Enter a correct number");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        public static bool IsValid(string emailaddress)
+        {
+            try
+            {
+
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Enter a valid email adress!");
+                return false;
+            }
+        }
+
+        private void dateTimePicker1_ValueChanged_2(object sender, EventArgs e)
+        {
+            lbMorning.Items.Clear();
+            lbAfternoon.Items.Clear();
+            lbNight.Items.Clear();
+
+            string theDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+            foreach (var item in stats.loadSchedule(theDate, 0))
+            {
+                lbMorning.Items.Add(item);
+            }
+            foreach (var item in stats.loadSchedule(theDate, 1))
+            {
+                lbAfternoon.Items.Add(item);
+            }
+            foreach (var item in stats.loadSchedule(theDate, 2))
+            {
+                lbNight.Items.Add(item);
+            }
+            lblmorshift.Text = theDate;
+        }
+
+        private void cbEmployees_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chartAttendance.Series["Attendance"].Points.Clear();
+
+            int absent = usr.checkAttendance(cbEmployees.SelectedValue.ToString(), 0);
+            int present = usr.checkAttendance(cbEmployees.SelectedValue.ToString(), 1);
+
+            chartAttendance.Series["Attendance"].Points.AddXY("Present", present);
+            chartAttendance.Series["Attendance"].Points.AddXY("Absent", absent);
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            employeesListBox.DataSource = employeeController.FilterEmployees(tbEmployeeSearch.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            usernameBox.Text = RandomString(5);
+            passwordBox.Text = RandomString(8);
+        }
+
+        public static string RandomString(int length)
+        {
+            Random rand = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[rand.Next(s.Length)]).ToArray());
+        }
     }
 }
