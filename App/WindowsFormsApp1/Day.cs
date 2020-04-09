@@ -22,6 +22,9 @@ namespace WindowsFormsApp1
             this.date = date;
         }
 
+        /// <summary>
+        /// loads all the shifts for the day
+        /// </summary>
         public void LoadShifts()
         {
             string query = $"SELECT * FROM `shift` WHERE day_id = {dbId}";
@@ -68,16 +71,28 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// return date
+        /// </summary>
+        /// <returns></returns>
         public DateTime Date()
         {
             return date;
         }
 
+        /// <summary>
+        /// return id
+        /// </summary>
+        /// <returns></returns>
         public int Id()
         {
             return dbId;
         }
 
+        /// <summary>
+        /// sets the colour in the calender based on the amount of shifts where the minimum employee number are met
+        /// </summary>
+        /// <returns></returns>
         public Color SetDayColor()
         {
             int succesCounter = 0;
@@ -102,6 +117,10 @@ namespace WindowsFormsApp1
             return color;
         }
 
+        /// <summary>
+        /// return shifts
+        /// </summary>
+        /// <returns></returns>
         public List<Shift> GetShifts()
         {
             return shifts;
