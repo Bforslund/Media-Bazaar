@@ -64,6 +64,10 @@ namespace WindowsFormsApp1
 
             if (tbcMain.SelectedTab == tabSchedule)
             {
+                //sets current month and year in the calender
+                mcdSchedule.ActiveMonth.Month = DateTime.Now.Month;
+                mcdSchedule.ActiveMonth.Year = DateTime.Now.Year;
+
                 lsbScheduleEmployees.DataSource = employeeController.GetEmployees();
 
                 ScheduleEnableButton();
