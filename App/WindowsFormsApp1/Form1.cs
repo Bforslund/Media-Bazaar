@@ -60,7 +60,6 @@ namespace WindowsFormsApp1
                 tbcMain.TabPages.Remove(tabLogout);
 
                 tbcMain.TabPages.Add(tabLogin);
-                tbcMain.TabPages.Add(tabRegister);
             }
 
             if (tbcMain.SelectedTab == tabSchedule)
@@ -438,12 +437,11 @@ namespace WindowsFormsApp1
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            stats.login(tbUsr.Text, tbPwd.Text);
+            stats.login(txbLoginUsername.Text, txbLoginPassword.Text);
 
-            //Manager
+            //Administration has all tabs and the most privilages
             if (stats.userRole == 2)
             {
-                tbcMain.TabPages.Remove(tabRegister);
                 tbcMain.TabPages.Remove(tabLogin);
 
                 tbcMain.TabPages.Add(tabEmployees);
@@ -452,20 +450,20 @@ namespace WindowsFormsApp1
                 tbcMain.TabPages.Add(tabStatistics);
                 tbcMain.TabPages.Add(tabLogout);
             }
-            //Administrator
+
+            //Manager can view a few tabs but not edit them (So he cant mess anything up)
             else if (stats.userRole == 1)
             {
-                tbcMain.TabPages.Remove(tabRegister);
                 tbcMain.TabPages.Remove(tabLogin);
 
                 tbcMain.TabPages.Add(tabEmployees);
                 tbcMain.TabPages.Add(tabSchedule);
                 tbcMain.TabPages.Add(tabLogout);
             }
-            //Employee
+
+            //Employee has the least privilages can only acces products page
             else if (stats.userRole == 0)
             {
-                tbcMain.TabPages.Remove(tabRegister);
                 tbcMain.TabPages.Remove(tabLogin);
 
                 tbcMain.TabPages.Add(tabProducts);
@@ -473,25 +471,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void btRegConfirm_Click(object sender, EventArgs e)
-        {
-
-            string theDate = dpRegDob.Value.ToString("yyyy-MM-dd");
-
-            //Cant find a good way to check without checking ALL textboxes
-            if (IsNumeric(tbRegPhone.Text) && !string.IsNullOrEmpty(tbRegUsr.Text) && !string.IsNullOrEmpty(tbRegPwd.Text) && !string.IsNullOrEmpty(tbRegPhone.Text) && !string.IsNullOrEmpty(tbRegEmail.Text) && !string.IsNullOrEmpty(tbRegFn.Text) && !string.IsNullOrEmpty(tbRegLn.Text) && !string.IsNullOrEmpty(tbRegAdr.Text))
-            {
-                if (IsValid(tbRegEmail.Text))
-                {
-                    usr.registerUser(tbRegUsr.Text, tbRegPwd.Text, tbRegFn.Text, tbRegLn.Text, theDate, tbRegAdr.Text, tbRegEmail.Text, tbRegPhone.Text);
-                    MessageBox.Show("User successfully registed!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Fill in the forms correctly!");
-            }
-        }
         public static bool IsNumeric(string s)
         {
             foreach (char c in s)
