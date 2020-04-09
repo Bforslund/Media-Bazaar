@@ -83,10 +83,10 @@ namespace WindowsFormsApp1
             if (tbcMain.SelectedTab == tabProducts)
             {
                 UpdateProductsList();
-                btRemove.Hide();
-                btUpdate.Hide();
-                btCrease.Hide();
-                btRequest.Hide();
+                btnProductRemove.Hide();
+                btnProductUpdate.Hide();
+                btnProductStockManage.Hide();
+                btnProductstockRequest.Hide();
             }
             if (tbcMain.SelectedTab == tabEmployees)
             {
@@ -109,18 +109,18 @@ namespace WindowsFormsApp1
 
         private void lbProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Product selectedProduct = (Product)lbProducts.SelectedItem;
+            Product selectedProduct = (Product)lsbProducts.SelectedItem;
 
             if (selectedProduct != null)
             {
-                lblName.Text = selectedProduct.Name;
-                lblType.Text = selectedProduct.Type;
-                lblStock.Text = selectedProduct.Stock.ToString();
-                lblDepartment.Text = selectedProduct.Department;
-                lblPrice.Text = selectedProduct.Price.ToString();
-                btUpdate.Show();
-                btRemove.Show();
-                btCrease.Show();
+                lblProductName.Text = selectedProduct.Name;
+                lblProductType.Text = selectedProduct.Type;
+                lblProductStock.Text = selectedProduct.Stock.ToString();
+                lblProductDepartment.Text = selectedProduct.Department;
+                lblProductPrice.Text = selectedProduct.Price.ToString();
+                btnProductUpdate.Show();
+                btnProductRemove.Show();
+                btnProductStockManage.Show();
             }
         }
 
@@ -132,7 +132,7 @@ namespace WindowsFormsApp1
             if (confirmResult == DialogResult.Yes)
             {
                 // If 'Yes', do something here.
-                Product selectedProduct = (Product)lbProducts.SelectedItem;
+                Product selectedProduct = (Product)lsbProducts.SelectedItem;
                 pc.DeleteProduct(selectedProduct);
                 UpdateProductsList();
             }
@@ -144,7 +144,7 @@ namespace WindowsFormsApp1
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-            Product selectedProduct = (Product)lbProducts.SelectedItem;
+            Product selectedProduct = (Product)lsbProducts.SelectedItem;
 
             UpdateProductForm addForm = new UpdateProductForm(pc, selectedProduct);
             addForm.Show();
@@ -154,7 +154,7 @@ namespace WindowsFormsApp1
 
         private void btCrease_Click(object sender, EventArgs e)
         {
-            Product selectedProduct = (Product)lbProducts.SelectedItem;
+            Product selectedProduct = (Product)lsbProducts.SelectedItem;
             Increase creaseForm = new Increase(selectedProduct, pc);
 
             creaseForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
@@ -168,17 +168,17 @@ namespace WindowsFormsApp1
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            lbProducts.DataSource = pc.FilterProducts(tbSearch.Text);
+            lsbProducts.DataSource = pc.FilterProducts(txbProductsSearch.Text);
         }
 
         #region functions
         public void UpdateProductsList()
         {
-            lbProducts.DataSource = null;
+            lsbProducts.DataSource = null;
 
             try
             {
-                lbProducts.DataSource = pc.GetListOfProducts();
+                lsbProducts.DataSource = pc.GetListOfProducts();
             }
             catch (MySqlException ex)
             {

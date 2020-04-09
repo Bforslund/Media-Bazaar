@@ -109,25 +109,25 @@
             this.lsbEmployees = new System.Windows.Forms.ListBox();
             this.tabProducts = new System.Windows.Forms.TabPage();
             this.lblPSearch = new System.Windows.Forms.Label();
-            this.tbSearch = new System.Windows.Forms.TextBox();
-            this.lblDepartment = new System.Windows.Forms.Label();
-            this.lblStock = new System.Windows.Forms.Label();
-            this.lblPrice = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
+            this.txbProductsSearch = new System.Windows.Forms.TextBox();
+            this.lblProductDepartment = new System.Windows.Forms.Label();
+            this.lblProductStock = new System.Windows.Forms.Label();
+            this.lblProductPrice = new System.Windows.Forms.Label();
+            this.lblProductName = new System.Windows.Forms.Label();
+            this.lblProductType = new System.Windows.Forms.Label();
             this.lablePInormation = new System.Windows.Forms.Label();
             this.labelPProducts = new System.Windows.Forms.Label();
-            this.btUpdate = new System.Windows.Forms.Button();
-            this.btRequest = new System.Windows.Forms.Button();
+            this.btnProductUpdate = new System.Windows.Forms.Button();
+            this.btnProductstockRequest = new System.Windows.Forms.Button();
             this.labelPDepartment = new System.Windows.Forms.Label();
             this.labelPCurrentlyInStock = new System.Windows.Forms.Label();
             this.labelPPrice = new System.Windows.Forms.Label();
             this.labelPName = new System.Windows.Forms.Label();
             this.labelPType = new System.Windows.Forms.Label();
-            this.btAdd = new System.Windows.Forms.Button();
-            this.btRemove = new System.Windows.Forms.Button();
-            this.btCrease = new System.Windows.Forms.Button();
-            this.lbProducts = new System.Windows.Forms.ListBox();
+            this.brnProductAdd = new System.Windows.Forms.Button();
+            this.btnProductRemove = new System.Windows.Forms.Button();
+            this.btnProductStockManage = new System.Windows.Forms.Button();
+            this.lsbProducts = new System.Windows.Forms.ListBox();
             this.tabSchedule = new System.Windows.Forms.TabPage();
             this.tabStatistics = new System.Windows.Forms.TabPage();
             this.chartAttendance = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -954,25 +954,25 @@
             // 
             this.tabProducts.BackColor = System.Drawing.Color.White;
             this.tabProducts.Controls.Add(this.lblPSearch);
-            this.tabProducts.Controls.Add(this.tbSearch);
-            this.tabProducts.Controls.Add(this.lblDepartment);
-            this.tabProducts.Controls.Add(this.lblStock);
-            this.tabProducts.Controls.Add(this.lblPrice);
-            this.tabProducts.Controls.Add(this.lblName);
-            this.tabProducts.Controls.Add(this.lblType);
+            this.tabProducts.Controls.Add(this.txbProductsSearch);
+            this.tabProducts.Controls.Add(this.lblProductDepartment);
+            this.tabProducts.Controls.Add(this.lblProductStock);
+            this.tabProducts.Controls.Add(this.lblProductPrice);
+            this.tabProducts.Controls.Add(this.lblProductName);
+            this.tabProducts.Controls.Add(this.lblProductType);
             this.tabProducts.Controls.Add(this.lablePInormation);
             this.tabProducts.Controls.Add(this.labelPProducts);
-            this.tabProducts.Controls.Add(this.btUpdate);
-            this.tabProducts.Controls.Add(this.btRequest);
+            this.tabProducts.Controls.Add(this.btnProductUpdate);
+            this.tabProducts.Controls.Add(this.btnProductstockRequest);
             this.tabProducts.Controls.Add(this.labelPDepartment);
             this.tabProducts.Controls.Add(this.labelPCurrentlyInStock);
             this.tabProducts.Controls.Add(this.labelPPrice);
             this.tabProducts.Controls.Add(this.labelPName);
             this.tabProducts.Controls.Add(this.labelPType);
-            this.tabProducts.Controls.Add(this.btAdd);
-            this.tabProducts.Controls.Add(this.btRemove);
-            this.tabProducts.Controls.Add(this.btCrease);
-            this.tabProducts.Controls.Add(this.lbProducts);
+            this.tabProducts.Controls.Add(this.brnProductAdd);
+            this.tabProducts.Controls.Add(this.btnProductRemove);
+            this.tabProducts.Controls.Add(this.btnProductStockManage);
+            this.tabProducts.Controls.Add(this.lsbProducts);
             this.tabProducts.Location = new System.Drawing.Point(4, 29);
             this.tabProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabProducts.Name = "tabProducts";
@@ -990,59 +990,59 @@
             this.lblPSearch.TabIndex = 31;
             this.lblPSearch.Text = "Search:";
             // 
-            // tbSearch
+            // txbProductsSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(79, 434);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(185, 27);
-            this.tbSearch.TabIndex = 30;
-            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            this.txbProductsSearch.Location = new System.Drawing.Point(79, 434);
+            this.txbProductsSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbProductsSearch.Name = "txbProductsSearch";
+            this.txbProductsSearch.Size = new System.Drawing.Size(185, 27);
+            this.txbProductsSearch.TabIndex = 30;
+            this.txbProductsSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
-            // lblDepartment
+            // lblProductDepartment
             // 
-            this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Location = new System.Drawing.Point(463, 198);
-            this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(27, 20);
-            this.lblDepartment.TabIndex = 29;
-            this.lblDepartment.Text = "***";
+            this.lblProductDepartment.AutoSize = true;
+            this.lblProductDepartment.Location = new System.Drawing.Point(463, 198);
+            this.lblProductDepartment.Name = "lblProductDepartment";
+            this.lblProductDepartment.Size = new System.Drawing.Size(27, 20);
+            this.lblProductDepartment.TabIndex = 29;
+            this.lblProductDepartment.Text = "***";
             // 
-            // lblStock
+            // lblProductStock
             // 
-            this.lblStock.AutoSize = true;
-            this.lblStock.Location = new System.Drawing.Point(463, 171);
-            this.lblStock.Name = "lblStock";
-            this.lblStock.Size = new System.Drawing.Size(27, 20);
-            this.lblStock.TabIndex = 28;
-            this.lblStock.Text = "***";
+            this.lblProductStock.AutoSize = true;
+            this.lblProductStock.Location = new System.Drawing.Point(463, 171);
+            this.lblProductStock.Name = "lblProductStock";
+            this.lblProductStock.Size = new System.Drawing.Size(27, 20);
+            this.lblProductStock.TabIndex = 28;
+            this.lblProductStock.Text = "***";
             // 
-            // lblPrice
+            // lblProductPrice
             // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(463, 145);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(27, 20);
-            this.lblPrice.TabIndex = 27;
-            this.lblPrice.Text = "***";
+            this.lblProductPrice.AutoSize = true;
+            this.lblProductPrice.Location = new System.Drawing.Point(463, 145);
+            this.lblProductPrice.Name = "lblProductPrice";
+            this.lblProductPrice.Size = new System.Drawing.Size(27, 20);
+            this.lblProductPrice.TabIndex = 27;
+            this.lblProductPrice.Text = "***";
             // 
-            // lblName
+            // lblProductName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(463, 114);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(27, 20);
-            this.lblName.TabIndex = 26;
-            this.lblName.Text = "***";
+            this.lblProductName.AutoSize = true;
+            this.lblProductName.Location = new System.Drawing.Point(463, 114);
+            this.lblProductName.Name = "lblProductName";
+            this.lblProductName.Size = new System.Drawing.Size(27, 20);
+            this.lblProductName.TabIndex = 26;
+            this.lblProductName.Text = "***";
             // 
-            // lblType
+            // lblProductType
             // 
-            this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(463, 86);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(27, 20);
-            this.lblType.TabIndex = 25;
-            this.lblType.Text = "***";
+            this.lblProductType.AutoSize = true;
+            this.lblProductType.Location = new System.Drawing.Point(463, 86);
+            this.lblProductType.Name = "lblProductType";
+            this.lblProductType.Size = new System.Drawing.Size(27, 20);
+            this.lblProductType.TabIndex = 25;
+            this.lblProductType.Text = "***";
             // 
             // lablePInormation
             // 
@@ -1063,27 +1063,27 @@
             this.labelPProducts.TabIndex = 23;
             this.labelPProducts.Text = "Products:";
             // 
-            // btUpdate
+            // btnProductUpdate
             // 
-            this.btUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btUpdate.Location = new System.Drawing.Point(560, 273);
-            this.btUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btUpdate.Name = "btUpdate";
-            this.btUpdate.Size = new System.Drawing.Size(213, 34);
-            this.btUpdate.TabIndex = 21;
-            this.btUpdate.Text = "Update product";
-            this.btUpdate.UseVisualStyleBackColor = true;
-            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
+            this.btnProductUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductUpdate.Location = new System.Drawing.Point(560, 273);
+            this.btnProductUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnProductUpdate.Name = "btnProductUpdate";
+            this.btnProductUpdate.Size = new System.Drawing.Size(213, 34);
+            this.btnProductUpdate.TabIndex = 21;
+            this.btnProductUpdate.Text = "Update product";
+            this.btnProductUpdate.UseVisualStyleBackColor = true;
+            this.btnProductUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
-            // btRequest
+            // btnProductstockRequest
             // 
-            this.btRequest.Location = new System.Drawing.Point(560, 396);
-            this.btRequest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btRequest.Name = "btRequest";
-            this.btRequest.Size = new System.Drawing.Size(213, 34);
-            this.btRequest.TabIndex = 20;
-            this.btRequest.Text = "Request restock";
-            this.btRequest.UseVisualStyleBackColor = true;
+            this.btnProductstockRequest.Location = new System.Drawing.Point(560, 396);
+            this.btnProductstockRequest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnProductstockRequest.Name = "btnProductstockRequest";
+            this.btnProductstockRequest.Size = new System.Drawing.Size(213, 34);
+            this.btnProductstockRequest.TabIndex = 20;
+            this.btnProductstockRequest.Text = "Request restock";
+            this.btnProductstockRequest.UseVisualStyleBackColor = true;
             // 
             // labelPDepartment
             // 
@@ -1135,50 +1135,50 @@
             this.labelPType.TabIndex = 6;
             this.labelPType.Text = "Type:";
             // 
-            // btAdd
+            // brnProductAdd
             // 
-            this.btAdd.Location = new System.Drawing.Point(560, 231);
-            this.btAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btAdd.Name = "btAdd";
-            this.btAdd.Size = new System.Drawing.Size(213, 34);
-            this.btAdd.TabIndex = 4;
-            this.btAdd.Text = "Add new product";
-            this.btAdd.UseVisualStyleBackColor = true;
-            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
+            this.brnProductAdd.Location = new System.Drawing.Point(560, 231);
+            this.brnProductAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.brnProductAdd.Name = "brnProductAdd";
+            this.brnProductAdd.Size = new System.Drawing.Size(213, 34);
+            this.brnProductAdd.TabIndex = 4;
+            this.brnProductAdd.Text = "Add new product";
+            this.brnProductAdd.UseVisualStyleBackColor = true;
+            this.brnProductAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
-            // btRemove
+            // btnProductRemove
             // 
-            this.btRemove.Location = new System.Drawing.Point(560, 314);
-            this.btRemove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btRemove.Name = "btRemove";
-            this.btRemove.Size = new System.Drawing.Size(213, 34);
-            this.btRemove.TabIndex = 3;
-            this.btRemove.Text = "Remove product";
-            this.btRemove.UseVisualStyleBackColor = true;
-            this.btRemove.Click += new System.EventHandler(this.btRemove_Click);
+            this.btnProductRemove.Location = new System.Drawing.Point(560, 314);
+            this.btnProductRemove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnProductRemove.Name = "btnProductRemove";
+            this.btnProductRemove.Size = new System.Drawing.Size(213, 34);
+            this.btnProductRemove.TabIndex = 3;
+            this.btnProductRemove.Text = "Remove product";
+            this.btnProductRemove.UseVisualStyleBackColor = true;
+            this.btnProductRemove.Click += new System.EventHandler(this.btRemove_Click);
             // 
-            // btCrease
+            // btnProductStockManage
             // 
-            this.btCrease.Location = new System.Drawing.Point(560, 354);
-            this.btCrease.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btCrease.Name = "btCrease";
-            this.btCrease.Size = new System.Drawing.Size(213, 34);
-            this.btCrease.TabIndex = 2;
-            this.btCrease.Text = "Increase/decrease stock";
-            this.btCrease.UseVisualStyleBackColor = true;
-            this.btCrease.Click += new System.EventHandler(this.btCrease_Click);
+            this.btnProductStockManage.Location = new System.Drawing.Point(560, 354);
+            this.btnProductStockManage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnProductStockManage.Name = "btnProductStockManage";
+            this.btnProductStockManage.Size = new System.Drawing.Size(213, 34);
+            this.btnProductStockManage.TabIndex = 2;
+            this.btnProductStockManage.Text = "Increase/decrease stock";
+            this.btnProductStockManage.UseVisualStyleBackColor = true;
+            this.btnProductStockManage.Click += new System.EventHandler(this.btCrease_Click);
             // 
-            // lbProducts
+            // lsbProducts
             // 
-            this.lbProducts.BackColor = System.Drawing.Color.White;
-            this.lbProducts.FormattingEnabled = true;
-            this.lbProducts.ItemHeight = 20;
-            this.lbProducts.Location = new System.Drawing.Point(11, 25);
-            this.lbProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lbProducts.Name = "lbProducts";
-            this.lbProducts.Size = new System.Drawing.Size(255, 384);
-            this.lbProducts.TabIndex = 0;
-            this.lbProducts.SelectedIndexChanged += new System.EventHandler(this.lbProducts_SelectedIndexChanged);
+            this.lsbProducts.BackColor = System.Drawing.Color.White;
+            this.lsbProducts.FormattingEnabled = true;
+            this.lsbProducts.ItemHeight = 20;
+            this.lsbProducts.Location = new System.Drawing.Point(11, 25);
+            this.lsbProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lsbProducts.Name = "lsbProducts";
+            this.lsbProducts.Size = new System.Drawing.Size(255, 384);
+            this.lsbProducts.TabIndex = 0;
+            this.lsbProducts.SelectedIndexChanged += new System.EventHandler(this.lbProducts_SelectedIndexChanged);
             // 
             // tabSchedule
             // 
@@ -1455,26 +1455,26 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btRequest;
+        private System.Windows.Forms.Button btnProductstockRequest;
         private System.Windows.Forms.Label labelPDepartment;
         private System.Windows.Forms.Label labelPCurrentlyInStock;
         private System.Windows.Forms.Label labelPPrice;
         private System.Windows.Forms.Label labelPName;
         private System.Windows.Forms.Label labelPType;
-        private System.Windows.Forms.Button btAdd;
-        private System.Windows.Forms.Button btRemove;
-        private System.Windows.Forms.Button btCrease;
-        private System.Windows.Forms.ListBox lbProducts;
-        private System.Windows.Forms.Button btUpdate;
+        private System.Windows.Forms.Button brnProductAdd;
+        private System.Windows.Forms.Button btnProductRemove;
+        private System.Windows.Forms.Button btnProductStockManage;
+        private System.Windows.Forms.ListBox lsbProducts;
+        private System.Windows.Forms.Button btnProductUpdate;
         private System.Windows.Forms.Label lablePInormation;
         private System.Windows.Forms.Label labelPProducts;
-        private System.Windows.Forms.Label lblDepartment;
-        private System.Windows.Forms.Label lblStock;
-        private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblType;
+        private System.Windows.Forms.Label lblProductDepartment;
+        private System.Windows.Forms.Label lblProductStock;
+        private System.Windows.Forms.Label lblProductPrice;
+        private System.Windows.Forms.Label lblProductName;
+        private System.Windows.Forms.Label lblProductType;
         private System.Windows.Forms.Label lblPSearch;
-        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.TextBox txbProductsSearch;
 
         private System.Windows.Forms.TabControl tbcMain;
         private System.Windows.Forms.TabPage tabEmployees;
