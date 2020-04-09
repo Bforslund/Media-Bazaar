@@ -16,12 +16,17 @@ namespace WindowsFormsApp1
 
         private MySqlConnection databaseConnection = DatabaseInfo.sqlConnection;
 
+        /// <summary>
+        /// gets all the shifts for the active month from the database and puts them into the "days" list
+        /// </summary>
+        /// <param name="activeMonth"></param>
         public void LoadShifts(ActiveMonth activeMonth)
         {
             DateTime date = DateTime.Now;
             DateTime firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
+            //select all the dates between the first day of the month and the last day of the month
             string query;
             query = "SELECT * FROM `day` WHERE ";
             query += $"CAST(`day` AS Date) >= CAST(N'{firstDayOfMonth.ToString("yyyy-MM-dd")}' AS Date) AND ";
@@ -69,7 +74,12 @@ namespace WindowsFormsApp1
                 day.LoadShifts();
             }
         }
-
+        
+        /// <summary>
+        /// sets the colour for the month based on the amount of people assigned
+        /// </summary>
+        /// <param name="activeMonth"></param>
+        /// <returns></returns>
         public DateItem[] SetDaysForMonth(ActiveMonth activeMonth)
         {
             int days = DateTime.DaysInMonth(activeMonth.Year, activeMonth.Month);
@@ -89,8 +99,8 @@ namespace WindowsFormsApp1
                     DateTime test = day.Date();
                     if (test == date)
                     {
+                        //check how many people are assigned to each shift
                         color = day.SetDayColor();
-                        //color = Color.YellowGreen;
                     }
                 }
                 dateItems[i].BackColor1 = color;
@@ -99,6 +109,12 @@ namespace WindowsFormsApp1
             return dateItems;
         }
 
+        /// <summary>
+        /// gets the employees assigned to a shift
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="shiftType"></param>
+        /// <returns></returns>
         public List<Personal> GetPersonalAssigned(DateTime date, int shiftType)
         {
             foreach (Day day in days)
@@ -118,11 +134,19 @@ namespace WindowsFormsApp1
             return null;
         }
 
+        /// <summary>
+        /// assigns a new employee to a shift
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="shift"></param>
+        /// <param name="person"></param>
+        /// <param name="activeMonth"></param>
         public void SetShift(DateTime date, int shift, int person, ActiveMonth activeMonth)
         {
             long dayId = -1;
             long shiftId = -1;
 
+            //check if there already employees assigned to the day
             foreach (Day day in days)
             {
                 if (day.Date() == date)
@@ -131,6 +155,7 @@ namespace WindowsFormsApp1
                 }
             }
 
+            //if no employees are assigned create a new day in the database
             if (dayId < 0)
             {
                 //insert new day and shifts
@@ -146,17 +171,24 @@ namespace WindowsFormsApp1
 
                 for (int i = 0; i < 3; i++)
                 {
+                    //sets the default max assigned employees for a shift
                     int max = 5;
                     if (i == 2) { max = 2; }
 
-                    insertQuery = $"INSERT INTO shift(shifttype, min, max, day_id) VALUES(@shifttype, 2, @max, @dayId); select last_insert_id();";
+                    //sets the default min assigned employees for a shift
+                    int min = 2;
+
+                    //inserts a new shift and gets the id
+                    insertQuery = $"INSERT INTO shift(shifttype, min, max, day_id) VALUES(@shifttype, @min, @max, @dayId); select last_insert_id();";
                     databaseConnection.Open();
                     commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
                     commandDatabase.Parameters.AddWithValue("@shifttype", i);
+                    commandDatabase.Parameters.AddWithValue("@min", min);
                     commandDatabase.Parameters.AddWithValue("@max", max);
                     commandDatabase.Parameters.AddWithValue("@dayId", dayId);
                     commandDatabase.ExecuteNonQuery();
 
+                    //gets the id of the shift where the employee was inserted
                     if (shift == i)
                     {
                         shiftId = commandDatabase.LastInsertedId;
@@ -167,6 +199,7 @@ namespace WindowsFormsApp1
             }
             else
             {
+                //selects an existing shift and gets the shift id
                 string sql = $"SELECT id FROM shift WHERE day_id = {dayId} AND shifttype = {shift};";
                 MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
                 databaseConnection.Open();
@@ -175,6 +208,7 @@ namespace WindowsFormsApp1
                 databaseConnection.Close();
             }
 
+            //inserts the user into a shift based on shiftid and user id
             if (shiftId >= 0 && person >= 0)
             {
                 string insertQuery = $"INSERT INTO users_has_shift(users_id, shift_id) VALUES(@userId, @shiftId); select last_insert_id();";
@@ -196,6 +230,13 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// Unassignes an employee from a shift
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="shiftType"></param>
+        /// <param name="employeeId"></param>
+        /// <param name="activeMonth"></param>
         public void RemoveEmployee(DateTime date, int shiftType, int employeeId, ActiveMonth activeMonth)
         {
             int shiftId = -1;
