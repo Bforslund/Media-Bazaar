@@ -81,7 +81,7 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
-        /// return id
+        /// return day id
         /// </summary>
         /// <returns></returns>
         public int Id()

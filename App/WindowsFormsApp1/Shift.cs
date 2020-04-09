@@ -27,6 +27,9 @@ namespace WindowsFormsApp1
             maxAssigned = max;
         }
 
+        /// <summary>
+        /// loads the people assigned to the shift
+        /// </summary>
         public void LoadAssignedEmployees()
         {
             string query;
@@ -80,6 +83,10 @@ namespace WindowsFormsApp1
             }
         }
 
+        /// <summary>
+        /// checks if the minimum amount of employees have been assigned
+        /// </summary>
+        /// <returns></returns>
         public bool CheckShiftStatus()
         {
             if (assignedEmployees.Count() < minAssinged)
@@ -89,16 +96,28 @@ namespace WindowsFormsApp1
             return true;
         }
 
+        /// <summary>
+        /// returns shift type (morning, evening, night)
+        /// </summary>
+        /// <returns></returns>
         public int GetshiftType()
         {
             return shiftType;
         }
 
+        /// <summary>
+        /// returns shift id
+        /// </summary>
+        /// <returns></returns>
         public int Id()
         {
             return id;
         }
 
+        /// <summary>
+        /// returns employees assigned
+        /// </summary>
+        /// <returns></returns>
         public List<Personal> GetPersonal()
         {
             return assignedEmployees;
