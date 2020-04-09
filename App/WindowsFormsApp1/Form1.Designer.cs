@@ -69,44 +69,44 @@
             this.txbLoginUsername = new System.Windows.Forms.TextBox();
             this.tabEmployees = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbEmployeeSearch = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txbEmployeeSearch = new System.Windows.Forms.TextBox();
+            this.txbEmployeePhone = new System.Windows.Forms.GroupBox();
             this.dtpEmployeeHire = new System.Windows.Forms.DateTimePicker();
             this.dtpEmployeeBirthday = new System.Windows.Forms.DateTimePicker();
-            this.cmbGender = new System.Windows.Forms.ComboBox();
+            this.cmbEmployeeGender = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.saveButton = new System.Windows.Forms.PictureBox();
-            this.deleteEmpButton = new System.Windows.Forms.PictureBox();
+            this.btnEmployeeSave = new System.Windows.Forms.PictureBox();
+            this.btnEmployeeRemove = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.passwordBox = new System.Windows.Forms.TextBox();
+            this.txbEmployeePassword = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.usernameBox = new System.Windows.Forms.TextBox();
+            this.txbEmployeeUsername = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.phoneNoBox = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.contractComboBox = new System.Windows.Forms.ComboBox();
-            this.emailBox = new System.Windows.Forms.TextBox();
-            this.wageBox = new System.Windows.Forms.TextBox();
-            this.allergies_issuesBox = new System.Windows.Forms.TextBox();
-            this.addressBox = new System.Windows.Forms.TextBox();
-            this.lastNameBox = new System.Windows.Forms.TextBox();
-            this.firstNameBox = new System.Windows.Forms.TextBox();
+            this.cmbEmployeeContract = new System.Windows.Forms.ComboBox();
+            this.txbEmployeeEmail = new System.Windows.Forms.TextBox();
+            this.txbEmployeeWage = new System.Windows.Forms.TextBox();
+            this.txbEmployeeAllergies = new System.Windows.Forms.TextBox();
+            this.txbEmployeeAdress = new System.Windows.Forms.TextBox();
+            this.txbEmployeeLastname = new System.Windows.Forms.TextBox();
+            this.txbEmployeeFirstname = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.privilegeComboBox = new System.Windows.Forms.ComboBox();
-            this.departmentComboBox = new System.Windows.Forms.ComboBox();
+            this.cmbEmployeePrivilege = new System.Windows.Forms.ComboBox();
+            this.cmbEmployeeDepartment = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.employeesListBox = new System.Windows.Forms.ListBox();
+            this.lsbEmployees = new System.Windows.Forms.ListBox();
             this.tabProducts = new System.Windows.Forms.TabPage();
             this.lblPSearch = new System.Windows.Forms.Label();
             this.tbSearch = new System.Windows.Forms.TextBox();
@@ -153,9 +153,9 @@
             this.tabLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabEmployees.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.saveButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteEmpButton)).BeginInit();
+            this.txbEmployeePhone.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEmployeeSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEmployeeRemove)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tabProducts.SuspendLayout();
             this.tabSchedule.SuspendLayout();
@@ -454,7 +454,7 @@
             this.tabLogin.Controls.Add(this.txbLoginPassword);
             this.tabLogin.Controls.Add(this.txbLoginUsername);
             this.tabLogin.Location = new System.Drawing.Point(4, 29);
-            this.tabLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabLogin.Margin = new System.Windows.Forms.Padding(4);
             this.tabLogin.Name = "tabLogin";
             this.tabLogin.Size = new System.Drawing.Size(1093, 470);
             this.tabLogin.TabIndex = 4;
@@ -465,7 +465,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.pearinc;
             this.pictureBox1.Location = new System.Drawing.Point(684, 94);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(160, 241);
             this.pictureBox1.TabIndex = 5;
@@ -494,7 +494,7 @@
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(287, 265);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 28);
             this.btnLogin.TabIndex = 2;
@@ -505,7 +505,7 @@
             // txbLoginPassword
             // 
             this.txbLoginPassword.Location = new System.Drawing.Point(395, 202);
-            this.txbLoginPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbLoginPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txbLoginPassword.Name = "txbLoginPassword";
             this.txbLoginPassword.Size = new System.Drawing.Size(132, 27);
             this.txbLoginPassword.TabIndex = 1;
@@ -513,7 +513,7 @@
             // txbLoginUsername
             // 
             this.txbLoginUsername.Location = new System.Drawing.Point(395, 149);
-            this.txbLoginUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbLoginUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txbLoginUsername.Name = "txbLoginUsername";
             this.txbLoginUsername.Size = new System.Drawing.Size(132, 27);
             this.txbLoginUsername.TabIndex = 0;
@@ -521,10 +521,10 @@
             // tabEmployees
             // 
             this.tabEmployees.Controls.Add(this.label3);
-            this.tabEmployees.Controls.Add(this.tbEmployeeSearch);
-            this.tabEmployees.Controls.Add(this.groupBox1);
+            this.tabEmployees.Controls.Add(this.txbEmployeeSearch);
+            this.tabEmployees.Controls.Add(this.txbEmployeePhone);
             this.tabEmployees.Controls.Add(this.label5);
-            this.tabEmployees.Controls.Add(this.employeesListBox);
+            this.tabEmployees.Controls.Add(this.lsbEmployees);
             this.tabEmployees.Location = new System.Drawing.Point(4, 29);
             this.tabEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabEmployees.Name = "tabEmployees";
@@ -543,53 +543,53 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Search:";
             // 
-            // tbEmployeeSearch
+            // txbEmployeeSearch
             // 
-            this.tbEmployeeSearch.Location = new System.Drawing.Point(79, 26);
-            this.tbEmployeeSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbEmployeeSearch.Name = "tbEmployeeSearch";
-            this.tbEmployeeSearch.Size = new System.Drawing.Size(195, 27);
-            this.tbEmployeeSearch.TabIndex = 15;
-            this.tbEmployeeSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txbEmployeeSearch.Location = new System.Drawing.Point(79, 26);
+            this.txbEmployeeSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbEmployeeSearch.Name = "txbEmployeeSearch";
+            this.txbEmployeeSearch.Size = new System.Drawing.Size(195, 27);
+            this.txbEmployeeSearch.TabIndex = 15;
+            this.txbEmployeeSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // groupBox1
+            // txbEmployeePhone
             // 
-            this.groupBox1.Controls.Add(this.dtpEmployeeHire);
-            this.groupBox1.Controls.Add(this.dtpEmployeeBirthday);
-            this.groupBox1.Controls.Add(this.cmbGender);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.saveButton);
-            this.groupBox1.Controls.Add(this.deleteEmpButton);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.phoneNoBox);
-            this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Controls.Add(this.contractComboBox);
-            this.groupBox1.Controls.Add(this.emailBox);
-            this.groupBox1.Controls.Add(this.wageBox);
-            this.groupBox1.Controls.Add(this.allergies_issuesBox);
-            this.groupBox1.Controls.Add(this.addressBox);
-            this.groupBox1.Controls.Add(this.lastNameBox);
-            this.groupBox1.Controls.Add(this.firstNameBox);
-            this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.privilegeComboBox);
-            this.groupBox1.Controls.Add(this.departmentComboBox);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Location = new System.Drawing.Point(296, 2);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(776, 454);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
+            this.txbEmployeePhone.Controls.Add(this.dtpEmployeeHire);
+            this.txbEmployeePhone.Controls.Add(this.dtpEmployeeBirthday);
+            this.txbEmployeePhone.Controls.Add(this.cmbEmployeeGender);
+            this.txbEmployeePhone.Controls.Add(this.label4);
+            this.txbEmployeePhone.Controls.Add(this.label2);
+            this.txbEmployeePhone.Controls.Add(this.label1);
+            this.txbEmployeePhone.Controls.Add(this.btnEmployeeSave);
+            this.txbEmployeePhone.Controls.Add(this.btnEmployeeRemove);
+            this.txbEmployeePhone.Controls.Add(this.groupBox3);
+            this.txbEmployeePhone.Controls.Add(this.phoneNoBox);
+            this.txbEmployeePhone.Controls.Add(this.label23);
+            this.txbEmployeePhone.Controls.Add(this.cmbEmployeeContract);
+            this.txbEmployeePhone.Controls.Add(this.txbEmployeeEmail);
+            this.txbEmployeePhone.Controls.Add(this.txbEmployeeWage);
+            this.txbEmployeePhone.Controls.Add(this.txbEmployeeAllergies);
+            this.txbEmployeePhone.Controls.Add(this.txbEmployeeAdress);
+            this.txbEmployeePhone.Controls.Add(this.txbEmployeeLastname);
+            this.txbEmployeePhone.Controls.Add(this.txbEmployeeFirstname);
+            this.txbEmployeePhone.Controls.Add(this.label21);
+            this.txbEmployeePhone.Controls.Add(this.label20);
+            this.txbEmployeePhone.Controls.Add(this.label19);
+            this.txbEmployeePhone.Controls.Add(this.label17);
+            this.txbEmployeePhone.Controls.Add(this.cmbEmployeePrivilege);
+            this.txbEmployeePhone.Controls.Add(this.cmbEmployeeDepartment);
+            this.txbEmployeePhone.Controls.Add(this.label14);
+            this.txbEmployeePhone.Controls.Add(this.label13);
+            this.txbEmployeePhone.Controls.Add(this.label12);
+            this.txbEmployeePhone.Controls.Add(this.label10);
+            this.txbEmployeePhone.Controls.Add(this.label9);
+            this.txbEmployeePhone.Location = new System.Drawing.Point(296, 2);
+            this.txbEmployeePhone.Margin = new System.Windows.Forms.Padding(4);
+            this.txbEmployeePhone.Name = "txbEmployeePhone";
+            this.txbEmployeePhone.Padding = new System.Windows.Forms.Padding(4);
+            this.txbEmployeePhone.Size = new System.Drawing.Size(776, 454);
+            this.txbEmployeePhone.TabIndex = 5;
+            this.txbEmployeePhone.TabStop = false;
             // 
             // dtpEmployeeHire
             // 
@@ -607,18 +607,18 @@
             this.dtpEmployeeBirthday.Size = new System.Drawing.Size(133, 27);
             this.dtpEmployeeBirthday.TabIndex = 48;
             // 
-            // cmbGender
+            // cmbEmployeeGender
             // 
-            this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.Items.AddRange(new object[] {
+            this.cmbEmployeeGender.FormattingEnabled = true;
+            this.cmbEmployeeGender.Items.AddRange(new object[] {
             "Male",
             "Female",
             "Other"});
-            this.cmbGender.Location = new System.Drawing.Point(169, 217);
-            this.cmbGender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(131, 28);
-            this.cmbGender.TabIndex = 47;
+            this.cmbEmployeeGender.Location = new System.Drawing.Point(169, 217);
+            this.cmbEmployeeGender.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEmployeeGender.Name = "cmbEmployeeGender";
+            this.cmbEmployeeGender.Size = new System.Drawing.Size(131, 28);
+            this.cmbEmployeeGender.TabIndex = 47;
             // 
             // label4
             // 
@@ -648,43 +648,43 @@
             this.label1.TabIndex = 44;
             this.label1.Text = "Contract";
             // 
-            // saveButton
+            // btnEmployeeSave
             // 
-            this.saveButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
-            this.saveButton.Location = new System.Drawing.Point(313, 367);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(69, 64);
-            this.saveButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.saveButton.TabIndex = 43;
-            this.saveButton.TabStop = false;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.btnEmployeeSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEmployeeSave.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeeSave.Image")));
+            this.btnEmployeeSave.Location = new System.Drawing.Point(313, 367);
+            this.btnEmployeeSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEmployeeSave.Name = "btnEmployeeSave";
+            this.btnEmployeeSave.Size = new System.Drawing.Size(69, 64);
+            this.btnEmployeeSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnEmployeeSave.TabIndex = 43;
+            this.btnEmployeeSave.TabStop = false;
+            this.btnEmployeeSave.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // deleteEmpButton
+            // btnEmployeeRemove
             // 
-            this.deleteEmpButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteEmpButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteEmpButton.Image")));
-            this.deleteEmpButton.Location = new System.Drawing.Point(721, 402);
-            this.deleteEmpButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.deleteEmpButton.Name = "deleteEmpButton";
-            this.deleteEmpButton.Size = new System.Drawing.Size(47, 43);
-            this.deleteEmpButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.deleteEmpButton.TabIndex = 42;
-            this.deleteEmpButton.TabStop = false;
-            this.deleteEmpButton.Click += new System.EventHandler(this.deleteEmpButton_Click);
+            this.btnEmployeeRemove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEmployeeRemove.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeeRemove.Image")));
+            this.btnEmployeeRemove.Location = new System.Drawing.Point(721, 402);
+            this.btnEmployeeRemove.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEmployeeRemove.Name = "btnEmployeeRemove";
+            this.btnEmployeeRemove.Size = new System.Drawing.Size(47, 43);
+            this.btnEmployeeRemove.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnEmployeeRemove.TabIndex = 42;
+            this.btnEmployeeRemove.TabStop = false;
+            this.btnEmployeeRemove.Click += new System.EventHandler(this.deleteEmpButton_Click);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.passwordBox);
+            this.groupBox3.Controls.Add(this.txbEmployeePassword);
             this.groupBox3.Controls.Add(this.label24);
-            this.groupBox3.Controls.Add(this.usernameBox);
+            this.groupBox3.Controls.Add(this.txbEmployeeUsername);
             this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Location = new System.Drawing.Point(8, 270);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(643, 91);
             this.groupBox3.TabIndex = 41;
             this.groupBox3.TabStop = false;
@@ -701,13 +701,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // passwordBox
+            // txbEmployeePassword
             // 
-            this.passwordBox.Location = new System.Drawing.Point(163, 54);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(131, 27);
-            this.passwordBox.TabIndex = 36;
+            this.txbEmployeePassword.Location = new System.Drawing.Point(163, 54);
+            this.txbEmployeePassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txbEmployeePassword.Name = "txbEmployeePassword";
+            this.txbEmployeePassword.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeePassword.TabIndex = 36;
             // 
             // label24
             // 
@@ -719,13 +719,13 @@
             this.label24.TabIndex = 35;
             this.label24.Text = "Password";
             // 
-            // usernameBox
+            // txbEmployeeUsername
             // 
-            this.usernameBox.Location = new System.Drawing.Point(163, 22);
-            this.usernameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(131, 27);
-            this.usernameBox.TabIndex = 30;
+            this.txbEmployeeUsername.Location = new System.Drawing.Point(163, 22);
+            this.txbEmployeeUsername.Margin = new System.Windows.Forms.Padding(4);
+            this.txbEmployeeUsername.Name = "txbEmployeeUsername";
+            this.txbEmployeeUsername.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeUsername.TabIndex = 30;
             // 
             // label22
             // 
@@ -740,7 +740,7 @@
             // phoneNoBox
             // 
             this.phoneNoBox.Location = new System.Drawing.Point(169, 183);
-            this.phoneNoBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.phoneNoBox.Margin = new System.Windows.Forms.Padding(4);
             this.phoneNoBox.Name = "phoneNoBox";
             this.phoneNoBox.Size = new System.Drawing.Size(131, 27);
             this.phoneNoBox.TabIndex = 34;
@@ -755,65 +755,65 @@
             this.label23.TabIndex = 33;
             this.label23.Text = "Phone Number";
             // 
-            // contractComboBox
+            // cmbEmployeeContract
             // 
-            this.contractComboBox.FormattingEnabled = true;
-            this.contractComboBox.Items.AddRange(new object[] {
+            this.cmbEmployeeContract.FormattingEnabled = true;
+            this.cmbEmployeeContract.Items.AddRange(new object[] {
             "False",
             "True"});
-            this.contractComboBox.Location = new System.Drawing.Point(519, 53);
-            this.contractComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.contractComboBox.Name = "contractComboBox";
-            this.contractComboBox.Size = new System.Drawing.Size(131, 28);
-            this.contractComboBox.TabIndex = 32;
+            this.cmbEmployeeContract.Location = new System.Drawing.Point(519, 53);
+            this.cmbEmployeeContract.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEmployeeContract.Name = "cmbEmployeeContract";
+            this.cmbEmployeeContract.Size = new System.Drawing.Size(131, 28);
+            this.cmbEmployeeContract.TabIndex = 32;
             // 
-            // emailBox
+            // txbEmployeeEmail
             // 
-            this.emailBox.Location = new System.Drawing.Point(169, 153);
-            this.emailBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.emailBox.Name = "emailBox";
-            this.emailBox.Size = new System.Drawing.Size(131, 27);
-            this.emailBox.TabIndex = 29;
+            this.txbEmployeeEmail.Location = new System.Drawing.Point(169, 153);
+            this.txbEmployeeEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.txbEmployeeEmail.Name = "txbEmployeeEmail";
+            this.txbEmployeeEmail.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeEmail.TabIndex = 29;
             // 
-            // wageBox
+            // txbEmployeeWage
             // 
-            this.wageBox.Location = new System.Drawing.Point(519, 185);
-            this.wageBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.wageBox.Name = "wageBox";
-            this.wageBox.Size = new System.Drawing.Size(131, 27);
-            this.wageBox.TabIndex = 28;
+            this.txbEmployeeWage.Location = new System.Drawing.Point(519, 185);
+            this.txbEmployeeWage.Margin = new System.Windows.Forms.Padding(4);
+            this.txbEmployeeWage.Name = "txbEmployeeWage";
+            this.txbEmployeeWage.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeWage.TabIndex = 28;
             // 
-            // allergies_issuesBox
+            // txbEmployeeAllergies
             // 
-            this.allergies_issuesBox.Location = new System.Drawing.Point(519, 85);
-            this.allergies_issuesBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.allergies_issuesBox.Name = "allergies_issuesBox";
-            this.allergies_issuesBox.Size = new System.Drawing.Size(131, 27);
-            this.allergies_issuesBox.TabIndex = 27;
+            this.txbEmployeeAllergies.Location = new System.Drawing.Point(519, 85);
+            this.txbEmployeeAllergies.Margin = new System.Windows.Forms.Padding(4);
+            this.txbEmployeeAllergies.Name = "txbEmployeeAllergies";
+            this.txbEmployeeAllergies.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeAllergies.TabIndex = 27;
             // 
-            // addressBox
+            // txbEmployeeAdress
             // 
-            this.addressBox.Location = new System.Drawing.Point(169, 121);
-            this.addressBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.addressBox.Name = "addressBox";
-            this.addressBox.Size = new System.Drawing.Size(131, 27);
-            this.addressBox.TabIndex = 25;
+            this.txbEmployeeAdress.Location = new System.Drawing.Point(169, 121);
+            this.txbEmployeeAdress.Margin = new System.Windows.Forms.Padding(4);
+            this.txbEmployeeAdress.Name = "txbEmployeeAdress";
+            this.txbEmployeeAdress.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeAdress.TabIndex = 25;
             // 
-            // lastNameBox
+            // txbEmployeeLastname
             // 
-            this.lastNameBox.Location = new System.Drawing.Point(169, 58);
-            this.lastNameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lastNameBox.Name = "lastNameBox";
-            this.lastNameBox.Size = new System.Drawing.Size(131, 27);
-            this.lastNameBox.TabIndex = 21;
+            this.txbEmployeeLastname.Location = new System.Drawing.Point(169, 58);
+            this.txbEmployeeLastname.Margin = new System.Windows.Forms.Padding(4);
+            this.txbEmployeeLastname.Name = "txbEmployeeLastname";
+            this.txbEmployeeLastname.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeLastname.TabIndex = 21;
             // 
-            // firstNameBox
+            // txbEmployeeFirstname
             // 
-            this.firstNameBox.Location = new System.Drawing.Point(169, 26);
-            this.firstNameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.firstNameBox.Name = "firstNameBox";
-            this.firstNameBox.Size = new System.Drawing.Size(131, 27);
-            this.firstNameBox.TabIndex = 20;
+            this.txbEmployeeFirstname.Location = new System.Drawing.Point(169, 26);
+            this.txbEmployeeFirstname.Margin = new System.Windows.Forms.Padding(4);
+            this.txbEmployeeFirstname.Name = "txbEmployeeFirstname";
+            this.txbEmployeeFirstname.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeFirstname.TabIndex = 20;
             // 
             // label21
             // 
@@ -855,29 +855,29 @@
             this.label17.TabIndex = 14;
             this.label17.Text = "Privilege";
             // 
-            // privilegeComboBox
+            // cmbEmployeePrivilege
             // 
-            this.privilegeComboBox.FormattingEnabled = true;
-            this.privilegeComboBox.Items.AddRange(new object[] {
+            this.cmbEmployeePrivilege.FormattingEnabled = true;
+            this.cmbEmployeePrivilege.Items.AddRange(new object[] {
             "User",
             "Manager",
             "Admin"});
-            this.privilegeComboBox.Location = new System.Drawing.Point(519, 151);
-            this.privilegeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.privilegeComboBox.Name = "privilegeComboBox";
-            this.privilegeComboBox.Size = new System.Drawing.Size(131, 28);
-            this.privilegeComboBox.TabIndex = 13;
+            this.cmbEmployeePrivilege.Location = new System.Drawing.Point(519, 151);
+            this.cmbEmployeePrivilege.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEmployeePrivilege.Name = "cmbEmployeePrivilege";
+            this.cmbEmployeePrivilege.Size = new System.Drawing.Size(131, 28);
+            this.cmbEmployeePrivilege.TabIndex = 13;
             // 
-            // departmentComboBox
+            // cmbEmployeeDepartment
             // 
-            this.departmentComboBox.FormattingEnabled = true;
-            this.departmentComboBox.Items.AddRange(new object[] {
+            this.cmbEmployeeDepartment.FormattingEnabled = true;
+            this.cmbEmployeeDepartment.Items.AddRange(new object[] {
             "Electronics"});
-            this.departmentComboBox.Location = new System.Drawing.Point(519, 117);
-            this.departmentComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.departmentComboBox.Name = "departmentComboBox";
-            this.departmentComboBox.Size = new System.Drawing.Size(131, 28);
-            this.departmentComboBox.TabIndex = 7;
+            this.cmbEmployeeDepartment.Location = new System.Drawing.Point(519, 117);
+            this.cmbEmployeeDepartment.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEmployeeDepartment.Name = "cmbEmployeeDepartment";
+            this.cmbEmployeeDepartment.Size = new System.Drawing.Size(131, 28);
+            this.cmbEmployeeDepartment.TabIndex = 7;
             // 
             // label14
             // 
@@ -939,16 +939,16 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Employees";
             // 
-            // employeesListBox
+            // lsbEmployees
             // 
-            this.employeesListBox.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.employeesListBox.FormattingEnabled = true;
-            this.employeesListBox.ItemHeight = 20;
-            this.employeesListBox.Location = new System.Drawing.Point(11, 63);
-            this.employeesListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.employeesListBox.Name = "employeesListBox";
-            this.employeesListBox.Size = new System.Drawing.Size(263, 364);
-            this.employeesListBox.TabIndex = 3;
+            this.lsbEmployees.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lsbEmployees.FormattingEnabled = true;
+            this.lsbEmployees.ItemHeight = 20;
+            this.lsbEmployees.Location = new System.Drawing.Point(11, 63);
+            this.lsbEmployees.Margin = new System.Windows.Forms.Padding(4);
+            this.lsbEmployees.Name = "lsbEmployees";
+            this.lsbEmployees.Size = new System.Drawing.Size(263, 364);
+            this.lsbEmployees.TabIndex = 3;
             // 
             // tabProducts
             // 
@@ -1228,7 +1228,7 @@
             legend1.Name = "Legend1";
             this.chartAttendance.Legends.Add(legend1);
             this.chartAttendance.Location = new System.Drawing.Point(501, 213);
-            this.chartAttendance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartAttendance.Margin = new System.Windows.Forms.Padding(4);
             this.chartAttendance.Name = "chartAttendance";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
@@ -1253,7 +1253,7 @@
             // 
             this.cbEmployees.FormattingEnabled = true;
             this.cbEmployees.Location = new System.Drawing.Point(315, 284);
-            this.cbEmployees.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbEmployees.Margin = new System.Windows.Forms.Padding(4);
             this.cbEmployees.Name = "cbEmployees";
             this.cbEmployees.Size = new System.Drawing.Size(160, 28);
             this.cbEmployees.TabIndex = 23;
@@ -1266,7 +1266,7 @@
             legend2.Name = "Legend1";
             this.chartProd.Legends.Add(legend2);
             this.chartProd.Location = new System.Drawing.Point(13, 87);
-            this.chartProd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartProd.Margin = new System.Windows.Forms.Padding(4);
             this.chartProd.Name = "chartProd";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
@@ -1307,7 +1307,7 @@
             this.lbMorning.FormattingEnabled = true;
             this.lbMorning.ItemHeight = 20;
             this.lbMorning.Location = new System.Drawing.Point(872, 298);
-            this.lbMorning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbMorning.Margin = new System.Windows.Forms.Padding(4);
             this.lbMorning.Name = "lbMorning";
             this.lbMorning.Size = new System.Drawing.Size(212, 44);
             this.lbMorning.TabIndex = 22;
@@ -1349,7 +1349,7 @@
             this.lbAfternoon.FormattingEnabled = true;
             this.lbAfternoon.ItemHeight = 20;
             this.lbAfternoon.Location = new System.Drawing.Point(872, 213);
-            this.lbAfternoon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbAfternoon.Margin = new System.Windows.Forms.Padding(4);
             this.lbAfternoon.Name = "lbAfternoon";
             this.lbAfternoon.Size = new System.Drawing.Size(212, 44);
             this.lbAfternoon.TabIndex = 21;
@@ -1359,7 +1359,7 @@
             this.lbLowProd.FormattingEnabled = true;
             this.lbLowProd.ItemHeight = 20;
             this.lbLowProd.Location = new System.Drawing.Point(423, 87);
-            this.lbLowProd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbLowProd.Margin = new System.Windows.Forms.Padding(4);
             this.lbLowProd.Name = "lbLowProd";
             this.lbLowProd.Size = new System.Drawing.Size(159, 84);
             this.lbLowProd.TabIndex = 13;
@@ -1380,7 +1380,7 @@
             this.lbNight.FormattingEnabled = true;
             this.lbNight.ItemHeight = 20;
             this.lbNight.Location = new System.Drawing.Point(872, 117);
-            this.lbNight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbNight.Margin = new System.Windows.Forms.Padding(4);
             this.lbNight.Name = "lbNight";
             this.lbNight.Size = new System.Drawing.Size(213, 44);
             this.lbNight.TabIndex = 18;
@@ -1388,7 +1388,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(820, 9);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(265, 27);
             this.dateTimePicker1.TabIndex = 15;
@@ -1398,7 +1398,7 @@
             // 
             this.tabLogout.Controls.Add(this.label27);
             this.tabLogout.Location = new System.Drawing.Point(4, 29);
-            this.tabLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabLogout.Margin = new System.Windows.Forms.Padding(4);
             this.tabLogout.Name = "tabLogout";
             this.tabLogout.Size = new System.Drawing.Size(1093, 470);
             this.tabLogout.TabIndex = 5;
@@ -1434,10 +1434,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabEmployees.ResumeLayout(false);
             this.tabEmployees.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.saveButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteEmpButton)).EndInit();
+            this.txbEmployeePhone.ResumeLayout(false);
+            this.txbEmployeePhone.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEmployeeSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEmployeeRemove)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabProducts.ResumeLayout(false);
@@ -1506,42 +1506,42 @@
         private System.Windows.Forms.Button btnScheduleUnassign;
         private System.Windows.Forms.Label lblSMaxEmployee;
         private System.Windows.Forms.Label labelSMinEmployee;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox saveButton;
-        private System.Windows.Forms.PictureBox deleteEmpButton;
+        private System.Windows.Forms.GroupBox txbEmployeePhone;
+        private System.Windows.Forms.PictureBox btnEmployeeSave;
+        private System.Windows.Forms.PictureBox btnEmployeeRemove;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox passwordBox;
+        private System.Windows.Forms.TextBox txbEmployeePassword;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox usernameBox;
+        private System.Windows.Forms.TextBox txbEmployeeUsername;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox phoneNoBox;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.ComboBox contractComboBox;
-        private System.Windows.Forms.TextBox emailBox;
-        private System.Windows.Forms.TextBox wageBox;
-        private System.Windows.Forms.TextBox allergies_issuesBox;
-        private System.Windows.Forms.TextBox addressBox;
-        private System.Windows.Forms.TextBox lastNameBox;
-        private System.Windows.Forms.TextBox firstNameBox;
+        private System.Windows.Forms.ComboBox cmbEmployeeContract;
+        private System.Windows.Forms.TextBox txbEmployeeEmail;
+        private System.Windows.Forms.TextBox txbEmployeeWage;
+        private System.Windows.Forms.TextBox txbEmployeeAllergies;
+        private System.Windows.Forms.TextBox txbEmployeeAdress;
+        private System.Windows.Forms.TextBox txbEmployeeLastname;
+        private System.Windows.Forms.TextBox txbEmployeeFirstname;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox privilegeComboBox;
-        private System.Windows.Forms.ComboBox departmentComboBox;
+        private System.Windows.Forms.ComboBox cmbEmployeePrivilege;
+        private System.Windows.Forms.ComboBox cmbEmployeeDepartment;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox employeesListBox;
+        private System.Windows.Forms.ListBox lsbEmployees;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbEmployeeSearch;
+        private System.Windows.Forms.TextBox txbEmployeeSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox cmbGender;
+        private System.Windows.Forms.ComboBox cmbEmployeeGender;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpEmployeeHire;
         private System.Windows.Forms.DateTimePicker dtpEmployeeBirthday;

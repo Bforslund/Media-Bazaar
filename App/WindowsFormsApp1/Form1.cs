@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
             stats = new Stats();
             usr = new User();
 
-            employeesListBox.DataSource = employeeController.GetEmployees();
+            lsbEmployees.DataSource = employeeController.GetEmployees();
             cbEmployees.DataSource = employeeController.GetEmployees();
 
             //Comment out this to disable the login
@@ -90,7 +90,7 @@ namespace WindowsFormsApp1
             }
             if (tbcMain.SelectedTab == tabEmployees)
             {
-                employeesListBox.DataSource = employeeController.GetEmployees();
+                lsbEmployees.DataSource = employeeController.GetEmployees();
             }
             if (tbcMain.SelectedTab == tabStatistics)
             {
@@ -318,12 +318,12 @@ namespace WindowsFormsApp1
         #region employee tab
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (!IsNumeric(wageBox.Text))
+            if (!IsNumeric(txbEmployeeWage.Text))
             {
                 MessageBox.Show("Fill in a correct wage amount!");
                 return;
             }
-            if (employeesListBox.SelectedItem != null) //! when an emloyee IS selected, change his data
+            if (lsbEmployees.SelectedItem != null) //! when an emloyee IS selected, change his data
             {
                 saveEmployeeData(); //TODO add the shift preference
                 refreshListView();
@@ -332,14 +332,14 @@ namespace WindowsFormsApp1
             //TODO add try catch for empty fields and display error message
             //TODO display confirmation for creation or saving
 
-            employeesListBox.DataSource = employeeController.GetEmployees();
+            lsbEmployees.DataSource = employeeController.GetEmployees();
         }
 
         private void deleteEmpButton_Click(object sender, EventArgs e)
         {
-            employeeController.RemoveEmployee((Personal)employeesListBox.SelectedItem);
+            employeeController.RemoveEmployee((Personal)lsbEmployees.SelectedItem);
             
-            employeesListBox.DataSource = employeeController.GetEmployees();
+            lsbEmployees.DataSource = employeeController.GetEmployees();
 
         }
 
@@ -363,29 +363,29 @@ namespace WindowsFormsApp1
         private void saveButton_MouseHover(object sender, EventArgs e)
         {
             ToolTip tt = new ToolTip();
-            tt.SetToolTip(this.saveButton, "Save changes");
+            tt.SetToolTip(this.btnEmployeeSave, "Save changes");
         }
 
         #region function
         public void saveEmployeeData()
         {
             //convert form fields to data
-            string email = emailBox.Text;
-            string firstname = firstNameBox.Text;
-            string lastname = lastNameBox.Text;
-            int privilage = privilegeComboBox.SelectedIndex;
-            string username = usernameBox.Text;
-            string adress = addressBox.Text;
+            string email = txbEmployeeEmail.Text;
+            string firstname = txbEmployeeFirstname.Text;
+            string lastname = txbEmployeeLastname.Text;
+            int privilage = cmbEmployeePrivilege.SelectedIndex;
+            string username = txbEmployeeUsername.Text;
+            string adress = txbEmployeeAdress.Text;
             DateTime birthDay = dtpEmployeeBirthday.Value;
-            bool contract = Convert.ToBoolean(contractComboBox.SelectedIndex);
+            bool contract = Convert.ToBoolean(cmbEmployeeContract.SelectedIndex);
             int department = 0/*departmentComboBox.SelectedIndex*/;
             DateTime hiredate = dtpEmployeeHire.Value;
             string phoneNumber = phoneNoBox.Text;
-            string password = passwordBox.Text;
-            double wage = Convert.ToDouble(wageBox.Text);
+            string password = txbEmployeePassword.Text;
+            double wage = Convert.ToDouble(txbEmployeeWage.Text);
 
             employeeController.saveEmployeeData(email, firstname, lastname, privilage, username, password, adress, birthDay, contract, department, hiredate, phoneNumber, wage);
-            employeesListBox.DataSource = employeeController.GetEmployees();
+            lsbEmployees.DataSource = employeeController.GetEmployees();
         }
 
         private void refreshListView()
@@ -536,13 +536,13 @@ namespace WindowsFormsApp1
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            employeesListBox.DataSource = employeeController.FilterEmployees(tbEmployeeSearch.Text);
+            lsbEmployees.DataSource = employeeController.FilterEmployees(txbEmployeeSearch.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            usernameBox.Text = RandomString(5);
-            passwordBox.Text = RandomString(8);
+            txbEmployeeUsername.Text = RandomString(5);
+            txbEmployeePassword.Text = RandomString(8);
         }
 
         public static string RandomString(int length)
