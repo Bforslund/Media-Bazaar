@@ -130,21 +130,21 @@
             this.lsbProducts = new System.Windows.Forms.ListBox();
             this.tabSchedule = new System.Windows.Forms.TabPage();
             this.tabStatistics = new System.Windows.Forms.TabPage();
-            this.chartAttendance = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.crtStatAttendence = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label37 = new System.Windows.Forms.Label();
-            this.cbEmployees = new System.Windows.Forms.ComboBox();
-            this.chartProd = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.cmbStatEmployee = new System.Windows.Forms.ComboBox();
+            this.crtStatProducts = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.lbMorning = new System.Windows.Forms.ListBox();
+            this.lsbStatShiftMorning = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblmorshift = new System.Windows.Forms.Label();
-            this.lbAfternoon = new System.Windows.Forms.ListBox();
-            this.lbLowProd = new System.Windows.Forms.ListBox();
+            this.lsbStatShiftAfternoon = new System.Windows.Forms.ListBox();
+            this.lsbStatLowProducts = new System.Windows.Forms.ListBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.lbNight = new System.Windows.Forms.ListBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.lsbStatShiftNight = new System.Windows.Forms.ListBox();
+            this.dtpStatDate = new System.Windows.Forms.DateTimePicker();
             this.tabLogout = new System.Windows.Forms.TabPage();
             this.label27 = new System.Windows.Forms.Label();
             this.groupSInformation.SuspendLayout();
@@ -160,8 +160,8 @@
             this.tabProducts.SuspendLayout();
             this.tabSchedule.SuspendLayout();
             this.tabStatistics.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartAttendance)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartProd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtStatAttendence)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtStatProducts)).BeginInit();
             this.tabLogout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1198,21 +1198,21 @@
             // 
             // tabStatistics
             // 
-            this.tabStatistics.Controls.Add(this.chartAttendance);
+            this.tabStatistics.Controls.Add(this.crtStatAttendence);
             this.tabStatistics.Controls.Add(this.label37);
-            this.tabStatistics.Controls.Add(this.cbEmployees);
-            this.tabStatistics.Controls.Add(this.chartProd);
+            this.tabStatistics.Controls.Add(this.cmbStatEmployee);
+            this.tabStatistics.Controls.Add(this.crtStatProducts);
             this.tabStatistics.Controls.Add(this.label6);
             this.tabStatistics.Controls.Add(this.label11);
-            this.tabStatistics.Controls.Add(this.lbMorning);
+            this.tabStatistics.Controls.Add(this.lsbStatShiftMorning);
             this.tabStatistics.Controls.Add(this.label8);
             this.tabStatistics.Controls.Add(this.label7);
             this.tabStatistics.Controls.Add(this.lblmorshift);
-            this.tabStatistics.Controls.Add(this.lbAfternoon);
-            this.tabStatistics.Controls.Add(this.lbLowProd);
+            this.tabStatistics.Controls.Add(this.lsbStatShiftAfternoon);
+            this.tabStatistics.Controls.Add(this.lsbStatLowProducts);
             this.tabStatistics.Controls.Add(this.label16);
-            this.tabStatistics.Controls.Add(this.lbNight);
-            this.tabStatistics.Controls.Add(this.dateTimePicker1);
+            this.tabStatistics.Controls.Add(this.lsbStatShiftNight);
+            this.tabStatistics.Controls.Add(this.dtpStatDate);
             this.tabStatistics.Location = new System.Drawing.Point(4, 29);
             this.tabStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabStatistics.Name = "tabStatistics";
@@ -1221,23 +1221,23 @@
             this.tabStatistics.Text = "Statistics";
             this.tabStatistics.UseVisualStyleBackColor = true;
             // 
-            // chartAttendance
+            // crtStatAttendence
             // 
             chartArea1.Name = "ChartArea1";
-            this.chartAttendance.ChartAreas.Add(chartArea1);
+            this.crtStatAttendence.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chartAttendance.Legends.Add(legend1);
-            this.chartAttendance.Location = new System.Drawing.Point(501, 213);
-            this.chartAttendance.Margin = new System.Windows.Forms.Padding(4);
-            this.chartAttendance.Name = "chartAttendance";
+            this.crtStatAttendence.Legends.Add(legend1);
+            this.crtStatAttendence.Location = new System.Drawing.Point(501, 213);
+            this.crtStatAttendence.Margin = new System.Windows.Forms.Padding(4);
+            this.crtStatAttendence.Name = "crtStatAttendence";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series1.Legend = "Legend1";
             series1.Name = "Attendance";
-            this.chartAttendance.Series.Add(series1);
-            this.chartAttendance.Size = new System.Drawing.Size(332, 244);
-            this.chartAttendance.TabIndex = 25;
-            this.chartAttendance.Text = "chart1";
+            this.crtStatAttendence.Series.Add(series1);
+            this.crtStatAttendence.Size = new System.Drawing.Size(332, 244);
+            this.crtStatAttendence.TabIndex = 25;
+            this.crtStatAttendence.Text = "chart1";
             // 
             // label37
             // 
@@ -1249,36 +1249,36 @@
             this.label37.TabIndex = 24;
             this.label37.Text = "Employee statistics";
             // 
-            // cbEmployees
+            // cmbStatEmployee
             // 
-            this.cbEmployees.FormattingEnabled = true;
-            this.cbEmployees.Location = new System.Drawing.Point(315, 284);
-            this.cbEmployees.Margin = new System.Windows.Forms.Padding(4);
-            this.cbEmployees.Name = "cbEmployees";
-            this.cbEmployees.Size = new System.Drawing.Size(160, 28);
-            this.cbEmployees.TabIndex = 23;
-            this.cbEmployees.SelectedIndexChanged += new System.EventHandler(this.cbEmployees_SelectedIndexChanged);
+            this.cmbStatEmployee.FormattingEnabled = true;
+            this.cmbStatEmployee.Location = new System.Drawing.Point(315, 284);
+            this.cmbStatEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbStatEmployee.Name = "cmbStatEmployee";
+            this.cmbStatEmployee.Size = new System.Drawing.Size(160, 28);
+            this.cmbStatEmployee.TabIndex = 23;
+            this.cmbStatEmployee.SelectedIndexChanged += new System.EventHandler(this.cbEmployees_SelectedIndexChanged);
             // 
-            // chartProd
+            // crtStatProducts
             // 
             chartArea2.Name = "ChartArea1";
-            this.chartProd.ChartAreas.Add(chartArea2);
+            this.crtStatProducts.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chartProd.Legends.Add(legend2);
-            this.chartProd.Location = new System.Drawing.Point(13, 87);
-            this.chartProd.Margin = new System.Windows.Forms.Padding(4);
-            this.chartProd.Name = "chartProd";
+            this.crtStatProducts.Legends.Add(legend2);
+            this.crtStatProducts.Location = new System.Drawing.Point(13, 87);
+            this.crtStatProducts.Margin = new System.Windows.Forms.Padding(4);
+            this.crtStatProducts.Name = "crtStatProducts";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Stock";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
             series3.Name = "Min_stock";
-            this.chartProd.Series.Add(series2);
-            this.chartProd.Series.Add(series3);
-            this.chartProd.Size = new System.Drawing.Size(400, 369);
-            this.chartProd.TabIndex = 0;
-            this.chartProd.Text = "chart1";
+            this.crtStatProducts.Series.Add(series2);
+            this.crtStatProducts.Series.Add(series3);
+            this.crtStatProducts.Size = new System.Drawing.Size(400, 369);
+            this.crtStatProducts.TabIndex = 0;
+            this.crtStatProducts.Text = "chart1";
             // 
             // label6
             // 
@@ -1302,15 +1302,15 @@
             this.label11.TabIndex = 20;
             this.label11.Text = "Afternoon shift";
             // 
-            // lbMorning
+            // lsbStatShiftMorning
             // 
-            this.lbMorning.FormattingEnabled = true;
-            this.lbMorning.ItemHeight = 20;
-            this.lbMorning.Location = new System.Drawing.Point(872, 298);
-            this.lbMorning.Margin = new System.Windows.Forms.Padding(4);
-            this.lbMorning.Name = "lbMorning";
-            this.lbMorning.Size = new System.Drawing.Size(212, 44);
-            this.lbMorning.TabIndex = 22;
+            this.lsbStatShiftMorning.FormattingEnabled = true;
+            this.lsbStatShiftMorning.ItemHeight = 20;
+            this.lsbStatShiftMorning.Location = new System.Drawing.Point(872, 298);
+            this.lsbStatShiftMorning.Margin = new System.Windows.Forms.Padding(4);
+            this.lsbStatShiftMorning.Name = "lsbStatShiftMorning";
+            this.lsbStatShiftMorning.Size = new System.Drawing.Size(212, 44);
+            this.lsbStatShiftMorning.TabIndex = 22;
             // 
             // label8
             // 
@@ -1344,25 +1344,25 @@
             this.lblmorshift.TabIndex = 17;
             this.lblmorshift.Text = "label10";
             // 
-            // lbAfternoon
+            // lsbStatShiftAfternoon
             // 
-            this.lbAfternoon.FormattingEnabled = true;
-            this.lbAfternoon.ItemHeight = 20;
-            this.lbAfternoon.Location = new System.Drawing.Point(872, 213);
-            this.lbAfternoon.Margin = new System.Windows.Forms.Padding(4);
-            this.lbAfternoon.Name = "lbAfternoon";
-            this.lbAfternoon.Size = new System.Drawing.Size(212, 44);
-            this.lbAfternoon.TabIndex = 21;
+            this.lsbStatShiftAfternoon.FormattingEnabled = true;
+            this.lsbStatShiftAfternoon.ItemHeight = 20;
+            this.lsbStatShiftAfternoon.Location = new System.Drawing.Point(872, 213);
+            this.lsbStatShiftAfternoon.Margin = new System.Windows.Forms.Padding(4);
+            this.lsbStatShiftAfternoon.Name = "lsbStatShiftAfternoon";
+            this.lsbStatShiftAfternoon.Size = new System.Drawing.Size(212, 44);
+            this.lsbStatShiftAfternoon.TabIndex = 21;
             // 
-            // lbLowProd
+            // lsbStatLowProducts
             // 
-            this.lbLowProd.FormattingEnabled = true;
-            this.lbLowProd.ItemHeight = 20;
-            this.lbLowProd.Location = new System.Drawing.Point(423, 87);
-            this.lbLowProd.Margin = new System.Windows.Forms.Padding(4);
-            this.lbLowProd.Name = "lbLowProd";
-            this.lbLowProd.Size = new System.Drawing.Size(159, 84);
-            this.lbLowProd.TabIndex = 13;
+            this.lsbStatLowProducts.FormattingEnabled = true;
+            this.lsbStatLowProducts.ItemHeight = 20;
+            this.lsbStatLowProducts.Location = new System.Drawing.Point(423, 87);
+            this.lsbStatLowProducts.Margin = new System.Windows.Forms.Padding(4);
+            this.lsbStatLowProducts.Name = "lsbStatLowProducts";
+            this.lsbStatLowProducts.Size = new System.Drawing.Size(159, 84);
+            this.lsbStatLowProducts.TabIndex = 13;
             // 
             // label16
             // 
@@ -1375,24 +1375,24 @@
             this.label16.TabIndex = 12;
             this.label16.Text = "Store information";
             // 
-            // lbNight
+            // lsbStatShiftNight
             // 
-            this.lbNight.FormattingEnabled = true;
-            this.lbNight.ItemHeight = 20;
-            this.lbNight.Location = new System.Drawing.Point(872, 117);
-            this.lbNight.Margin = new System.Windows.Forms.Padding(4);
-            this.lbNight.Name = "lbNight";
-            this.lbNight.Size = new System.Drawing.Size(213, 44);
-            this.lbNight.TabIndex = 18;
+            this.lsbStatShiftNight.FormattingEnabled = true;
+            this.lsbStatShiftNight.ItemHeight = 20;
+            this.lsbStatShiftNight.Location = new System.Drawing.Point(872, 117);
+            this.lsbStatShiftNight.Margin = new System.Windows.Forms.Padding(4);
+            this.lsbStatShiftNight.Name = "lsbStatShiftNight";
+            this.lsbStatShiftNight.Size = new System.Drawing.Size(213, 44);
+            this.lsbStatShiftNight.TabIndex = 18;
             // 
-            // dateTimePicker1
+            // dtpStatDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(820, 9);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(265, 27);
-            this.dateTimePicker1.TabIndex = 15;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged_2);
+            this.dtpStatDate.Location = new System.Drawing.Point(820, 9);
+            this.dtpStatDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpStatDate.Name = "dtpStatDate";
+            this.dtpStatDate.Size = new System.Drawing.Size(265, 27);
+            this.dtpStatDate.TabIndex = 15;
+            this.dtpStatDate.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged_2);
             // 
             // tabLogout
             // 
@@ -1446,8 +1446,8 @@
             this.tabSchedule.PerformLayout();
             this.tabStatistics.ResumeLayout(false);
             this.tabStatistics.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartAttendance)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartProd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtStatAttendence)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtStatProducts)).EndInit();
             this.tabLogout.ResumeLayout(false);
             this.tabLogout.PerformLayout();
             this.ResumeLayout(false);
@@ -1545,18 +1545,18 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpEmployeeHire;
         private System.Windows.Forms.DateTimePicker dtpEmployeeBirthday;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartProd;
+        private System.Windows.Forms.DataVisualization.Charting.Chart crtStatProducts;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ListBox lbMorning;
+        private System.Windows.Forms.ListBox lsbStatShiftMorning;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblmorshift;
-        private System.Windows.Forms.ListBox lbAfternoon;
-        private System.Windows.Forms.ListBox lbLowProd;
+        private System.Windows.Forms.ListBox lsbStatShiftAfternoon;
+        private System.Windows.Forms.ListBox lsbStatLowProducts;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ListBox lbNight;
+        private System.Windows.Forms.DateTimePicker dtpStatDate;
+        private System.Windows.Forms.ListBox lsbStatShiftNight;
         private System.Windows.Forms.TabPage tabLogin;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
@@ -1566,8 +1566,8 @@
         private System.Windows.Forms.TabPage tabLogout;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.ComboBox cbEmployees;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartAttendance;
+        private System.Windows.Forms.ComboBox cmbStatEmployee;
+        private System.Windows.Forms.DataVisualization.Charting.Chart crtStatAttendence;
         private System.Windows.Forms.Label label37;
     }
 }

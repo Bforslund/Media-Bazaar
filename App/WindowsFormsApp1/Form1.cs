@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
             usr = new User();
 
             lsbEmployees.DataSource = employeeController.GetEmployees();
-            cbEmployees.DataSource = employeeController.GetEmployees();
+            cmbStatEmployee.DataSource = employeeController.GetEmployees();
 
             //Comment out this to disable the login
             tbcMain.TabPages.Remove(tabEmployees);
@@ -401,10 +401,10 @@ namespace WindowsFormsApp1
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            string theDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+            string theDate = dtpStatDate.Value.ToString("yyyy-MM-dd");
             foreach (var item in stats.loadSchedule(theDate, 0))
             {
-                lbNight.Items.Add(item);
+                lsbStatShiftNight.Items.Add(item);
             }
             lblmorshift.Text = theDate;
         }
@@ -415,13 +415,13 @@ namespace WindowsFormsApp1
             {
                 foreach (Product item in stats.GetData())
                 {
-                    chartProd.Series["Stock"].Points.AddXY(item.Name, item.Stock);
-                    chartProd.Series["Min_stock"].Points.AddXY(item.Name, item.Min_stock);
+                    crtStatProducts.Series["Stock"].Points.AddXY(item.Name, item.Stock);
+                    crtStatProducts.Series["Min_stock"].Points.AddXY(item.Name, item.Min_stock);
 
                     //Business logic for low_on_stock products
                     if (item.Stock < (item.Min_stock * 1.25))
                     {
-                        lbLowProd.Items.Add(item.Name);
+                        lsbStatLowProducts.Items.Add(item.Name);
                     }
                 }
             }
@@ -502,35 +502,35 @@ namespace WindowsFormsApp1
 
         private void dateTimePicker1_ValueChanged_2(object sender, EventArgs e)
         {
-            lbMorning.Items.Clear();
-            lbAfternoon.Items.Clear();
-            lbNight.Items.Clear();
+            lsbStatShiftMorning.Items.Clear();
+            lsbStatShiftAfternoon.Items.Clear();
+            lsbStatShiftNight.Items.Clear();
 
-            string theDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+            string theDate = dtpStatDate.Value.ToString("yyyy-MM-dd");
             foreach (var item in stats.loadSchedule(theDate, 0))
             {
-                lbMorning.Items.Add(item);
+                lsbStatShiftMorning.Items.Add(item);
             }
             foreach (var item in stats.loadSchedule(theDate, 1))
             {
-                lbAfternoon.Items.Add(item);
+                lsbStatShiftAfternoon.Items.Add(item);
             }
             foreach (var item in stats.loadSchedule(theDate, 2))
             {
-                lbNight.Items.Add(item);
+                lsbStatShiftNight.Items.Add(item);
             }
             lblmorshift.Text = theDate;
         }
 
         private void cbEmployees_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chartAttendance.Series["Attendance"].Points.Clear();
+            crtStatAttendence.Series["Attendance"].Points.Clear();
 
-            int absent = usr.checkAttendance(cbEmployees.SelectedValue.ToString(), 0);
-            int present = usr.checkAttendance(cbEmployees.SelectedValue.ToString(), 1);
+            int absent = usr.checkAttendance(cmbStatEmployee.SelectedValue.ToString(), 0);
+            int present = usr.checkAttendance(cmbStatEmployee.SelectedValue.ToString(), 1);
 
-            chartAttendance.Series["Attendance"].Points.AddXY("Present", present);
-            chartAttendance.Series["Attendance"].Points.AddXY("Absent", absent);
+            crtStatAttendence.Series["Attendance"].Points.AddXY("Present", present);
+            crtStatAttendence.Series["Attendance"].Points.AddXY("Absent", absent);
 
         }
 
