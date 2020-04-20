@@ -96,7 +96,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shift.cs" />
-    <Compile Include="SQLhelper.cs" />
     <Compile Include="stats.cs" />
     <Compile Include="UpdateProductForm.cs">
       <SubType>Form</SubType>
