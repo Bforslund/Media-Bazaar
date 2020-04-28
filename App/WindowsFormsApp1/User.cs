@@ -7,12 +7,11 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp1
 {
-    class User
+    public class User
     {
-        private MySqlConnection databaseConnection = DatabaseInfo.sqlConnection;
-
         public void registerUser(string user, string pass, string first, string last, string dob, string addr, string email, string phone)
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             //Auto increment issues?
             string query;
             query = "INSERT INTO users (username, password, firstname, lastname, privilage, wage, hiredate, birthday, adress, email, phone, contract, department_id)";
@@ -43,6 +42,7 @@ namespace WindowsFormsApp1
 
         public int checkAttendance(string employee, int status)
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             string query = "SELECT count(uhs.checkedIn) FROM users u INNER JOIN users_has_shift uhs ON u.id = uhs.users_id WHERE uhs.checkedIn = @status AND CONCAT(u.firstname,' ',u.lastname) = @employee";
 
             try

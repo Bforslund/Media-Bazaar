@@ -14,8 +14,6 @@ namespace WindowsFormsApp1
         private DateTime date;
         List<Shift> shifts = new List<Shift>();
 
-        private MySqlConnection databaseConnection = DatabaseInfo.sqlConnection;
-
         public Day(int id, DateTime date)
         {
             dbId = id;
@@ -27,6 +25,7 @@ namespace WindowsFormsApp1
         /// </summary>
         public void LoadShifts()
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             string query = $"SELECT * FROM `shift` WHERE day_id = {dbId}";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);

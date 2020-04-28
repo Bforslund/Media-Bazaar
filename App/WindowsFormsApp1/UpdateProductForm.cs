@@ -14,12 +14,17 @@ namespace WindowsFormsApp1
     public partial class UpdateProductForm : Form
     {
         ProductController pc;
+        DepartmentController dc = new DepartmentController();
         Product p;
         bool edit;
         public UpdateProductForm(ProductController pc)
         {
             edit = false;
             InitializeComponent();
+            foreach(Department d in dc.GetDepartments())
+            {
+                comboBox1.Items.Add(d);
+            }
             this.pc = pc;
         }
         public UpdateProductForm(ProductController pc, Product p)
@@ -36,7 +41,7 @@ namespace WindowsFormsApp1
             tbName.Text = p.Name;
             tbPrice.Text = p.Price.ToString();
             
-            tbDepartment.Text = p.Department;
+           comboBox1.SelectedItem = p.Department;
         }
 
         private bool UpdateProduct()
@@ -47,13 +52,13 @@ namespace WindowsFormsApp1
                 p.Type = tbType.Text;
                 p.Name = tbName.Text;
                 p.Price = Convert.ToDouble(tbPrice.Text);
-                p.Department = tbDepartment.Text;
+                p.Department = ((Department)comboBox1.SelectedItem);
                 pc.UpdateProduct(p);
                 success = true;
             }
             catch
             {
-                MessageBox.Show("Something went wrong");
+                
                 success = false;
             }
             return success;
@@ -68,15 +73,15 @@ namespace WindowsFormsApp1
 
                 double price = Convert.ToDouble(tbPrice.Text);
 
-                string department = tbDepartment.Text;
+                Department department = ((Department)comboBox1.SelectedItem);
 
                 Product newProduct = new Product(type, name, price, 0, 0, department);
                 pc.AddProduct(newProduct);
                 success = true;
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Something went wrong");
+                
                 success = false;
             }
             return success;

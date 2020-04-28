@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btAddUpdate = new System.Windows.Forms.Button();
-            this.tbDepartment = new System.Windows.Forms.TextBox();
             this.tbPrice = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbType = new System.Windows.Forms.TextBox();
@@ -37,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btAddUpdate
@@ -50,32 +50,25 @@
             this.btAddUpdate.UseVisualStyleBackColor = true;
             this.btAddUpdate.Click += new System.EventHandler(this.btAddUpdate_Click);
             // 
-            // tbDepartment
-            // 
-            this.tbDepartment.Location = new System.Drawing.Point(166, 124);
-            this.tbDepartment.Name = "tbDepartment";
-            this.tbDepartment.Size = new System.Drawing.Size(100, 22);
-            this.tbDepartment.TabIndex = 31;
-            // 
             // tbPrice
             // 
             this.tbPrice.Location = new System.Drawing.Point(166, 96);
             this.tbPrice.Name = "tbPrice";
-            this.tbPrice.Size = new System.Drawing.Size(100, 22);
+            this.tbPrice.Size = new System.Drawing.Size(121, 22);
             this.tbPrice.TabIndex = 29;
             // 
             // tbName
             // 
             this.tbName.Location = new System.Drawing.Point(166, 68);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(100, 22);
+            this.tbName.Size = new System.Drawing.Size(121, 22);
             this.tbName.TabIndex = 28;
             // 
             // tbType
             // 
             this.tbType.Location = new System.Drawing.Point(166, 40);
             this.tbType.Name = "tbType";
-            this.tbType.Size = new System.Drawing.Size(100, 22);
+            this.tbType.Size = new System.Drawing.Size(121, 22);
             this.tbType.TabIndex = 27;
             // 
             // label7
@@ -118,14 +111,22 @@
             this.label1.TabIndex = 22;
             this.label1.Text = "Type:";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(166, 124);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 33;
+            // 
             // UpdateProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Salmon;
             this.ClientSize = new System.Drawing.Size(468, 260);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btAddUpdate);
-            this.Controls.Add(this.tbDepartment);
             this.Controls.Add(this.tbPrice);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.tbType);
@@ -143,7 +144,6 @@
         #endregion
 
         private System.Windows.Forms.Button btAddUpdate;
-        private System.Windows.Forms.TextBox tbDepartment;
         private System.Windows.Forms.TextBox tbPrice;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbType;
@@ -151,5 +151,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

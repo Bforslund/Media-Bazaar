@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
         private double price;
         private int stock;
         private int min_stock;
-        private string department;
+        private Department department;
 
         public string Type { get => type; set => type = value; }
         
@@ -47,14 +47,14 @@ namespace WindowsFormsApp1
             }
         }
         public int Id { get => id; set => id = value; }
-        public string Department { get => department; set => department = value; }
+        public Department Department { get => department; set => department = value; }
 
-        public Product(string type, string name, double price, int stock, int min_stock, string department) 
+        public Product(string type, string name, double price, int stock, int min_stock, Department department) 
             : this(0, type, name, price, stock, min_stock, department)
         {
         }
 
-        public Product(int id, string type,  string name, double price, int stock, int min_stock, string department)
+        public Product(int id, string type,  string name, double price, int stock, int min_stock, Department department)
         {
             this.id = id;
             this.Type = type;

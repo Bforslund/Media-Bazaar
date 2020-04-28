@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Personal
+    public class Personal
     {
-        private int id;
+        public int Id { get; set; }
         private string email;
         private string firstname;
         private string lastname;
@@ -17,17 +17,12 @@ namespace WindowsFormsApp1
 
         public Personal(int id, string email, string firstname, string lastname, int privilage, string username)
         {
-            this.id = id;
+            this.Id = id;
             this.email = email;
             this.firstname = firstname;
             this.lastname = lastname;
             this.privilage = privilage;
             this.username = username;
-        }
-
-        public int Id()
-        {
-            return id;
         }
 
         public override string ToString()

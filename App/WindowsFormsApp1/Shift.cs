@@ -16,8 +16,6 @@ namespace WindowsFormsApp1
         private int maxAssigned;
         private List<Personal> assignedEmployees = new List<Personal>();
 
-        private MySqlConnection databaseConnection = DatabaseInfo.sqlConnection;
-
         public Shift(int id, int dayId, int shiftType, int min, int max)
         {
             this.id = id;
@@ -32,6 +30,7 @@ namespace WindowsFormsApp1
         /// </summary>
         public void LoadAssignedEmployees()
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             string query;
             query = "SELECT * FROM `users_has_shift` us, users u WHERE ";
             query += $"us.shift_id = {id} AND ";

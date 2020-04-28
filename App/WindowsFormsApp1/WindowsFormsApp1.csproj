@@ -76,6 +76,8 @@
     <Compile Include="CalenderManager.cs" />
     <Compile Include="DatabaseInfo.cs" />
     <Compile Include="Day.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="DepartmentController.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeController.cs" />
     <Compile Include="Form1.cs">

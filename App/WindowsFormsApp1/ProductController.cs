@@ -10,10 +10,9 @@ namespace WindowsFormsApp1
 {
     public class ProductController
     {
-        private MySqlConnection databaseConnection = DatabaseInfo.sqlConnection;
-
         public void AddProduct(Product p)
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             try
             {
                 databaseConnection.Open();
@@ -25,7 +24,7 @@ namespace WindowsFormsApp1
                 cmd.Parameters.AddWithValue("@name", p.Name);
                 cmd.Parameters.AddWithValue("@price", p.Price);
                 cmd.Parameters.AddWithValue("@stock", p.Stock);
-                cmd.Parameters.AddWithValue("@department", p.Department);
+                cmd.Parameters.AddWithValue("@department", p.Department.Id);
 
                 cmd.ExecuteNonQuery();
 
@@ -46,6 +45,7 @@ namespace WindowsFormsApp1
 
         public void UpdateProduct(Product p)
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             try
             {
                 databaseConnection.Open();
@@ -76,7 +76,7 @@ namespace WindowsFormsApp1
 
         public void DeleteProduct(Product p)
         {
-
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             try
             {
                 databaseConnection.Open();
@@ -97,30 +97,9 @@ namespace WindowsFormsApp1
             }
         }
 
-
-        
-        public List<Product> GetListOfProducts()
-        {
-            try
-            {
-                return GetAllProducts();
-            }
-            catch(MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                databaseConnection.Close();
-            }
-        }
-
         public bool DecreaseStock(Product p, int value)
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             try
             {
                 databaseConnection.Open();
@@ -153,6 +132,7 @@ namespace WindowsFormsApp1
         }
         public bool IncreaseStock(Product p, int value)
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             try
             {
                 databaseConnection.Open();
@@ -183,6 +163,7 @@ namespace WindowsFormsApp1
         }
         public List<Product> FilterProducts(string filterTerm) // same the filtering in the schedule
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             try
             {
                 databaseConnection.Open();
@@ -218,25 +199,37 @@ namespace WindowsFormsApp1
 
         public List<Product> GetAllProducts()
         {
-            databaseConnection.Open();
-            string sql = "SELECT id, type, name, price, stock, department, min_stock FROM Products";
-            List<Product> returnedProducts = new List<Product>();
-            MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
-
-
-
-            MySqlDataReader dr = cmd.ExecuteReader();
-
-
-            while (dr.Read())
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
+            List<Product> products = new List<Product>();
+            try
             {
-                Product p = new Product(Convert.ToInt32(dr["id"]), dr["type"].ToString(), dr["name"].ToString(), Convert.ToDouble(dr["price"]), Convert.ToInt32(dr["stock"]), Convert.ToInt32(dr["min_stock"]), dr["department"].ToString());
-                returnedProducts.Add(p);
+                databaseConnection.Open();
+                string sql = "SELECT id, type, name, price, stock, department, min_stock FROM Products";
+                
+                MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
 
+                MySqlDataReader dr = cmd.ExecuteReader();
 
+                while (dr.Read())
+                {
+                    Department d = new DepartmentController().GetDepartment(Convert.ToInt32(dr["department"]));
+                    Product p = new Product(Convert.ToInt32(dr["id"]), dr["type"].ToString(), dr["name"].ToString(), Convert.ToDouble(dr["price"]), Convert.ToInt32(dr["stock"]), Convert.ToInt32(dr["min_stock"]), d);
+                    products.Add(p);
+                }
+                return products;
             }
-            databaseConnection.Close();
-            return returnedProducts;
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                databaseConnection.Close();
+            }
+           
+            
         }
+
+        
     }
 }

@@ -16,20 +16,22 @@ namespace WindowsFormsApp1
 {
     public partial class MediaBazaar : Form
     {
-        ProductController pc;
+        ProductController productcontroller;
         CalenderManager calenderManager;
         EmployeeController employeeController;
         Stats stats;
         User usr;
+        DepartmentController departmentcontroller;
 
         public MediaBazaar()
         {
             InitializeComponent();
 
             //initialize the controller objects
-            pc = new ProductController();
+            productcontroller = new ProductController();
             calenderManager = new CalenderManager();
             employeeController = new EmployeeController();
+            departmentcontroller = new DepartmentController();
             stats = new Stats();
             usr = new User();
 
@@ -42,6 +44,10 @@ namespace WindowsFormsApp1
             tbcMain.TabPages.Remove(tabSchedule);
             tbcMain.TabPages.Remove(tabStatistics);
             tbcMain.TabPages.Remove(tabLogout);
+            foreach (Personal p in employeeController.GetAllEmployees())
+            {
+                cbManager.Items.Add(p);
+            }
 
         }
 
@@ -100,12 +106,19 @@ namespace WindowsFormsApp1
             {
                 loadData();
             }
+            if (tbcMain.SelectedTab == tabDepartments)
+            {
+                UpdateDepartmentList();
+                btRemoveDepartment.Hide();
+                btUpdateDepartment.Hide();
+                
+            }
         }
 
         #region productsTab
         private void btAdd_Click(object sender, EventArgs e)
         {
-            UpdateProductForm addForm = new UpdateProductForm(pc);
+            UpdateProductForm addForm = new UpdateProductForm(productcontroller);
             addForm.Show();
             addForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
             UpdateProductsList();
@@ -120,7 +133,7 @@ namespace WindowsFormsApp1
                 lblProductName.Text = selectedProduct.Name;
                 lblProductType.Text = selectedProduct.Type;
                 lblProductStock.Text = selectedProduct.Stock.ToString();
-                lblProductDepartment.Text = selectedProduct.Department;
+                lblProductDepartment.Text = selectedProduct.Department.Name;
                 lblProductPrice.Text = selectedProduct.Price.ToString();
                 btnProductUpdate.Show();
                 btnProductRemove.Show();
@@ -137,7 +150,7 @@ namespace WindowsFormsApp1
             {
                 // If 'Yes', do something here.
                 Product selectedProduct = (Product)lsbProducts.SelectedItem;
-                pc.DeleteProduct(selectedProduct);
+                productcontroller.DeleteProduct(selectedProduct);
                 UpdateProductsList();
             }
             else
@@ -150,7 +163,7 @@ namespace WindowsFormsApp1
         {
             Product selectedProduct = (Product)lsbProducts.SelectedItem;
 
-            UpdateProductForm addForm = new UpdateProductForm(pc, selectedProduct);
+            UpdateProductForm addForm = new UpdateProductForm(productcontroller, selectedProduct);
             addForm.Show();
             addForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
 
@@ -159,7 +172,7 @@ namespace WindowsFormsApp1
         private void btCrease_Click(object sender, EventArgs e)
         {
             Product selectedProduct = (Product)lsbProducts.SelectedItem;
-            Increase creaseForm = new Increase(selectedProduct, pc);
+            Increase creaseForm = new Increase(selectedProduct, productcontroller);
 
             creaseForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
             creaseForm.Show();
@@ -172,7 +185,7 @@ namespace WindowsFormsApp1
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            lsbProducts.DataSource = pc.FilterProducts(txbProductsSearch.Text);
+            lsbProducts.DataSource = productcontroller.FilterProducts(txbProductsSearch.Text);
         }
 
         #region functions
@@ -182,7 +195,7 @@ namespace WindowsFormsApp1
 
             try
             {
-                lsbProducts.DataSource = pc.GetListOfProducts();
+                lsbProducts.DataSource = productcontroller.GetAllProducts();
             }
             catch (MySqlException ex)
             {
@@ -244,7 +257,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                calenderManager.SetShift(mcdSchedule.SelectedDates[0], cmbScheduleAssign.SelectedIndex, ((Personal)lsbScheduleEmployees.SelectedItem).Id(), mcdSchedule.ActiveMonth);
+                calenderManager.SetShift(mcdSchedule.SelectedDates[0], cmbScheduleAssign.SelectedIndex, ((Personal)lsbScheduleEmployees.SelectedItem).Id, mcdSchedule.ActiveMonth);
             }
             catch (MySqlException ex)
             {
@@ -255,7 +268,7 @@ namespace WindowsFormsApp1
         }
         private void btnScheduleUnassign_Click(object sender, EventArgs e)
         {
-            calenderManager.RemoveEmployee(mcdSchedule.SelectedDates[0], cmbScheduleAssignedShift.SelectedIndex, ((Personal)lsbAssignedEmployees.SelectedItem).Id(), mcdSchedule.ActiveMonth);
+            calenderManager.RemoveEmployee(mcdSchedule.SelectedDates[0], cmbScheduleAssignedShift.SelectedIndex, ((Personal)lsbAssignedEmployees.SelectedItem).Id, mcdSchedule.ActiveMonth);
             LoadAssignedEmployees();
             LoadCalenderColors();
         }
@@ -556,5 +569,136 @@ namespace WindowsFormsApp1
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[rand.Next(s.Length)]).ToArray());
         }
+        #region departmentsTab
+        private void btAddDepartment_Click(object sender, EventArgs e)
+        {
+            bool success;
+            success = AddDepartments();
+            if (success)
+            {
+                MessageBox.Show("Department successfully added!");
+                tbDepartmentName.Clear();
+                UpdateDepartmentList();
+            }
+            else
+            {
+                MessageBox.Show("Try again!");
+            }
+        }
+        private bool AddDepartments()
+        {
+            bool success;
+            try
+            {
+            
+                string name = tbDepartmentName.Text;
+                Personal manager = (Personal)cbManager.SelectedItem;
+                int min = Convert.ToInt32(tbMin.Text);
+                int max = Convert.ToInt32(tbMax.Text);
+              
+                Department newDepartment = new Department(name, manager.Id, min, max);
+                departmentcontroller.AddDepartment(newDepartment);
+                success = true;
+            }
+            catch
+            {
+                success = false;
+            }
+            return success;
+
+        }
+        private void btUpdateDepartment_Click(object sender, EventArgs e)
+        {
+            Department selectedDepartment = (Department)lbDepartments.SelectedItem;
+
+            bool success;
+            success = UpdateDepartments();
+            if (success)
+            {
+                MessageBox.Show("Department successfully Updated!");
+                UpdateDepartmentList();
+                tbDepartmentName.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Try again!");
+            }
+        }
+        private bool UpdateDepartments()
+        {
+            bool success;
+            Department selectedDepartment = (Department)lbDepartments.SelectedItem;
+            try
+            {
+             
+                selectedDepartment.Name = tbDepartmentName.Text;
+                selectedDepartment.Manager_id = ((Personal)cbManager.SelectedItem).Id;
+                selectedDepartment.Min_employees = Convert.ToInt32(tbMin.Text);
+                selectedDepartment.Max_employees = Convert.ToInt32(tbMax.Text);
+                departmentcontroller.UpdateDepartment(selectedDepartment);
+                success = true;
+            }
+            catch
+            {
+                
+                success = false;
+            }
+            return success;
+        }
+
+        private void btRemoveDepartment_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this department ??",
+                                                "Confirm Delete!!",
+                                                MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                // If 'Yes', do something here.
+                Department selectedDepartment = (Department)lbDepartments.SelectedItem;
+                departmentcontroller.DeleteDepartment(selectedDepartment);
+                UpdateDepartmentList();
+            }
+            else
+            {
+                UpdateDepartmentList();
+            }
+        }
+        private void lbDepartments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Department selectedDepartment = (Department)lbDepartments.SelectedItem;
+
+            if (selectedDepartment != null)
+            {
+                tbDepartmentName.Text = selectedDepartment.Name;
+                cbManager.SelectedItem = employeeController.GetEmployee(selectedDepartment.Manager_id);
+                tbMax.Text = selectedDepartment.Max_employees.ToString();
+                tbMin.Text = selectedDepartment.Min_employees.ToString();
+               
+                btUpdateDepartment.Show();
+                btRemoveDepartment.Show();
+            }
+        }
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            lbDepartments.DataSource = departmentcontroller.FilterDepartments(textBox1.Text);
+        }
+        public void UpdateDepartmentList()
+        {
+            lbDepartments.DataSource = null;
+
+            try
+            {
+                lbDepartments.DataSource = departmentcontroller.GetDepartments();
+            }
+            catch (MySqlException ex)
+            {
+                NoDatabaseConnection(ex);
+            }
+         
+        }
+
+        #endregion
+
+
     }
 }

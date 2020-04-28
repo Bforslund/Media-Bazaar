@@ -14,14 +14,13 @@ namespace WindowsFormsApp1
         private List<Day> days = new List<Day>();
         private DateItem[] dateItems;
 
-        private MySqlConnection databaseConnection = DatabaseInfo.sqlConnection;
-
         /// <summary>
         /// gets all the shifts for the active month from the database and puts them into the "days" list
         /// </summary>
         /// <param name="activeMonth"></param>
         public void LoadShifts(ActiveMonth activeMonth)
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             DateTime date = DateTime.Now;
             DateTime firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
@@ -143,6 +142,7 @@ namespace WindowsFormsApp1
         /// <param name="activeMonth"></param>
         public void SetShift(DateTime date, int shift, int person, ActiveMonth activeMonth)
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             long dayId = -1;
             long shiftId = -1;
 
@@ -239,6 +239,7 @@ namespace WindowsFormsApp1
         /// <param name="activeMonth"></param>
         public void RemoveEmployee(DateTime date, int shiftType, int employeeId, ActiveMonth activeMonth)
         {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             int shiftId = -1;
             foreach (Day day in days)
             {
