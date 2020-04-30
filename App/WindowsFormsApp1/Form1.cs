@@ -43,6 +43,7 @@ namespace WindowsFormsApp1
             tbcMain.TabPages.Remove(tabProducts);
             tbcMain.TabPages.Remove(tabSchedule);
             tbcMain.TabPages.Remove(tabStatistics);
+            tbcMain.TabPages.Remove(tabDepartments);
             tbcMain.TabPages.Remove(tabLogout);
             foreach (Personal p in employeeController.GetAllEmployees())
             {
@@ -64,7 +65,7 @@ namespace WindowsFormsApp1
                 tbcMain.TabPages.Remove(tabSchedule);
                 tbcMain.TabPages.Remove(tabStatistics);
                 tbcMain.TabPages.Remove(tabLogout);
-
+                tbcMain.TabPages.Remove(tabDepartments);
                 tbcMain.TabPages.Add(tabLogin);
             }
 
@@ -461,6 +462,7 @@ namespace WindowsFormsApp1
             {
                 tbcMain.TabPages.Remove(tabLogin);
 
+                tbcMain.TabPages.Add(tabDepartments);
                 tbcMain.TabPages.Add(tabEmployees);
                 tbcMain.TabPages.Add(tabProducts);
                 tbcMain.TabPages.Add(tabSchedule);
@@ -469,21 +471,22 @@ namespace WindowsFormsApp1
             }
 
             //Manager can view a few tabs but not edit them (So he cant mess anything up)
-            else if (stats.userRole == 1)
+            // Mail from Andre "The manager of the shop will only see the statistics. The actual management of the business process is delegated to the administration. "
+            else if (stats.userRole == 3)
             {
                 tbcMain.TabPages.Remove(tabLogin);
-
-                tbcMain.TabPages.Add(tabEmployees);
-                tbcMain.TabPages.Add(tabSchedule);
+                tbcMain.TabPages.Add(tabStatistics);
+                //tbcMain.TabPages.Add(tabEmployees);
+                //tbcMain.TabPages.Add(tabSchedule);
                 tbcMain.TabPages.Add(tabLogout);
             }
 
             //Employee has the least privilages can only acces products page
-            else if (stats.userRole == 0)
+            else if (stats.userRole == 1)
             {
                 tbcMain.TabPages.Remove(tabLogin);
-
-                tbcMain.TabPages.Add(tabProducts);
+                // tabPage request restock tab
+               // tbcMain.TabPages.Add(tabProducts); 
                 tbcMain.TabPages.Add(tabLogout);
             }
         }
