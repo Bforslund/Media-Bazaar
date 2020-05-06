@@ -28,6 +28,13 @@ namespace WindowsFormsApp1
             set { min_stock = value; }
         }
 
+        public Product(string _name, int _amount)
+        {
+            this.Name = _name;
+            this.Stock = _amount;
+        }
+
+
         public int Stock 
         { 
             get

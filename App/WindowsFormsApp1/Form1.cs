@@ -419,12 +419,7 @@ namespace WindowsFormsApp1
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            string theDate = dtpStatDate.Value.ToString("yyyy-MM-dd");
-            foreach (var item in stats.loadSchedule(theDate, 0))
-            {
-                lsbStatShiftNight.Items.Add(item);
-            }
-            lblmorshift.Text = theDate;
+
         }
         #region functions
         private void loadData()
@@ -436,16 +431,58 @@ namespace WindowsFormsApp1
                     crtStatProducts.Series["Stock"].Points.AddXY(item.Name, item.Stock);
                     crtStatProducts.Series["Min_stock"].Points.AddXY(item.Name, item.Min_stock);
 
-                    //Business logic for low_on_stock products
-                    if (item.Stock < (item.Min_stock * 1.25))
-                    {
-                        lsbStatLowProducts.Items.Add(item.Name);
-                    }
+
+                }
+                foreach (Product item in stats.GetDepartmentData())
+                {
+                    chartDepartSales.Series["Amount"].Points.AddXY(item.Name, item.Stock);
+
                 }
             }
             catch (MySqlException ex)
             {
                 NoDatabaseConnection(ex);
+            }
+
+
+            List<StoreStats> monthList = new List<StoreStats>();
+
+
+
+            for (int begin = 1, end = 2; begin <= 12; begin++, end++)
+            {
+                monthList.Add(stats.loadEmployeeCostStats("2020-" + begin + "-01", "2020-" + end + "-01"));
+            }
+            foreach (StoreStats item in monthList)
+            {
+                chartProfit.Series["Salary costs"].Points.AddXY(item.Month, item.EmployeeCosts);
+                chartProfit.Series["Sales income"].Points.AddXY(item.Month, item.SalesIn);
+                chartProfit.Series["Order costs"].Points.AddXY(item.Month, item.ProdCosts);
+                chartProfit.Series["Profit"].Points.AddXY(item.Month, item.EmployeeCosts + item.ProdCosts - item.SalesIn);
+
+            }
+            decimal totalOut = monthList.Sum(item => item.EmployeeCosts);
+
+
+
+        }
+
+        private void reloadChart()
+        {
+            string test = Convert.ToString(dtpStatDate.Value);
+            int month = Convert.ToInt32(test.Substring(0, 1));
+            int lastMonth = month + 1;
+
+            List<StoreStats> monthList = new List<StoreStats>();
+            monthList.Add(stats.loadEmployeeCostStats("2020-" + month + "-01", "2020-" + lastMonth + "-01"));
+            foreach (StoreStats item in monthList)
+            {
+                chartProfit.Series["Salary costs"].Points.AddXY(item.Month, item.EmployeeCosts);
+                chartProfit.Series["Salary costs"].Points.AddXY(item.Month, item.EmployeeCosts);
+                chartProfit.Series["Sales income"].Points.AddXY(item.Month, item.SalesIn);
+                chartProfit.Series["Order costs"].Points.AddXY(item.Month, item.ProdCosts);
+                chartProfit.Series["Profit"].Points.AddXY(item.Month, item.EmployeeCosts + item.ProdCosts - item.SalesIn);
+
             }
         }
         #endregion
@@ -522,24 +559,12 @@ namespace WindowsFormsApp1
 
         private void dateTimePicker1_ValueChanged_2(object sender, EventArgs e)
         {
-            lsbStatShiftMorning.Items.Clear();
-            lsbStatShiftAfternoon.Items.Clear();
-            lsbStatShiftNight.Items.Clear();
+            foreach (var series in chartProfit.Series)
+            {
+                series.Points.Clear();
+            }
 
-            string theDate = dtpStatDate.Value.ToString("yyyy-MM-dd");
-            foreach (var item in stats.loadSchedule(theDate, 0))
-            {
-                lsbStatShiftMorning.Items.Add(item);
-            }
-            foreach (var item in stats.loadSchedule(theDate, 1))
-            {
-                lsbStatShiftAfternoon.Items.Add(item);
-            }
-            foreach (var item in stats.loadSchedule(theDate, 2))
-            {
-                lsbStatShiftNight.Items.Add(item);
-            }
-            lblmorshift.Text = theDate;
+            reloadChart();
         }
 
         private void cbEmployees_SelectedIndexChanged(object sender, EventArgs e)
