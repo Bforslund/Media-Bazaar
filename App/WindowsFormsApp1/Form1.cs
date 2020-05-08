@@ -35,6 +35,12 @@ namespace WindowsFormsApp1
             stats = new Stats();
             usr = new User();
 
+            LoadAtStart();
+
+        }
+
+        private void LoadAtStart() // Everything that needs to be filled at start!
+        {
             lsbEmployees.DataSource = employeeController.GetEmployees();
             cmbStatEmployee.DataSource = employeeController.GetEmployees();
 
@@ -50,6 +56,10 @@ namespace WindowsFormsApp1
                 cbManager.Items.Add(p);
             }
 
+            foreach (Department d in departmentcontroller.GetDepartments())
+            {
+                cmbEmployeeDepartment.Items.Add(d);
+            }
         }
 
         private void tbcMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -112,14 +122,14 @@ namespace WindowsFormsApp1
                 UpdateDepartmentList();
                 btRemoveDepartment.Hide();
                 btUpdateDepartment.Hide();
-                
+
             }
         }
 
         #region productsTab
         private void btAdd_Click(object sender, EventArgs e)
         {
-            UpdateProductForm addForm = new UpdateProductForm(productcontroller);
+            UpdateProductForm addForm = new UpdateProductForm(productcontroller, departmentcontroller);
             addForm.Show();
             addForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
             UpdateProductsList();
@@ -135,7 +145,16 @@ namespace WindowsFormsApp1
                 lblProductType.Text = selectedProduct.Type;
                 lblProductStock.Text = selectedProduct.Stock.ToString();
                 lblProductDepartment.Text = selectedProduct.Department.Name;
-                lblProductPrice.Text = selectedProduct.Price.ToString();
+                lblProductBuyPrice.Text = selectedProduct.Buyingprice.ToString();
+                lblSellPrice.Text = selectedProduct.Sellingprice.ToString();
+                if (selectedProduct.Stock < 10)
+                {
+                    lblProductStock.BackColor = Color.Red;
+                }
+                else
+                {
+                    lblProductStock.BackColor = Color.Transparent;
+                }
                 btnProductUpdate.Show();
                 btnProductRemove.Show();
                 btnProductStockManage.Show();
@@ -164,7 +183,7 @@ namespace WindowsFormsApp1
         {
             Product selectedProduct = (Product)lsbProducts.SelectedItem;
 
-            UpdateProductForm addForm = new UpdateProductForm(productcontroller, selectedProduct);
+            UpdateProductForm addForm = new UpdateProductForm(productcontroller, departmentcontroller, selectedProduct);
             addForm.Show();
             addForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
 
@@ -356,7 +375,7 @@ namespace WindowsFormsApp1
         private void deleteEmpButton_Click(object sender, EventArgs e)
         {
             employeeController.RemoveEmployee((Personal)lsbEmployees.SelectedItem);
-            
+
             lsbEmployees.DataSource = employeeController.GetEmployees();
 
         }
@@ -382,6 +401,17 @@ namespace WindowsFormsApp1
         {
             ToolTip tt = new ToolTip();
             tt.SetToolTip(this.btnEmployeeSave, "Save changes");
+        }
+
+        private void lsbEmployees_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Employee selectedEmployee = (Employee)lsbEmployees.SelectedItem;
+
+            if (selectedEmployee != null)
+            {
+
+                cmbEmployeeDepartment.SelectedItem = departmentcontroller.GetDepartment(selectedEmployee.Department.Id);
+            }
         }
 
         #region function
@@ -523,7 +553,7 @@ namespace WindowsFormsApp1
             {
                 tbcMain.TabPages.Remove(tabLogin);
                 // tabPage request restock tab
-               // tbcMain.TabPages.Add(tabProducts); 
+                // tbcMain.TabPages.Add(tabProducts); 
                 tbcMain.TabPages.Add(tabLogout);
             }
         }
@@ -618,12 +648,12 @@ namespace WindowsFormsApp1
             bool success;
             try
             {
-            
+
                 string name = tbDepartmentName.Text;
                 Personal manager = (Personal)cbManager.SelectedItem;
                 int min = Convert.ToInt32(tbMin.Text);
                 int max = Convert.ToInt32(tbMax.Text);
-              
+
                 Department newDepartment = new Department(name, manager.Id, min, max);
                 departmentcontroller.AddDepartment(newDepartment);
                 success = true;
@@ -658,7 +688,7 @@ namespace WindowsFormsApp1
             Department selectedDepartment = (Department)lbDepartments.SelectedItem;
             try
             {
-             
+
                 selectedDepartment.Name = tbDepartmentName.Text;
                 selectedDepartment.Manager_id = ((Personal)cbManager.SelectedItem).Id;
                 selectedDepartment.Min_employees = Convert.ToInt32(tbMin.Text);
@@ -668,7 +698,7 @@ namespace WindowsFormsApp1
             }
             catch
             {
-                
+
                 success = false;
             }
             return success;
@@ -701,7 +731,7 @@ namespace WindowsFormsApp1
                 cbManager.SelectedItem = employeeController.GetEmployee(selectedDepartment.Manager_id);
                 tbMax.Text = selectedDepartment.Max_employees.ToString();
                 tbMin.Text = selectedDepartment.Min_employees.ToString();
-               
+
                 btUpdateDepartment.Show();
                 btRemoveDepartment.Show();
             }
@@ -722,8 +752,9 @@ namespace WindowsFormsApp1
             {
                 NoDatabaseConnection(ex);
             }
-         
+
         }
+
 
         #endregion
 

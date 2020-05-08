@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btAddUpdate = new System.Windows.Forms.Button();
-            this.tbPrice = new System.Windows.Forms.TextBox();
+            this.tbBuyPrice = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbType = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -37,12 +37,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbSellPrice = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btAddUpdate
             // 
             this.btAddUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAddUpdate.Location = new System.Drawing.Point(123, 180);
+            this.btAddUpdate.Location = new System.Drawing.Point(121, 206);
             this.btAddUpdate.Name = "btAddUpdate";
             this.btAddUpdate.Size = new System.Drawing.Size(179, 42);
             this.btAddUpdate.TabIndex = 32;
@@ -50,12 +52,12 @@
             this.btAddUpdate.UseVisualStyleBackColor = true;
             this.btAddUpdate.Click += new System.EventHandler(this.btAddUpdate_Click);
             // 
-            // tbPrice
+            // tbBuyPrice
             // 
-            this.tbPrice.Location = new System.Drawing.Point(166, 96);
-            this.tbPrice.Name = "tbPrice";
-            this.tbPrice.Size = new System.Drawing.Size(121, 22);
-            this.tbPrice.TabIndex = 29;
+            this.tbBuyPrice.Location = new System.Drawing.Point(166, 96);
+            this.tbBuyPrice.Name = "tbBuyPrice";
+            this.tbBuyPrice.Size = new System.Drawing.Size(121, 22);
+            this.tbBuyPrice.TabIndex = 29;
             // 
             // tbName
             // 
@@ -75,7 +77,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(58, 124);
+            this.label7.Location = new System.Drawing.Point(56, 154);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 20);
             this.label7.TabIndex = 26;
@@ -85,11 +87,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(100, 96);
+            this.label3.Location = new System.Drawing.Point(51, 96);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 20);
+            this.label3.Size = new System.Drawing.Size(107, 20);
             this.label3.TabIndex = 24;
-            this.label3.Text = "Price:";
+            this.label3.Text = "Buying price:";
             // 
             // label2
             // 
@@ -114,10 +116,27 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(166, 124);
+            this.comboBox1.Location = new System.Drawing.Point(166, 150);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 33;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(51, 125);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 20);
+            this.label4.TabIndex = 34;
+            this.label4.Text = "Selling price:";
+            // 
+            // tbSellPrice
+            // 
+            this.tbSellPrice.Location = new System.Drawing.Point(166, 125);
+            this.tbSellPrice.Name = "tbSellPrice";
+            this.tbSellPrice.Size = new System.Drawing.Size(121, 22);
+            this.tbSellPrice.TabIndex = 35;
             // 
             // UpdateProductForm
             // 
@@ -125,9 +144,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Salmon;
             this.ClientSize = new System.Drawing.Size(468, 260);
+            this.Controls.Add(this.tbSellPrice);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btAddUpdate);
-            this.Controls.Add(this.tbPrice);
+            this.Controls.Add(this.tbBuyPrice);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.tbType);
             this.Controls.Add(this.label7);
@@ -144,7 +165,7 @@
         #endregion
 
         private System.Windows.Forms.Button btAddUpdate;
-        private System.Windows.Forms.TextBox tbPrice;
+        private System.Windows.Forms.TextBox tbBuyPrice;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbType;
         private System.Windows.Forms.Label label7;
@@ -152,5 +173,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbSellPrice;
     }
 }

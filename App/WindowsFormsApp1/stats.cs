@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
 
         public List<Product> GetData()
         {
-            string query = "SELECT type, name, price, stock, department, min_stock FROM `products`";
+            string query = "SELECT id, type, name, buy_price, sell_price, stock, department, min_stock FROM `products`";
 
             try
             {
@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
                 while (reader.Read())
                 {
                     Department d = new DepartmentController().GetDepartment(Convert.ToInt32(reader["department"]));
-                    prodlist.Add(new Product(reader["type"].ToString(), reader["name"].ToString(), Convert.ToDouble(reader["price"]), Convert.ToInt32(reader["stock"]), Convert.ToInt32(reader["min_stock"]), d));
+                    prodlist.Add(new Product(Convert.ToInt32(reader["id"]), reader["type"].ToString(), reader["name"].ToString(), Convert.ToDouble(reader["sell_price"]), Convert.ToDouble(reader["buy_price"]), Convert.ToInt32(reader["stock"]), Convert.ToInt32(reader["min_stock"]), d));
                 }
                 databaseConnection.Close();
                 return prodlist;
@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
         public StoreStats loadEmployeeCostStats(string begin, string end)
         {
 
-            string query = "SELECT MONTHNAME(@begin) as Month ,concat(SUM(u.wage) * 8) AS EmployeeCost, getSales.total AS TotalSales, getOrders.totalCost AS totalCosts FROM users u INNER JOIN ( SELECT SUM(amount * p.price) as total FROM saleshistory sh INNER JOIN products p ON p.id = sh.products_id WHERE date BETWEEN CAST(@begin AS DATE) AND CAST(@end AS DATE)) as getSales INNER JOIN ( SELECT SUM(amount * p.price) as totalCost FROM ordertable ot INNER JOIN products p ON p.id = ot.productId WHERE date BETWEEN CAST(@begin AS DATE) AND CAST(@end AS DATE) AND ot.approved = 1) AS getOrders INNER JOIN users_has_shift uhs ON u.id = uhs.users_id INNER JOIN shift s ON s.id = uhs.shift_id INNER JOIN day d ON d.id = s.day_id WHERE uhs.checkedIn = 1 AND d.day BETWEEN CAST(@begin AS DATE) AND CAST(@end AS DATE)";
+            string query = "SELECT MONTHNAME(@begin) as Month ,concat(SUM(u.wage) * 8) AS EmployeeCost, getSales.total AS TotalSales, getOrders.totalCost AS totalCosts FROM users u INNER JOIN ( SELECT SUM(amount * p.sell_price) as total FROM saleshistory sh INNER JOIN products p ON p.id = sh.products_id WHERE date BETWEEN CAST(@begin AS DATE) AND CAST(@end AS DATE)) as getSales INNER JOIN ( SELECT SUM(amount * p.buy_price) as totalCost FROM ordertable ot INNER JOIN products p ON p.id = ot.productId WHERE date BETWEEN CAST(@begin AS DATE) AND CAST(@end AS DATE) AND ot.approved = 1) AS getOrders INNER JOIN users_has_shift uhs ON u.id = uhs.users_id INNER JOIN shift s ON s.id = uhs.shift_id INNER JOIN day d ON d.id = s.day_id WHERE uhs.checkedIn = 1 AND d.day BETWEEN CAST(@begin AS DATE) AND CAST(@end AS DATE)";
             StoreStats month = new StoreStats();
             try
             {
