@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
             this.p = p;
             this.Text = "Update existing product";
             btAddUpdate.Text = "Update product";
-            this.BackColor = Color.IndianRed;
+            
 
 
             tbType.Text = p.Type;

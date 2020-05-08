@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MediaBazaar));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea25 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend25 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series49 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea26 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend26 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series50 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series51 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series52 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series53 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea27 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend27 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series54 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea28 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend28 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series55 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series56 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mcdSchedule = new Pabo.Calendar.MonthCalendar();
             this.lblSSearch = new System.Windows.Forms.Label();
             this.txbScheduleEmployeeSearch = new System.Windows.Forms.TextBox();
@@ -167,6 +167,10 @@
             this.dtpStatDate = new System.Windows.Forms.DateTimePicker();
             this.tabLogout = new System.Windows.Forms.TabPage();
             this.label27 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Icon = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupSInformation.SuspendLayout();
             this.groupBoxSAssign.SuspendLayout();
             this.tbcMain.SuspendLayout();
@@ -186,6 +190,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.crtStatAttendence)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtStatProducts)).BeginInit();
             this.tabLogout.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Icon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // mcdSchedule
@@ -218,18 +225,18 @@
             // lblSSearch
             // 
             this.lblSSearch.AutoSize = true;
-            this.lblSSearch.Location = new System.Drawing.Point(643, 16);
+            this.lblSSearch.Location = new System.Drawing.Point(646, 435);
             this.lblSSearch.Name = "lblSSearch";
-            this.lblSSearch.Size = new System.Drawing.Size(67, 20);
+            this.lblSSearch.Size = new System.Drawing.Size(72, 21);
             this.lblSSearch.TabIndex = 14;
             this.lblSSearch.Text = "Search:";
             // 
             // txbScheduleEmployeeSearch
             // 
-            this.txbScheduleEmployeeSearch.Location = new System.Drawing.Point(715, 12);
+            this.txbScheduleEmployeeSearch.Location = new System.Drawing.Point(738, 432);
             this.txbScheduleEmployeeSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbScheduleEmployeeSearch.Name = "txbScheduleEmployeeSearch";
-            this.txbScheduleEmployeeSearch.Size = new System.Drawing.Size(195, 27);
+            this.txbScheduleEmployeeSearch.Size = new System.Drawing.Size(195, 28);
             this.txbScheduleEmployeeSearch.TabIndex = 13;
             this.txbScheduleEmployeeSearch.TextChanged += new System.EventHandler(this.txbScheduleEmployeeSearch_TextChanged);
             // 
@@ -256,13 +263,15 @@
             // 
             // btnScheduleUnassign
             // 
+            this.btnScheduleUnassign.BackColor = System.Drawing.Color.Red;
+            this.btnScheduleUnassign.ForeColor = System.Drawing.Color.White;
             this.btnScheduleUnassign.Location = new System.Drawing.Point(395, 191);
             this.btnScheduleUnassign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnScheduleUnassign.Name = "btnScheduleUnassign";
             this.btnScheduleUnassign.Size = new System.Drawing.Size(221, 36);
             this.btnScheduleUnassign.TabIndex = 16;
             this.btnScheduleUnassign.Text = "Unassign Employee";
-            this.btnScheduleUnassign.UseVisualStyleBackColor = true;
+            this.btnScheduleUnassign.UseVisualStyleBackColor = false;
             this.btnScheduleUnassign.Click += new System.EventHandler(this.btnScheduleUnassign_Click);
             // 
             // lblSMaxEmployee
@@ -270,7 +279,7 @@
             this.lblSMaxEmployee.AutoSize = true;
             this.lblSMaxEmployee.Location = new System.Drawing.Point(5, 199);
             this.lblSMaxEmployee.Name = "lblSMaxEmployee";
-            this.lblSMaxEmployee.Size = new System.Drawing.Size(234, 20);
+            this.lblSMaxEmployee.Size = new System.Drawing.Size(259, 21);
             this.lblSMaxEmployee.TabIndex = 17;
             this.lblSMaxEmployee.Text = "Max num employees assigned";
             // 
@@ -279,7 +288,7 @@
             this.labelSMinEmployee.AutoSize = true;
             this.labelSMinEmployee.Location = new System.Drawing.Point(5, 178);
             this.labelSMinEmployee.Name = "labelSMinEmployee";
-            this.labelSMinEmployee.Size = new System.Drawing.Size(230, 20);
+            this.labelSMinEmployee.Size = new System.Drawing.Size(252, 21);
             this.labelSMinEmployee.TabIndex = 16;
             this.labelSMinEmployee.Text = "Min num employees assigned";
             // 
@@ -288,7 +297,7 @@
             this.labelSNumEmployeeShift.AutoSize = true;
             this.labelSNumEmployeeShift.Location = new System.Drawing.Point(5, 138);
             this.labelSNumEmployeeShift.Name = "labelSNumEmployeeShift";
-            this.labelSNumEmployeeShift.Size = new System.Drawing.Size(307, 20);
+            this.labelSNumEmployeeShift.Size = new System.Drawing.Size(337, 21);
             this.labelSNumEmployeeShift.TabIndex = 14;
             this.labelSNumEmployeeShift.Text = "Number of employees for selected shift:";
             // 
@@ -297,7 +306,7 @@
             this.labelSShift1.AutoSize = true;
             this.labelSShift1.Location = new System.Drawing.Point(5, 78);
             this.labelSShift1.Name = "labelSShift1";
-            this.labelSShift1.Size = new System.Drawing.Size(118, 20);
+            this.labelSShift1.Size = new System.Drawing.Size(127, 21);
             this.labelSShift1.TabIndex = 10;
             this.labelSShift1.Text = "Selected Shift:";
             // 
@@ -306,7 +315,7 @@
             this.labelSNumEmployeeDay.AutoSize = true;
             this.labelSNumEmployeeDay.Location = new System.Drawing.Point(5, 116);
             this.labelSNumEmployeeDay.Name = "labelSNumEmployeeDay";
-            this.labelSNumEmployeeDay.Size = new System.Drawing.Size(261, 20);
+            this.labelSNumEmployeeDay.Size = new System.Drawing.Size(292, 21);
             this.labelSNumEmployeeDay.TabIndex = 12;
             this.labelSNumEmployeeDay.Text = "Number of employees for the day:";
             // 
@@ -315,7 +324,7 @@
             this.labelSDate1.AutoSize = true;
             this.labelSDate1.Location = new System.Drawing.Point(5, 50);
             this.labelSDate1.Name = "labelSDate1";
-            this.labelSDate1.Size = new System.Drawing.Size(116, 20);
+            this.labelSDate1.Size = new System.Drawing.Size(136, 21);
             this.labelSDate1.TabIndex = 10;
             this.labelSDate1.Text = "Selected date:";
             // 
@@ -324,7 +333,7 @@
             this.lblScheduleDateInfo.AutoSize = true;
             this.lblScheduleDateInfo.Location = new System.Drawing.Point(179, 50);
             this.lblScheduleDateInfo.Name = "lblScheduleDateInfo";
-            this.lblScheduleDateInfo.Size = new System.Drawing.Size(105, 20);
+            this.lblScheduleDateInfo.Size = new System.Drawing.Size(120, 21);
             this.lblScheduleDateInfo.TabIndex = 11;
             this.lblScheduleDateInfo.Text = "Not Selected";
             // 
@@ -338,28 +347,28 @@
             this.cmbScheduleAssignedShift.Location = new System.Drawing.Point(183, 74);
             this.cmbScheduleAssignedShift.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbScheduleAssignedShift.Name = "cmbScheduleAssignedShift";
-            this.cmbScheduleAssignedShift.Size = new System.Drawing.Size(145, 28);
+            this.cmbScheduleAssignedShift.Size = new System.Drawing.Size(145, 29);
             this.cmbScheduleAssignedShift.TabIndex = 10;
             this.cmbScheduleAssignedShift.SelectedIndexChanged += new System.EventHandler(this.cmbScheduleAssignedShift_SelectedIndexChanged);
             // 
             // lsbAssignedEmployees
             // 
             this.lsbAssignedEmployees.FormattingEnabled = true;
-            this.lsbAssignedEmployees.ItemHeight = 20;
+            this.lsbAssignedEmployees.ItemHeight = 21;
             this.lsbAssignedEmployees.Location = new System.Drawing.Point(395, 21);
             this.lsbAssignedEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lsbAssignedEmployees.Name = "lsbAssignedEmployees";
-            this.lsbAssignedEmployees.Size = new System.Drawing.Size(223, 124);
+            this.lsbAssignedEmployees.Size = new System.Drawing.Size(223, 109);
             this.lsbAssignedEmployees.TabIndex = 0;
             // 
             // lsbScheduleEmployees
             // 
             this.lsbScheduleEmployees.FormattingEnabled = true;
-            this.lsbScheduleEmployees.ItemHeight = 20;
+            this.lsbScheduleEmployees.ItemHeight = 21;
             this.lsbScheduleEmployees.Location = new System.Drawing.Point(645, 37);
             this.lsbScheduleEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lsbScheduleEmployees.Name = "lsbScheduleEmployees";
-            this.lsbScheduleEmployees.Size = new System.Drawing.Size(264, 384);
+            this.lsbScheduleEmployees.Size = new System.Drawing.Size(264, 382);
             this.lsbScheduleEmployees.TabIndex = 11;
             this.lsbScheduleEmployees.SelectedIndexChanged += new System.EventHandler(this.lsbScheduleEmployees_SelectedIndexChanged);
             // 
@@ -386,19 +395,21 @@
             this.labelSDate2.AutoSize = true;
             this.labelSDate2.Location = new System.Drawing.Point(8, 30);
             this.labelSDate2.Name = "labelSDate2";
-            this.labelSDate2.Size = new System.Drawing.Size(116, 20);
+            this.labelSDate2.Size = new System.Drawing.Size(136, 21);
             this.labelSDate2.TabIndex = 1;
             this.labelSDate2.Text = "Selected date:";
             // 
             // btnScheduleAssign
             // 
+            this.btnScheduleAssign.BackColor = System.Drawing.Color.Red;
+            this.btnScheduleAssign.ForeColor = System.Drawing.Color.White;
             this.btnScheduleAssign.Location = new System.Drawing.Point(11, 128);
             this.btnScheduleAssign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnScheduleAssign.Name = "btnScheduleAssign";
             this.btnScheduleAssign.Size = new System.Drawing.Size(331, 33);
             this.btnScheduleAssign.TabIndex = 9;
             this.btnScheduleAssign.Text = "Assign employee to shift";
-            this.btnScheduleAssign.UseVisualStyleBackColor = true;
+            this.btnScheduleAssign.UseVisualStyleBackColor = false;
             this.btnScheduleAssign.Click += new System.EventHandler(this.btnScheduleAssign_Click);
             // 
             // labelSEmployee
@@ -406,16 +417,16 @@
             this.labelSEmployee.AutoSize = true;
             this.labelSEmployee.Location = new System.Drawing.Point(8, 60);
             this.labelSEmployee.Name = "labelSEmployee";
-            this.labelSEmployee.Size = new System.Drawing.Size(157, 20);
+            this.labelSEmployee.Size = new System.Drawing.Size(174, 21);
             this.labelSEmployee.TabIndex = 2;
             this.labelSEmployee.Text = "Selected Employee:";
             // 
             // lblScheduleAssignedEmployee
             // 
             this.lblScheduleAssignedEmployee.AutoSize = true;
-            this.lblScheduleAssignedEmployee.Location = new System.Drawing.Point(171, 60);
+            this.lblScheduleAssignedEmployee.Location = new System.Drawing.Point(199, 60);
             this.lblScheduleAssignedEmployee.Name = "lblScheduleAssignedEmployee";
-            this.lblScheduleAssignedEmployee.Size = new System.Drawing.Size(105, 20);
+            this.lblScheduleAssignedEmployee.Size = new System.Drawing.Size(120, 21);
             this.lblScheduleAssignedEmployee.TabIndex = 8;
             this.lblScheduleAssignedEmployee.Text = "Not Selected";
             // 
@@ -424,16 +435,16 @@
             this.labelSShift2.AutoSize = true;
             this.labelSShift2.Location = new System.Drawing.Point(8, 90);
             this.labelSShift2.Name = "labelSShift2";
-            this.labelSShift2.Size = new System.Drawing.Size(118, 20);
+            this.labelSShift2.Size = new System.Drawing.Size(127, 21);
             this.labelSShift2.TabIndex = 4;
             this.labelSShift2.Text = "Selected Shift:";
             // 
             // lblScheduleDateAssign
             // 
             this.lblScheduleDateAssign.AutoSize = true;
-            this.lblScheduleDateAssign.Location = new System.Drawing.Point(171, 30);
+            this.lblScheduleDateAssign.Location = new System.Drawing.Point(199, 30);
             this.lblScheduleDateAssign.Name = "lblScheduleDateAssign";
-            this.lblScheduleDateAssign.Size = new System.Drawing.Size(105, 20);
+            this.lblScheduleDateAssign.Size = new System.Drawing.Size(120, 21);
             this.lblScheduleDateAssign.TabIndex = 7;
             this.lblScheduleDateAssign.Text = "Not Selected";
             // 
@@ -447,7 +458,7 @@
             this.cmbScheduleAssign.Location = new System.Drawing.Point(169, 87);
             this.cmbScheduleAssign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbScheduleAssign.Name = "cmbScheduleAssign";
-            this.cmbScheduleAssign.Size = new System.Drawing.Size(169, 28);
+            this.cmbScheduleAssign.Size = new System.Drawing.Size(169, 29);
             this.cmbScheduleAssign.TabIndex = 6;
             this.cmbScheduleAssign.SelectedIndexChanged += new System.EventHandler(this.cmbScheduleAssign_SelectedIndexChanged);
             // 
@@ -460,30 +471,30 @@
             this.tbcMain.Controls.Add(this.tabSchedule);
             this.tbcMain.Controls.Add(this.tabStatistics);
             this.tbcMain.Controls.Add(this.tabLogout);
-            this.tbcMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbcMain.Location = new System.Drawing.Point(12, 12);
+            this.tbcMain.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbcMain.Location = new System.Drawing.Point(12, 130);
             this.tbcMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbcMain.Name = "tbcMain";
             this.tbcMain.SelectedIndex = 0;
-            this.tbcMain.Size = new System.Drawing.Size(1101, 503);
+            this.tbcMain.Size = new System.Drawing.Size(1330, 503);
             this.tbcMain.TabIndex = 0;
             this.tbcMain.SelectedIndexChanged += new System.EventHandler(this.tbcMain_SelectedIndexChanged);
             // 
             // tabLogin
             // 
+            this.tabLogin.BackColor = System.Drawing.Color.White;
             this.tabLogin.Controls.Add(this.pictureBox1);
             this.tabLogin.Controls.Add(this.label26);
             this.tabLogin.Controls.Add(this.label25);
             this.tabLogin.Controls.Add(this.btnLogin);
             this.tabLogin.Controls.Add(this.txbLoginPassword);
             this.tabLogin.Controls.Add(this.txbLoginUsername);
-            this.tabLogin.Location = new System.Drawing.Point(4, 29);
+            this.tabLogin.Location = new System.Drawing.Point(4, 30);
             this.tabLogin.Margin = new System.Windows.Forms.Padding(4);
             this.tabLogin.Name = "tabLogin";
-            this.tabLogin.Size = new System.Drawing.Size(1093, 470);
+            this.tabLogin.Size = new System.Drawing.Size(1322, 469);
             this.tabLogin.TabIndex = 4;
             this.tabLogin.Text = "Login";
-            this.tabLogin.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -501,7 +512,7 @@
             this.label26.Location = new System.Drawing.Point(279, 209);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(93, 20);
+            this.label26.Size = new System.Drawing.Size(98, 21);
             this.label26.TabIndex = 4;
             this.label26.Text = "Password: ";
             // 
@@ -511,19 +522,21 @@
             this.label25.Location = new System.Drawing.Point(279, 149);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(96, 20);
+            this.label25.Size = new System.Drawing.Size(103, 21);
             this.label25.TabIndex = 3;
             this.label25.Text = "Username: ";
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(287, 265);
+            this.btnLogin.BackColor = System.Drawing.Color.Red;
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.Location = new System.Drawing.Point(296, 266);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(100, 28);
+            this.btnLogin.Size = new System.Drawing.Size(100, 37);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // txbLoginPassword
@@ -531,7 +544,8 @@
             this.txbLoginPassword.Location = new System.Drawing.Point(395, 202);
             this.txbLoginPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txbLoginPassword.Name = "txbLoginPassword";
-            this.txbLoginPassword.Size = new System.Drawing.Size(132, 27);
+            this.txbLoginPassword.PasswordChar = '*';
+            this.txbLoginPassword.Size = new System.Drawing.Size(132, 28);
             this.txbLoginPassword.TabIndex = 1;
             // 
             // txbLoginUsername
@@ -539,7 +553,7 @@
             this.txbLoginUsername.Location = new System.Drawing.Point(395, 149);
             this.txbLoginUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txbLoginUsername.Name = "txbLoginUsername";
-            this.txbLoginUsername.Size = new System.Drawing.Size(132, 27);
+            this.txbLoginUsername.Size = new System.Drawing.Size(132, 28);
             this.txbLoginUsername.TabIndex = 0;
             // 
             // tabDepartments
@@ -559,10 +573,10 @@
             this.tabDepartments.Controls.Add(this.btAddDepartment);
             this.tabDepartments.Controls.Add(this.btRemoveDepartment);
             this.tabDepartments.Controls.Add(this.lbDepartments);
-            this.tabDepartments.Location = new System.Drawing.Point(4, 29);
+            this.tabDepartments.Location = new System.Drawing.Point(4, 30);
             this.tabDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabDepartments.Name = "tabDepartments";
-            this.tabDepartments.Size = new System.Drawing.Size(1093, 470);
+            this.tabDepartments.Size = new System.Drawing.Size(1322, 469);
             this.tabDepartments.TabIndex = 6;
             this.tabDepartments.Text = "Departments";
             this.tabDepartments.UseVisualStyleBackColor = true;
@@ -570,18 +584,18 @@
             // cbManager
             // 
             this.cbManager.FormattingEnabled = true;
-            this.cbManager.Location = new System.Drawing.Point(463, 121);
+            this.cbManager.Location = new System.Drawing.Point(540, 123);
             this.cbManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbManager.Name = "cbManager";
-            this.cbManager.Size = new System.Drawing.Size(289, 28);
+            this.cbManager.Size = new System.Drawing.Size(289, 29);
             this.cbManager.TabIndex = 60;
             // 
             // tbMax
             // 
-            this.tbMax.Location = new System.Drawing.Point(463, 192);
+            this.tbMax.Location = new System.Drawing.Point(540, 194);
             this.tbMax.Margin = new System.Windows.Forms.Padding(4);
             this.tbMax.Name = "tbMax";
-            this.tbMax.Size = new System.Drawing.Size(289, 27);
+            this.tbMax.Size = new System.Drawing.Size(289, 28);
             this.tbMax.TabIndex = 59;
             // 
             // label33
@@ -590,16 +604,16 @@
             this.label33.Location = new System.Drawing.Point(276, 194);
             this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(185, 20);
+            this.label33.Size = new System.Drawing.Size(205, 21);
             this.label33.TabIndex = 58;
             this.label33.Text = "Maximum of employees";
             // 
             // tbMin
             // 
-            this.tbMin.Location = new System.Drawing.Point(463, 158);
+            this.tbMin.Location = new System.Drawing.Point(540, 160);
             this.tbMin.Margin = new System.Windows.Forms.Padding(4);
             this.tbMin.Name = "tbMin";
-            this.tbMin.Size = new System.Drawing.Size(289, 27);
+            this.tbMin.Size = new System.Drawing.Size(289, 28);
             this.tbMin.TabIndex = 57;
             // 
             // label32
@@ -608,7 +622,7 @@
             this.label32.Location = new System.Drawing.Point(276, 158);
             this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(181, 20);
+            this.label32.Size = new System.Drawing.Size(198, 21);
             this.label32.TabIndex = 56;
             this.label32.Text = "Minimum of employees";
             // 
@@ -618,7 +632,7 @@
             this.label31.Location = new System.Drawing.Point(276, 126);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(74, 20);
+            this.label31.Size = new System.Drawing.Size(88, 21);
             this.label31.TabIndex = 54;
             this.label31.Text = "Manager";
             // 
@@ -628,16 +642,16 @@
             this.label30.Location = new System.Drawing.Point(11, 4);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(106, 20);
+            this.label30.Size = new System.Drawing.Size(120, 21);
             this.label30.TabIndex = 53;
             this.label30.Text = "Departments";
             // 
             // tbDepartmentName
             // 
-            this.tbDepartmentName.Location = new System.Drawing.Point(463, 87);
+            this.tbDepartmentName.Location = new System.Drawing.Point(540, 89);
             this.tbDepartmentName.Margin = new System.Windows.Forms.Padding(4);
             this.tbDepartmentName.Name = "tbDepartmentName";
-            this.tbDepartmentName.Size = new System.Drawing.Size(289, 27);
+            this.tbDepartmentName.Size = new System.Drawing.Size(289, 28);
             this.tbDepartmentName.TabIndex = 52;
             // 
             // label29
@@ -646,7 +660,7 @@
             this.label29.Location = new System.Drawing.Point(276, 94);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(143, 20);
+            this.label29.Size = new System.Drawing.Size(166, 21);
             this.label29.TabIndex = 51;
             this.label29.Text = "Department name";
             // 
@@ -655,62 +669,68 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(11, 436);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(67, 20);
+            this.label28.Size = new System.Drawing.Size(72, 21);
             this.label28.TabIndex = 50;
             this.label28.Text = "Search:";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(81, 433);
+            this.textBox1.Location = new System.Drawing.Point(107, 433);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 27);
+            this.textBox1.Size = new System.Drawing.Size(185, 28);
             this.textBox1.TabIndex = 49;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // btUpdateDepartment
             // 
-            this.btUpdateDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btUpdateDepartment.BackColor = System.Drawing.Color.Red;
+            this.btUpdateDepartment.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btUpdateDepartment.ForeColor = System.Drawing.Color.White;
             this.btUpdateDepartment.Location = new System.Drawing.Point(389, 303);
             this.btUpdateDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btUpdateDepartment.Name = "btUpdateDepartment";
             this.btUpdateDepartment.Size = new System.Drawing.Size(213, 34);
             this.btUpdateDepartment.TabIndex = 42;
             this.btUpdateDepartment.Text = "Update department";
-            this.btUpdateDepartment.UseVisualStyleBackColor = true;
+            this.btUpdateDepartment.UseVisualStyleBackColor = false;
             this.btUpdateDepartment.Click += new System.EventHandler(this.btUpdateDepartment_Click);
             // 
             // btAddDepartment
             // 
+            this.btAddDepartment.BackColor = System.Drawing.Color.Red;
+            this.btAddDepartment.ForeColor = System.Drawing.Color.White;
             this.btAddDepartment.Location = new System.Drawing.Point(389, 265);
             this.btAddDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btAddDepartment.Name = "btAddDepartment";
             this.btAddDepartment.Size = new System.Drawing.Size(213, 34);
             this.btAddDepartment.TabIndex = 35;
             this.btAddDepartment.Text = "Add a new department";
-            this.btAddDepartment.UseVisualStyleBackColor = true;
+            this.btAddDepartment.UseVisualStyleBackColor = false;
             this.btAddDepartment.Click += new System.EventHandler(this.btAddDepartment_Click);
             // 
             // btRemoveDepartment
             // 
+            this.btRemoveDepartment.BackColor = System.Drawing.Color.Red;
+            this.btRemoveDepartment.ForeColor = System.Drawing.Color.White;
             this.btRemoveDepartment.Location = new System.Drawing.Point(389, 341);
             this.btRemoveDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btRemoveDepartment.Name = "btRemoveDepartment";
             this.btRemoveDepartment.Size = new System.Drawing.Size(213, 34);
             this.btRemoveDepartment.TabIndex = 34;
             this.btRemoveDepartment.Text = "Remove department";
-            this.btRemoveDepartment.UseVisualStyleBackColor = true;
+            this.btRemoveDepartment.UseVisualStyleBackColor = false;
             this.btRemoveDepartment.Click += new System.EventHandler(this.btRemoveDepartment_Click);
             // 
             // lbDepartments
             // 
             this.lbDepartments.BackColor = System.Drawing.Color.White;
             this.lbDepartments.FormattingEnabled = true;
-            this.lbDepartments.ItemHeight = 20;
+            this.lbDepartments.ItemHeight = 21;
             this.lbDepartments.Location = new System.Drawing.Point(13, 26);
             this.lbDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbDepartments.Name = "lbDepartments";
-            this.lbDepartments.Size = new System.Drawing.Size(255, 384);
+            this.lbDepartments.Size = new System.Drawing.Size(255, 382);
             this.lbDepartments.TabIndex = 32;
             this.lbDepartments.SelectedIndexChanged += new System.EventHandler(this.lbDepartments_SelectedIndexChanged);
             // 
@@ -721,11 +741,11 @@
             this.tabEmployees.Controls.Add(this.txbEmployeePhone);
             this.tabEmployees.Controls.Add(this.label5);
             this.tabEmployees.Controls.Add(this.lsbEmployees);
-            this.tabEmployees.Location = new System.Drawing.Point(4, 29);
+            this.tabEmployees.Location = new System.Drawing.Point(4, 30);
             this.tabEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabEmployees.Name = "tabEmployees";
             this.tabEmployees.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabEmployees.Size = new System.Drawing.Size(1093, 470);
+            this.tabEmployees.Size = new System.Drawing.Size(1322, 469);
             this.tabEmployees.TabIndex = 0;
             this.tabEmployees.Text = "Employees";
             this.tabEmployees.UseVisualStyleBackColor = true;
@@ -735,16 +755,16 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(5, 437);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 20);
+            this.label3.Size = new System.Drawing.Size(72, 21);
             this.label3.TabIndex = 16;
             this.label3.Text = "Search:";
             // 
             // txbEmployeeSearch
             // 
-            this.txbEmployeeSearch.Location = new System.Drawing.Point(79, 433);
+            this.txbEmployeeSearch.Location = new System.Drawing.Point(94, 434);
             this.txbEmployeeSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbEmployeeSearch.Name = "txbEmployeeSearch";
-            this.txbEmployeeSearch.Size = new System.Drawing.Size(195, 27);
+            this.txbEmployeeSearch.Size = new System.Drawing.Size(195, 28);
             this.txbEmployeeSearch.TabIndex = 15;
             this.txbEmployeeSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -792,7 +812,7 @@
             this.dtpEmployeeHire.Location = new System.Drawing.Point(519, 17);
             this.dtpEmployeeHire.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpEmployeeHire.Name = "dtpEmployeeHire";
-            this.dtpEmployeeHire.Size = new System.Drawing.Size(133, 27);
+            this.dtpEmployeeHire.Size = new System.Drawing.Size(133, 28);
             this.dtpEmployeeHire.TabIndex = 49;
             // 
             // dtpEmployeeBirthday
@@ -800,7 +820,7 @@
             this.dtpEmployeeBirthday.Location = new System.Drawing.Point(169, 90);
             this.dtpEmployeeBirthday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpEmployeeBirthday.Name = "dtpEmployeeBirthday";
-            this.dtpEmployeeBirthday.Size = new System.Drawing.Size(133, 27);
+            this.dtpEmployeeBirthday.Size = new System.Drawing.Size(133, 28);
             this.dtpEmployeeBirthday.TabIndex = 48;
             // 
             // cmbEmployeeGender
@@ -813,7 +833,7 @@
             this.cmbEmployeeGender.Location = new System.Drawing.Point(169, 217);
             this.cmbEmployeeGender.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEmployeeGender.Name = "cmbEmployeeGender";
-            this.cmbEmployeeGender.Size = new System.Drawing.Size(131, 28);
+            this.cmbEmployeeGender.Size = new System.Drawing.Size(131, 29);
             this.cmbEmployeeGender.TabIndex = 47;
             // 
             // label4
@@ -822,7 +842,7 @@
             this.label4.Location = new System.Drawing.Point(8, 219);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 20);
+            this.label4.Size = new System.Drawing.Size(74, 21);
             this.label4.TabIndex = 46;
             this.label4.Text = "Gender";
             // 
@@ -831,7 +851,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(357, 121);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 20);
+            this.label2.Size = new System.Drawing.Size(113, 21);
             this.label2.TabIndex = 45;
             this.label2.Text = "Department";
             // 
@@ -840,7 +860,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(357, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 20);
+            this.label1.Size = new System.Drawing.Size(87, 21);
             this.label1.TabIndex = 44;
             this.label1.Text = "Contract";
             // 
@@ -888,13 +908,15 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(305, 22);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(173, 59);
             this.button1.TabIndex = 37;
             this.button1.Text = "Generate Username and Password";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txbEmployeePassword
@@ -902,7 +924,7 @@
             this.txbEmployeePassword.Location = new System.Drawing.Point(163, 54);
             this.txbEmployeePassword.Margin = new System.Windows.Forms.Padding(4);
             this.txbEmployeePassword.Name = "txbEmployeePassword";
-            this.txbEmployeePassword.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeePassword.Size = new System.Drawing.Size(131, 28);
             this.txbEmployeePassword.TabIndex = 36;
             // 
             // label24
@@ -911,7 +933,7 @@
             this.label24.Location = new System.Drawing.Point(11, 58);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(83, 20);
+            this.label24.Size = new System.Drawing.Size(88, 21);
             this.label24.TabIndex = 35;
             this.label24.Text = "Password";
             // 
@@ -920,7 +942,7 @@
             this.txbEmployeeUsername.Location = new System.Drawing.Point(163, 22);
             this.txbEmployeeUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txbEmployeeUsername.Name = "txbEmployeeUsername";
-            this.txbEmployeeUsername.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeUsername.Size = new System.Drawing.Size(131, 28);
             this.txbEmployeeUsername.TabIndex = 30;
             // 
             // label22
@@ -929,7 +951,7 @@
             this.label22.Location = new System.Drawing.Point(11, 25);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(86, 20);
+            this.label22.Size = new System.Drawing.Size(93, 21);
             this.label22.TabIndex = 19;
             this.label22.Text = "Username";
             // 
@@ -938,7 +960,7 @@
             this.phoneNoBox.Location = new System.Drawing.Point(169, 183);
             this.phoneNoBox.Margin = new System.Windows.Forms.Padding(4);
             this.phoneNoBox.Name = "phoneNoBox";
-            this.phoneNoBox.Size = new System.Drawing.Size(131, 27);
+            this.phoneNoBox.Size = new System.Drawing.Size(131, 28);
             this.phoneNoBox.TabIndex = 34;
             // 
             // label23
@@ -947,7 +969,7 @@
             this.label23.Location = new System.Drawing.Point(8, 187);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(120, 20);
+            this.label23.Size = new System.Drawing.Size(133, 21);
             this.label23.TabIndex = 33;
             this.label23.Text = "Phone Number";
             // 
@@ -960,7 +982,7 @@
             this.cmbEmployeeContract.Location = new System.Drawing.Point(519, 53);
             this.cmbEmployeeContract.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEmployeeContract.Name = "cmbEmployeeContract";
-            this.cmbEmployeeContract.Size = new System.Drawing.Size(131, 28);
+            this.cmbEmployeeContract.Size = new System.Drawing.Size(131, 29);
             this.cmbEmployeeContract.TabIndex = 32;
             // 
             // txbEmployeeEmail
@@ -968,7 +990,7 @@
             this.txbEmployeeEmail.Location = new System.Drawing.Point(169, 153);
             this.txbEmployeeEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txbEmployeeEmail.Name = "txbEmployeeEmail";
-            this.txbEmployeeEmail.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeEmail.Size = new System.Drawing.Size(131, 28);
             this.txbEmployeeEmail.TabIndex = 29;
             // 
             // txbEmployeeWage
@@ -976,7 +998,7 @@
             this.txbEmployeeWage.Location = new System.Drawing.Point(519, 185);
             this.txbEmployeeWage.Margin = new System.Windows.Forms.Padding(4);
             this.txbEmployeeWage.Name = "txbEmployeeWage";
-            this.txbEmployeeWage.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeWage.Size = new System.Drawing.Size(131, 28);
             this.txbEmployeeWage.TabIndex = 28;
             // 
             // txbEmployeeAllergies
@@ -984,7 +1006,7 @@
             this.txbEmployeeAllergies.Location = new System.Drawing.Point(519, 85);
             this.txbEmployeeAllergies.Margin = new System.Windows.Forms.Padding(4);
             this.txbEmployeeAllergies.Name = "txbEmployeeAllergies";
-            this.txbEmployeeAllergies.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeAllergies.Size = new System.Drawing.Size(131, 28);
             this.txbEmployeeAllergies.TabIndex = 27;
             // 
             // txbEmployeeAdress
@@ -992,7 +1014,7 @@
             this.txbEmployeeAdress.Location = new System.Drawing.Point(169, 121);
             this.txbEmployeeAdress.Margin = new System.Windows.Forms.Padding(4);
             this.txbEmployeeAdress.Name = "txbEmployeeAdress";
-            this.txbEmployeeAdress.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeAdress.Size = new System.Drawing.Size(131, 28);
             this.txbEmployeeAdress.TabIndex = 25;
             // 
             // txbEmployeeLastname
@@ -1000,7 +1022,7 @@
             this.txbEmployeeLastname.Location = new System.Drawing.Point(169, 58);
             this.txbEmployeeLastname.Margin = new System.Windows.Forms.Padding(4);
             this.txbEmployeeLastname.Name = "txbEmployeeLastname";
-            this.txbEmployeeLastname.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeLastname.Size = new System.Drawing.Size(131, 28);
             this.txbEmployeeLastname.TabIndex = 21;
             // 
             // txbEmployeeFirstname
@@ -1008,7 +1030,7 @@
             this.txbEmployeeFirstname.Location = new System.Drawing.Point(169, 26);
             this.txbEmployeeFirstname.Margin = new System.Windows.Forms.Padding(4);
             this.txbEmployeeFirstname.Name = "txbEmployeeFirstname";
-            this.txbEmployeeFirstname.Size = new System.Drawing.Size(131, 27);
+            this.txbEmployeeFirstname.Size = new System.Drawing.Size(131, 28);
             this.txbEmployeeFirstname.TabIndex = 20;
             // 
             // label21
@@ -1017,7 +1039,7 @@
             this.label21.Location = new System.Drawing.Point(8, 63);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(91, 20);
+            this.label21.Size = new System.Drawing.Size(100, 21);
             this.label21.TabIndex = 18;
             this.label21.Text = "Last Name";
             // 
@@ -1027,7 +1049,7 @@
             this.label20.Location = new System.Drawing.Point(8, 31);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(89, 20);
+            this.label20.Size = new System.Drawing.Size(93, 21);
             this.label20.TabIndex = 17;
             this.label20.Text = "First name";
             // 
@@ -1037,7 +1059,7 @@
             this.label19.Location = new System.Drawing.Point(8, 156);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(116, 20);
+            this.label19.Size = new System.Drawing.Size(123, 21);
             this.label19.TabIndex = 16;
             this.label19.Text = "Email address";
             // 
@@ -1047,7 +1069,7 @@
             this.label17.Location = new System.Drawing.Point(357, 154);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(73, 20);
+            this.label17.Size = new System.Drawing.Size(78, 21);
             this.label17.TabIndex = 14;
             this.label17.Text = "Privilege";
             // 
@@ -1061,7 +1083,7 @@
             this.cmbEmployeePrivilege.Location = new System.Drawing.Point(519, 151);
             this.cmbEmployeePrivilege.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEmployeePrivilege.Name = "cmbEmployeePrivilege";
-            this.cmbEmployeePrivilege.Size = new System.Drawing.Size(131, 28);
+            this.cmbEmployeePrivilege.Size = new System.Drawing.Size(131, 29);
             this.cmbEmployeePrivilege.TabIndex = 13;
             // 
             // cmbEmployeeDepartment
@@ -1072,7 +1094,7 @@
             this.cmbEmployeeDepartment.Location = new System.Drawing.Point(519, 117);
             this.cmbEmployeeDepartment.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEmployeeDepartment.Name = "cmbEmployeeDepartment";
-            this.cmbEmployeeDepartment.Size = new System.Drawing.Size(131, 28);
+            this.cmbEmployeeDepartment.Size = new System.Drawing.Size(131, 29);
             this.cmbEmployeeDepartment.TabIndex = 7;
             // 
             // label14
@@ -1081,7 +1103,7 @@
             this.label14.Location = new System.Drawing.Point(357, 187);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(52, 20);
+            this.label14.Size = new System.Drawing.Size(61, 21);
             this.label14.TabIndex = 6;
             this.label14.Text = "Wage";
             // 
@@ -1091,7 +1113,7 @@
             this.label13.Location = new System.Drawing.Point(359, 25);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(82, 20);
+            this.label13.Size = new System.Drawing.Size(89, 21);
             this.label13.TabIndex = 5;
             this.label13.Text = "Hire Date";
             // 
@@ -1101,7 +1123,7 @@
             this.label12.Location = new System.Drawing.Point(357, 89);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(128, 20);
+            this.label12.Size = new System.Drawing.Size(131, 21);
             this.label12.TabIndex = 4;
             this.label12.Text = "Issues/Allergies";
             // 
@@ -1111,7 +1133,7 @@
             this.label10.Location = new System.Drawing.Point(8, 124);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 20);
+            this.label10.Size = new System.Drawing.Size(77, 21);
             this.label10.TabIndex = 2;
             this.label10.Text = "Address";
             // 
@@ -1121,7 +1143,7 @@
             this.label9.Location = new System.Drawing.Point(8, 94);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(105, 20);
+            this.label9.Size = new System.Drawing.Size(114, 21);
             this.label9.TabIndex = 1;
             this.label9.Text = "Date of Birth";
             // 
@@ -1131,7 +1153,7 @@
             this.label5.Location = new System.Drawing.Point(7, 2);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 20);
+            this.label5.Size = new System.Drawing.Size(97, 21);
             this.label5.TabIndex = 4;
             this.label5.Text = "Employees";
             // 
@@ -1139,11 +1161,11 @@
             // 
             this.lsbEmployees.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lsbEmployees.FormattingEnabled = true;
-            this.lsbEmployees.ItemHeight = 20;
+            this.lsbEmployees.ItemHeight = 21;
             this.lsbEmployees.Location = new System.Drawing.Point(11, 23);
             this.lsbEmployees.Margin = new System.Windows.Forms.Padding(4);
             this.lsbEmployees.Name = "lsbEmployees";
-            this.lsbEmployees.Size = new System.Drawing.Size(263, 384);
+            this.lsbEmployees.Size = new System.Drawing.Size(263, 382);
             this.lsbEmployees.TabIndex = 3;
             this.lsbEmployees.SelectedIndexChanged += new System.EventHandler(this.lsbEmployees_SelectedIndexChanged);
             // 
@@ -1172,30 +1194,30 @@
             this.tabProducts.Controls.Add(this.btnProductRemove);
             this.tabProducts.Controls.Add(this.btnProductStockManage);
             this.tabProducts.Controls.Add(this.lsbProducts);
-            this.tabProducts.Location = new System.Drawing.Point(4, 29);
+            this.tabProducts.Location = new System.Drawing.Point(4, 30);
             this.tabProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabProducts.Name = "tabProducts";
             this.tabProducts.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabProducts.Size = new System.Drawing.Size(1093, 470);
+            this.tabProducts.Size = new System.Drawing.Size(1322, 469);
             this.tabProducts.TabIndex = 1;
             this.tabProducts.Text = "Products";
             // 
             // lblSellPrice
             // 
             this.lblSellPrice.AutoSize = true;
-            this.lblSellPrice.Location = new System.Drawing.Point(463, 171);
+            this.lblSellPrice.Location = new System.Drawing.Point(481, 171);
             this.lblSellPrice.Name = "lblSellPrice";
-            this.lblSellPrice.Size = new System.Drawing.Size(27, 20);
+            this.lblSellPrice.Size = new System.Drawing.Size(28, 21);
             this.lblSellPrice.TabIndex = 33;
             this.lblSellPrice.Text = "***";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(346, 171);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(329, 172);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 17);
+            this.label6.Size = new System.Drawing.Size(120, 20);
             this.label6.TabIndex = 32;
             this.label6.Text = "Selling price:";
             // 
@@ -1204,61 +1226,61 @@
             this.lblPSearch.AutoSize = true;
             this.lblPSearch.Location = new System.Drawing.Point(5, 437);
             this.lblPSearch.Name = "lblPSearch";
-            this.lblPSearch.Size = new System.Drawing.Size(67, 20);
+            this.lblPSearch.Size = new System.Drawing.Size(72, 21);
             this.lblPSearch.TabIndex = 31;
             this.lblPSearch.Text = "Search:";
             // 
             // txbProductsSearch
             // 
-            this.txbProductsSearch.Location = new System.Drawing.Point(79, 434);
+            this.txbProductsSearch.Location = new System.Drawing.Point(92, 434);
             this.txbProductsSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbProductsSearch.Name = "txbProductsSearch";
-            this.txbProductsSearch.Size = new System.Drawing.Size(185, 27);
+            this.txbProductsSearch.Size = new System.Drawing.Size(185, 28);
             this.txbProductsSearch.TabIndex = 30;
             this.txbProductsSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
             // 
             // lblProductDepartment
             // 
             this.lblProductDepartment.AutoSize = true;
-            this.lblProductDepartment.Location = new System.Drawing.Point(463, 225);
+            this.lblProductDepartment.Location = new System.Drawing.Point(481, 225);
             this.lblProductDepartment.Name = "lblProductDepartment";
-            this.lblProductDepartment.Size = new System.Drawing.Size(27, 20);
+            this.lblProductDepartment.Size = new System.Drawing.Size(28, 21);
             this.lblProductDepartment.TabIndex = 29;
             this.lblProductDepartment.Text = "***";
             // 
             // lblProductStock
             // 
             this.lblProductStock.AutoSize = true;
-            this.lblProductStock.Location = new System.Drawing.Point(463, 197);
+            this.lblProductStock.Location = new System.Drawing.Point(481, 197);
             this.lblProductStock.Name = "lblProductStock";
-            this.lblProductStock.Size = new System.Drawing.Size(27, 20);
+            this.lblProductStock.Size = new System.Drawing.Size(28, 21);
             this.lblProductStock.TabIndex = 28;
             this.lblProductStock.Text = "***";
             // 
             // lblProductBuyPrice
             // 
             this.lblProductBuyPrice.AutoSize = true;
-            this.lblProductBuyPrice.Location = new System.Drawing.Point(463, 145);
+            this.lblProductBuyPrice.Location = new System.Drawing.Point(481, 145);
             this.lblProductBuyPrice.Name = "lblProductBuyPrice";
-            this.lblProductBuyPrice.Size = new System.Drawing.Size(27, 20);
+            this.lblProductBuyPrice.Size = new System.Drawing.Size(28, 21);
             this.lblProductBuyPrice.TabIndex = 27;
             this.lblProductBuyPrice.Text = "***";
             // 
             // lblProductName
             // 
             this.lblProductName.AutoSize = true;
-            this.lblProductName.Location = new System.Drawing.Point(463, 117);
+            this.lblProductName.Location = new System.Drawing.Point(481, 117);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(27, 20);
+            this.lblProductName.Size = new System.Drawing.Size(28, 21);
             this.lblProductName.TabIndex = 26;
             this.lblProductName.Text = "***";
             // 
             // lblProductType
             // 
             this.lblProductType.AutoSize = true;
-            this.lblProductType.Location = new System.Drawing.Point(463, 89);
+            this.lblProductType.Location = new System.Drawing.Point(481, 89);
             this.lblProductType.Name = "lblProductType";
-            this.lblProductType.Size = new System.Drawing.Size(27, 20);
+            this.lblProductType.Size = new System.Drawing.Size(28, 21);
             this.lblProductType.TabIndex = 25;
             this.lblProductType.Text = "***";
             // 
@@ -1277,139 +1299,150 @@
             this.labelPProducts.AutoSize = true;
             this.labelPProducts.Location = new System.Drawing.Point(7, 2);
             this.labelPProducts.Name = "labelPProducts";
-            this.labelPProducts.Size = new System.Drawing.Size(81, 20);
+            this.labelPProducts.Size = new System.Drawing.Size(88, 21);
             this.labelPProducts.TabIndex = 23;
             this.labelPProducts.Text = "Products:";
             // 
             // btnProductUpdate
             // 
-            this.btnProductUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductUpdate.BackColor = System.Drawing.Color.Red;
+            this.btnProductUpdate.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductUpdate.ForeColor = System.Drawing.Color.White;
             this.btnProductUpdate.Location = new System.Drawing.Point(663, 271);
             this.btnProductUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnProductUpdate.Name = "btnProductUpdate";
             this.btnProductUpdate.Size = new System.Drawing.Size(213, 34);
             this.btnProductUpdate.TabIndex = 21;
             this.btnProductUpdate.Text = "Update product";
-            this.btnProductUpdate.UseVisualStyleBackColor = true;
+            this.btnProductUpdate.UseVisualStyleBackColor = false;
             this.btnProductUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
             // btnProductstockRequest
             // 
+            this.btnProductstockRequest.BackColor = System.Drawing.Color.Red;
+            this.btnProductstockRequest.ForeColor = System.Drawing.Color.White;
             this.btnProductstockRequest.Location = new System.Drawing.Point(663, 394);
             this.btnProductstockRequest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnProductstockRequest.Name = "btnProductstockRequest";
             this.btnProductstockRequest.Size = new System.Drawing.Size(213, 34);
             this.btnProductstockRequest.TabIndex = 20;
             this.btnProductstockRequest.Text = "Request restock";
-            this.btnProductstockRequest.UseVisualStyleBackColor = true;
+            this.btnProductstockRequest.UseVisualStyleBackColor = false;
             // 
             // labelPDepartment
             // 
             this.labelPDepartment.AutoSize = true;
-            this.labelPDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPDepartment.Location = new System.Drawing.Point(352, 225);
+            this.labelPDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPDepartment.Location = new System.Drawing.Point(336, 226);
             this.labelPDepartment.Name = "labelPDepartment";
-            this.labelPDepartment.Size = new System.Drawing.Size(97, 17);
+            this.labelPDepartment.Size = new System.Drawing.Size(113, 20);
             this.labelPDepartment.TabIndex = 12;
             this.labelPDepartment.Text = "Department:";
             // 
             // labelPCurrentlyInStock
             // 
             this.labelPCurrentlyInStock.AutoSize = true;
-            this.labelPCurrentlyInStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPCurrentlyInStock.Location = new System.Drawing.Point(309, 197);
+            this.labelPCurrentlyInStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPCurrentlyInStock.Location = new System.Drawing.Point(285, 197);
             this.labelPCurrentlyInStock.Name = "labelPCurrentlyInStock";
-            this.labelPCurrentlyInStock.Size = new System.Drawing.Size(140, 17);
+            this.labelPCurrentlyInStock.Size = new System.Drawing.Size(164, 20);
             this.labelPCurrentlyInStock.TabIndex = 9;
-            this.labelPCurrentlyInStock.Text = "Currently in stock;";
+            this.labelPCurrentlyInStock.Text = "Currently in stock:";
             // 
             // labelPPrice
             // 
             this.labelPPrice.AutoSize = true;
-            this.labelPPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPPrice.Location = new System.Drawing.Point(346, 145);
+            this.labelPPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPPrice.Location = new System.Drawing.Point(329, 146);
             this.labelPPrice.Name = "labelPPrice";
-            this.labelPPrice.Size = new System.Drawing.Size(103, 17);
+            this.labelPPrice.Size = new System.Drawing.Size(120, 20);
             this.labelPPrice.TabIndex = 8;
             this.labelPPrice.Text = "Buying price:";
             // 
             // labelPName
             // 
             this.labelPName.AutoSize = true;
-            this.labelPName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPName.Location = new System.Drawing.Point(395, 117);
+            this.labelPName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPName.Location = new System.Drawing.Point(386, 117);
             this.labelPName.Name = "labelPName";
-            this.labelPName.Size = new System.Drawing.Size(54, 17);
+            this.labelPName.Size = new System.Drawing.Size(63, 20);
             this.labelPName.TabIndex = 7;
             this.labelPName.Text = "Name:";
             // 
             // labelPType
             // 
             this.labelPType.AutoSize = true;
-            this.labelPType.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPType.Location = new System.Drawing.Point(400, 89);
+            this.labelPType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPType.Location = new System.Drawing.Point(394, 89);
             this.labelPType.Name = "labelPType";
-            this.labelPType.Size = new System.Drawing.Size(49, 17);
+            this.labelPType.Size = new System.Drawing.Size(55, 20);
             this.labelPType.TabIndex = 6;
             this.labelPType.Text = "Type:";
             // 
             // brnProductAdd
             // 
+            this.brnProductAdd.BackColor = System.Drawing.Color.Red;
+            this.brnProductAdd.ForeColor = System.Drawing.Color.White;
             this.brnProductAdd.Location = new System.Drawing.Point(663, 229);
             this.brnProductAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.brnProductAdd.Name = "brnProductAdd";
             this.brnProductAdd.Size = new System.Drawing.Size(213, 34);
             this.brnProductAdd.TabIndex = 4;
             this.brnProductAdd.Text = "Add new product";
-            this.brnProductAdd.UseVisualStyleBackColor = true;
+            this.brnProductAdd.UseVisualStyleBackColor = false;
             this.brnProductAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // btnProductRemove
             // 
+            this.btnProductRemove.BackColor = System.Drawing.Color.Red;
+            this.btnProductRemove.ForeColor = System.Drawing.Color.White;
             this.btnProductRemove.Location = new System.Drawing.Point(663, 312);
             this.btnProductRemove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnProductRemove.Name = "btnProductRemove";
             this.btnProductRemove.Size = new System.Drawing.Size(213, 34);
             this.btnProductRemove.TabIndex = 3;
             this.btnProductRemove.Text = "Remove product";
-            this.btnProductRemove.UseVisualStyleBackColor = true;
+            this.btnProductRemove.UseVisualStyleBackColor = false;
             this.btnProductRemove.Click += new System.EventHandler(this.btRemove_Click);
             // 
             // btnProductStockManage
             // 
+            this.btnProductStockManage.BackColor = System.Drawing.Color.Red;
+            this.btnProductStockManage.ForeColor = System.Drawing.Color.White;
             this.btnProductStockManage.Location = new System.Drawing.Point(663, 352);
             this.btnProductStockManage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnProductStockManage.Name = "btnProductStockManage";
             this.btnProductStockManage.Size = new System.Drawing.Size(213, 34);
             this.btnProductStockManage.TabIndex = 2;
             this.btnProductStockManage.Text = "Increase/decrease stock";
-            this.btnProductStockManage.UseVisualStyleBackColor = true;
+            this.btnProductStockManage.UseVisualStyleBackColor = false;
             this.btnProductStockManage.Click += new System.EventHandler(this.btCrease_Click);
             // 
             // lsbProducts
             // 
             this.lsbProducts.BackColor = System.Drawing.Color.White;
             this.lsbProducts.FormattingEnabled = true;
-            this.lsbProducts.ItemHeight = 20;
+            this.lsbProducts.ItemHeight = 21;
             this.lsbProducts.Location = new System.Drawing.Point(11, 25);
             this.lsbProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lsbProducts.Name = "lsbProducts";
-            this.lsbProducts.Size = new System.Drawing.Size(255, 384);
+            this.lsbProducts.Size = new System.Drawing.Size(255, 382);
             this.lsbProducts.TabIndex = 0;
             this.lsbProducts.SelectedIndexChanged += new System.EventHandler(this.lbProducts_SelectedIndexChanged);
             // 
             // tabSchedule
             // 
+            this.tabSchedule.Controls.Add(this.label7);
             this.tabSchedule.Controls.Add(this.mcdSchedule);
             this.tabSchedule.Controls.Add(this.lblSSearch);
             this.tabSchedule.Controls.Add(this.txbScheduleEmployeeSearch);
             this.tabSchedule.Controls.Add(this.groupSInformation);
             this.tabSchedule.Controls.Add(this.lsbScheduleEmployees);
             this.tabSchedule.Controls.Add(this.groupBoxSAssign);
-            this.tabSchedule.Location = new System.Drawing.Point(4, 29);
+            this.tabSchedule.Location = new System.Drawing.Point(4, 30);
             this.tabSchedule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabSchedule.Name = "tabSchedule";
-            this.tabSchedule.Size = new System.Drawing.Size(1093, 470);
+            this.tabSchedule.Size = new System.Drawing.Size(1322, 469);
             this.tabSchedule.TabIndex = 2;
             this.tabSchedule.Text = "Schedule";
             this.tabSchedule.UseVisualStyleBackColor = true;
@@ -1424,76 +1457,76 @@
             this.tabStatistics.Controls.Add(this.crtStatProducts);
             this.tabStatistics.Controls.Add(this.label16);
             this.tabStatistics.Controls.Add(this.dtpStatDate);
-            this.tabStatistics.Location = new System.Drawing.Point(4, 29);
+            this.tabStatistics.Location = new System.Drawing.Point(4, 30);
             this.tabStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabStatistics.Name = "tabStatistics";
-            this.tabStatistics.Size = new System.Drawing.Size(1093, 470);
+            this.tabStatistics.Size = new System.Drawing.Size(1147, 469);
             this.tabStatistics.TabIndex = 3;
             this.tabStatistics.Text = "Statistics";
             this.tabStatistics.UseVisualStyleBackColor = true;
             // 
             // chartDepartSales
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartDepartSales.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartDepartSales.Legends.Add(legend1);
+            chartArea25.Name = "ChartArea1";
+            this.chartDepartSales.ChartAreas.Add(chartArea25);
+            legend25.Name = "Legend1";
+            this.chartDepartSales.Legends.Add(legend25);
             this.chartDepartSales.Location = new System.Drawing.Point(631, 313);
             this.chartDepartSales.Margin = new System.Windows.Forms.Padding(4);
             this.chartDepartSales.Name = "chartDepartSales";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series1.Legend = "Legend1";
-            series1.Name = "Amount";
-            this.chartDepartSales.Series.Add(series1);
+            series49.ChartArea = "ChartArea1";
+            series49.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series49.Legend = "Legend1";
+            series49.Name = "Amount";
+            this.chartDepartSales.Series.Add(series49);
             this.chartDepartSales.Size = new System.Drawing.Size(412, 132);
             this.chartDepartSales.TabIndex = 27;
             this.chartDepartSales.Text = "chart1";
             // 
             // chartProfit
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartProfit.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartProfit.Legends.Add(legend2);
+            chartArea26.Name = "ChartArea1";
+            this.chartProfit.ChartAreas.Add(chartArea26);
+            legend26.Name = "Legend1";
+            this.chartProfit.Legends.Add(legend26);
             this.chartProfit.Location = new System.Drawing.Point(409, 34);
             this.chartProfit.Margin = new System.Windows.Forms.Padding(4);
             this.chartProfit.Name = "chartProfit";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Salary costs";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Sales income";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Order costs";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Legend = "Legend1";
-            series5.Name = "Profit";
-            this.chartProfit.Series.Add(series2);
-            this.chartProfit.Series.Add(series3);
-            this.chartProfit.Series.Add(series4);
-            this.chartProfit.Series.Add(series5);
+            series50.ChartArea = "ChartArea1";
+            series50.Legend = "Legend1";
+            series50.Name = "Salary costs";
+            series51.ChartArea = "ChartArea1";
+            series51.Legend = "Legend1";
+            series51.Name = "Sales income";
+            series52.ChartArea = "ChartArea1";
+            series52.Legend = "Legend1";
+            series52.Name = "Order costs";
+            series53.ChartArea = "ChartArea1";
+            series53.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series53.Legend = "Legend1";
+            series53.Name = "Profit";
+            this.chartProfit.Series.Add(series50);
+            this.chartProfit.Series.Add(series51);
+            this.chartProfit.Series.Add(series52);
+            this.chartProfit.Series.Add(series53);
             this.chartProfit.Size = new System.Drawing.Size(577, 294);
             this.chartProfit.TabIndex = 26;
             this.chartProfit.Text = "chart1";
             // 
             // crtStatAttendence
             // 
-            chartArea3.Name = "ChartArea1";
-            this.crtStatAttendence.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.crtStatAttendence.Legends.Add(legend3);
+            chartArea27.Name = "ChartArea1";
+            this.crtStatAttendence.ChartAreas.Add(chartArea27);
+            legend27.Name = "Legend1";
+            this.crtStatAttendence.Legends.Add(legend27);
             this.crtStatAttendence.Location = new System.Drawing.Point(179, 267);
             this.crtStatAttendence.Margin = new System.Windows.Forms.Padding(4);
             this.crtStatAttendence.Name = "crtStatAttendence";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series6.Legend = "Legend1";
-            series6.Name = "Attendance";
-            this.crtStatAttendence.Series.Add(series6);
+            series54.ChartArea = "ChartArea1";
+            series54.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series54.Legend = "Legend1";
+            series54.Name = "Attendance";
+            this.crtStatAttendence.Series.Add(series54);
             this.crtStatAttendence.Size = new System.Drawing.Size(223, 167);
             this.crtStatAttendence.TabIndex = 25;
             this.crtStatAttendence.Text = "chart1";
@@ -1504,7 +1537,7 @@
             this.label37.Location = new System.Drawing.Point(0, 267);
             this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(155, 20);
+            this.label37.Size = new System.Drawing.Size(166, 21);
             this.label37.TabIndex = 24;
             this.label37.Text = "Employee statistics";
             // 
@@ -1514,27 +1547,27 @@
             this.cmbStatEmployee.Location = new System.Drawing.Point(4, 313);
             this.cmbStatEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.cmbStatEmployee.Name = "cmbStatEmployee";
-            this.cmbStatEmployee.Size = new System.Drawing.Size(160, 28);
+            this.cmbStatEmployee.Size = new System.Drawing.Size(160, 29);
             this.cmbStatEmployee.TabIndex = 23;
             this.cmbStatEmployee.SelectedIndexChanged += new System.EventHandler(this.cbEmployees_SelectedIndexChanged);
             // 
             // crtStatProducts
             // 
-            chartArea4.Name = "ChartArea1";
-            this.crtStatProducts.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.crtStatProducts.Legends.Add(legend4);
+            chartArea28.Name = "ChartArea1";
+            this.crtStatProducts.ChartAreas.Add(chartArea28);
+            legend28.Name = "Legend1";
+            this.crtStatProducts.Legends.Add(legend28);
             this.crtStatProducts.Location = new System.Drawing.Point(13, 34);
             this.crtStatProducts.Margin = new System.Windows.Forms.Padding(4);
             this.crtStatProducts.Name = "crtStatProducts";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Stock";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Min_stock";
-            this.crtStatProducts.Series.Add(series7);
-            this.crtStatProducts.Series.Add(series8);
+            series55.ChartArea = "ChartArea1";
+            series55.Legend = "Legend1";
+            series55.Name = "Stock";
+            series56.ChartArea = "ChartArea1";
+            series56.Legend = "Legend1";
+            series56.Name = "Min_stock";
+            this.crtStatProducts.Series.Add(series55);
+            this.crtStatProducts.Series.Add(series56);
             this.crtStatProducts.Size = new System.Drawing.Size(401, 203);
             this.crtStatProducts.TabIndex = 0;
             this.crtStatProducts.Text = "chart1";
@@ -1555,17 +1588,17 @@
             this.dtpStatDate.Location = new System.Drawing.Point(439, -1);
             this.dtpStatDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpStatDate.Name = "dtpStatDate";
-            this.dtpStatDate.Size = new System.Drawing.Size(265, 27);
+            this.dtpStatDate.Size = new System.Drawing.Size(265, 28);
             this.dtpStatDate.TabIndex = 15;
             this.dtpStatDate.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged_2);
             // 
             // tabLogout
             // 
             this.tabLogout.Controls.Add(this.label27);
-            this.tabLogout.Location = new System.Drawing.Point(4, 29);
+            this.tabLogout.Location = new System.Drawing.Point(4, 30);
             this.tabLogout.Margin = new System.Windows.Forms.Padding(4);
             this.tabLogout.Name = "tabLogout";
-            this.tabLogout.Size = new System.Drawing.Size(1093, 470);
+            this.tabLogout.Size = new System.Drawing.Size(1147, 469);
             this.tabLogout.TabIndex = 5;
             this.tabLogout.Text = "Logout";
             this.tabLogout.UseVisualStyleBackColor = true;
@@ -1576,15 +1609,54 @@
             this.label27.Location = new System.Drawing.Point(464, 208);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(108, 20);
+            this.label27.Size = new System.Drawing.Size(123, 21);
             this.label27.TabIndex = 0;
             this.label27.Text = "Logging out...";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(647, 15);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(97, 21);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Employees";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Red;
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.Icon);
+            this.panel1.Location = new System.Drawing.Point(3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1352, 123);
+            this.panel1.TabIndex = 1;
+            // 
+            // Icon
+            // 
+            this.Icon.Location = new System.Drawing.Point(3, 0);
+            this.Icon.Name = "Icon";
+            this.Icon.Size = new System.Drawing.Size(160, 123);
+            this.Icon.TabIndex = 0;
+            this.Icon.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(160, 21);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1000, 99);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // MediaBazaar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 527);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1354, 644);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tbcMain);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MediaBazaar";
@@ -1619,6 +1691,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.crtStatProducts)).EndInit();
             this.tabLogout.ResumeLayout(false);
             this.tabLogout.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Icon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1749,6 +1824,10 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDepartSales;
         private System.Windows.Forms.Label lblSellPrice;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox Icon;
     }
 }
 

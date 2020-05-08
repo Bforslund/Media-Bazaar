@@ -43,13 +43,15 @@
             // 
             // btAddUpdate
             // 
+            this.btAddUpdate.BackColor = System.Drawing.Color.Red;
             this.btAddUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAddUpdate.ForeColor = System.Drawing.Color.White;
             this.btAddUpdate.Location = new System.Drawing.Point(121, 206);
             this.btAddUpdate.Name = "btAddUpdate";
             this.btAddUpdate.Size = new System.Drawing.Size(179, 42);
             this.btAddUpdate.TabIndex = 32;
             this.btAddUpdate.Text = "Add new product";
-            this.btAddUpdate.UseVisualStyleBackColor = true;
+            this.btAddUpdate.UseVisualStyleBackColor = false;
             this.btAddUpdate.Click += new System.EventHandler(this.btAddUpdate_Click);
             // 
             // tbBuyPrice
@@ -142,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Salmon;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(468, 260);
             this.Controls.Add(this.tbSellPrice);
             this.Controls.Add(this.label4);
