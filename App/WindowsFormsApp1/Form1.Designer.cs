@@ -498,7 +498,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::Mediabazaar.Properties.Resources.pearinc;
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.pearinc;
             this.pictureBox1.Location = new System.Drawing.Point(684, 94);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
