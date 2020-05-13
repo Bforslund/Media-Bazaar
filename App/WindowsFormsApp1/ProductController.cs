@@ -17,12 +17,13 @@ namespace WindowsFormsApp1
             {
                 databaseConnection.Open();
 
-                string sql = "INSERT INTO products (type, name, price, stock, department, min_stock ) VALUES(@type, @name, @price, @stock, @department, 0)";
+                string sql = "INSERT INTO products (type, name, buy_price, sell_price, stock, department, min_stock ) VALUES(@type, @name, @buy_price, @sell_price, @stock, @department, 0)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
                 cmd.Parameters.AddWithValue("@type", p.Type);
                 cmd.Parameters.AddWithValue("@name", p.Name);
-                cmd.Parameters.AddWithValue("@price", p.Price);
+                cmd.Parameters.AddWithValue("@buy_price", p.Buyingprice);
+                cmd.Parameters.AddWithValue("@sell_price", p.Sellingprice);
                 cmd.Parameters.AddWithValue("@stock", p.Stock);
                 cmd.Parameters.AddWithValue("@department", p.Department.Id);
 
@@ -50,12 +51,13 @@ namespace WindowsFormsApp1
             {
                 databaseConnection.Open();
 
-                string sql = "UPDATE products SET type = @type, name = @name, price = @price, department = @department, min_stock = 0 WHERE id = @id";
+                string sql = "UPDATE products SET type = @type, name = @name, buy_price = @buy_price, sell_price = @sell_price, department = (SELECT id FROM department WHERE name = @department) WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
                 cmd.Parameters.AddWithValue("@type", p.Type);
                 cmd.Parameters.AddWithValue("@id", p.Id);
                 cmd.Parameters.AddWithValue("@name", p.Name);
-                cmd.Parameters.AddWithValue("@price", p.Price);
+                cmd.Parameters.AddWithValue("@buy_price", p.Buyingprice);
+                cmd.Parameters.AddWithValue("@sell_price", p.Sellingprice);
                 cmd.Parameters.AddWithValue("@department", p.Department);
 
                 cmd.ExecuteNonQuery();
@@ -204,7 +206,7 @@ namespace WindowsFormsApp1
             try
             {
                 databaseConnection.Open();
-                string sql = "SELECT id, type, name, price, stock, department, min_stock FROM Products";
+                string sql = "SELECT id, type, name, buy_price, sell_price, stock, department, min_stock FROM Products";
                 
                 MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
 
@@ -213,7 +215,7 @@ namespace WindowsFormsApp1
                 while (dr.Read())
                 {
                     Department d = new DepartmentController().GetDepartment(Convert.ToInt32(dr["department"]));
-                    Product p = new Product(Convert.ToInt32(dr["id"]), dr["type"].ToString(), dr["name"].ToString(), Convert.ToDouble(dr["price"]), Convert.ToInt32(dr["stock"]), Convert.ToInt32(dr["min_stock"]), d);
+                    Product p = new Product(Convert.ToInt32(dr["id"]),dr["type"].ToString(), dr["name"].ToString(), Convert.ToDouble(dr["sell_price"]), Convert.ToDouble(dr["buy_price"]), Convert.ToInt32(dr["stock"]), Convert.ToInt32(dr["min_stock"]), d);
                     products.Add(p);
                 }
                 return products;

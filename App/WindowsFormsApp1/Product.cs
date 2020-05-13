@@ -12,7 +12,8 @@ namespace WindowsFormsApp1
         private string type;
       
         private string name;
-        private double price;
+        private double buyingprice;
+        private double sellingprice;
         private int stock;
         private int min_stock;
         private Department department;
@@ -20,30 +21,54 @@ namespace WindowsFormsApp1
         public string Type { get => type; set => type = value; }
         
         public string Name { get => name; set => name = value; }
-        public double Price { get => price; set => price = value; }
-
-        public int Min_stock
+        public int Id { get => id; set => id = value; }
+        public Department Department { get => department; set => department = value; }
+        public double Buyingprice
         {
-            get { return min_stock; }
-            set { min_stock = value; }
+            get
+            {
+                return buyingprice;
+            }
+            set
+            {
+                if (value > sellingprice)
+                {
+                    throw new Exception();
+                }
+                else
+                {
+                    buyingprice = value;
+                }
+            }
+        }
+        public double Sellingprice // So selling price cant be lower than the bought price
+        {
+            get
+            {
+                return sellingprice;
+            }
+            set
+            {
+                if (value < buyingprice)
+                {
+                    throw new Exception();
+                }
+                else
+                {
+                    sellingprice = value;
+                }
+            }
         }
 
-        public Product(string _name, int _amount)
+        public int Stock
         {
-            this.Name = _name;
-            this.Stock = _amount;
-        }
-
-
-        public int Stock 
-        { 
             get
             {
                 return stock;
-            } 
-            set 
-            { 
-                if(value < 0)
+            }
+            set
+            {
+                if (value < 0)
                 {
                     throw new ArgumentException();
                 }
@@ -53,21 +78,33 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        public int Id { get => id; set => id = value; }
-        public Department Department { get => department; set => department = value; }
 
-        public Product(string type, string name, double price, int stock, int min_stock, Department department) 
-            : this(0, type, name, price, stock, min_stock, department)
+        public int Min_stock
+        {
+            get { return min_stock; }
+            set { min_stock = value; }
+        }
+
+        public Product(string name, int amount)
+        {
+            this.Name = name;
+            this.Stock = amount;
+        }
+
+
+        public Product(string type, string name, double sellingPrice, double buyingPrice, int stock, int min_stock, Department department) 
+            : this(0, type, name, sellingPrice, buyingPrice, stock, min_stock, department)
         {
         }
 
-        public Product(int id, string type,  string name, double price, int stock, int min_stock, Department department)
+        public Product(int id, string type,  string name, double sellingPrice, double buyingPrice, int stock, int min_stock, Department department)
         {
             this.id = id;
             this.Type = type;
             this.Stock = stock;
             this.Name = name;
-            this.Price = price;
+            this.Sellingprice = sellingPrice;
+            this.Buyingprice = buyingPrice;
             this.min_stock = min_stock;
 
 
@@ -78,7 +115,7 @@ namespace WindowsFormsApp1
 
         public override string ToString()
         {
-            return $"{Id}:{Type} {Name}";
+            return $"{Type} {Name}";
         }
     }
 }

@@ -14,34 +14,43 @@ namespace WindowsFormsApp1
     public partial class UpdateProductForm : Form
     {
         ProductController pc;
-        DepartmentController dc = new DepartmentController();
+        DepartmentController dc;
         Product p;
         bool edit;
-        public UpdateProductForm(ProductController pc)
+        public UpdateProductForm(ProductController pc, DepartmentController dc)
         {
             edit = false;
+            this.pc = pc;
+            this.dc = dc;
             InitializeComponent();
             foreach(Department d in dc.GetDepartments())
             {
                 comboBox1.Items.Add(d);
             }
-            this.pc = pc;
+            
         }
-        public UpdateProductForm(ProductController pc, Product p)
-            : this(pc)
+        public UpdateProductForm(ProductController pc, DepartmentController dc, Product p)
+            : this(pc, dc)
         {
             edit = true;
             this.p = p;
             this.Text = "Update existing product";
             btAddUpdate.Text = "Update product";
-            this.BackColor = Color.IndianRed;
+            
 
 
             tbType.Text = p.Type;
             tbName.Text = p.Name;
-            tbPrice.Text = p.Price.ToString();
-            
-           comboBox1.SelectedItem = p.Department;
+            tbBuyPrice.Text = p.Buyingprice.ToString();
+            tbSellPrice.Text = p.Sellingprice.ToString();
+
+            foreach(Department department in comboBox1.Items)
+            {
+                if(department.Id == p.Department.Id)
+                {
+                    comboBox1.SelectedItem = department;
+                }
+            }
         }
 
         private bool UpdateProduct()
@@ -51,7 +60,8 @@ namespace WindowsFormsApp1
             {
                 p.Type = tbType.Text;
                 p.Name = tbName.Text;
-                p.Price = Convert.ToDouble(tbPrice.Text);
+                p.Buyingprice = Convert.ToDouble(tbBuyPrice.Text);
+                p.Sellingprice = Convert.ToDouble(tbSellPrice.Text);
                 p.Department = ((Department)comboBox1.SelectedItem);
                 pc.UpdateProduct(p);
                 success = true;
@@ -70,16 +80,16 @@ namespace WindowsFormsApp1
             {
                 string type = tbType.Text;
                 string name = tbName.Text;
-
-                double price = Convert.ToDouble(tbPrice.Text);
+                double sell_price = Convert.ToDouble(tbSellPrice.Text);
+                double buy_price = Convert.ToDouble(tbBuyPrice.Text);
 
                 Department department = ((Department)comboBox1.SelectedItem);
 
-                Product newProduct = new Product(type, name, price, 0, 0, department);
+                Product newProduct = new Product(type, name, sell_price,buy_price, 0, 0, department);
                 pc.AddProduct(newProduct);
                 success = true;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 
                 success = false;

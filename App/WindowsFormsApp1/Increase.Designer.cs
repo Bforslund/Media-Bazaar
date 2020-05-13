@@ -47,12 +47,14 @@
             // 
             // btConfirm
             // 
-            this.btConfirm.Location = new System.Drawing.Point(177, 171);
+            this.btConfirm.BackColor = System.Drawing.Color.Red;
+            this.btConfirm.ForeColor = System.Drawing.Color.White;
+            this.btConfirm.Location = new System.Drawing.Point(177, 163);
             this.btConfirm.Name = "btConfirm";
-            this.btConfirm.Size = new System.Drawing.Size(177, 23);
+            this.btConfirm.Size = new System.Drawing.Size(177, 31);
             this.btConfirm.TabIndex = 2;
             this.btConfirm.Text = "Confirm";
-            this.btConfirm.UseVisualStyleBackColor = true;
+            this.btConfirm.UseVisualStyleBackColor = false;
             this.btConfirm.Click += new System.EventHandler(this.btConfirm_Click);
             // 
             // rbIncrease
@@ -109,6 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(392, 214);
             this.Controls.Add(this.lblSelected);
             this.Controls.Add(this.label2);

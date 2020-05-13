@@ -12,21 +12,30 @@ namespace WindowsFormsApp1
         private List<string> allergies;
         private DateTime birthday;
         private bool contract;
-        private int department;
+        private Department department;
         private DateTime hiredate;
         private string phonenumber;
         private double wage;
 
         public Employee(int id, string email, string firstname, string lastname, int privilage, string username,
-                        string adress, DateTime birthday, bool contract, int department, DateTime hiredate, string phonenumber, double wage) : base(id, email, firstname, lastname, privilage, username)
+                        string adress, DateTime birthday, bool contract, Department department, DateTime hiredate, string phonenumber, double wage) : base(id, email, firstname, lastname, privilage, username)
         {
-            this.adress = adress;
-            this.birthday = birthday;
-            this.contract = contract;
-            this.department = department;
-            this.hiredate = hiredate;
-            this.phonenumber = phonenumber;
-            this.wage = wage;
+            this.Adress = adress;
+            this.Birthday = birthday;
+            this.Contract = contract;
+            this.Department = department;
+            this.Hiredate = hiredate;
+            this.Phonenumber = phonenumber;
+            this.Wage = wage;
         }
+
+        public string Adress { get => adress; set => adress = value; }
+        public List<string> Allergies { get => allergies; set => allergies = value; }
+        public DateTime Birthday { get => birthday; set => birthday = value; }
+        public bool Contract { get => contract; set => contract = value; }
+        public Department Department { get => department; set => department = value; }
+        public DateTime Hiredate { get => hiredate; set => hiredate = value; }
+        public string Phonenumber { get => phonenumber; set => phonenumber = value; }
+        public double Wage { get => wage; set => wage = value; }
     }
 }

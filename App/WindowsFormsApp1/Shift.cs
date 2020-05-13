@@ -62,8 +62,7 @@ namespace WindowsFormsApp1
                         string email = reader["email"].ToString();
                         string phone = reader["phone"].ToString();
                         bool contract = Convert.ToBoolean(reader["contract"]);
-                        //int department = Convert.ToInt32(reader["department_id"]);
-                        int department = 0;
+                        Department department = new DepartmentController().GetDepartment(Convert.ToInt32(reader["department_id"]));
 
                         assignedEmployees.Add(new Employee(id, email, firstname, lastname, privilage, username, adress, birthday, contract, department, hiredate, phone, wage));
                     }
