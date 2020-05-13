@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         public List<Personal> GetEmployees()
         {
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
-            string query = "SELECT * FROM `users` WHERE privilage = 1";
+            string query = "SELECT * FROM `users` WHERE privilage = 0";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
             commandDatabase.CommandTimeout = 60;

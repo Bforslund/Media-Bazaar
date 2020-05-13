@@ -41,31 +41,24 @@ namespace WindowsFormsApp1
 
         private void LoadAtStart() // Everything that needs to be filled at start!
         {
-            try
+            lsbEmployees.DataSource = employeeController.GetEmployees();
+            cmbStatEmployee.DataSource = employeeController.GetEmployees();
+
+            //Comment out this to disable the login
+            tbcMain.TabPages.Remove(tabEmployees);
+            tbcMain.TabPages.Remove(tabProducts);
+            tbcMain.TabPages.Remove(tabSchedule);
+            tbcMain.TabPages.Remove(tabStatistics);
+            tbcMain.TabPages.Remove(tabDepartments);
+            tbcMain.TabPages.Remove(tabLogout);
+            foreach (Personal p in employeeController.GetAllEmployees())
             {
-                lsbEmployees.DataSource = employeeController.GetEmployees();
-                cmbStatEmployee.DataSource = employeeController.GetEmployees();
-
-                //Comment out this to disable the login
-                tbcMain.TabPages.Remove(tabEmployees);
-                tbcMain.TabPages.Remove(tabProducts);
-                tbcMain.TabPages.Remove(tabSchedule);
-                tbcMain.TabPages.Remove(tabStatistics);
-                tbcMain.TabPages.Remove(tabDepartments);
-                tbcMain.TabPages.Remove(tabLogout);
-                foreach (Personal p in employeeController.GetAllEmployees())
-                {
-                    cbManager.Items.Add(p);
-                }
-
-                foreach (Department d in departmentcontroller.GetDepartments())
-                {
-                    cmbEmployeeDepartment.Items.Add(d);
-                }
+                cbManager.Items.Add(p);
             }
-            catch(MySqlException ex)
+
+            foreach (Department d in departmentcontroller.GetDepartments())
             {
-                NoDatabaseConnection(ex);
+                cmbEmployeeDepartment.Items.Add(d);
             }
         }
 
@@ -472,7 +465,6 @@ namespace WindowsFormsApp1
                 }
                 foreach (Product item in stats.GetDepartmentData())
                 {
-                    
                     chartDepartSales.Series["Amount"].Points.AddXY(item.Name, item.Stock);
 
                 }
