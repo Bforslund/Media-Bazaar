@@ -435,6 +435,7 @@ namespace WindowsFormsApp1
                 }
                 foreach (Product item in stats.GetDepartmentData())
                 {
+                    
                     chartDepartSales.Series["Amount"].Points.AddXY(item.Name, item.Stock);
 
                 }
