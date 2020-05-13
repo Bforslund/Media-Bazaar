@@ -133,6 +133,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lsbEmployees = new System.Windows.Forms.ListBox();
             this.tabProducts = new System.Windows.Forms.TabPage();
+            this.btnProductstockRequest = new System.Windows.Forms.Button();
             this.lblSellPrice = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblPSearch = new System.Windows.Forms.Label();
@@ -145,7 +146,6 @@
             this.lablePInormation = new System.Windows.Forms.Label();
             this.labelPProducts = new System.Windows.Forms.Label();
             this.btnProductUpdate = new System.Windows.Forms.Button();
-            this.btnProductstockRequest = new System.Windows.Forms.Button();
             this.labelPDepartment = new System.Windows.Forms.Label();
             this.labelPCurrentlyInStock = new System.Windows.Forms.Label();
             this.labelPPrice = new System.Windows.Forms.Label();
@@ -153,8 +153,15 @@
             this.labelPType = new System.Windows.Forms.Label();
             this.brnProductAdd = new System.Windows.Forms.Button();
             this.btnProductRemove = new System.Windows.Forms.Button();
-            this.btnProductStockManage = new System.Windows.Forms.Button();
             this.lsbProducts = new System.Windows.Forms.ListBox();
+            this.tabProductRestock = new System.Windows.Forms.TabPage();
+            this.btnRejectRestock = new System.Windows.Forms.Button();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtBoxRestock = new System.Windows.Forms.TextBox();
+            this.rejectMessage = new System.Windows.Forms.TextBox();
+            this.lbCompletedRequests = new System.Windows.Forms.ListBox();
+            this.lsbRequestsOutstanding = new System.Windows.Forms.ListBox();
+            this.btnRestockManage = new System.Windows.Forms.Button();
             this.tabSchedule = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.tabStatistics = new System.Windows.Forms.TabPage();
@@ -183,6 +190,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEmployeeRemove)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tabProducts.SuspendLayout();
+            this.tabProductRestock.SuspendLayout();
             this.tabSchedule.SuspendLayout();
             this.tabStatistics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDepartSales)).BeginInit();
@@ -468,6 +476,7 @@
             this.tbcMain.Controls.Add(this.tabDepartments);
             this.tbcMain.Controls.Add(this.tabEmployees);
             this.tbcMain.Controls.Add(this.tabProducts);
+            this.tbcMain.Controls.Add(this.tabProductRestock);
             this.tbcMain.Controls.Add(this.tabSchedule);
             this.tbcMain.Controls.Add(this.tabStatistics);
             this.tbcMain.Controls.Add(this.tabLogout);
@@ -1172,6 +1181,7 @@
             // tabProducts
             // 
             this.tabProducts.BackColor = System.Drawing.Color.White;
+            this.tabProducts.Controls.Add(this.btnProductstockRequest);
             this.tabProducts.Controls.Add(this.lblSellPrice);
             this.tabProducts.Controls.Add(this.label6);
             this.tabProducts.Controls.Add(this.lblPSearch);
@@ -1184,7 +1194,6 @@
             this.tabProducts.Controls.Add(this.lablePInormation);
             this.tabProducts.Controls.Add(this.labelPProducts);
             this.tabProducts.Controls.Add(this.btnProductUpdate);
-            this.tabProducts.Controls.Add(this.btnProductstockRequest);
             this.tabProducts.Controls.Add(this.labelPDepartment);
             this.tabProducts.Controls.Add(this.labelPCurrentlyInStock);
             this.tabProducts.Controls.Add(this.labelPPrice);
@@ -1192,7 +1201,6 @@
             this.tabProducts.Controls.Add(this.labelPType);
             this.tabProducts.Controls.Add(this.brnProductAdd);
             this.tabProducts.Controls.Add(this.btnProductRemove);
-            this.tabProducts.Controls.Add(this.btnProductStockManage);
             this.tabProducts.Controls.Add(this.lsbProducts);
             this.tabProducts.Location = new System.Drawing.Point(4, 30);
             this.tabProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1201,6 +1209,19 @@
             this.tabProducts.Size = new System.Drawing.Size(1322, 469);
             this.tabProducts.TabIndex = 1;
             this.tabProducts.Text = "Products";
+            // 
+            // btnProductstockRequest
+            // 
+            this.btnProductstockRequest.BackColor = System.Drawing.Color.Red;
+            this.btnProductstockRequest.ForeColor = System.Drawing.Color.White;
+            this.btnProductstockRequest.Location = new System.Drawing.Point(663, 355);
+            this.btnProductstockRequest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnProductstockRequest.Name = "btnProductstockRequest";
+            this.btnProductstockRequest.Size = new System.Drawing.Size(213, 34);
+            this.btnProductstockRequest.TabIndex = 35;
+            this.btnProductstockRequest.Text = "Request restock";
+            this.btnProductstockRequest.UseVisualStyleBackColor = false;
+            this.btnProductstockRequest.Click += new System.EventHandler(this.btnProductstockRequest_Click);
             // 
             // lblSellPrice
             // 
@@ -1317,18 +1338,6 @@
             this.btnProductUpdate.UseVisualStyleBackColor = false;
             this.btnProductUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
-            // btnProductstockRequest
-            // 
-            this.btnProductstockRequest.BackColor = System.Drawing.Color.Red;
-            this.btnProductstockRequest.ForeColor = System.Drawing.Color.White;
-            this.btnProductstockRequest.Location = new System.Drawing.Point(663, 394);
-            this.btnProductstockRequest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnProductstockRequest.Name = "btnProductstockRequest";
-            this.btnProductstockRequest.Size = new System.Drawing.Size(213, 34);
-            this.btnProductstockRequest.TabIndex = 20;
-            this.btnProductstockRequest.Text = "Request restock";
-            this.btnProductstockRequest.UseVisualStyleBackColor = false;
-            // 
             // labelPDepartment
             // 
             this.labelPDepartment.AutoSize = true;
@@ -1405,19 +1414,6 @@
             this.btnProductRemove.UseVisualStyleBackColor = false;
             this.btnProductRemove.Click += new System.EventHandler(this.btRemove_Click);
             // 
-            // btnProductStockManage
-            // 
-            this.btnProductStockManage.BackColor = System.Drawing.Color.Red;
-            this.btnProductStockManage.ForeColor = System.Drawing.Color.White;
-            this.btnProductStockManage.Location = new System.Drawing.Point(663, 352);
-            this.btnProductStockManage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnProductStockManage.Name = "btnProductStockManage";
-            this.btnProductStockManage.Size = new System.Drawing.Size(213, 34);
-            this.btnProductStockManage.TabIndex = 2;
-            this.btnProductStockManage.Text = "Increase/decrease stock";
-            this.btnProductStockManage.UseVisualStyleBackColor = false;
-            this.btnProductStockManage.Click += new System.EventHandler(this.btCrease_Click);
-            // 
             // lsbProducts
             // 
             this.lsbProducts.BackColor = System.Drawing.Color.White;
@@ -1429,6 +1425,94 @@
             this.lsbProducts.Size = new System.Drawing.Size(255, 382);
             this.lsbProducts.TabIndex = 0;
             this.lsbProducts.SelectedIndexChanged += new System.EventHandler(this.lbProducts_SelectedIndexChanged);
+            // 
+            // tabProductRestock
+            // 
+            this.tabProductRestock.Controls.Add(this.btnRejectRestock);
+            this.tabProductRestock.Controls.Add(this.label36);
+            this.tabProductRestock.Controls.Add(this.txtBoxRestock);
+            this.tabProductRestock.Controls.Add(this.rejectMessage);
+            this.tabProductRestock.Controls.Add(this.lbCompletedRequests);
+            this.tabProductRestock.Controls.Add(this.lsbRequestsOutstanding);
+            this.tabProductRestock.Controls.Add(this.btnRestockManage);
+            this.tabProductRestock.Location = new System.Drawing.Point(4, 30);
+            this.tabProductRestock.Name = "tabProductRestock";
+            this.tabProductRestock.Size = new System.Drawing.Size(1322, 469);
+            this.tabProductRestock.TabIndex = 7;
+            this.tabProductRestock.Text = "Products Restock";
+            this.tabProductRestock.UseVisualStyleBackColor = true;
+            // 
+            // btnRejectRestock
+            // 
+            this.btnRejectRestock.BackColor = System.Drawing.Color.Red;
+            this.btnRejectRestock.ForeColor = System.Drawing.Color.White;
+            this.btnRejectRestock.Location = new System.Drawing.Point(594, 415);
+            this.btnRejectRestock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRejectRestock.Name = "btnRejectRestock";
+            this.btnRejectRestock.Size = new System.Drawing.Size(213, 34);
+            this.btnRejectRestock.TabIndex = 35;
+            this.btnRejectRestock.Text = "Reject restock";
+            this.btnRejectRestock.UseVisualStyleBackColor = false;
+            this.btnRejectRestock.Click += new System.EventHandler(this.btnRejectRestock_Click);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(589, 299);
+            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(261, 21);
+            this.label36.TabIndex = 34;
+            this.label36.Text = "Amount to increase/decrease";
+            // 
+            // txtBoxRestock
+            // 
+            this.txtBoxRestock.Location = new System.Drawing.Point(882, 298);
+            this.txtBoxRestock.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxRestock.Name = "txtBoxRestock";
+            this.txtBoxRestock.Size = new System.Drawing.Size(167, 28);
+            this.txtBoxRestock.TabIndex = 33;
+            // 
+            // rejectMessage
+            // 
+            this.rejectMessage.Location = new System.Drawing.Point(259, 379);
+            this.rejectMessage.Margin = new System.Windows.Forms.Padding(4);
+            this.rejectMessage.Name = "rejectMessage";
+            this.rejectMessage.Size = new System.Drawing.Size(935, 28);
+            this.rejectMessage.TabIndex = 32;
+            // 
+            // lbCompletedRequests
+            // 
+            this.lbCompletedRequests.FormattingEnabled = true;
+            this.lbCompletedRequests.ItemHeight = 21;
+            this.lbCompletedRequests.Location = new System.Drawing.Point(791, 19);
+            this.lbCompletedRequests.Margin = new System.Windows.Forms.Padding(4);
+            this.lbCompletedRequests.Name = "lbCompletedRequests";
+            this.lbCompletedRequests.Size = new System.Drawing.Size(455, 235);
+            this.lbCompletedRequests.TabIndex = 31;
+            // 
+            // lsbRequestsOutstanding
+            // 
+            this.lsbRequestsOutstanding.FormattingEnabled = true;
+            this.lsbRequestsOutstanding.ItemHeight = 21;
+            this.lsbRequestsOutstanding.Location = new System.Drawing.Point(77, 19);
+            this.lsbRequestsOutstanding.Margin = new System.Windows.Forms.Padding(4);
+            this.lsbRequestsOutstanding.Name = "lsbRequestsOutstanding";
+            this.lsbRequestsOutstanding.Size = new System.Drawing.Size(441, 235);
+            this.lsbRequestsOutstanding.TabIndex = 30;
+            // 
+            // btnRestockManage
+            // 
+            this.btnRestockManage.BackColor = System.Drawing.Color.Red;
+            this.btnRestockManage.ForeColor = System.Drawing.Color.White;
+            this.btnRestockManage.Location = new System.Drawing.Point(369, 293);
+            this.btnRestockManage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRestockManage.Name = "btnRestockManage";
+            this.btnRestockManage.Size = new System.Drawing.Size(213, 34);
+            this.btnRestockManage.TabIndex = 29;
+            this.btnRestockManage.Text = "Increase/decrease stock";
+            this.btnRestockManage.UseVisualStyleBackColor = false;
+            this.btnRestockManage.Click += new System.EventHandler(this.btnRestockManage_Click);
             // 
             // tabSchedule
             // 
@@ -1682,6 +1766,8 @@
             this.groupBox3.PerformLayout();
             this.tabProducts.ResumeLayout(false);
             this.tabProducts.PerformLayout();
+            this.tabProductRestock.ResumeLayout(false);
+            this.tabProductRestock.PerformLayout();
             this.tabSchedule.ResumeLayout(false);
             this.tabSchedule.PerformLayout();
             this.tabStatistics.ResumeLayout(false);
@@ -1700,7 +1786,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnProductstockRequest;
         private System.Windows.Forms.Label labelPDepartment;
         private System.Windows.Forms.Label labelPCurrentlyInStock;
         private System.Windows.Forms.Label labelPPrice;
@@ -1708,7 +1793,6 @@
         private System.Windows.Forms.Label labelPType;
         private System.Windows.Forms.Button brnProductAdd;
         private System.Windows.Forms.Button btnProductRemove;
-        private System.Windows.Forms.Button btnProductStockManage;
         private System.Windows.Forms.ListBox lsbProducts;
         private System.Windows.Forms.Button btnProductUpdate;
         private System.Windows.Forms.Label lablePInormation;
@@ -1829,6 +1913,15 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox Banner;
+        private System.Windows.Forms.TabPage tabProductRestock;
+        private System.Windows.Forms.Button btnRejectRestock;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox txtBoxRestock;
+        private System.Windows.Forms.TextBox rejectMessage;
+        private System.Windows.Forms.ListBox lbCompletedRequests;
+        private System.Windows.Forms.ListBox lsbRequestsOutstanding;
+        private System.Windows.Forms.Button btnRestockManage;
+        private System.Windows.Forms.Button btnProductstockRequest;
     }
 }
 

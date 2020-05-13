@@ -90,6 +90,15 @@ namespace WindowsFormsApp1
             this.Name = name;
             this.Stock = amount;
         }
+        public Product(int id, int amount)
+        {
+            this.Id = id;
+            this.Stock = amount;
+        }
+        public Product()
+        {
+
+        }
 
 
         public Product(string type, string name, double sellingPrice, double buyingPrice, int stock, int min_stock, Department department) 

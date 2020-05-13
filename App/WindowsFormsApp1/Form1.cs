@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
         Stats stats;
         User usr;
         DepartmentController departmentcontroller;
+        RestockItem restockItem;
 
         public MediaBazaar()
         {
@@ -32,6 +33,7 @@ namespace WindowsFormsApp1
             calenderManager = new CalenderManager();
             employeeController = new EmployeeController();
             departmentcontroller = new DepartmentController();
+            restockItem = new RestockItem();
             stats = new Stats();
             usr = new User();
 
@@ -47,6 +49,7 @@ namespace WindowsFormsApp1
             //Comment out this to disable the login
             tbcMain.TabPages.Remove(tabEmployees);
             tbcMain.TabPages.Remove(tabProducts);
+            tbcMain.TabPages.Remove(tabProductRestock);
             tbcMain.TabPages.Remove(tabSchedule);
             tbcMain.TabPages.Remove(tabStatistics);
             tbcMain.TabPages.Remove(tabDepartments);
@@ -72,6 +75,7 @@ namespace WindowsFormsApp1
 
                 tbcMain.TabPages.Remove(tabEmployees);
                 tbcMain.TabPages.Remove(tabProducts);
+                tbcMain.TabPages.Remove(tabProductRestock);
                 tbcMain.TabPages.Remove(tabSchedule);
                 tbcMain.TabPages.Remove(tabStatistics);
                 tbcMain.TabPages.Remove(tabLogout);
@@ -106,8 +110,8 @@ namespace WindowsFormsApp1
                 UpdateProductsList();
                 btnProductRemove.Hide();
                 btnProductUpdate.Hide();
-                btnProductStockManage.Hide();
-                btnProductstockRequest.Hide();
+                //btnRestockManage.Hide();
+                //btnProductstockRequest.Hide();
             }
             if (tbcMain.SelectedTab == tabEmployees)
             {
@@ -157,7 +161,6 @@ namespace WindowsFormsApp1
                 }
                 btnProductUpdate.Show();
                 btnProductRemove.Show();
-                btnProductStockManage.Show();
             }
         }
 
@@ -189,14 +192,14 @@ namespace WindowsFormsApp1
 
         }
 
-        private void btCrease_Click(object sender, EventArgs e)
-        {
-            Product selectedProduct = (Product)lsbProducts.SelectedItem;
-            Increase creaseForm = new Increase(selectedProduct, productcontroller);
+        //private void btCrease_Click(object sender, EventArgs e)
+        //{
+        //    Product selectedProduct = (Product)lsbProducts.SelectedItem;
+        //    Increase creaseForm = new Increase(selectedProduct, productcontroller);
 
-            creaseForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
-            creaseForm.Show();
-        }
+        //    creaseForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
+        //    creaseForm.Show();
+        //}
 
         private void ChildFormClosing(object sender, FormClosingEventArgs e)
         {
@@ -532,6 +535,7 @@ namespace WindowsFormsApp1
                 tbcMain.TabPages.Add(tabDepartments);
                 tbcMain.TabPages.Add(tabEmployees);
                 tbcMain.TabPages.Add(tabProducts);
+                tbcMain.TabPages.Add(tabProductRestock);
                 tbcMain.TabPages.Add(tabSchedule);
                 tbcMain.TabPages.Add(tabStatistics);
                 tbcMain.TabPages.Add(tabLogout);
@@ -758,5 +762,120 @@ namespace WindowsFormsApp1
 
 
         #endregion
+
+        private void btnRestockManage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RestockItem rstk = new RestockItem();
+                RestockItem selectedRestockItem = (RestockItem)lsbRequestsOutstanding.SelectedItem;
+
+                // Increase increaseForm = new Increase(selectedProduct, productcontroller);
+
+                //increaseForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
+                //increaseForm.Show();
+                //selectedProduct. Convert(ToInt32(txtBoxRestock.Text));
+                int amount = Convert.ToInt32(txtBoxRestock.Text);
+                rstk.IncreaseRestockItem(selectedRestockItem, amount);
+
+                updateListOutstandingRequests();
+                updateListCompletedRequests();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Select a product to initiate the restock");
+            }
+        }
+
+        private void btnRejectRestock_Click(object sender, EventArgs e)
+        {
+            //todo not finished
+
+            RestockItem restockItemToReject = (RestockItem)lsbRequestsOutstanding.SelectedItem;
+
+
+            //TODO rejected "tag", add date of rejection, error handling
+            try
+            {
+                restockItemToReject.RejectRequest(restockItemToReject, 0, rejectMessage.Text);
+                updateListOutstandingRequests();
+                updateListCompletedRequests();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please enter a reason for the request to be rejected");
+                throw;
+            }
+
+            // lbCompletedRequests.Items.Add(rejectedProduct);
+
+            //?List view version
+            // lvCompletedRequests.Columns.Add("Status", 20, HorizontalAlignment.Left); 
+
+            //ListViewItem item = new ListViewItem();
+
+            //item.Text = rejectedProduct.ToString(); // Or whatever display text you need
+            //item.Tag = rejectedProduct;
+
+            // Setup other things like SubItems, Font, ...
+
+            //lvCompletedRequests.Items.Add(item);
+
+
+        }
+
+        #region restockMethods
+        public void updateEmployeeList()
+        {
+            lsbEmployees.Items.Clear();
+
+            foreach (Employee employee in employeeController.GetAllEmployees())
+            {
+                lsbEmployees.Items.Add(employee);
+            }
+
+        }
+        public void updateListOutstandingRequests()
+        {
+            //TODO check
+            lsbRequestsOutstanding.Items.Clear();
+            if (restockItem.GetOutstandingData().Count > 0)
+            {
+                foreach (RestockItem item in restockItem.GetOutstandingData())
+                {
+                    lsbRequestsOutstanding.Items.Add(item);
+                }
+            }
+
+        }
+        public void updateListCompletedRequests()
+        {
+            //TODO check
+
+            lbCompletedRequests.Items.Clear();
+
+            foreach (RestockItem item in restockItem.GetCompeletedData())
+            {
+                lbCompletedRequests.Items.Add(item);
+            }
+        }
+        #endregion
+
+        private void btnProductstockRequest_Click(object sender, EventArgs e)
+        {
+            if (lsbProducts.SelectedIndex >= 0)
+            {
+                Product restockRequestProduct = (Product)lsbProducts.SelectedItem;
+                //TODO get the name or username of the user initiating the request
+                restockItem.RequestRestockOfitem(restockRequestProduct, DateTime.Now);
+                updateListOutstandingRequests(); // update the list
+                MessageBox.Show("Product restock request successfull");
+            }
+            else
+            {
+                MessageBox.Show("No product selected");
+            }
+        }
     }
 }
