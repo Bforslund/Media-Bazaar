@@ -43,7 +43,7 @@ namespace WindowsFormsApp1
 
         private void LoadAtStart() // Everything that needs to be filled at start!
         {
-            lsbEmployees.DataSource = employeeController.GetEmployees();
+           // lsbEmployees.DataSource = employeeController.GetEmployees();
             cmbStatEmployee.DataSource = employeeController.GetEmployees();
 
             //Comment out this to disable the login
@@ -63,6 +63,10 @@ namespace WindowsFormsApp1
             {
                 cmbEmployeeDepartment.Items.Add(d);
             }
+
+            updateEmployeeList();
+            updateListOutstandingRequests();
+            updateListCompletedRequests();
         }
 
         private void tbcMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -656,7 +660,7 @@ namespace WindowsFormsApp1
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            lsbEmployees.Items.Clear();
+            
             lsbEmployees.DataSource = employeeController.FilterEmployees(txbEmployeeSearch.Text);
 
         }
@@ -834,7 +838,7 @@ namespace WindowsFormsApp1
         {
             //todo not finished
 
-            RestockItem restockItemToReject = (RestockItem)lsbRequestsOutstanding.SelectedItem;
+            RestockItem restockItemToReject = lsbRequestsOutstanding.SelectedItem as RestockItem;
 
 
             //TODO rejected "tag", add date of rejection, error handling
@@ -950,6 +954,29 @@ namespace WindowsFormsApp1
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dtpStatDate_ValueChanged(object sender, EventArgs e)
+        {
+            foreach (var series in chartProfit.Series)
+            {
+                series.Points.Clear();
+            }
+
+            reloadChart();
+        }
+
+        private void cmbStatEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            crtStatAttendence.Series["Attendance"].Points.Clear();
+
+            Employee emp = cmbStatEmployee.SelectedItem as Employee;
+
+            int absent = usr.checkAttendance(cmbStatEmployee.SelectedItem.ToString(), 0);
+            int present = usr.checkAttendance(cmbStatEmployee.SelectedItem.ToString(), 1);
+
+            crtStatAttendence.Series["Attendance"].Points.AddXY("Present", present);
+            crtStatAttendence.Series["Attendance"].Points.AddXY("Absent", absent);
         }
     }
 }

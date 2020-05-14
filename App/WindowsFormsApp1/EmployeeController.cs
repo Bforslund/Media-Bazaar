@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         /// <returns></returns>
         public List<Personal> GetEmployees()
         {
+            personals.Clear();
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             string query = "SELECT * FROM `users` WHERE privilage = 1";
 

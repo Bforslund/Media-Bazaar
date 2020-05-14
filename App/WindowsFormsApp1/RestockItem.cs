@@ -153,19 +153,18 @@ namespace WindowsFormsApp1
                 databaseConnection.Close();
             }
         }
-        private void increaseInProducts(RestockItem r, int amount)
+        private void increaseInProducts(RestockItem r, int value)
         {
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             try
             {
                 databaseConnection.Open();
 
-                string sql = "UPDATE products SET stock= (stock+@stock) WHERE id = @idProduct";
+                string sql = "UPDATE products SET stock = (stock + @value) WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
-                cmd.CommandText = sql;
-
-                cmd.Parameters.AddWithValue("@idProduct", r.Id);
-                cmd.Parameters.AddWithValue("@stock", amount);
+                cmd.Parameters.AddWithValue("@stock", r.Stock);
+                cmd.Parameters.AddWithValue("@id", r.Id);
+                cmd.Parameters.AddWithValue("@value", value);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
