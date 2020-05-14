@@ -408,35 +408,76 @@ namespace WindowsFormsApp1
 
         private void lsbEmployees_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Employee selectedEmployee = (Employee)lsbEmployees.SelectedItem;
-
-            if (selectedEmployee != null)
+            //fillEmployeeData();
+            Employee selectedEmployee = lsbEmployees.SelectedItem as Employee;
+            txbEmployeeFirstname.Text = selectedEmployee.FirstName;
+            txbEmployeeLastname.Text = selectedEmployee.LastName;
+            //dtpEmployeeBirthday.Value = selectedEmployee.Birthday;
+            txbEmployeeAdress.Text = selectedEmployee.Adress;
+            txbEmployeeEmail.Text = selectedEmployee.Email;
+            txbEmployeePhone.Text = selectedEmployee.PhoneNumber;
+            //dtpEmployeeHire.Value = selectedEmployee.HireDate;
+            cmbEmployeeContract.SelectedItem = selectedEmployee.Contract;
+            if (selectedEmployee.Allergies != null)
             {
-
-                cmbEmployeeDepartment.SelectedItem = departmentcontroller.GetDepartment(selectedEmployee.Department.Id);
+                foreach (var item in selectedEmployee.Allergies)
+                {
+                    txbEmployeeAllergies.Text += " " + item;
+                }
             }
+            cmbEmployeeDepartment.SelectedItem = selectedEmployee.Department;
+            cmbEmployeePrivilege.SelectedItem = selectedEmployee.Privilage;
+            txbEmployeeWage.Text = selectedEmployee.Wage.ToString();
+
+
         }
 
         #region function
         public void saveEmployeeData()
         {
-            //convert form fields to data
-            string email = txbEmployeeEmail.Text;
-            string firstname = txbEmployeeFirstname.Text;
-            string lastname = txbEmployeeLastname.Text;
-            int privilage = cmbEmployeePrivilege.SelectedIndex;
-            string username = txbEmployeeUsername.Text;
-            string adress = txbEmployeeAdress.Text;
-            DateTime birthDay = dtpEmployeeBirthday.Value;
-            bool contract = Convert.ToBoolean(cmbEmployeeContract.SelectedIndex);
-            int department = 0/*departmentComboBox.SelectedIndex*/;
-            DateTime hiredate = dtpEmployeeHire.Value;
-            string phoneNumber = phoneNoBox.Text;
-            string password = txbEmployeePassword.Text;
-            double wage = Convert.ToDouble(txbEmployeeWage.Text);
+            try
+            {
+                string email = txbEmployeeEmail.Text;
+                string firstname = txbEmployeeFirstname.Text;
+                string lastname = txbEmployeeLastname.Text;
+                int privilage = cmbEmployeePrivilege.SelectedIndex;
+                string username = txbEmployeeUsername.Text;
+                string adress = txbEmployeeAdress.Text;
+                DateTime birthDay = dtpEmployeeBirthday.Value;
+                bool contract = Convert.ToBoolean(cmbEmployeeContract.SelectedIndex);
+                Department department = cmbEmployeeDepartment.SelectedItem as Department;
+                DateTime hiredate = dtpEmployeeHire.Value;
+                string phoneNumber = phoneNoBox.Text;
+                string password = txbEmployeePassword.Text;
+                double wage = Convert.ToDouble(txbEmployeeWage.Text);
 
-            employeeController.saveEmployeeData(email, firstname, lastname, privilage, username, password, adress, birthDay, contract, department, hiredate, phoneNumber, wage);
+                bool isSelected;
+
+                Employee selectedEmployee = lsbEmployees.SelectedItem as Employee;
+
+                if (selectedEmployee != null)
+                {
+                    isSelected = true;
+
+                }
+                else
+                {
+                    isSelected = false;
+
+                }
+                employeeController.saveEmployeeData(email, firstname, lastname, privilage, username, password, adress, birthDay, contract, department, hiredate, phoneNumber, wage, isSelected);
+
+
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Wrong input");
+            }
+            //convert form fields to data
             lsbEmployees.DataSource = employeeController.GetEmployees();
+            refreshListView();
         }
 
         private void refreshListView()
@@ -556,7 +597,7 @@ namespace WindowsFormsApp1
             else if (stats.userRole == 1)
             {
                 tbcMain.TabPages.Remove(tabLogin);
-                // tabPage request restock tab
+                tbcMain.TabPages.Add(tabProductRestock);
                 // tbcMain.TabPages.Add(tabProducts); 
                 tbcMain.TabPages.Add(tabLogout);
             }
@@ -615,7 +656,9 @@ namespace WindowsFormsApp1
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            lsbEmployees.Items.Clear();
             lsbEmployees.DataSource = employeeController.FilterEmployees(txbEmployeeSearch.Text);
+
         }
 
         private void button1_Click(object sender, EventArgs e)

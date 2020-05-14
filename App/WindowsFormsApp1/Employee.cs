@@ -17,6 +17,8 @@ namespace WindowsFormsApp1
         private string phonenumber;
         private double wage;
 
+
+
         public Employee(int id, string email, string firstname, string lastname, int privilage, string username,
                         string adress, DateTime birthday, bool contract, Department department, DateTime hiredate, string phonenumber, double wage) : base(id, email, firstname, lastname, privilage, username)
         {
@@ -25,7 +27,7 @@ namespace WindowsFormsApp1
             this.Contract = contract;
             this.Department = department;
             this.Hiredate = hiredate;
-            this.Phonenumber = phonenumber;
+            this.PhoneNumber = phonenumber;
             this.Wage = wage;
         }
 
@@ -35,7 +37,13 @@ namespace WindowsFormsApp1
         public bool Contract { get => contract; set => contract = value; }
         public Department Department { get => department; set => department = value; }
         public DateTime Hiredate { get => hiredate; set => hiredate = value; }
-        public string Phonenumber { get => phonenumber; set => phonenumber = value; }
+        public string PhoneNumber { get => phonenumber; set => phonenumber = value; }
         public double Wage { get => wage; set => wage = value; }
+
+        public override string ToString()
+        {
+            return this.FirstName + " " + this.LastName;
+        }
     }
+
 }

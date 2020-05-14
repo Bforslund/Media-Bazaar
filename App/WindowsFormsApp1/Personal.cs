@@ -10,24 +10,30 @@ namespace WindowsFormsApp1
     {
         public int Id { get; set; }
         private string email;
-        private string firstname;
-        private string lastname;
+        private string firstName;
+        private string lastName;
         private int privilage;
         private string username;
+
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Privilage { get; set; }
+        public string Username { get; set; }
 
         public Personal(int id, string email, string firstname, string lastname, int privilage, string username)
         {
             this.Id = id;
-            this.email = email;
-            this.firstname = firstname;
-            this.lastname = lastname;
-            this.privilage = privilage;
-            this.username = username;
+            this.Email = email;
+            this.FirstName = firstname;
+            this.LastName = lastname;
+            this.Privilage = privilage;
+            this.Username = username;
         }
 
         public override string ToString()
         {
-            return $"{firstname} {lastname}";
+            return $"{FirstName} {LastName}";
         }
     }
 }
