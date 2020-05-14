@@ -767,8 +767,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                RestockItem rstk = new RestockItem();
-                RestockItem selectedRestockItem = (RestockItem)lsbRequestsOutstanding.SelectedItem;
+                RestockItem selectedRestockItem = lsbRequestsOutstanding.SelectedItem as RestockItem;
 
                 // Increase increaseForm = new Increase(selectedProduct, productcontroller);
 
@@ -776,7 +775,7 @@ namespace WindowsFormsApp1
                 //increaseForm.Show();
                 //selectedProduct. Convert(ToInt32(txtBoxRestock.Text));
                 int amount = Convert.ToInt32(txtBoxRestock.Text);
-                rstk.IncreaseRestockItem(selectedRestockItem, amount);
+                selectedRestockItem.IncreaseRestockItem(selectedRestockItem, amount);
 
                 updateListOutstandingRequests();
                 updateListCompletedRequests();

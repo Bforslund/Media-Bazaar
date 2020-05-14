@@ -64,8 +64,6 @@ namespace WindowsFormsApp1
                 databaseConnection.Open();
 
                 string sql = "INSERT INTO restock (products, date, amount, approved) VALUES(@products, @date,null, null)"; //amount removed
-
-
                 MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
 
                 //TODO cmd.Parameters.AddWithValue("@users", this.UserId); apply it later
@@ -74,8 +72,6 @@ namespace WindowsFormsApp1
                 cmd.Parameters.AddWithValue("@date", timeOfRequest);
                 //cmd.Parameters.AddWithValue("@amount", productToRestock.amout); 
                 //? is the above necessary ?
-
-
 
                 cmd.ExecuteNonQuery();
 
@@ -99,17 +95,47 @@ namespace WindowsFormsApp1
             try
             {
                 databaseConnection.Open();
-                //? add message?
                 string sql = "UPDATE restock SET approved = @approved, message=@message WHERE id=@id";
-
-
                 MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
                 cmd.Parameters.AddWithValue("@id", restockItemToReject.Id);
 
                 cmd.Parameters.AddWithValue("@approved", approved);
                 cmd.Parameters.AddWithValue("@message", message);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                databaseConnection.Close();
+            }
+        }
+        public void IncreaseRestockItem(RestockItem r, int amount)
+        {
+
+            increaseInRestock(r, amount);
+            increaseInProducts(r, amount);
 
 
+        }
+        private void increaseInRestock(RestockItem r, int amount)
+        {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
+            try
+            {
+                databaseConnection.Open();
+
+                string sql = "UPDATE restock SET amount = (amount+@amount), approved=1 WHERE id=@id";
+                MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
+                cmd.Parameters.AddWithValue("@amount", amount);
+                cmd.Parameters.AddWithValue("@id", r.Id);
 
                 cmd.ExecuteNonQuery();
 
@@ -127,16 +153,46 @@ namespace WindowsFormsApp1
                 databaseConnection.Close();
             }
         }
+        private void increaseInProducts(RestockItem r, int amount)
+        {
+            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
+            try
+            {
+                databaseConnection.Open();
+
+                string sql = "UPDATE products SET stock= (stock+@stock) WHERE id = @idProduct";
+                MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
+                cmd.CommandText = sql;
+
+                cmd.Parameters.AddWithValue("@idProduct", r.Id);
+                cmd.Parameters.AddWithValue("@stock", amount);
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                databaseConnection.Close();
+            }
+        }
+        #region fetching the data
         //!Getting the data
         public List<RestockItem> GetOutstandingData()
         {
             //? something broken
             //TODO display the product name
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
-            string query = "SELECT r.id, u.username, p.name, r.date, r.amount FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved IS NULL ";
             List<RestockItem> retlist = new List<RestockItem>();
             try
             {
+                string query = "SELECT r.id, u.username, p.name, r.date, r.amount FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved IS NULL ";
+
                 databaseConnection.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
 
@@ -157,10 +213,11 @@ namespace WindowsFormsApp1
         public List<RestockItem> GetCompeletedData()
         {
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
-            string query = "SELECT r.id, u.username, p.name, r.date, r.amount, r.approved, r.message FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved = 1 OR r.approved = 0";
             List<RestockItem> retlist = new List<RestockItem>();
             try
             {
+                string query = "SELECT r.id, u.username, p.name, r.date, r.amount, r.approved, r.message FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved = 1 OR r.approved = 0";
+
                 databaseConnection.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
 
@@ -185,35 +242,8 @@ namespace WindowsFormsApp1
                 throw;
             }
         }
+        #endregion
 
-        public void IncreaseRestockItem(RestockItem r, int amount)
-        {
-            MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
-            try
-            {
-                databaseConnection.Open();
-
-                string sql = "UPDATE restock SET amount = amount+@amount, approved = 1 WHERE id = @id";
-                MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
-                cmd.Parameters.AddWithValue("@amount", amount);
-                cmd.Parameters.AddWithValue("@id", r.Id);
-
-
-                cmd.ExecuteNonQuery();
-            }
-            catch (MySqlException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                databaseConnection.Close();
-            }
-        }
 
         public override string ToString()
         {
@@ -223,7 +253,7 @@ namespace WindowsFormsApp1
         }
         public string ToStringWithMsg()
         {
-            return $"{base.Id} {this.UserId} {this.ProductID} {this.DateOfRestock} {this.AmountOfrestock} \n {this.Status} {this.Message}";
+            return $"{base.Id} {this.UserId} {this.ProductID} {this.DateOfRestock} {this.AmountOfrestock} {this.Status} {this.Message}";
         }
         private T GetNullable<T>(MySqlDataReader reader, int ordinal, Func<int, T> getValue)
         {
