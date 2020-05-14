@@ -165,6 +165,13 @@
             this.tabSchedule = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.tabStatistics = new System.Windows.Forms.TabPage();
+            this.tabLogout = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Banner = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.chartDepartSales = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartProfit = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.crtStatAttendence = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -173,11 +180,6 @@
             this.crtStatProducts = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label16 = new System.Windows.Forms.Label();
             this.dtpStatDate = new System.Windows.Forms.DateTimePicker();
-            this.tabLogout = new System.Windows.Forms.TabPage();
-            this.label27 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.Banner = new System.Windows.Forms.PictureBox();
             this.groupSInformation.SuspendLayout();
             this.groupBoxSAssign.SuspendLayout();
             this.tbcMain.SuspendLayout();
@@ -193,14 +195,14 @@
             this.tabProductRestock.SuspendLayout();
             this.tabSchedule.SuspendLayout();
             this.tabStatistics.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartDepartSales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartProfit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.crtStatAttendence)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.crtStatProducts)).BeginInit();
             this.tabLogout.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Banner)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDepartSales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartProfit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtStatAttendence)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtStatProducts)).BeginInit();
             this.SuspendLayout();
             // 
             // mcdSchedule
@@ -1543,6 +1545,8 @@
             // 
             // tabStatistics
             // 
+            this.tabStatistics.Controls.Add(this.button3);
+            this.tabStatistics.Controls.Add(this.button2);
             this.tabStatistics.Controls.Add(this.chartDepartSales);
             this.tabStatistics.Controls.Add(this.chartProfit);
             this.tabStatistics.Controls.Add(this.crtStatAttendence);
@@ -1558,133 +1562,6 @@
             this.tabStatistics.TabIndex = 3;
             this.tabStatistics.Text = "Statistics";
             this.tabStatistics.UseVisualStyleBackColor = true;
-            // 
-            // chartDepartSales
-            // 
-            chartArea5.Name = "ChartArea1";
-            this.chartDepartSales.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartDepartSales.Legends.Add(legend5);
-            this.chartDepartSales.Location = new System.Drawing.Point(631, 313);
-            this.chartDepartSales.Margin = new System.Windows.Forms.Padding(4);
-            this.chartDepartSales.Name = "chartDepartSales";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series9.Legend = "Legend1";
-            series9.Name = "Amount";
-            this.chartDepartSales.Series.Add(series9);
-            this.chartDepartSales.Size = new System.Drawing.Size(412, 132);
-            this.chartDepartSales.TabIndex = 27;
-            this.chartDepartSales.Text = "chart1";
-            // 
-            // chartProfit
-            // 
-            chartArea6.Name = "ChartArea1";
-            this.chartProfit.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartProfit.Legends.Add(legend6);
-            this.chartProfit.Location = new System.Drawing.Point(409, 34);
-            this.chartProfit.Margin = new System.Windows.Forms.Padding(4);
-            this.chartProfit.Name = "chartProfit";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Salary costs";
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Sales income";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Order costs";
-            series13.ChartArea = "ChartArea1";
-            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series13.Legend = "Legend1";
-            series13.Name = "Profit";
-            this.chartProfit.Series.Add(series10);
-            this.chartProfit.Series.Add(series11);
-            this.chartProfit.Series.Add(series12);
-            this.chartProfit.Series.Add(series13);
-            this.chartProfit.Size = new System.Drawing.Size(577, 294);
-            this.chartProfit.TabIndex = 26;
-            this.chartProfit.Text = "chart1";
-            // 
-            // crtStatAttendence
-            // 
-            chartArea7.Name = "ChartArea1";
-            this.crtStatAttendence.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.crtStatAttendence.Legends.Add(legend7);
-            this.crtStatAttendence.Location = new System.Drawing.Point(179, 267);
-            this.crtStatAttendence.Margin = new System.Windows.Forms.Padding(4);
-            this.crtStatAttendence.Name = "crtStatAttendence";
-            series14.ChartArea = "ChartArea1";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series14.Legend = "Legend1";
-            series14.Name = "Attendance";
-            this.crtStatAttendence.Series.Add(series14);
-            this.crtStatAttendence.Size = new System.Drawing.Size(223, 167);
-            this.crtStatAttendence.TabIndex = 25;
-            this.crtStatAttendence.Text = "chart1";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(0, 267);
-            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(166, 21);
-            this.label37.TabIndex = 24;
-            this.label37.Text = "Employee statistics";
-            // 
-            // cmbStatEmployee
-            // 
-            this.cmbStatEmployee.FormattingEnabled = true;
-            this.cmbStatEmployee.Location = new System.Drawing.Point(4, 313);
-            this.cmbStatEmployee.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbStatEmployee.Name = "cmbStatEmployee";
-            this.cmbStatEmployee.Size = new System.Drawing.Size(160, 29);
-            this.cmbStatEmployee.TabIndex = 23;
-            this.cmbStatEmployee.SelectedIndexChanged += new System.EventHandler(this.cbEmployees_SelectedIndexChanged);
-            // 
-            // crtStatProducts
-            // 
-            chartArea8.Name = "ChartArea1";
-            this.crtStatProducts.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.crtStatProducts.Legends.Add(legend8);
-            this.crtStatProducts.Location = new System.Drawing.Point(13, 34);
-            this.crtStatProducts.Margin = new System.Windows.Forms.Padding(4);
-            this.crtStatProducts.Name = "crtStatProducts";
-            series15.ChartArea = "ChartArea1";
-            series15.Legend = "Legend1";
-            series15.Name = "Stock";
-            series16.ChartArea = "ChartArea1";
-            series16.Legend = "Legend1";
-            series16.Name = "Min_stock";
-            this.crtStatProducts.Series.Add(series15);
-            this.crtStatProducts.Series.Add(series16);
-            this.crtStatProducts.Size = new System.Drawing.Size(401, 203);
-            this.crtStatProducts.TabIndex = 0;
-            this.crtStatProducts.Text = "chart1";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.label16.Location = new System.Drawing.Point(7, 0);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(208, 30);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "Store information";
-            // 
-            // dtpStatDate
-            // 
-            this.dtpStatDate.Location = new System.Drawing.Point(439, -1);
-            this.dtpStatDate.Margin = new System.Windows.Forms.Padding(4);
-            this.dtpStatDate.Name = "dtpStatDate";
-            this.dtpStatDate.Size = new System.Drawing.Size(265, 28);
-            this.dtpStatDate.TabIndex = 15;
-            this.dtpStatDate.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged_2);
             // 
             // tabLogout
             // 
@@ -1734,6 +1611,153 @@
             this.Banner.TabIndex = 0;
             this.Banner.TabStop = false;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(852, 340);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(167, 60);
+            this.button3.TabIndex = 39;
+            this.button3.Text = "Show products";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(488, 347);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(145, 47);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "Reset chart";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // chartDepartSales
+            // 
+            chartArea5.Name = "ChartArea1";
+            this.chartDepartSales.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartDepartSales.Legends.Add(legend5);
+            this.chartDepartSales.Location = new System.Drawing.Point(818, 156);
+            this.chartDepartSales.Margin = new System.Windows.Forms.Padding(4);
+            this.chartDepartSales.Name = "chartDepartSales";
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series9.Legend = "Legend1";
+            series9.Name = "Amount";
+            this.chartDepartSales.Series.Add(series9);
+            this.chartDepartSales.Size = new System.Drawing.Size(501, 180);
+            this.chartDepartSales.TabIndex = 37;
+            this.chartDepartSales.Text = "chart1";
+            // 
+            // chartProfit
+            // 
+            chartArea6.Name = "ChartArea1";
+            this.chartProfit.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartProfit.Legends.Add(legend6);
+            this.chartProfit.Location = new System.Drawing.Point(412, 52);
+            this.chartProfit.Margin = new System.Windows.Forms.Padding(4);
+            this.chartProfit.Name = "chartProfit";
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "Salary costs";
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Sales income";
+            series12.ChartArea = "ChartArea1";
+            series12.Legend = "Legend1";
+            series12.Name = "Order costs";
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series13.Legend = "Legend1";
+            series13.Name = "Profit";
+            this.chartProfit.Series.Add(series10);
+            this.chartProfit.Series.Add(series11);
+            this.chartProfit.Series.Add(series12);
+            this.chartProfit.Series.Add(series13);
+            this.chartProfit.Size = new System.Drawing.Size(577, 294);
+            this.chartProfit.TabIndex = 36;
+            this.chartProfit.Text = "chart1";
+            // 
+            // crtStatAttendence
+            // 
+            chartArea7.Name = "ChartArea1";
+            this.crtStatAttendence.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.crtStatAttendence.Legends.Add(legend7);
+            this.crtStatAttendence.Location = new System.Drawing.Point(182, 285);
+            this.crtStatAttendence.Margin = new System.Windows.Forms.Padding(4);
+            this.crtStatAttendence.Name = "crtStatAttendence";
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series14.Legend = "Legend1";
+            series14.Name = "Attendance";
+            this.crtStatAttendence.Series.Add(series14);
+            this.crtStatAttendence.Size = new System.Drawing.Size(223, 167);
+            this.crtStatAttendence.TabIndex = 35;
+            this.crtStatAttendence.Text = "chart1";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(3, 285);
+            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(166, 21);
+            this.label37.TabIndex = 34;
+            this.label37.Text = "Employee statistics";
+            // 
+            // cmbStatEmployee
+            // 
+            this.cmbStatEmployee.FormattingEnabled = true;
+            this.cmbStatEmployee.Location = new System.Drawing.Point(7, 331);
+            this.cmbStatEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbStatEmployee.Name = "cmbStatEmployee";
+            this.cmbStatEmployee.Size = new System.Drawing.Size(160, 29);
+            this.cmbStatEmployee.TabIndex = 33;
+            // 
+            // crtStatProducts
+            // 
+            chartArea8.Name = "ChartArea1";
+            this.crtStatProducts.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.crtStatProducts.Legends.Add(legend8);
+            this.crtStatProducts.Location = new System.Drawing.Point(16, 52);
+            this.crtStatProducts.Margin = new System.Windows.Forms.Padding(4);
+            this.crtStatProducts.Name = "crtStatProducts";
+            series15.ChartArea = "ChartArea1";
+            series15.Legend = "Legend1";
+            series15.Name = "Stock";
+            series16.ChartArea = "ChartArea1";
+            series16.Legend = "Legend1";
+            series16.Name = "Min_stock";
+            this.crtStatProducts.Series.Add(series15);
+            this.crtStatProducts.Series.Add(series16);
+            this.crtStatProducts.Size = new System.Drawing.Size(401, 203);
+            this.crtStatProducts.TabIndex = 30;
+            this.crtStatProducts.Text = "chart1";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.label16.Location = new System.Drawing.Point(10, 18);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(208, 30);
+            this.label16.TabIndex = 31;
+            this.label16.Text = "Store information";
+            // 
+            // dtpStatDate
+            // 
+            this.dtpStatDate.Location = new System.Drawing.Point(442, 17);
+            this.dtpStatDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpStatDate.Name = "dtpStatDate";
+            this.dtpStatDate.Size = new System.Drawing.Size(265, 28);
+            this.dtpStatDate.TabIndex = 32;
+            // 
             // MediaBazaar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1772,15 +1796,15 @@
             this.tabSchedule.PerformLayout();
             this.tabStatistics.ResumeLayout(false);
             this.tabStatistics.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartDepartSales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartProfit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.crtStatAttendence)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.crtStatProducts)).EndInit();
             this.tabLogout.ResumeLayout(false);
             this.tabLogout.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Banner)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDepartSales)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartProfit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtStatAttendence)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtStatProducts)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1874,9 +1898,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpEmployeeHire;
         private System.Windows.Forms.DateTimePicker dtpEmployeeBirthday;
-        private System.Windows.Forms.DataVisualization.Charting.Chart crtStatProducts;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DateTimePicker dtpStatDate;
         private System.Windows.Forms.TabPage tabLogin;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
@@ -1886,9 +1907,6 @@
         private System.Windows.Forms.TabPage tabLogout;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.ComboBox cmbStatEmployee;
-        private System.Windows.Forms.DataVisualization.Charting.Chart crtStatAttendence;
-        private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TabPage tabDepartments;
         private System.Windows.Forms.TextBox tbDepartmentName;
         private System.Windows.Forms.Label label29;
@@ -1905,8 +1923,6 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.ComboBox cbManager;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartProfit;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartDepartSales;
         private System.Windows.Forms.Label lblSellPrice;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -1922,6 +1938,16 @@
         private System.Windows.Forms.ListBox lsbRequestsOutstanding;
         private System.Windows.Forms.Button btnRestockManage;
         private System.Windows.Forms.Button btnProductstockRequest;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartDepartSales;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartProfit;
+        private System.Windows.Forms.DataVisualization.Charting.Chart crtStatAttendence;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.ComboBox cmbStatEmployee;
+        private System.Windows.Forms.DataVisualization.Charting.Chart crtStatProducts;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DateTimePicker dtpStatDate;
     }
 }
 

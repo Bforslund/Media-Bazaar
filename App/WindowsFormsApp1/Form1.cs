@@ -919,5 +919,37 @@ namespace WindowsFormsApp1
                 MessageBox.Show("No product selected");
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (var series in chartProfit.Series)
+            {
+                series.Points.Clear();
+            }
+
+            List<StoreStats> monthList = new List<StoreStats>();
+
+
+
+            for (int begin = 1, end = 2; begin <= 12; begin++, end++)
+            {
+                monthList.Add(stats.loadEmployeeCostStats("2020-" + begin + "-01", "2020-" + end + "-01"));
+            }
+            foreach (StoreStats item in monthList)
+            {
+                chartProfit.Series["Salary costs"].Points.AddXY(item.Month, item.EmployeeCosts);
+                chartProfit.Series["Sales income"].Points.AddXY(item.Month, item.SalesIn);
+                chartProfit.Series["Order costs"].Points.AddXY(item.Month, item.ProdCosts);
+                chartProfit.Series["Profit"].Points.AddXY(item.Month, item.EmployeeCosts + item.ProdCosts - item.SalesIn);
+
+            }
+            decimal totalOut = monthList.Sum(item => item.EmployeeCosts);
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
