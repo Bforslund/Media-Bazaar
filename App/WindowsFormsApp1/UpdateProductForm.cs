@@ -36,21 +36,37 @@ namespace WindowsFormsApp1
             this.p = p;
             this.Text = "Update existing product";
             btAddUpdate.Text = "Update product";
-            
 
 
-            tbType.Text = p.Type;
-            tbName.Text = p.Name;
-            tbBuyPrice.Text = p.Buyingprice.ToString();
-            tbSellPrice.Text = p.Sellingprice.ToString();
-
-            foreach(Department department in comboBox1.Items)
+            try
             {
-                if(department.Id == p.Department.Id)
+                tbType.Text = p.Type;
+                tbName.Text = p.Name;
+                tbBuyPrice.Text = p.Buyingprice.ToString();
+                tbSellPrice.Text = p.Sellingprice.ToString();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error with selected product");
+            }
+
+            try
+            {
+                foreach (Department department in comboBox1.Items)
                 {
-                    comboBox1.SelectedItem = department;
+                    if (department.Id == p.Department.Id)
+                    {
+                        comboBox1.SelectedItem = department;
+                    }
                 }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error with selected product.");
+            }
+
         }
 
         private bool UpdateProduct()

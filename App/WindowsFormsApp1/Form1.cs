@@ -282,6 +282,7 @@ namespace WindowsFormsApp1
         }
         private void btnScheduleAssign_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 calenderManager.SetShift(mcdSchedule.SelectedDates[0], cmbScheduleAssign.SelectedIndex, ((Personal)lsbScheduleEmployees.SelectedItem).Id, mcdSchedule.ActiveMonth);
@@ -289,6 +290,7 @@ namespace WindowsFormsApp1
             catch (MySqlException ex)
             {
                 NoDatabaseConnection(ex);
+
             }
             LoadAssignedEmployees();
             LoadCalenderColors();
@@ -536,7 +538,7 @@ namespace WindowsFormsApp1
                 chartProfit.Series["Salary costs"].Points.AddXY(item.Month, item.EmployeeCosts);
                 chartProfit.Series["Sales income"].Points.AddXY(item.Month, item.SalesIn);
                 chartProfit.Series["Order costs"].Points.AddXY(item.Month, item.ProdCosts);
-                chartProfit.Series["Profit"].Points.AddXY(item.Month, item.EmployeeCosts + item.ProdCosts - item.SalesIn);
+                chartProfit.Series["Profit"].Points.AddXY(item.Month, item.SalesIn - (item.EmployeeCosts + item.ProdCosts));
 
             }
             decimal totalOut = monthList.Sum(item => item.EmployeeCosts);
@@ -559,7 +561,7 @@ namespace WindowsFormsApp1
                 chartProfit.Series["Salary costs"].Points.AddXY(item.Month, item.EmployeeCosts);
                 chartProfit.Series["Sales income"].Points.AddXY(item.Month, item.SalesIn);
                 chartProfit.Series["Order costs"].Points.AddXY(item.Month, item.ProdCosts);
-                chartProfit.Series["Profit"].Points.AddXY(item.Month, item.EmployeeCosts + item.ProdCosts - item.SalesIn);
+                chartProfit.Series["Profit"].Points.AddXY(item.Month, item.SalesIn - (item.EmployeeCosts + item.ProdCosts));
 
             }
         }
@@ -590,11 +592,10 @@ namespace WindowsFormsApp1
             // Mail from Andre "The manager of the shop will only see the statistics. The actual management of the business process is delegated to the administration. "
             else if (stats.userRole == 3)
             {
-                tbcMain.TabPages.Remove(tabLogin);
-                tbcMain.TabPages.Add(tabStatistics);
+                //tbcMain.TabPages.Add(tabStatistics);
                 //tbcMain.TabPages.Add(tabEmployees);
                 //tbcMain.TabPages.Add(tabSchedule);
-                tbcMain.TabPages.Add(tabLogout);
+                //tbcMain.TabPages.Add(tabLogout);
             }
 
             //Employee has the least privilages can only acces products page
@@ -828,8 +829,12 @@ namespace WindowsFormsApp1
                 updateListCompletedRequests();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if (ex.Message.Contains("format"))
+                {
+                    MessageBox.Show("Increase/Decrease with a valid numerical value");
+                }
                 MessageBox.Show("Select a product to initiate the restock");
             }
         }
@@ -848,10 +853,9 @@ namespace WindowsFormsApp1
                 updateListOutstandingRequests();
                 updateListCompletedRequests();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Please enter a reason for the request to be rejected");
-                throw;
+                MessageBox.Show("Something went wrong, use numbers and add a message!");
             }
 
             // lbCompletedRequests.Items.Add(rejectedProduct);
@@ -931,6 +935,18 @@ namespace WindowsFormsApp1
                 series.Points.Clear();
             }
 
+            //crtStatProducts.
+            //chartDepartSales
+            foreach (var item in crtStatProducts.Series)
+            {
+                item.Points.Clear();
+            }
+
+            foreach (var item in chartDepartSales.Series)
+            {
+                item.Points.Clear();
+            }
+
             List<StoreStats> monthList = new List<StoreStats>();
 
 
@@ -944,7 +960,7 @@ namespace WindowsFormsApp1
                 chartProfit.Series["Salary costs"].Points.AddXY(item.Month, item.EmployeeCosts);
                 chartProfit.Series["Sales income"].Points.AddXY(item.Month, item.SalesIn);
                 chartProfit.Series["Order costs"].Points.AddXY(item.Month, item.ProdCosts);
-                chartProfit.Series["Profit"].Points.AddXY(item.Month, item.EmployeeCosts + item.ProdCosts - item.SalesIn);
+                chartProfit.Series["Profit"].Points.AddXY(item.Month, item.SalesIn - (item.EmployeeCosts + item.ProdCosts));
 
             }
             decimal totalOut = monthList.Sum(item => item.EmployeeCosts);

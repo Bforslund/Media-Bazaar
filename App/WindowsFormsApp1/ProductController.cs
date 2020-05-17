@@ -91,7 +91,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show("Error occured with selected product.");
             }
             finally
             {
