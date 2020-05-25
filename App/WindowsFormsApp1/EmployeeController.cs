@@ -22,14 +22,14 @@ namespace WindowsFormsApp1
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             string query = "SELECT * FROM `users` WHERE privilage = 1";
 
-            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
-            commandDatabase.CommandTimeout = 60;
+            MySqlCommand cmd = new MySqlCommand(query, databaseConnection);
+            cmd.CommandTimeout = 60;
             MySqlDataReader reader;
 
             try
             {
                 databaseConnection.Open();
-                reader = commandDatabase.ExecuteReader();
+                reader = cmd.ExecuteReader();
 
                 if (reader.HasRows)// check if any rows are found
                 {
@@ -37,19 +37,21 @@ namespace WindowsFormsApp1
                     {
                         int id = Convert.ToInt32(reader["id"]);
                         string username = reader["username"].ToString();
+                        string password = reader["password"].ToString();
                         string firstname = reader["firstname"].ToString();
                         string lastname = reader["lastname"].ToString();
                         int privilage = Convert.ToInt32(reader["privilage"]);
                         double wage = Convert.ToDouble(reader["wage"]);
                         DateTime hiredate = Convert.ToDateTime(reader["hiredate"]);
                         DateTime birthday = Convert.ToDateTime(reader["birthday"]);
+                        string allergies = reader["allergies"].ToString();
                         string adress = reader["adress"].ToString();
                         string email = reader["email"].ToString();
                         string phone = reader["phone"].ToString();
-                        bool contract = Convert.ToBoolean(reader["contract"]);
+                        int contract = Convert.ToInt32(reader["contract"]);
                         Department department = new DepartmentController().GetDepartment(Convert.ToInt32(reader["department_id"]));
 
-                        personals.Add(new Employee(id, email, firstname, lastname, privilage, username, adress, birthday, contract, department, hiredate, phone, wage));
+                        personals.Add(new Employee(id, email, firstname, lastname, privilage, username, password, adress, birthday, allergies, contract, department, hiredate, phone, wage));
                     }
 
                     databaseConnection.Close();
@@ -69,19 +71,19 @@ namespace WindowsFormsApp1
             }
         }
 
-        public List<Personal> GetAllEmployees() // I need all employees from the database so i can choose one to make
-        { // a manager, however I did not want to change the list above (its the same one basically) in case Ryan uses it for his schedule
+        public List<Personal> GetAllEmployees() // This one is used to fill people in departments. Reusing the other one does not seem to work without getting bugs.
+        {  
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             string query = "SELECT * FROM `users`";
 
-            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+            MySqlCommand cmd = new MySqlCommand(query, databaseConnection);
 
             MySqlDataReader reader;
 
             try
             {
                 databaseConnection.Open();
-                reader = commandDatabase.ExecuteReader();
+                reader = cmd.ExecuteReader();
 
                 if (reader.HasRows)// check if any rows are found
                 {
@@ -89,19 +91,21 @@ namespace WindowsFormsApp1
                     {
                         int id = Convert.ToInt32(reader["id"]);
                         string username = reader["username"].ToString();
+                        string password = reader["password"].ToString();
                         string firstname = reader["firstname"].ToString();
                         string lastname = reader["lastname"].ToString();
                         int privilage = Convert.ToInt32(reader["privilage"]);
                         double wage = Convert.ToDouble(reader["wage"]);
                         DateTime hiredate = Convert.ToDateTime(reader["hiredate"]);
                         DateTime birthday = Convert.ToDateTime(reader["birthday"]);
+                        string allergies = reader["allergies"].ToString();
                         string adress = reader["adress"].ToString();
                         string email = reader["email"].ToString();
                         string phone = reader["phone"].ToString();
-                        bool contract = Convert.ToBoolean(reader["contract"]);
+                        int contract = Convert.ToInt32(reader["contract"]);
                         Department department = new DepartmentController().GetDepartment(Convert.ToInt32(reader["id"]));
 
-                        AllEmployees.Add(new Employee(id, email, firstname, lastname, privilage, username, adress, birthday, contract, department, hiredate, phone, wage));
+                        AllEmployees.Add(new Employee(id, email, firstname, lastname, privilage, username, password, adress, birthday, allergies, contract, department, hiredate, phone, wage));
                     }
                 }
                 return AllEmployees;
@@ -175,71 +179,86 @@ namespace WindowsFormsApp1
         }
 
 
-        public void saveEmployeeData(string email, string firstname, string lastname, int privilage, string username, string password, string adress, DateTime birthday, bool contract, Department department, DateTime hiredate, string phone, double wage, bool isSelected)
+        public void saveEmployeeData(Employee e)
         {
 
-            if (isSelected == true) // if there is already such an employee, update
-            {
                 MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
-                //insert new day and shifts
-                string insertQuery = $"INSERT INTO users(username, password, firstname, lastname, privilage, wage, hiredate, birthday, adress, email, phone, contract) VALUES(@username, @password, @firstname, @lastname, @privilage, @wage, " +
-                    $"@hiredate, @birthday, @adress, @email, @phone,@contract)";
-                databaseConnection.Open();
-
-                MySqlCommand commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
-                commandDatabase.Parameters.AddWithValue("@username", username);
-                commandDatabase.Parameters.AddWithValue("@password", password);
-                commandDatabase.Parameters.AddWithValue("@firstname", firstname);
-                commandDatabase.Parameters.AddWithValue("@lastname", lastname);
-                commandDatabase.Parameters.AddWithValue("@privilage", privilage);
-                commandDatabase.Parameters.AddWithValue("@wage", wage);
-                commandDatabase.Parameters.AddWithValue("@hiredate", hiredate);
-                commandDatabase.Parameters.AddWithValue("@birthday", birthday);
-                commandDatabase.Parameters.AddWithValue("@adress", adress);
-                commandDatabase.Parameters.AddWithValue("@email", email);
-                commandDatabase.Parameters.AddWithValue("@phone", phone);
-                commandDatabase.Parameters.AddWithValue("@contract", contract);
-                commandDatabase.ExecuteNonQuery();
-                long employeeId = commandDatabase.LastInsertedId;
-
-                databaseConnection.Close();
-
-            }
-            else //else create new record
+            try
             {
-                MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
-                //insert new day and shifts
-                string insertQuery = $"UPDATE users SET password = @password, firstname = @firstname, lastname = @lastname, privilage = @privilage, wage = @wage, " +
-                    $"hiredate = @hiredate, birthday = @birthday, adress = @adress, email = @email, phone = @phone, contract = @contract WHERE username = @username) )";
-
                 databaseConnection.Open();
+                string insertQuery = $"INSERT INTO users(username, password, firstname, lastname, privilage, wage, hiredate, birthday, allergies, adress, email, phone, contract, department_id) VALUES(@username, @password, @firstname, @lastname, @privilage, @wage, @hiredate, @birthday, @allergies, @adress, @email, @phone,@contract, @department)";
+                
 
-                MySqlCommand commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
-                commandDatabase.Parameters.AddWithValue("@username", username);
-                commandDatabase.Parameters.AddWithValue("@password", password);
-                commandDatabase.Parameters.AddWithValue("@firstname", firstname);
-                commandDatabase.Parameters.AddWithValue("@lastname", lastname);
-                commandDatabase.Parameters.AddWithValue("@privilage", privilage);
-                commandDatabase.Parameters.AddWithValue("@wage", wage);
-                commandDatabase.Parameters.AddWithValue("@hiredate", hiredate);
-                commandDatabase.Parameters.AddWithValue("@birthday", birthday);
-                commandDatabase.Parameters.AddWithValue("@adress", adress);
-                commandDatabase.Parameters.AddWithValue("@email", email);
-                commandDatabase.Parameters.AddWithValue("@phone", phone);
-                commandDatabase.Parameters.AddWithValue("@contract", contract);
-
-
-                commandDatabase.ExecuteNonQuery();
-                long employeeId = commandDatabase.LastInsertedId;
-
-                databaseConnection.Close();
-
+                MySqlCommand cmd = new MySqlCommand(insertQuery, databaseConnection);
+                cmd.Parameters.AddWithValue("@username", e.Username);
+                cmd.Parameters.AddWithValue("@password", e.Password);
+                cmd.Parameters.AddWithValue("@firstname", e.FirstName);
+                cmd.Parameters.AddWithValue("@lastname", e.LastName);
+                cmd.Parameters.AddWithValue("@privilage", e.Privilage);
+                cmd.Parameters.AddWithValue("@wage", e.Wage);
+                cmd.Parameters.AddWithValue("@hiredate", e.Hiredate);
+                cmd.Parameters.AddWithValue("@birthday", e.Birthday);
+                cmd.Parameters.AddWithValue("@allergies", e.Allergies);
+                cmd.Parameters.AddWithValue("@adress", e.Adress);
+                cmd.Parameters.AddWithValue("@email", e.Email);
+                cmd.Parameters.AddWithValue("@phone", e.PhoneNumber);
+                cmd.Parameters.AddWithValue("@contract", e.Contract);
+                cmd.Parameters.AddWithValue("@department", e.Department.Id);
+                cmd.ExecuteNonQuery();
             }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                databaseConnection.Close();
+            }
+                
 
-
-            //personals.Add(new Employee(Convert.ToInt32(employeeId), email, firstname, lastname, privilage, username, adress, birthday, contract, department, hiredate, phonenumber, wage));
         }
-        public Personal GetEmployee(int id) // get an employee by ID
+
+    public void UpdateEmployee(Employee e)
+    {
+        MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
+            try
+            {
+                databaseConnection.Open();
+                string insertQuery = $"UPDATE users SET firstname = @firstname, lastname = @lastname, privilage = @privilage, wage = @wage, hiredate = @hiredate, birthday = @birthday, allergies = @allergies, adress = @adress, email = @email, phone = @phone, contract = @contract, department_id = (SELECT id FROM department WHERE name = @department) WHERE id = @id";
+
+                
+
+
+                MySqlCommand cmd = new MySqlCommand(insertQuery, databaseConnection);
+                cmd.Parameters.AddWithValue("@id", e.Id);
+                cmd.Parameters.AddWithValue("@firstname", e.FirstName);
+                cmd.Parameters.AddWithValue("@lastname", e.LastName);
+                cmd.Parameters.AddWithValue("@privilage", e.Privilage);
+                cmd.Parameters.AddWithValue("@wage", e.Wage);
+                cmd.Parameters.AddWithValue("@hiredate", e.Hiredate);
+                cmd.Parameters.AddWithValue("@birthday", e.Birthday);
+                cmd.Parameters.AddWithValue("@allergies", e.Allergies);
+                cmd.Parameters.AddWithValue("@adress", e.Adress);
+                cmd.Parameters.AddWithValue("@email", e.Email);
+                cmd.Parameters.AddWithValue("@phone", e.PhoneNumber);
+                cmd.Parameters.AddWithValue("@contract", e.Contract);
+                cmd.Parameters.AddWithValue("@department", e.Department);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                databaseConnection.Close();
+            }
+
+        
+
+    }
+    public Personal GetEmployee(int id) // get an employee by ID
         {
             foreach (Personal employee in GetAllEmployees())
             {
@@ -251,13 +270,6 @@ namespace WindowsFormsApp1
 
             return null;
         }
-        private T GetNullable<T>(MySqlDataReader reader, int ordinal, Func<int, T> getValue)
-        {
-            if (reader.IsDBNull(ordinal))
-            {
-                return default(T);
-            }
-            return getValue(ordinal);
-        }
+      
     }
 }

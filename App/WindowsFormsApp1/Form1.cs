@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
             cmbStatEmployee.DataSource = employeeController.GetEmployees();
 
             //Comment out this to disable the login
-            tbcMain.TabPages.Remove(tabEmployees);
+          tbcMain.TabPages.Remove(tabEmployees);
             tbcMain.TabPages.Remove(tabProducts);
             tbcMain.TabPages.Remove(tabProductRestock);
             tbcMain.TabPages.Remove(tabSchedule);
@@ -114,11 +114,14 @@ namespace WindowsFormsApp1
                 UpdateProductsList();
                 btnProductRemove.Hide();
                 btnProductUpdate.Hide();
-                //btnRestockManage.Hide();
-                //btnProductstockRequest.Hide();
+             
+                btnProductstockRequest.Hide();
             }
             if (tbcMain.SelectedTab == tabEmployees)
             {
+                btUpdateEmployee.Hide();
+                btRemoveEmployee.Hide();
+              
                 lsbEmployees.DataSource = employeeController.GetEmployees();
             }
             if (tbcMain.SelectedTab == tabStatistics)
@@ -362,84 +365,37 @@ namespace WindowsFormsApp1
         }
 
         #region employee tab
-        private void saveButton_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (!IsNumeric(txbEmployeeWage.Text))
-            {
-                MessageBox.Show("Fill in a correct wage amount!");
-                return;
-            }
-            if (lsbEmployees.SelectedItem != null) //! when an emloyee IS selected, change his data
-            {
-                saveEmployeeData(); //TODO add the shift preference
-                refreshListView();
-            }
-
-            //TODO add try catch for empty fields and display error message
-            //TODO display confirmation for creation or saving
-
-            lsbEmployees.DataSource = employeeController.GetEmployees();
+            txbEmployeeUsername.Text = RandomString(5);
+            txbEmployeePassword.Text = RandomString(8);
         }
 
-        private void deleteEmpButton_Click(object sender, EventArgs e)
+        public static string RandomString(int length)
         {
-            employeeController.RemoveEmployee((Personal)lsbEmployees.SelectedItem);
+            Random rand = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[rand.Next(s.Length)]).ToArray());
+        }
+        private void btClear_Click(object sender, EventArgs e)
+        {
 
-            lsbEmployees.DataSource = employeeController.GetEmployees();
+            txbEmployeeEmail.Clear();
+            txbEmployeeFirstname.Clear();
+            txbEmployeeLastname.Clear();
+            cmbEmployeePrivilege.SelectedIndex = 0;
+            txbEmployeeAdress.Clear();
+            dtpEmployeeBirthday.Value = DateTime.Now;
+            cmbEmployeeContract.SelectedIndex = 0; 
+            cmbEmployeeDepartment.SelectedItem = -1;
+            txbEmployeeAllergies.Clear();
+            dtpEmployeeHire.Value = DateTime.Now;
+            phoneNoBox.Clear();
+            txbEmployeeWage.Clear();
 
         }
-
-        void checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox checkBox = (CheckBox)sender; // TODO explain and understand
-            string currentValue = (string)checkBox.Tag; // assign the value of the checkbox with the passed tag to the string currentValue
-            //switch (checkBox.Checked) // TODO make sure this works
-            //{
-            //    case true:
-            //        preferredShift += "," + currentValue;
-            //        break;
-            //    case false:
-            //        preferredShift = preferredShift.Replace(currentValue, ""); // IF false, remove the string of that case with nothing
-            //        break;
-            //    default:
-            //        break;
-            //}
-        }
-
-        private void saveButton_MouseHover(object sender, EventArgs e)
-        {
-            ToolTip tt = new ToolTip();
-            tt.SetToolTip(this.btnEmployeeSave, "Save changes");
-        }
-
-        private void lsbEmployees_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //fillEmployeeData();
-            Employee selectedEmployee = lsbEmployees.SelectedItem as Employee;
-            txbEmployeeFirstname.Text = selectedEmployee.FirstName;
-            txbEmployeeLastname.Text = selectedEmployee.LastName;
-            //dtpEmployeeBirthday.Value = selectedEmployee.Birthday;
-            txbEmployeeAdress.Text = selectedEmployee.Adress;
-            txbEmployeeEmail.Text = selectedEmployee.Email;
-            txbEmployeePhone.Text = selectedEmployee.PhoneNumber;
-            //dtpEmployeeHire.Value = selectedEmployee.HireDate;
-            cmbEmployeeContract.SelectedItem = selectedEmployee.Contract;
-            if (selectedEmployee.Allergies != null)
-            {
-                foreach (var item in selectedEmployee.Allergies)
-                {
-                    txbEmployeeAllergies.Text += " " + item;
-                }
-            }
-            cmbEmployeeDepartment.SelectedItem = selectedEmployee.Department;
-            cmbEmployeePrivilege.SelectedItem = selectedEmployee.Privilage;
-            txbEmployeeWage.Text = selectedEmployee.Wage.ToString();
-
-
-        }
-
-        #region function
-        public void saveEmployeeData()
+        private void btAddEmployee_Click(object sender, EventArgs e)
         {
             try
             {
@@ -450,47 +406,130 @@ namespace WindowsFormsApp1
                 string username = txbEmployeeUsername.Text;
                 string adress = txbEmployeeAdress.Text;
                 DateTime birthDay = dtpEmployeeBirthday.Value;
-                bool contract = Convert.ToBoolean(cmbEmployeeContract.SelectedIndex);
+                string allergies = txbEmployeeAllergies.Text;
+                int contract =(int)cmbEmployeeContract.SelectedIndex;
                 Department department = cmbEmployeeDepartment.SelectedItem as Department;
                 DateTime hiredate = dtpEmployeeHire.Value;
                 string phoneNumber = phoneNoBox.Text;
                 string password = txbEmployeePassword.Text;
                 double wage = Convert.ToDouble(txbEmployeeWage.Text);
 
-                bool isSelected;
-
-                Employee selectedEmployee = lsbEmployees.SelectedItem as Employee;
-
-                if (selectedEmployee != null)
-                {
-                    isSelected = true;
-
-                }
-                else
-                {
-                    isSelected = false;
-
-                }
-                employeeController.saveEmployeeData(email, firstname, lastname, privilage, username, password, adress, birthDay, contract, department, hiredate, phoneNumber, wage, isSelected);
-
-
+                Employee newEmployee = new Employee(email, firstname, lastname, privilage, username, password, adress, birthDay, allergies, contract, department, hiredate, phoneNumber, wage);
+                employeeController.saveEmployeeData(newEmployee);
+                MessageBox.Show("Employee added");
 
             }
             catch (Exception)
             {
 
-                MessageBox.Show("Wrong input");
+                MessageBox.Show("Did you fill in everything correct? Check again");
             }
-            //convert form fields to data
-            lsbEmployees.DataSource = employeeController.GetEmployees();
-            refreshListView();
+            updateEmployeeList();
+        }
+
+        private void btUpdateEmployee_Click(object sender, EventArgs e)
+        {
+            Employee SelectedEmployee = (Employee)lsbEmployees.SelectedItem;
+            try
+            {
+                if (SelectedEmployee != null)
+                {
+                    SelectedEmployee.Email = txbEmployeeEmail.Text;
+                    SelectedEmployee.FirstName = txbEmployeeFirstname.Text;
+                    SelectedEmployee.LastName = txbEmployeeLastname.Text;
+                    SelectedEmployee.Privilage = cmbEmployeePrivilege.SelectedIndex;
+                    SelectedEmployee.Adress = txbEmployeeAdress.Text;
+                    SelectedEmployee.Birthday = dtpEmployeeBirthday.Value;
+                    SelectedEmployee.Allergies = txbEmployeeAllergies.Text;
+                    SelectedEmployee.Contract = (int)cmbEmployeeContract.SelectedIndex;
+                    SelectedEmployee.Department = cmbEmployeeDepartment.SelectedItem as Department;
+                    SelectedEmployee.Hiredate = dtpEmployeeHire.Value;
+                    SelectedEmployee.PhoneNumber = phoneNoBox.Text;
+                    SelectedEmployee.Wage = Convert.ToDouble(txbEmployeeWage.Text);
+                    employeeController.UpdateEmployee(SelectedEmployee);
+                    MessageBox.Show("Employee updated");
+                }
+                updateEmployeeList();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Did you fill in everything correct? Check again");
+            }
+        }
+
+        private void btRemoveEmployee_Click(object sender, EventArgs e)
+        {
+            Employee SelectedEmployee = (Employee)lsbEmployees.SelectedItem;
+            if (SelectedEmployee != null)
+            {
+                var confirmResult = MessageBox.Show("Are you sure you want to delete this employee ??",
+                                         "Confirm Delete!!",
+                                         MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // If 'Yes', do something here.
+                    employeeController.RemoveEmployee(SelectedEmployee);
+
+
+                    updateEmployeeList();
+                }
+                else
+                {
+                    updateEmployeeList();
+                }
+            }
+        }
+        public void updateEmployeeList()
+        {
+            lsbEmployees.DataSource = null;
+
+           
+                lsbEmployees.DataSource = employeeController.GetEmployees();
+           
+
+
+        }
+        private void lsbEmployees_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btUpdateEmployee.Show();
+            btRemoveEmployee.Show();
+            
+            Employee selectedEmployee = lsbEmployees.SelectedItem as Employee;
+            try
+            {
+                if (selectedEmployee != null)
+                {
+                    txbEmployeeFirstname.Text = selectedEmployee.FirstName;
+                    txbEmployeeLastname.Text = selectedEmployee.LastName;
+                    dtpEmployeeBirthday.Value = selectedEmployee.Birthday;
+                    txbEmployeeAdress.Text = selectedEmployee.Adress;
+                    txbEmployeeEmail.Text = selectedEmployee.Email;
+                    phoneNoBox.Text = selectedEmployee.PhoneNumber.ToString();
+                    dtpEmployeeHire.Value = selectedEmployee.Hiredate;
+                    cmbEmployeeContract.SelectedIndex = selectedEmployee.Contract;
+                    foreach (Department department in cmbEmployeeDepartment.Items)
+                    {
+                        if (department.Id == selectedEmployee.Department.Id)
+                        {
+                            cmbEmployeeDepartment.SelectedItem = department;
+                        }
+                    }
+                    txbEmployeeAllergies.Text = selectedEmployee.Allergies;
+                    cmbEmployeePrivilege.SelectedIndex = selectedEmployee.Privilage;
+                    txbEmployeeWage.Text = selectedEmployee.Wage.ToString();
+                }
+            }catch(Exception)
+            {
+                MessageBox.Show("Something went wrong, try again");
+            }
+
         }
 
         private void refreshListView()
         {
             employeeController.GetEmployees();
         }
-        #endregion
 
         #endregion
 
@@ -666,19 +705,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            txbEmployeeUsername.Text = RandomString(5);
-            txbEmployeePassword.Text = RandomString(8);
-        }
-
-        public static string RandomString(int length)
-        {
-            Random rand = new Random();
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[rand.Next(s.Length)]).ToArray());
-        }
+      
         #region departmentsTab
         private void btAddDepartment_Click(object sender, EventArgs e)
         {
@@ -876,16 +903,7 @@ namespace WindowsFormsApp1
         }
 
         #region restockMethods
-        public void updateEmployeeList()
-        {
-            lsbEmployees.Items.Clear();
-
-            foreach (Employee employee in employeeController.GetAllEmployees())
-            {
-                lsbEmployees.Items.Add(employee);
-            }
-
-        }
+      
         public void updateListOutstandingRequests()
         {
             //TODO check
@@ -994,5 +1012,7 @@ namespace WindowsFormsApp1
             crtStatAttendence.Series["Attendance"].Points.AddXY("Present", present);
             crtStatAttendence.Series["Attendance"].Points.AddXY("Absent", absent);
         }
+
+      
     }
 }

@@ -52,19 +52,21 @@ namespace WindowsFormsApp1
                     {
                         int id = Convert.ToInt32(reader["id"]);
                         string username = reader["username"].ToString();
+                        string password = reader["password"].ToString();
                         string firstname = reader["firstname"].ToString();
                         string lastname = reader["lastname"].ToString();
                         int privilage = Convert.ToInt32(reader["privilage"]);
                         double wage = Convert.ToDouble(reader["wage"]);
                         DateTime hiredate = Convert.ToDateTime(reader["hiredate"]);
                         DateTime birthday = Convert.ToDateTime(reader["birthday"]);
+                        string allergies = reader["allergies"].ToString();
                         string adress = reader["adress"].ToString();
                         string email = reader["email"].ToString();
                         string phone = reader["phone"].ToString();
-                        bool contract = Convert.ToBoolean(reader["contract"]);
+                        int contract = Convert.ToInt32(reader["contract"]);
                         Department department = new DepartmentController().GetDepartment(Convert.ToInt32(reader["department_id"]));
 
-                        assignedEmployees.Add(new Employee(id, email, firstname, lastname, privilage, username, adress, birthday, contract, department, hiredate, phone, wage));
+                        assignedEmployees.Add(new Employee(id, email, firstname, lastname, privilage, username, password, adress, birthday, allergies, contract, department, hiredate, phone, wage));
                     }
 
                     databaseConnection.Close();

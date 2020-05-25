@@ -9,21 +9,20 @@ namespace WindowsFormsApp1
     class Employee : Personal
     {
         private string adress;
-        private List<string> allergies;
+        private string allergies;
         private DateTime birthday;
-        private bool contract;
+        private int contract;
         private Department department;
         private DateTime hiredate;
         private string phonenumber;
         private double wage;
 
-
-
-        public Employee(int id, string email, string firstname, string lastname, int privilage, string username,
-                        string adress, DateTime birthday, bool contract, Department department, DateTime hiredate, string phonenumber, double wage) : base(id, email, firstname, lastname, privilage, username)
+        public Employee(string email, string firstname, string lastname, int privilage, string username, string password,
+                       string adress, DateTime birthday, string allergies, int contract, Department department, DateTime hiredate, string phonenumber, double wage) : base(email, firstname, lastname, privilage, username, password)
         {
             this.Adress = adress;
             this.Birthday = birthday;
+            this.Allergies = allergies;
             this.Contract = contract;
             this.Department = department;
             this.Hiredate = hiredate;
@@ -31,19 +30,114 @@ namespace WindowsFormsApp1
             this.Wage = wage;
         }
 
-        public string Adress { get => adress; set => adress = value; }
-        public List<string> Allergies { get => allergies; set => allergies = value; }
-        public DateTime Birthday { get => birthday; set => birthday = value; }
-        public bool Contract { get => contract; set => contract = value; }
-        public Department Department { get => department; set => department = value; }
-        public DateTime Hiredate { get => hiredate; set => hiredate = value; }
-        public string PhoneNumber { get => phonenumber; set => phonenumber = value; }
-        public double Wage { get => wage; set => wage = value; }
-
-        public override string ToString()
+        public Employee(int id, string email, string firstname, string lastname, int privilage, string username, string password,
+                        string adress, DateTime birthday, string allergies, int contract, Department department, DateTime hiredate, string phonenumber, double wage) : base(id, email, firstname, lastname, privilage, username, password)
         {
-            return this.FirstName + " " + this.LastName;
+            this.Adress = adress;
+            this.Birthday = birthday;
+            this.Allergies = allergies;
+            this.Contract = contract;
+            this.Department = department;
+            this.Hiredate = hiredate;
+            this.PhoneNumber = phonenumber;
+            this.Wage = wage;
         }
+
+        public string Adress
+        {
+            get { return adress; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException();
+                }
+                adress = value;
+            }
+        }
+        public string Allergies
+        {
+            get { return allergies; }
+            set
+            {
+               
+                allergies = value;
+            }
+        }
+        public DateTime Birthday
+        {
+            get { return birthday; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                birthday = value;
+            }
+        }
+        public int Contract
+        {
+            get { return contract; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentNullException();
+                }
+                contract = value;
+            }
+        }
+        public Department Department
+        {
+            get { return department; }
+            set
+            {
+                
+                department = value;
+            }
+        }
+        public DateTime Hiredate
+        {
+            get { return hiredate; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                hiredate = value;
+            }
+        }
+        public string PhoneNumber
+        {
+            get { return phonenumber; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException();
+                }
+                phonenumber = value;
+            }
+        }
+        public double Wage
+        {
+            get { return wage; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentNullException();
+                }
+                wage = value;
+            }
+        }
+
+        //public override string ToString()
+        //{
+        //    return this.FirstName + " " + this.LastName;
+        //}
     }
 
 }
