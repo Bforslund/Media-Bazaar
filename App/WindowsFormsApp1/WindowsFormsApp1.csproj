@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoSchedule.cs" />
     <Compile Include="CalenderManager.cs" />
     <Compile Include="DatabaseInfo.cs" />
     <Compile Include="Day.cs" />

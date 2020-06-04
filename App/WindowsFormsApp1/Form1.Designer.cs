@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MediaBazaar));
             this.mcdSchedule = new Pabo.Calendar.MonthCalendar();
             this.lblSSearch = new System.Windows.Forms.Label();
@@ -96,6 +96,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txbEmployeeSearch = new System.Windows.Forms.TextBox();
             this.txbEmployeePhone = new System.Windows.Forms.GroupBox();
+            this.btClear = new System.Windows.Forms.Button();
             this.btUpdateEmployee = new System.Windows.Forms.Button();
             this.btAddEmployee = new System.Windows.Forms.Button();
             this.btRemoveEmployee = new System.Windows.Forms.Button();
@@ -180,10 +181,25 @@
             this.dtpStatDate = new System.Windows.Forms.DateTimePicker();
             this.tabLogout = new System.Windows.Forms.TabPage();
             this.label27 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnFillWeek = new System.Windows.Forms.Button();
+            this.lsbSunday = new System.Windows.Forms.ListBox();
+            this.lsbSaturday = new System.Windows.Forms.ListBox();
+            this.lsbFriday = new System.Windows.Forms.ListBox();
+            this.lsbThursday = new System.Windows.Forms.ListBox();
+            this.lsbWednesday = new System.Windows.Forms.ListBox();
+            this.lsbThuesday = new System.Windows.Forms.ListBox();
+            this.lsbMonday = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Banner = new System.Windows.Forms.PictureBox();
-            this.btClear = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
             this.groupSInformation.SuspendLayout();
             this.groupBoxSAssign.SuspendLayout();
             this.tbcMain.SuspendLayout();
@@ -205,6 +221,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartProfit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtStatAttendence)).BeginInit();
             this.tabLogout.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Banner)).BeginInit();
@@ -487,6 +504,7 @@
             this.tbcMain.Controls.Add(this.tabSchedule);
             this.tbcMain.Controls.Add(this.tabStatistics);
             this.tbcMain.Controls.Add(this.tabLogout);
+            this.tbcMain.Controls.Add(this.tabPage3);
             this.tbcMain.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbcMain.Location = new System.Drawing.Point(12, 130);
             this.tbcMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -822,6 +840,19 @@
             this.txbEmployeePhone.Size = new System.Drawing.Size(776, 454);
             this.txbEmployeePhone.TabIndex = 5;
             this.txbEmployeePhone.TabStop = false;
+            // 
+            // btClear
+            // 
+            this.btClear.BackColor = System.Drawing.Color.Red;
+            this.btClear.ForeColor = System.Drawing.Color.White;
+            this.btClear.Location = new System.Drawing.Point(580, 241);
+            this.btClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btClear.Name = "btClear";
+            this.btClear.Size = new System.Drawing.Size(173, 32);
+            this.btClear.TabIndex = 38;
+            this.btClear.Text = "Clear text";
+            this.btClear.UseVisualStyleBackColor = false;
+            this.btClear.Click += new System.EventHandler(this.btClear_Click);
             // 
             // btUpdateEmployee
             // 
@@ -1597,21 +1628,21 @@
             // 
             // crtStatProducts
             // 
-            chartArea1.Name = "ChartArea1";
-            this.crtStatProducts.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.crtStatProducts.Legends.Add(legend1);
+            chartArea9.Name = "ChartArea1";
+            this.crtStatProducts.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.crtStatProducts.Legends.Add(legend9);
             this.crtStatProducts.Location = new System.Drawing.Point(7, 64);
             this.crtStatProducts.Margin = new System.Windows.Forms.Padding(4);
             this.crtStatProducts.Name = "crtStatProducts";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Stock";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Min_stock";
-            this.crtStatProducts.Series.Add(series1);
-            this.crtStatProducts.Series.Add(series2);
+            series17.ChartArea = "ChartArea1";
+            series17.Legend = "Legend1";
+            series17.Name = "Stock";
+            series18.ChartArea = "ChartArea1";
+            series18.Legend = "Legend1";
+            series18.Name = "Min_stock";
+            this.crtStatProducts.Series.Add(series17);
+            this.crtStatProducts.Series.Add(series18);
             this.crtStatProducts.Size = new System.Drawing.Size(531, 334);
             this.crtStatProducts.TabIndex = 30;
             this.crtStatProducts.Text = "chart1";
@@ -1629,18 +1660,18 @@
             // 
             // chartDepartSales
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartDepartSales.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartDepartSales.Legends.Add(legend2);
+            chartArea10.Name = "ChartArea1";
+            this.chartDepartSales.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            this.chartDepartSales.Legends.Add(legend10);
             this.chartDepartSales.Location = new System.Drawing.Point(571, 64);
             this.chartDepartSales.Margin = new System.Windows.Forms.Padding(4);
             this.chartDepartSales.Name = "chartDepartSales";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series3.Legend = "Legend1";
-            series3.Name = "Amount";
-            this.chartDepartSales.Series.Add(series3);
+            series19.ChartArea = "ChartArea1";
+            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series19.Legend = "Legend1";
+            series19.Name = "Amount";
+            this.chartDepartSales.Series.Add(series19);
             this.chartDepartSales.Size = new System.Drawing.Size(669, 334);
             this.chartDepartSales.TabIndex = 37;
             this.chartDepartSales.Text = "chart1";
@@ -1664,48 +1695,48 @@
             // 
             // chartProfit
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartProfit.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartProfit.Legends.Add(legend3);
+            chartArea11.Name = "ChartArea1";
+            this.chartProfit.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.chartProfit.Legends.Add(legend11);
             this.chartProfit.Location = new System.Drawing.Point(4, 57);
             this.chartProfit.Margin = new System.Windows.Forms.Padding(4);
             this.chartProfit.Name = "chartProfit";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Salary costs";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Sales income";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Order costs";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Legend = "Legend1";
-            series7.Name = "Profit";
-            this.chartProfit.Series.Add(series4);
-            this.chartProfit.Series.Add(series5);
-            this.chartProfit.Series.Add(series6);
-            this.chartProfit.Series.Add(series7);
+            series20.ChartArea = "ChartArea1";
+            series20.Legend = "Legend1";
+            series20.Name = "Salary costs";
+            series21.ChartArea = "ChartArea1";
+            series21.Legend = "Legend1";
+            series21.Name = "Sales income";
+            series22.ChartArea = "ChartArea1";
+            series22.Legend = "Legend1";
+            series22.Name = "Order costs";
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series23.Legend = "Legend1";
+            series23.Name = "Profit";
+            this.chartProfit.Series.Add(series20);
+            this.chartProfit.Series.Add(series21);
+            this.chartProfit.Series.Add(series22);
+            this.chartProfit.Series.Add(series23);
             this.chartProfit.Size = new System.Drawing.Size(835, 304);
             this.chartProfit.TabIndex = 36;
             this.chartProfit.Text = "chart1";
             // 
             // crtStatAttendence
             // 
-            chartArea4.Name = "ChartArea1";
-            this.crtStatAttendence.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.crtStatAttendence.Legends.Add(legend4);
+            chartArea12.Name = "ChartArea1";
+            this.crtStatAttendence.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.crtStatAttendence.Legends.Add(legend12);
             this.crtStatAttendence.Location = new System.Drawing.Point(821, 91);
             this.crtStatAttendence.Margin = new System.Windows.Forms.Padding(4);
             this.crtStatAttendence.Name = "crtStatAttendence";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series8.Legend = "Legend1";
-            series8.Name = "Attendance";
-            this.crtStatAttendence.Series.Add(series8);
+            series24.ChartArea = "ChartArea1";
+            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series24.Legend = "Legend1";
+            series24.Name = "Attendance";
+            this.crtStatAttendence.Series.Add(series24);
             this.crtStatAttendence.Size = new System.Drawing.Size(395, 252);
             this.crtStatAttendence.TabIndex = 35;
             this.crtStatAttendence.Text = "chart1";
@@ -1773,6 +1804,103 @@
             this.label27.TabIndex = 0;
             this.label27.Text = "Logging out...";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.label41);
+            this.tabPage3.Controls.Add(this.label40);
+            this.tabPage3.Controls.Add(this.label39);
+            this.tabPage3.Controls.Add(this.label38);
+            this.tabPage3.Controls.Add(this.label35);
+            this.tabPage3.Controls.Add(this.label34);
+            this.tabPage3.Controls.Add(this.label4);
+            this.tabPage3.Controls.Add(this.btnFillWeek);
+            this.tabPage3.Controls.Add(this.lsbSunday);
+            this.tabPage3.Controls.Add(this.lsbSaturday);
+            this.tabPage3.Controls.Add(this.lsbFriday);
+            this.tabPage3.Controls.Add(this.lsbThursday);
+            this.tabPage3.Controls.Add(this.lsbWednesday);
+            this.tabPage3.Controls.Add(this.lsbThuesday);
+            this.tabPage3.Controls.Add(this.lsbMonday);
+            this.tabPage3.Location = new System.Drawing.Point(4, 30);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1323, 469);
+            this.tabPage3.TabIndex = 8;
+            this.tabPage3.Text = "tabTest";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnFillWeek
+            // 
+            this.btnFillWeek.Location = new System.Drawing.Point(971, 3);
+            this.btnFillWeek.Name = "btnFillWeek";
+            this.btnFillWeek.Size = new System.Drawing.Size(340, 45);
+            this.btnFillWeek.TabIndex = 7;
+            this.btnFillWeek.Text = "Button fill week";
+            this.btnFillWeek.UseVisualStyleBackColor = true;
+            this.btnFillWeek.Click += new System.EventHandler(this.btnFillWeek_Click);
+            // 
+            // lsbSunday
+            // 
+            this.lsbSunday.FormattingEnabled = true;
+            this.lsbSunday.ItemHeight = 21;
+            this.lsbSunday.Location = new System.Drawing.Point(1035, 84);
+            this.lsbSunday.Name = "lsbSunday";
+            this.lsbSunday.Size = new System.Drawing.Size(276, 382);
+            this.lsbSunday.TabIndex = 6;
+            // 
+            // lsbSaturday
+            // 
+            this.lsbSaturday.FormattingEnabled = true;
+            this.lsbSaturday.ItemHeight = 21;
+            this.lsbSaturday.Location = new System.Drawing.Point(691, 274);
+            this.lsbSaturday.Name = "lsbSaturday";
+            this.lsbSaturday.Size = new System.Drawing.Size(338, 193);
+            this.lsbSaturday.TabIndex = 5;
+            // 
+            // lsbFriday
+            // 
+            this.lsbFriday.FormattingEnabled = true;
+            this.lsbFriday.ItemHeight = 21;
+            this.lsbFriday.Location = new System.Drawing.Point(691, 54);
+            this.lsbFriday.Name = "lsbFriday";
+            this.lsbFriday.Size = new System.Drawing.Size(338, 193);
+            this.lsbFriday.TabIndex = 4;
+            // 
+            // lsbThursday
+            // 
+            this.lsbThursday.FormattingEnabled = true;
+            this.lsbThursday.ItemHeight = 21;
+            this.lsbThursday.Location = new System.Drawing.Point(347, 274);
+            this.lsbThursday.Name = "lsbThursday";
+            this.lsbThursday.Size = new System.Drawing.Size(338, 193);
+            this.lsbThursday.TabIndex = 3;
+            // 
+            // lsbWednesday
+            // 
+            this.lsbWednesday.FormattingEnabled = true;
+            this.lsbWednesday.ItemHeight = 21;
+            this.lsbWednesday.Location = new System.Drawing.Point(347, 54);
+            this.lsbWednesday.Name = "lsbWednesday";
+            this.lsbWednesday.Size = new System.Drawing.Size(338, 193);
+            this.lsbWednesday.TabIndex = 2;
+            // 
+            // lsbThuesday
+            // 
+            this.lsbThuesday.FormattingEnabled = true;
+            this.lsbThuesday.ItemHeight = 21;
+            this.lsbThuesday.Location = new System.Drawing.Point(3, 274);
+            this.lsbThuesday.Name = "lsbThuesday";
+            this.lsbThuesday.Size = new System.Drawing.Size(338, 193);
+            this.lsbThuesday.TabIndex = 1;
+            // 
+            // lsbMonday
+            // 
+            this.lsbMonday.FormattingEnabled = true;
+            this.lsbMonday.ItemHeight = 21;
+            this.lsbMonday.Location = new System.Drawing.Point(7, 54);
+            this.lsbMonday.Name = "lsbMonday";
+            this.lsbMonday.Size = new System.Drawing.Size(338, 193);
+            this.lsbMonday.TabIndex = 0;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
@@ -1803,18 +1931,68 @@
             this.Banner.TabIndex = 0;
             this.Banner.TabStop = false;
             // 
-            // btClear
+            // label4
             // 
-            this.btClear.BackColor = System.Drawing.Color.Red;
-            this.btClear.ForeColor = System.Drawing.Color.White;
-            this.btClear.Location = new System.Drawing.Point(580, 241);
-            this.btClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btClear.Name = "btClear";
-            this.btClear.Size = new System.Drawing.Size(173, 32);
-            this.btClear.TabIndex = 38;
-            this.btClear.Text = "Clear text";
-            this.btClear.UseVisualStyleBackColor = false;
-            this.btClear.Click += new System.EventHandler(this.btClear_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 250);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 21);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Thuesday";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(343, 250);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(82, 21);
+            this.label34.TabIndex = 9;
+            this.label34.Text = "Thursday";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(687, 250);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(86, 21);
+            this.label35.TabIndex = 10;
+            this.label35.Text = "SaterDay";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(687, 27);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(58, 21);
+            this.label38.TabIndex = 11;
+            this.label38.Text = "Friday";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(343, 30);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(110, 21);
+            this.label39.TabIndex = 12;
+            this.label39.Text = "Wednesday";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(3, 27);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(80, 21);
+            this.label40.TabIndex = 13;
+            this.label40.Text = "Monday";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(1035, 60);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(70, 21);
+            this.label41.TabIndex = 14;
+            this.label41.Text = "Sunday";
             // 
             // MediaBazaar
             // 
@@ -1862,6 +2040,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.crtStatAttendence)).EndInit();
             this.tabLogout.ResumeLayout(false);
             this.tabLogout.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Banner)).EndInit();
@@ -2012,6 +2192,22 @@
         private System.Windows.Forms.Button btAddEmployee;
         private System.Windows.Forms.Button btRemoveEmployee;
         private System.Windows.Forms.Button btClear;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button btnFillWeek;
+        private System.Windows.Forms.ListBox lsbSunday;
+        private System.Windows.Forms.ListBox lsbSaturday;
+        private System.Windows.Forms.ListBox lsbFriday;
+        private System.Windows.Forms.ListBox lsbThursday;
+        private System.Windows.Forms.ListBox lsbWednesday;
+        private System.Windows.Forms.ListBox lsbThuesday;
+        private System.Windows.Forms.ListBox lsbMonday;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label4;
     }
 }
 

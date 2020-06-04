@@ -122,5 +122,10 @@ namespace WindowsFormsApp1
         {
             return assignedEmployees;
         }
+
+        public int GetMinAssigned()
+        {
+            return minAssinged;
+        }
     }
 }

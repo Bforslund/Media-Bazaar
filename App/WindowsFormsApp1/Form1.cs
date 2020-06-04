@@ -1013,6 +1013,40 @@ namespace WindowsFormsApp1
             crtStatAttendence.Series["Attendance"].Points.AddXY("Absent", absent);
         }
 
-      
+        private void btnFillWeek_Click(object sender, EventArgs e)
+        {
+            AutoSchedule autoSchedule = new AutoSchedule();
+
+
+            try
+            {
+                List<List<List<Personal>>> scheduled = autoSchedule.AutoScheduleEmployees(23, 2020);
+
+                List<ListBox> lists = new List<ListBox>() {lsbMonday,lsbThuesday,lsbWednesday,lsbThursday,lsbFriday,lsbSaturday,lsbSunday};
+
+                //loop days
+                for(int i = 0; i < scheduled.Count(); i++)
+                {
+                    lists[i].Items.Clear();
+                    //loop shifts
+                    for (int j = 0; j < scheduled[i].Count(); j++)
+                    {
+                        foreach(Personal personal in scheduled[i][j])
+                        {
+                            lists[i].Items.Add($"shift: {j} Person: {personal.ToString()}");
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                NoDatabaseConnection(ex);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+        }
     }
 }
