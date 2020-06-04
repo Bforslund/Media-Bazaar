@@ -1015,6 +1015,7 @@ namespace WindowsFormsApp1
 
         private void btnFillWeek_Click(object sender, EventArgs e)
         {
+            lblScheduleStatus.Text = "Scheduling";
             AutoSchedule autoSchedule = new AutoSchedule();
 
 
@@ -1022,7 +1023,7 @@ namespace WindowsFormsApp1
             {
                 List<List<List<Personal>>> scheduled = autoSchedule.AutoScheduleEmployees(23, 2020);
 
-                List<ListBox> lists = new List<ListBox>() {lsbMonday,lsbThuesday,lsbWednesday,lsbThursday,lsbFriday,lsbSaturday,lsbSunday};
+                List<ListBox> lists = new List<ListBox>() {lsbMonday,lsbThuesday,lsbWednesday,lsbThursday,lsbFriday,lsbSaturday,lblScheduleStatus};
 
                 //loop days
                 for(int i = 0; i < scheduled.Count(); i++)
@@ -1046,7 +1047,8 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.ToString());
             }
-            
+
+            lblScheduleStatus.Text = "Finished";
         }
     }
 }

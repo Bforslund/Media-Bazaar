@@ -91,6 +91,9 @@ namespace WindowsFormsApp1
 
                     for (int i = 0; i < TempEmployeeList.Count(); i++)
                     {
+                        //gets the employees assigned to the shift before
+                        List<string> previousShift = GetPreviousShift(s, date);
+
                         //checks if the employee is already assigned to the shift
                         foreach (Personal p in shift.GetPersonal())
                         {
@@ -106,13 +109,23 @@ namespace WindowsFormsApp1
                         //checks if the min number of employees is reached if yes stops assigned employees for that shift
                         if (scheduledEmployees[d][s].Count() < shift.GetMinAssigned())
                         {
-                            //assings an employee to the shift
-                            if (employee.GetShiftPreference().Contains(s) || employee.GetShiftPreference().Count() == 0)
+                            //checks if the employee was assigned in the previous shift
+                            if (!previousShift.Contains(TempEmployeeList[i].ToString()))
                             {
-                                if (!employee.GetUnwatedDays().Contains(date))
+                                //checks if shiftPreference matches
+                                if (employee.GetShiftPreference().Contains(s) || employee.GetShiftPreference().Count() == 0)
                                 {
-                                    scheduledEmployees[d][s].Add(TempEmployeeList[i]);
-                                    TempEmployeeList.RemoveAt(i);
+                                    //checks if unwanteDays matches
+                                    if (!employee.GetUnwatedDays().Contains(date))
+                                    {
+                                        scheduledEmployees[d][s].Add(TempEmployeeList[i]);
+
+                                        //inserts the employee into the database (is also used to check if employee is assigned on previous shift
+                                        InsertEmployee(shift.Id(), TempEmployeeList[i].Id);
+
+                                        //removes employee from list so it can not be assigned again
+                                        TempEmployeeList.RemoveAt(i);
+                                    }
                                 }
                             }
                         }
@@ -250,6 +263,94 @@ namespace WindowsFormsApp1
             }
 
             return selectedDay;
+        }
+
+        private List<string> GetPreviousShift(int shift, DateTime date)
+        {
+            List<Personal> previousShift = new List<Personal>();
+            List<string> previousShiftStr = new List<string>();
+
+            if (shift == 0)
+            {
+                date.AddDays(-1);
+                shift = 2;
+
+                string query = "SELECT u.firstname, u.lastname ";
+                query += "FROM `users` u, `users_has_shift` uhs, `shift` s, `day` d WHERE ";
+                query += $"d.day = CAST(N'{date.ToString("yyyy-MM-dd")}' AS Date) AND ";
+                query += "d.id = s.day_id AND ";
+                query += $"s.shifttype = {shift} AND ";
+                query += "uhs.users_id = u.id ";
+
+                MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+                commandDatabase.CommandTimeout = 60;
+                MySqlDataReader reader;
+
+                try
+                {
+                    databaseConnection.Open();
+                    reader = commandDatabase.ExecuteReader();
+
+                    if (reader.HasRows)// check if any rows are found
+                    {
+                        while (reader.Read()) //read each individual row
+                        {
+                            string firstname = reader["firstname"].ToString();
+                            string lastname = reader["lastname"].ToString();
+
+                            previousShift.Add(new Employee(firstname, lastname));
+                        }
+                        databaseConnection.Close();
+                    }
+                    else
+                    {
+                        databaseConnection.Close();
+                    }
+                    databaseConnection.Close();
+                }
+                catch (MySqlException ex)
+                {
+                    databaseConnection.Close();
+                    throw ex;
+                }
+                catch (Exception ex)
+                {
+                    databaseConnection.Close();
+                }
+            }
+
+            foreach(Personal p in previousShift)
+            {
+                previousShiftStr.Add(p.ToString());
+            }
+
+            return previousShiftStr;
+        }
+
+        private void InsertEmployee(int shiftId, int employeeId)
+        {
+            try
+            {
+                string deleteQuery = $"DELETE FROM `users_has_shift` WHERE users_id = @userId AND shift_id = @shiftId";
+                databaseConnection.Open();
+                MySqlCommand commandDatabase = new MySqlCommand(deleteQuery, databaseConnection);
+                commandDatabase.Parameters.AddWithValue("@userId", employeeId);
+                commandDatabase.Parameters.AddWithValue("@shiftId", shiftId);
+                commandDatabase.ExecuteNonQuery();
+                databaseConnection.Close();
+
+                string insertQuery = $"INSERT INTO users_has_shift(users_id, shift_id) VALUES(@userId, @shiftId)";
+                databaseConnection.Open();
+                commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
+                commandDatabase.Parameters.AddWithValue("@userId", employeeId);
+                commandDatabase.Parameters.AddWithValue("@shiftId", shiftId);
+                commandDatabase.ExecuteNonQuery();
+                databaseConnection.Close();
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         private static DateTime FirstDateOfWeekISO8601(int year, int weekOfYear)

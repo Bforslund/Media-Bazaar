@@ -23,6 +23,9 @@ namespace WindowsFormsApp1
 
         MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
 
+        public Employee(string firstname, string lastname) : base(firstname, lastname) { }
+        
+
         public Employee(string email, string firstname, string lastname, int privilage, string username, string password,
                        string adress, DateTime birthday, string allergies, int contract, Department department, DateTime hiredate, string phonenumber, double wage) : base(email, firstname, lastname, privilage, username, password)
         {
