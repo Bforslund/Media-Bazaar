@@ -97,10 +97,13 @@ namespace WindowsFormsApp1
                         //checks if the employee is already assigned to the shift
                         foreach (Personal p in shift.GetPersonal())
                         {
-                            if (p.ToString() == TempEmployeeList[i].ToString())
+                            if (i >= TempEmployeeList.Count())
                             {
-                                scheduledEmployees[d][s].Add(TempEmployeeList[i]);
-                                TempEmployeeList.RemoveAt(i);
+                                if (p.ToString() == TempEmployeeList[i].ToString())
+                                {
+                                    scheduledEmployees[d][s].Add(TempEmployeeList[i]);
+                                    TempEmployeeList.RemoveAt(i);
+                                }
                             }
                         }
 
