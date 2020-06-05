@@ -145,7 +145,7 @@ namespace WindowsFormsApp1
             query = $"SELECT * FROM `day` WHERE day = CAST(N'{day.ToString("yyyy-MM-dd")}' AS Date)";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
-            commandDatabase.CommandTimeout = 60;
+            commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
             MySqlDataReader reader;
 
             try
@@ -230,7 +230,7 @@ namespace WindowsFormsApp1
             query = $"SELECT * FROM `day` WHERE id = {dayId}";
 
             commandDatabase = new MySqlCommand(query, databaseConnection);
-            commandDatabase.CommandTimeout = 60;
+            commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
             MySqlDataReader reader;
 
             try
@@ -286,7 +286,7 @@ namespace WindowsFormsApp1
                 query += "uhs.users_id = u.id ";
 
                 MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
-                commandDatabase.CommandTimeout = 60;
+                commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
                 MySqlDataReader reader;
 
                 try

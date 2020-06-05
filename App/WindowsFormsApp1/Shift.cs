@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
             query += $"us.users_id = u.id ";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
-            commandDatabase.CommandTimeout = 60;
+            commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
             MySqlDataReader reader;
 
             try

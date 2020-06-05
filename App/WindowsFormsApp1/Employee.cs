@@ -149,7 +149,7 @@ namespace WindowsFormsApp1
             query = "SELECT shift_time FROM `users_shift_prefrence` WHERE user_id = " + this.Id;
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
-            commandDatabase.CommandTimeout = 60;
+            commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
             MySqlDataReader reader;
 
             try
@@ -190,7 +190,7 @@ namespace WindowsFormsApp1
             query += $" AND udw.day = d.id";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
-            commandDatabase.CommandTimeout = 60;
+            commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
             MySqlDataReader reader;
 
             try

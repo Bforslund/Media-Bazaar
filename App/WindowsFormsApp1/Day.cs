@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
             string query = $"SELECT * FROM `shift` WHERE day_id = {dbId}";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
-            commandDatabase.CommandTimeout = 60;
+            commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
             MySqlDataReader reader;
 
             try

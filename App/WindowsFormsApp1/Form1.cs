@@ -1021,7 +1021,7 @@ namespace WindowsFormsApp1
 
             try
             {
-                List<List<List<Personal>>> scheduled = autoSchedule.AutoScheduleEmployees(23, 2020);
+                List<List<List<Personal>>> scheduled = autoSchedule.AutoScheduleEmployees(24, 2020);
 
                 List<ListBox> lists = new List<ListBox>() {lsbMonday,lsbThuesday,lsbWednesday,lsbThursday,lsbFriday,lsbSaturday,lblScheduleStatus};
 

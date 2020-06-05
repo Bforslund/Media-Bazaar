@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
             query += $"CAST(`day` AS Date) <= CAST(N'{lastDayOfMonth.ToString("yyyy-MM-dd")}' AS Date);";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
-            commandDatabase.CommandTimeout = 60;
+            commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
             MySqlDataReader reader;
 
             try
