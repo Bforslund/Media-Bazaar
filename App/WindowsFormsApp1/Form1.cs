@@ -1015,13 +1015,27 @@ namespace WindowsFormsApp1
 
         private void btnFillWeek_Click(object sender, EventArgs e)
         {
+            int year = 2020;
+            int week = 26;
+            try
+            {
+                year = Convert.ToInt32(txbTempYear.Text);
+                week = Convert.ToInt32(txbTempWeek.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Non valid values entered defaults will be used");
+            }
+
+            MessageBox.Show($"Selected Year: {year}, Week: {week}");
+
             lblScheduleStatus.Text = "Scheduling";
             AutoSchedule autoSchedule = new AutoSchedule();
 
 
             try
             {
-                List<List<List<Personal>>> scheduled = autoSchedule.AutoScheduleEmployees(24, 2020);
+                List<List<List<Personal>>> scheduled = autoSchedule.AutoScheduleEmployees(week, year);
 
                 List<ListBox> lists = new List<ListBox>() {lsbMonday,lsbThuesday,lsbWednesday,lsbThursday,lsbFriday,lsbSaturday,lblScheduleStatus};
 

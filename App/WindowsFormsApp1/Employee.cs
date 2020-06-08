@@ -146,7 +146,7 @@ namespace WindowsFormsApp1
         public void SetShiftPreference()
         {
             string query;
-            query = "SELECT shift_time FROM `users_shift_prefrence` WHERE user_id = " + this.Id;
+            query = "SELECT shift_time FROM users_shift_prefrence WHERE user_id = " + this.Id;
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
             commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
@@ -186,7 +186,7 @@ namespace WindowsFormsApp1
         public void SetUnwatedDays()
         {
             string query;
-            query = "SELECT d.day FROM `day` d, `users_days_unwanted` udw WHERE udw.user_id = " + this.Id;
+            query = "SELECT d.day FROM day d, users_days_unwanted udw WHERE udw.user_id = " + this.Id;
             query += $" AND udw.day = d.id";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);

@@ -29,9 +29,9 @@ namespace WindowsFormsApp1
 
             //select all the dates between the first day of the month and the last day of the month
             string query;
-            query = "SELECT * FROM `day` WHERE ";
-            query += $"CAST(`day` AS Date) >= CAST(N'{firstDayOfMonth.ToString("yyyy-MM-dd")}' AS Date) AND ";
-            query += $"CAST(`day` AS Date) <= CAST(N'{lastDayOfMonth.ToString("yyyy-MM-dd")}' AS Date);";
+            query = "SELECT * FROM day WHERE ";
+            query += $"CAST(day AS Date) >= CAST(N'{firstDayOfMonth.ToString("yyyy-MM-dd")}' AS Date) AND ";
+            query += $"CAST(day AS Date) <= CAST(N'{lastDayOfMonth.ToString("yyyy-MM-dd")}' AS Date);";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
             commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
@@ -259,7 +259,7 @@ namespace WindowsFormsApp1
 
             if (shiftId >= 0 && employeeId >= 0)
             {
-                string insertQuery = $"DELETE FROM `users_has_shift` WHERE users_id = @userId AND shift_id = @shiftId;";
+                string insertQuery = $"DELETE FROM users_has_shift WHERE users_id = @userId AND shift_id = @shiftId;";
                 databaseConnection.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(insertQuery, databaseConnection);
                 commandDatabase.Parameters.AddWithValue("@userId", employeeId);

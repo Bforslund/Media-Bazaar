@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
         {
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             string query;
-            query = "SELECT * FROM `users_has_shift` us, users u WHERE ";
+            query = "SELECT * FROM users_has_shift us, users u WHERE ";
             query += $"us.shift_id = {id} AND ";
             query += $"us.users_id = u.id ";
 

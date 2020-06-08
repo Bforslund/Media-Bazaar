@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
         public void LoadShifts()
         {
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
-            string query = $"SELECT * FROM `shift` WHERE day_id = {dbId}";
+            string query = $"SELECT * FROM shift WHERE day_id = {dbId}";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
             commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
