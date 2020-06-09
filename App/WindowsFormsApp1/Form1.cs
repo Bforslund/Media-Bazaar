@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
-
+using System.Globalization;
 
 namespace WindowsFormsApp1
 {
@@ -43,11 +43,11 @@ namespace WindowsFormsApp1
 
         private void LoadAtStart() // Everything that needs to be filled at start!
         {
-           // lsbEmployees.DataSource = employeeController.GetEmployees();
+            // lsbEmployees.DataSource = employeeController.GetEmployees();
             cmbStatEmployee.DataSource = employeeController.GetEmployees();
 
             //Comment out this to disable the login
-          tbcMain.TabPages.Remove(tabEmployees);
+            tbcMain.TabPages.Remove(tabEmployees);
             tbcMain.TabPages.Remove(tabProducts);
             tbcMain.TabPages.Remove(tabProductRestock);
             tbcMain.TabPages.Remove(tabSchedule);
@@ -93,35 +93,26 @@ namespace WindowsFormsApp1
                 mcdSchedule.ActiveMonth.Month = DateTime.Now.Month;
                 mcdSchedule.ActiveMonth.Year = DateTime.Now.Year;
 
+                txbTempYear.Text = DateTime.Now.Year.ToString();
+                txbTempWeek.Text = (DateTime.Now.DayOfYear / 7).ToString();
+
                 lsbScheduleEmployees.DataSource = employeeController.GetEmployees();
 
-                ScheduleEnableButton();
-
-                try
-                {
-                    calenderManager.LoadShifts(mcdSchedule.ActiveMonth);
-                }
-                catch (MySqlException ex)
-                {
-                    NoDatabaseConnection(ex);
-                }
-
-                LoadCalenderColors();
-                ScheduleUnassignEnabble();
+                LoadSchedule();
             }
             if (tbcMain.SelectedTab == tabProducts)
             {
                 UpdateProductsList();
                 btnProductRemove.Hide();
                 btnProductUpdate.Hide();
-             
+
                 btnProductstockRequest.Hide();
             }
             if (tbcMain.SelectedTab == tabEmployees)
             {
                 btUpdateEmployee.Hide();
                 btRemoveEmployee.Hide();
-              
+
                 lsbEmployees.DataSource = employeeController.GetEmployees();
             }
             if (tbcMain.SelectedTab == tabStatistics)
@@ -277,7 +268,7 @@ namespace WindowsFormsApp1
 
         private void mcdSchedule_MonthChanged(object sender, Pabo.Calendar.MonthChangedEventArgs e)
         {
-            LoadCalenderColors();
+            LoadSchedule();
         }
         private void cmbScheduleAssignedShift_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -285,7 +276,7 @@ namespace WindowsFormsApp1
         }
         private void btnScheduleAssign_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 calenderManager.SetShift(mcdSchedule.SelectedDates[0], cmbScheduleAssign.SelectedIndex, ((Personal)lsbScheduleEmployees.SelectedItem).Id, mcdSchedule.ActiveMonth);
@@ -387,7 +378,7 @@ namespace WindowsFormsApp1
             cmbEmployeePrivilege.SelectedIndex = 0;
             txbEmployeeAdress.Clear();
             dtpEmployeeBirthday.Value = DateTime.Now;
-            cmbEmployeeContract.SelectedIndex = 0; 
+            cmbEmployeeContract.SelectedIndex = 0;
             cmbEmployeeDepartment.SelectedItem = -1;
             txbEmployeeAllergies.Clear();
             dtpEmployeeHire.Value = DateTime.Now;
@@ -407,7 +398,7 @@ namespace WindowsFormsApp1
                 string adress = txbEmployeeAdress.Text;
                 DateTime birthDay = dtpEmployeeBirthday.Value;
                 string allergies = txbEmployeeAllergies.Text;
-                int contract =(int)cmbEmployeeContract.SelectedIndex;
+                int contract = (int)cmbEmployeeContract.SelectedIndex;
                 Department department = cmbEmployeeDepartment.SelectedItem as Department;
                 DateTime hiredate = dtpEmployeeHire.Value;
                 string phoneNumber = phoneNoBox.Text;
@@ -484,9 +475,9 @@ namespace WindowsFormsApp1
         {
             lsbEmployees.DataSource = null;
 
-           
-                lsbEmployees.DataSource = employeeController.GetEmployees();
-           
+
+            lsbEmployees.DataSource = employeeController.GetEmployees();
+
 
 
         }
@@ -494,7 +485,7 @@ namespace WindowsFormsApp1
         {
             btUpdateEmployee.Show();
             btRemoveEmployee.Show();
-            
+
             Employee selectedEmployee = lsbEmployees.SelectedItem as Employee;
             try
             {
@@ -519,7 +510,8 @@ namespace WindowsFormsApp1
                     cmbEmployeePrivilege.SelectedIndex = selectedEmployee.Privilage;
                     txbEmployeeWage.Text = selectedEmployee.Wage.ToString();
                 }
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Something went wrong, try again");
             }
@@ -700,12 +692,12 @@ namespace WindowsFormsApp1
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
             lsbEmployees.DataSource = employeeController.FilterEmployees(txbEmployeeSearch.Text);
 
         }
 
-      
+
         #region departmentsTab
         private void btAddDepartment_Click(object sender, EventArgs e)
         {
@@ -903,7 +895,7 @@ namespace WindowsFormsApp1
         }
 
         #region restockMethods
-      
+
         public void updateListOutstandingRequests()
         {
             //TODO check
@@ -1013,6 +1005,75 @@ namespace WindowsFormsApp1
             crtStatAttendence.Series["Attendance"].Points.AddXY("Absent", absent);
         }
 
-      
+        private void btnFillWeek_Click(object sender, EventArgs e)
+        {
+            int year = 2020;
+            int week = 1;
+            try
+            {
+                year = Convert.ToInt32(txbTempYear.Text);
+                week = Convert.ToInt32(txbTempWeek.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Non valid values entered defaults will be used");
+            }
+
+            MessageBox.Show($"Selected Year: {year}, Week: {week}");
+
+            //lblScheduleStatus.Text = "Scheduling";
+            AutoSchedule autoSchedule = new AutoSchedule();
+
+
+            try
+            {
+                List<List<List<Personal>>> scheduled = autoSchedule.AutoScheduleEmployees(week, year);
+
+                //List<ListBox> lists = new List<ListBox>() { lsbMonday, lsbThuesday, lsbWednesday, lsbThursday, lsbFriday, lsbSaturday, lblScheduleStatus };
+
+                //loop days
+                //for(int i = 0; i < scheduled.Count(); i++)
+                //{
+                //    lists[i].Items.Clear();
+                //    //loop shifts
+                //    for (int j = 0; j < scheduled[i].Count(); j++)
+                //    {
+                //        foreach(Personal personal in scheduled[i][j])
+                //        {
+                //            lists[i].Items.Add($"shift: {j} Person: {personal.ToString()}");
+                //        }
+                //    }
+                //}
+            }
+            catch (MySqlException ex)
+            {
+                NoDatabaseConnection(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            //lblScheduleStatus.Text = "Finished";
+
+            LoadSchedule();
+        }
+
+        public void LoadSchedule()
+        {
+            ScheduleEnableButton();
+
+            try
+            {
+                calenderManager.LoadShifts(mcdSchedule.ActiveMonth);
+            }
+            catch (MySqlException ex)
+            {
+                NoDatabaseConnection(ex);
+            }
+
+            LoadCalenderColors();
+            ScheduleUnassignEnabble();
+        }
     }
 }

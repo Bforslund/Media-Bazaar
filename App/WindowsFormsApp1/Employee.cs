@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using Pabo.Calendar;
 
 namespace WindowsFormsApp1
 {
@@ -16,6 +18,13 @@ namespace WindowsFormsApp1
         private DateTime hiredate;
         private string phonenumber;
         private double wage;
+        List<int> shiftPreference = new List<int>();
+        List<DateTime> unwantedDays = new List<DateTime>();
+
+        MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
+
+        public Employee(string firstname, string lastname) : base(firstname, lastname) { }
+        
 
         public Employee(string email, string firstname, string lastname, int privilage, string username, string password,
                        string adress, DateTime birthday, string allergies, int contract, Department department, DateTime hiredate, string phonenumber, double wage) : base(email, firstname, lastname, privilage, username, password)
@@ -134,10 +143,96 @@ namespace WindowsFormsApp1
             }
         }
 
-        //public override string ToString()
-        //{
-        //    return this.FirstName + " " + this.LastName;
-        //}
+        public void SetShiftPreference()
+        {
+            string query;
+            query = "SELECT shift_time FROM users_shift_prefrence WHERE user_id = " + this.Id;
+
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+            commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
+            MySqlDataReader reader;
+
+            try
+            {
+                databaseConnection.Open();
+                reader = commandDatabase.ExecuteReader();
+
+                if (reader.HasRows)// check if any rows are found
+                {
+                    while (reader.Read()) //read each individual row
+                    {
+                        int shiftTime = Convert.ToInt32(reader["shift_time"]);
+                        shiftPreference.Add(shiftTime);
+                    }
+                    databaseConnection.Close();
+                }
+                else
+                {
+                    databaseConnection.Close();
+                }
+                databaseConnection.Close();
+            }
+            catch (MySqlException ex)
+            {
+                databaseConnection.Close();
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                databaseConnection.Close();
+            }
+        }
+
+        public void SetUnwatedDays()
+        {
+            string query;
+            query = "SELECT d.day FROM day d, users_days_unwanted udw WHERE udw.user_id = " + this.Id;
+            query += $" AND udw.day = d.id";
+
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+            commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
+            MySqlDataReader reader;
+
+            try
+            {
+                databaseConnection.Open();
+                reader = commandDatabase.ExecuteReader();
+
+                if (reader.HasRows)// check if any rows are found
+                {
+                    while (reader.Read()) //read each individual row
+                    {
+                        DateTime day = Convert.ToDateTime(reader["day"]);
+                        unwantedDays.Add(day);
+                    }
+                    databaseConnection.Close();
+                }
+                else
+                {
+                    databaseConnection.Close();
+                }
+                databaseConnection.Close();
+            }
+            catch (MySqlException ex)
+            {
+                databaseConnection.Close();
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                databaseConnection.Close();
+            }
+        }
+
+        public List<int> GetShiftPreference()
+        {
+            return this.shiftPreference;
+        }
+
+        public List<DateTime> GetUnwatedDays()
+        {
+            return this.unwantedDays;
+        }
     }
 
 }

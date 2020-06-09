@@ -72,6 +72,13 @@ namespace WindowsFormsApp1
                 password = value;
             }
         }
+
+        public Personal(string firstname, string lastname)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastname;
+        }
+
         public Personal(string email, string firstname, string lastname, int privilage, string username, string password)
         {
            
