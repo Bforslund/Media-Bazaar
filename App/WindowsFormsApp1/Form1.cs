@@ -1007,56 +1007,50 @@ namespace WindowsFormsApp1
 
         private void btnFillWeek_Click(object sender, EventArgs e)
         {
-            int year = 2020;
-            int week = 1;
-            try
+
+            var confirmResult = MessageBox.Show("Your about to generate a schedule this may take a while.\n " +
+                                                "During the generation the program will freeze \n " +
+                                                "Do you whish to continue",
+                                                "Warning",
+                                                MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
             {
-                year = Convert.ToInt32(txbTempYear.Text);
-                week = Convert.ToInt32(txbTempWeek.Text);
+                AutoClosingMessageBox.Show("Generation is starting", "Notification", 2000);
+                int year = 2020;
+                int week = 1;
+                try
+                {
+                    year = Convert.ToInt32(txbTempYear.Text);
+                    week = Convert.ToInt32(txbTempWeek.Text);
+                }
+                catch
+                {
+                    AutoClosingMessageBox.Show("Non valid values entered defaults will be used\n" +
+                                                "Program will continue automaticly", "Notification", 7500);
+                }
+
+
+                //lblScheduleStatus.Text = "Scheduling";
+                AutoSchedule autoSchedule = new AutoSchedule();
+
+
+                try
+                {
+                    List<List<List<Personal>>> scheduled = autoSchedule.AutoScheduleEmployees(week, year);
+                }
+                catch (MySqlException ex)
+                {
+                    NoDatabaseConnection(ex);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
+                LoadSchedule();
+
+                AutoClosingMessageBox.Show("Generation has finished", "Notification", 4000);
             }
-            catch
-            {
-                MessageBox.Show("Non valid values entered defaults will be used");
-            }
-
-            MessageBox.Show($"Selected Year: {year}, Week: {week}");
-
-            //lblScheduleStatus.Text = "Scheduling";
-            AutoSchedule autoSchedule = new AutoSchedule();
-
-
-            try
-            {
-                List<List<List<Personal>>> scheduled = autoSchedule.AutoScheduleEmployees(week, year);
-
-                //List<ListBox> lists = new List<ListBox>() { lsbMonday, lsbThuesday, lsbWednesday, lsbThursday, lsbFriday, lsbSaturday, lblScheduleStatus };
-
-                //loop days
-                //for(int i = 0; i < scheduled.Count(); i++)
-                //{
-                //    lists[i].Items.Clear();
-                //    //loop shifts
-                //    for (int j = 0; j < scheduled[i].Count(); j++)
-                //    {
-                //        foreach(Personal personal in scheduled[i][j])
-                //        {
-                //            lists[i].Items.Add($"shift: {j} Person: {personal.ToString()}");
-                //        }
-                //    }
-                //}
-            }
-            catch (MySqlException ex)
-            {
-                NoDatabaseConnection(ex);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            //lblScheduleStatus.Text = "Finished";
-
-            LoadSchedule();
         }
 
         public void LoadSchedule()
@@ -1075,5 +1069,7 @@ namespace WindowsFormsApp1
             LoadCalenderColors();
             ScheduleUnassignEnabble();
         }
+
+        
     }
 }

@@ -146,7 +146,7 @@ namespace WindowsFormsApp1
 
                 if (reader.Read())
                 {
-                    MessageBox.Show("Success!");
+                    //MessageBox.Show("Success!");
                     userRole = Convert.ToInt32(reader.GetValue(0));
                 }
                 else
