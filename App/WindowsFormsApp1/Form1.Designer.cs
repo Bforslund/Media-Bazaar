@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea27 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend27 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series54 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series55 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea28 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend28 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series56 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea25 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend25 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series49 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series50 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series51 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series52 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea26 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend26 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series53 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MediaBazaar));
             this.mcdSchedule = new Pabo.Calendar.MonthCalendar();
             this.lblSSearch = new System.Windows.Forms.Label();
@@ -181,31 +181,15 @@
             this.dtpStatDate = new System.Windows.Forms.DateTimePicker();
             this.tabLogout = new System.Windows.Forms.TabPage();
             this.label27 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.txbTempYear = new System.Windows.Forms.TextBox();
-            this.txbTempWeek = new System.Windows.Forms.TextBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnFillWeek = new System.Windows.Forms.Button();
-            this.lblScheduleStatus = new System.Windows.Forms.ListBox();
-            this.lsbSaturday = new System.Windows.Forms.ListBox();
-            this.lsbFriday = new System.Windows.Forms.ListBox();
-            this.lsbThursday = new System.Windows.Forms.ListBox();
-            this.lsbWednesday = new System.Windows.Forms.ListBox();
-            this.lsbThuesday = new System.Windows.Forms.ListBox();
-            this.lsbMonday = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Banner = new System.Windows.Forms.PictureBox();
-            this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.txbTempYear = new System.Windows.Forms.TextBox();
+            this.txbTempWeek = new System.Windows.Forms.TextBox();
+            this.btnFillWeek = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupSInformation.SuspendLayout();
             this.groupBoxSAssign.SuspendLayout();
             this.tbcMain.SuspendLayout();
@@ -227,10 +211,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartProfit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtStatAttendence)).BeginInit();
             this.tabLogout.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Banner)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mcdSchedule
@@ -263,7 +247,7 @@
             // lblSSearch
             // 
             this.lblSSearch.AutoSize = true;
-            this.lblSSearch.Location = new System.Drawing.Point(645, 434);
+            this.lblSSearch.Location = new System.Drawing.Point(764, 422);
             this.lblSSearch.Name = "lblSSearch";
             this.lblSSearch.Size = new System.Drawing.Size(72, 21);
             this.lblSSearch.TabIndex = 14;
@@ -271,10 +255,10 @@
             // 
             // txbScheduleEmployeeSearch
             // 
-            this.txbScheduleEmployeeSearch.Location = new System.Drawing.Point(739, 432);
+            this.txbScheduleEmployeeSearch.Location = new System.Drawing.Point(852, 419);
             this.txbScheduleEmployeeSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbScheduleEmployeeSearch.Name = "txbScheduleEmployeeSearch";
-            this.txbScheduleEmployeeSearch.Size = new System.Drawing.Size(195, 28);
+            this.txbScheduleEmployeeSearch.Size = new System.Drawing.Size(180, 28);
             this.txbScheduleEmployeeSearch.TabIndex = 13;
             this.txbScheduleEmployeeSearch.TextChanged += new System.EventHandler(this.txbScheduleEmployeeSearch_TextChanged);
             // 
@@ -294,7 +278,7 @@
             this.groupSInformation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupSInformation.Name = "groupSInformation";
             this.groupSInformation.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupSInformation.Size = new System.Drawing.Size(631, 233);
+            this.groupSInformation.Size = new System.Drawing.Size(541, 233);
             this.groupSInformation.TabIndex = 12;
             this.groupSInformation.TabStop = false;
             this.groupSInformation.Text = "Information for selected date";
@@ -303,10 +287,10 @@
             // 
             this.btnScheduleUnassign.BackColor = System.Drawing.Color.Red;
             this.btnScheduleUnassign.ForeColor = System.Drawing.Color.White;
-            this.btnScheduleUnassign.Location = new System.Drawing.Point(395, 191);
+            this.btnScheduleUnassign.Location = new System.Drawing.Point(273, 190);
             this.btnScheduleUnassign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnScheduleUnassign.Name = "btnScheduleUnassign";
-            this.btnScheduleUnassign.Size = new System.Drawing.Size(221, 36);
+            this.btnScheduleUnassign.Size = new System.Drawing.Size(256, 36);
             this.btnScheduleUnassign.TabIndex = 16;
             this.btnScheduleUnassign.Text = "Unassign Employee";
             this.btnScheduleUnassign.UseVisualStyleBackColor = false;
@@ -315,7 +299,7 @@
             // lblSMaxEmployee
             // 
             this.lblSMaxEmployee.AutoSize = true;
-            this.lblSMaxEmployee.Location = new System.Drawing.Point(5, 199);
+            this.lblSMaxEmployee.Location = new System.Drawing.Point(1362, 199);
             this.lblSMaxEmployee.Name = "lblSMaxEmployee";
             this.lblSMaxEmployee.Size = new System.Drawing.Size(259, 21);
             this.lblSMaxEmployee.TabIndex = 17;
@@ -324,7 +308,7 @@
             // labelSMinEmployee
             // 
             this.labelSMinEmployee.AutoSize = true;
-            this.labelSMinEmployee.Location = new System.Drawing.Point(5, 178);
+            this.labelSMinEmployee.Location = new System.Drawing.Point(1362, 178);
             this.labelSMinEmployee.Name = "labelSMinEmployee";
             this.labelSMinEmployee.Size = new System.Drawing.Size(252, 21);
             this.labelSMinEmployee.TabIndex = 16;
@@ -333,7 +317,7 @@
             // labelSNumEmployeeShift
             // 
             this.labelSNumEmployeeShift.AutoSize = true;
-            this.labelSNumEmployeeShift.Location = new System.Drawing.Point(5, 138);
+            this.labelSNumEmployeeShift.Location = new System.Drawing.Point(1362, 138);
             this.labelSNumEmployeeShift.Name = "labelSNumEmployeeShift";
             this.labelSNumEmployeeShift.Size = new System.Drawing.Size(337, 21);
             this.labelSNumEmployeeShift.TabIndex = 14;
@@ -342,7 +326,7 @@
             // labelSShift1
             // 
             this.labelSShift1.AutoSize = true;
-            this.labelSShift1.Location = new System.Drawing.Point(5, 78);
+            this.labelSShift1.Location = new System.Drawing.Point(5, 119);
             this.labelSShift1.Name = "labelSShift1";
             this.labelSShift1.Size = new System.Drawing.Size(127, 21);
             this.labelSShift1.TabIndex = 10;
@@ -351,7 +335,7 @@
             // labelSNumEmployeeDay
             // 
             this.labelSNumEmployeeDay.AutoSize = true;
-            this.labelSNumEmployeeDay.Location = new System.Drawing.Point(5, 116);
+            this.labelSNumEmployeeDay.Location = new System.Drawing.Point(1362, 116);
             this.labelSNumEmployeeDay.Name = "labelSNumEmployeeDay";
             this.labelSNumEmployeeDay.Size = new System.Drawing.Size(292, 21);
             this.labelSNumEmployeeDay.TabIndex = 12;
@@ -360,7 +344,7 @@
             // labelSDate1
             // 
             this.labelSDate1.AutoSize = true;
-            this.labelSDate1.Location = new System.Drawing.Point(5, 50);
+            this.labelSDate1.Location = new System.Drawing.Point(5, 91);
             this.labelSDate1.Name = "labelSDate1";
             this.labelSDate1.Size = new System.Drawing.Size(136, 21);
             this.labelSDate1.TabIndex = 10;
@@ -369,7 +353,7 @@
             // lblScheduleDateInfo
             // 
             this.lblScheduleDateInfo.AutoSize = true;
-            this.lblScheduleDateInfo.Location = new System.Drawing.Point(179, 50);
+            this.lblScheduleDateInfo.Location = new System.Drawing.Point(147, 91);
             this.lblScheduleDateInfo.Name = "lblScheduleDateInfo";
             this.lblScheduleDateInfo.Size = new System.Drawing.Size(120, 21);
             this.lblScheduleDateInfo.TabIndex = 11;
@@ -382,10 +366,10 @@
             "Morning",
             "Evening",
             "Night"});
-            this.cmbScheduleAssignedShift.Location = new System.Drawing.Point(183, 74);
+            this.cmbScheduleAssignedShift.Location = new System.Drawing.Point(151, 116);
             this.cmbScheduleAssignedShift.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbScheduleAssignedShift.Name = "cmbScheduleAssignedShift";
-            this.cmbScheduleAssignedShift.Size = new System.Drawing.Size(145, 29);
+            this.cmbScheduleAssignedShift.Size = new System.Drawing.Size(116, 29);
             this.cmbScheduleAssignedShift.TabIndex = 10;
             this.cmbScheduleAssignedShift.SelectedIndexChanged += new System.EventHandler(this.cmbScheduleAssignedShift_SelectedIndexChanged);
             // 
@@ -393,17 +377,17 @@
             // 
             this.lsbAssignedEmployees.FormattingEnabled = true;
             this.lsbAssignedEmployees.ItemHeight = 21;
-            this.lsbAssignedEmployees.Location = new System.Drawing.Point(395, 21);
+            this.lsbAssignedEmployees.Location = new System.Drawing.Point(273, 21);
             this.lsbAssignedEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lsbAssignedEmployees.Name = "lsbAssignedEmployees";
-            this.lsbAssignedEmployees.Size = new System.Drawing.Size(223, 88);
+            this.lsbAssignedEmployees.Size = new System.Drawing.Size(256, 151);
             this.lsbAssignedEmployees.TabIndex = 0;
             // 
             // lsbScheduleEmployees
             // 
             this.lsbScheduleEmployees.FormattingEnabled = true;
             this.lsbScheduleEmployees.ItemHeight = 21;
-            this.lsbScheduleEmployees.Location = new System.Drawing.Point(645, 37);
+            this.lsbScheduleEmployees.Location = new System.Drawing.Point(768, 39);
             this.lsbScheduleEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lsbScheduleEmployees.Name = "lsbScheduleEmployees";
             this.lsbScheduleEmployees.Size = new System.Drawing.Size(264, 361);
@@ -423,7 +407,7 @@
             this.groupBoxSAssign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxSAssign.Name = "groupBoxSAssign";
             this.groupBoxSAssign.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBoxSAssign.Size = new System.Drawing.Size(380, 207);
+            this.groupBoxSAssign.Size = new System.Drawing.Size(502, 207);
             this.groupBoxSAssign.TabIndex = 10;
             this.groupBoxSAssign.TabStop = false;
             this.groupBoxSAssign.Text = "Assigning Schedule";
@@ -441,10 +425,10 @@
             // 
             this.btnScheduleAssign.BackColor = System.Drawing.Color.Red;
             this.btnScheduleAssign.ForeColor = System.Drawing.Color.White;
-            this.btnScheduleAssign.Location = new System.Drawing.Point(11, 128);
+            this.btnScheduleAssign.Location = new System.Drawing.Point(11, 164);
             this.btnScheduleAssign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnScheduleAssign.Name = "btnScheduleAssign";
-            this.btnScheduleAssign.Size = new System.Drawing.Size(331, 33);
+            this.btnScheduleAssign.Size = new System.Drawing.Size(485, 33);
             this.btnScheduleAssign.TabIndex = 9;
             this.btnScheduleAssign.Text = "Assign employee to shift";
             this.btnScheduleAssign.UseVisualStyleBackColor = false;
@@ -453,7 +437,7 @@
             // labelSEmployee
             // 
             this.labelSEmployee.AutoSize = true;
-            this.labelSEmployee.Location = new System.Drawing.Point(8, 60);
+            this.labelSEmployee.Location = new System.Drawing.Point(8, 69);
             this.labelSEmployee.Name = "labelSEmployee";
             this.labelSEmployee.Size = new System.Drawing.Size(174, 21);
             this.labelSEmployee.TabIndex = 2;
@@ -462,7 +446,7 @@
             // lblScheduleAssignedEmployee
             // 
             this.lblScheduleAssignedEmployee.AutoSize = true;
-            this.lblScheduleAssignedEmployee.Location = new System.Drawing.Point(199, 60);
+            this.lblScheduleAssignedEmployee.Location = new System.Drawing.Point(238, 69);
             this.lblScheduleAssignedEmployee.Name = "lblScheduleAssignedEmployee";
             this.lblScheduleAssignedEmployee.Size = new System.Drawing.Size(120, 21);
             this.lblScheduleAssignedEmployee.TabIndex = 8;
@@ -471,7 +455,7 @@
             // labelSShift2
             // 
             this.labelSShift2.AutoSize = true;
-            this.labelSShift2.Location = new System.Drawing.Point(8, 90);
+            this.labelSShift2.Location = new System.Drawing.Point(8, 114);
             this.labelSShift2.Name = "labelSShift2";
             this.labelSShift2.Size = new System.Drawing.Size(127, 21);
             this.labelSShift2.TabIndex = 4;
@@ -480,7 +464,7 @@
             // lblScheduleDateAssign
             // 
             this.lblScheduleDateAssign.AutoSize = true;
-            this.lblScheduleDateAssign.Location = new System.Drawing.Point(199, 30);
+            this.lblScheduleDateAssign.Location = new System.Drawing.Point(238, 30);
             this.lblScheduleDateAssign.Name = "lblScheduleDateAssign";
             this.lblScheduleDateAssign.Size = new System.Drawing.Size(120, 21);
             this.lblScheduleDateAssign.TabIndex = 7;
@@ -493,10 +477,10 @@
             "Morning",
             "Evening",
             "Night"});
-            this.cmbScheduleAssign.Location = new System.Drawing.Point(169, 87);
+            this.cmbScheduleAssign.Location = new System.Drawing.Point(242, 111);
             this.cmbScheduleAssign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbScheduleAssign.Name = "cmbScheduleAssign";
-            this.cmbScheduleAssign.Size = new System.Drawing.Size(169, 29);
+            this.cmbScheduleAssign.Size = new System.Drawing.Size(254, 29);
             this.cmbScheduleAssign.TabIndex = 6;
             this.cmbScheduleAssign.SelectedIndexChanged += new System.EventHandler(this.cmbScheduleAssign_SelectedIndexChanged);
             // 
@@ -510,7 +494,6 @@
             this.tbcMain.Controls.Add(this.tabSchedule);
             this.tbcMain.Controls.Add(this.tabStatistics);
             this.tbcMain.Controls.Add(this.tabLogout);
-            this.tbcMain.Controls.Add(this.tabPage3);
             this.tbcMain.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbcMain.Location = new System.Drawing.Point(12, 130);
             this.tbcMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1571,6 +1554,7 @@
             // 
             // tabSchedule
             // 
+            this.tabSchedule.Controls.Add(this.groupBox1);
             this.tabSchedule.Controls.Add(this.label7);
             this.tabSchedule.Controls.Add(this.mcdSchedule);
             this.tabSchedule.Controls.Add(this.lblSSearch);
@@ -1589,7 +1573,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(647, 15);
+            this.label7.Location = new System.Drawing.Point(764, 16);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 21);
@@ -1634,21 +1618,21 @@
             // 
             // crtStatProducts
             // 
-            chartArea5.Name = "ChartArea1";
-            this.crtStatProducts.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.crtStatProducts.Legends.Add(legend5);
+            chartArea27.Name = "ChartArea1";
+            this.crtStatProducts.ChartAreas.Add(chartArea27);
+            legend27.Name = "Legend1";
+            this.crtStatProducts.Legends.Add(legend27);
             this.crtStatProducts.Location = new System.Drawing.Point(7, 64);
             this.crtStatProducts.Margin = new System.Windows.Forms.Padding(4);
             this.crtStatProducts.Name = "crtStatProducts";
-            series9.ChartArea = "ChartArea1";
-            series9.Legend = "Legend1";
-            series9.Name = "Stock";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Min_stock";
-            this.crtStatProducts.Series.Add(series9);
-            this.crtStatProducts.Series.Add(series10);
+            series54.ChartArea = "ChartArea1";
+            series54.Legend = "Legend1";
+            series54.Name = "Stock";
+            series55.ChartArea = "ChartArea1";
+            series55.Legend = "Legend1";
+            series55.Name = "Min_stock";
+            this.crtStatProducts.Series.Add(series54);
+            this.crtStatProducts.Series.Add(series55);
             this.crtStatProducts.Size = new System.Drawing.Size(531, 334);
             this.crtStatProducts.TabIndex = 30;
             this.crtStatProducts.Text = "chart1";
@@ -1666,18 +1650,18 @@
             // 
             // chartDepartSales
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartDepartSales.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartDepartSales.Legends.Add(legend6);
+            chartArea28.Name = "ChartArea1";
+            this.chartDepartSales.ChartAreas.Add(chartArea28);
+            legend28.Name = "Legend1";
+            this.chartDepartSales.Legends.Add(legend28);
             this.chartDepartSales.Location = new System.Drawing.Point(571, 64);
             this.chartDepartSales.Margin = new System.Windows.Forms.Padding(4);
             this.chartDepartSales.Name = "chartDepartSales";
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series11.Legend = "Legend1";
-            series11.Name = "Amount";
-            this.chartDepartSales.Series.Add(series11);
+            series56.ChartArea = "ChartArea1";
+            series56.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series56.Legend = "Legend1";
+            series56.Name = "Amount";
+            this.chartDepartSales.Series.Add(series56);
             this.chartDepartSales.Size = new System.Drawing.Size(669, 334);
             this.chartDepartSales.TabIndex = 37;
             this.chartDepartSales.Text = "chart1";
@@ -1701,48 +1685,48 @@
             // 
             // chartProfit
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chartProfit.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chartProfit.Legends.Add(legend7);
+            chartArea25.Name = "ChartArea1";
+            this.chartProfit.ChartAreas.Add(chartArea25);
+            legend25.Name = "Legend1";
+            this.chartProfit.Legends.Add(legend25);
             this.chartProfit.Location = new System.Drawing.Point(4, 57);
             this.chartProfit.Margin = new System.Windows.Forms.Padding(4);
             this.chartProfit.Name = "chartProfit";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Salary costs";
-            series13.ChartArea = "ChartArea1";
-            series13.Legend = "Legend1";
-            series13.Name = "Sales income";
-            series14.ChartArea = "ChartArea1";
-            series14.Legend = "Legend1";
-            series14.Name = "Order costs";
-            series15.ChartArea = "ChartArea1";
-            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series15.Legend = "Legend1";
-            series15.Name = "Profit";
-            this.chartProfit.Series.Add(series12);
-            this.chartProfit.Series.Add(series13);
-            this.chartProfit.Series.Add(series14);
-            this.chartProfit.Series.Add(series15);
+            series49.ChartArea = "ChartArea1";
+            series49.Legend = "Legend1";
+            series49.Name = "Salary costs";
+            series50.ChartArea = "ChartArea1";
+            series50.Legend = "Legend1";
+            series50.Name = "Sales income";
+            series51.ChartArea = "ChartArea1";
+            series51.Legend = "Legend1";
+            series51.Name = "Order costs";
+            series52.ChartArea = "ChartArea1";
+            series52.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series52.Legend = "Legend1";
+            series52.Name = "Profit";
+            this.chartProfit.Series.Add(series49);
+            this.chartProfit.Series.Add(series50);
+            this.chartProfit.Series.Add(series51);
+            this.chartProfit.Series.Add(series52);
             this.chartProfit.Size = new System.Drawing.Size(835, 304);
             this.chartProfit.TabIndex = 36;
             this.chartProfit.Text = "chart1";
             // 
             // crtStatAttendence
             // 
-            chartArea8.Name = "ChartArea1";
-            this.crtStatAttendence.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.crtStatAttendence.Legends.Add(legend8);
+            chartArea26.Name = "ChartArea1";
+            this.crtStatAttendence.ChartAreas.Add(chartArea26);
+            legend26.Name = "Legend1";
+            this.crtStatAttendence.Legends.Add(legend26);
             this.crtStatAttendence.Location = new System.Drawing.Point(821, 91);
             this.crtStatAttendence.Margin = new System.Windows.Forms.Padding(4);
             this.crtStatAttendence.Name = "crtStatAttendence";
-            series16.ChartArea = "ChartArea1";
-            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series16.Legend = "Legend1";
-            series16.Name = "Attendance";
-            this.crtStatAttendence.Series.Add(series16);
+            series53.ChartArea = "ChartArea1";
+            series53.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series53.Legend = "Legend1";
+            series53.Name = "Attendance";
+            this.crtStatAttendence.Series.Add(series53);
             this.crtStatAttendence.Size = new System.Drawing.Size(395, 252);
             this.crtStatAttendence.TabIndex = 35;
             this.crtStatAttendence.Text = "chart1";
@@ -1810,204 +1794,6 @@
             this.label27.TabIndex = 0;
             this.label27.Text = "Logging out...";
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.label45);
-            this.tabPage3.Controls.Add(this.label44);
-            this.tabPage3.Controls.Add(this.txbTempYear);
-            this.tabPage3.Controls.Add(this.txbTempWeek);
-            this.tabPage3.Controls.Add(this.label43);
-            this.tabPage3.Controls.Add(this.label42);
-            this.tabPage3.Controls.Add(this.label41);
-            this.tabPage3.Controls.Add(this.label40);
-            this.tabPage3.Controls.Add(this.label39);
-            this.tabPage3.Controls.Add(this.label38);
-            this.tabPage3.Controls.Add(this.label35);
-            this.tabPage3.Controls.Add(this.label34);
-            this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Controls.Add(this.btnFillWeek);
-            this.tabPage3.Controls.Add(this.lblScheduleStatus);
-            this.tabPage3.Controls.Add(this.lsbSaturday);
-            this.tabPage3.Controls.Add(this.lsbFriday);
-            this.tabPage3.Controls.Add(this.lsbThursday);
-            this.tabPage3.Controls.Add(this.lsbWednesday);
-            this.tabPage3.Controls.Add(this.lsbThuesday);
-            this.tabPage3.Controls.Add(this.lsbMonday);
-            this.tabPage3.Location = new System.Drawing.Point(4, 30);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1323, 469);
-            this.tabPage3.TabIndex = 8;
-            this.tabPage3.Text = "tabTest";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // txbTempYear
-            // 
-            this.txbTempYear.Location = new System.Drawing.Point(1211, 88);
-            this.txbTempYear.Name = "txbTempYear";
-            this.txbTempYear.Size = new System.Drawing.Size(100, 28);
-            this.txbTempYear.TabIndex = 18;
-            // 
-            // txbTempWeek
-            // 
-            this.txbTempWeek.Location = new System.Drawing.Point(1211, 54);
-            this.txbTempWeek.Name = "txbTempWeek";
-            this.txbTempWeek.Size = new System.Drawing.Size(100, 28);
-            this.txbTempWeek.TabIndex = 17;
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(953, 15);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(22, 21);
-            this.label43.TabIndex = 16;
-            this.label43.Text = "--";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(886, 15);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(61, 21);
-            this.label42.TabIndex = 15;
-            this.label42.Text = "Status";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(1035, 133);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(70, 21);
-            this.label41.TabIndex = 14;
-            this.label41.Text = "Sunday";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(3, 27);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(80, 21);
-            this.label40.TabIndex = 13;
-            this.label40.Text = "Monday";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(343, 30);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(110, 21);
-            this.label39.TabIndex = 12;
-            this.label39.Text = "Wednesday";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(687, 27);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(58, 21);
-            this.label38.TabIndex = 11;
-            this.label38.Text = "Friday";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(687, 250);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(86, 21);
-            this.label35.TabIndex = 10;
-            this.label35.Text = "SaterDay";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(343, 250);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(82, 21);
-            this.label34.TabIndex = 9;
-            this.label34.Text = "Thursday";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 250);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 21);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Thuesday";
-            // 
-            // btnFillWeek
-            // 
-            this.btnFillWeek.Location = new System.Drawing.Point(1117, 3);
-            this.btnFillWeek.Name = "btnFillWeek";
-            this.btnFillWeek.Size = new System.Drawing.Size(194, 45);
-            this.btnFillWeek.TabIndex = 7;
-            this.btnFillWeek.Text = "Button fill week";
-            this.btnFillWeek.UseVisualStyleBackColor = true;
-            this.btnFillWeek.Click += new System.EventHandler(this.btnFillWeek_Click);
-            // 
-            // lblScheduleStatus
-            // 
-            this.lblScheduleStatus.FormattingEnabled = true;
-            this.lblScheduleStatus.ItemHeight = 21;
-            this.lblScheduleStatus.Location = new System.Drawing.Point(1035, 168);
-            this.lblScheduleStatus.Name = "lblScheduleStatus";
-            this.lblScheduleStatus.Size = new System.Drawing.Size(276, 298);
-            this.lblScheduleStatus.TabIndex = 6;
-            // 
-            // lsbSaturday
-            // 
-            this.lsbSaturday.FormattingEnabled = true;
-            this.lsbSaturday.ItemHeight = 21;
-            this.lsbSaturday.Location = new System.Drawing.Point(691, 274);
-            this.lsbSaturday.Name = "lsbSaturday";
-            this.lsbSaturday.Size = new System.Drawing.Size(338, 193);
-            this.lsbSaturday.TabIndex = 5;
-            // 
-            // lsbFriday
-            // 
-            this.lsbFriday.FormattingEnabled = true;
-            this.lsbFriday.ItemHeight = 21;
-            this.lsbFriday.Location = new System.Drawing.Point(691, 54);
-            this.lsbFriday.Name = "lsbFriday";
-            this.lsbFriday.Size = new System.Drawing.Size(338, 193);
-            this.lsbFriday.TabIndex = 4;
-            // 
-            // lsbThursday
-            // 
-            this.lsbThursday.FormattingEnabled = true;
-            this.lsbThursday.ItemHeight = 21;
-            this.lsbThursday.Location = new System.Drawing.Point(347, 274);
-            this.lsbThursday.Name = "lsbThursday";
-            this.lsbThursday.Size = new System.Drawing.Size(338, 193);
-            this.lsbThursday.TabIndex = 3;
-            // 
-            // lsbWednesday
-            // 
-            this.lsbWednesday.FormattingEnabled = true;
-            this.lsbWednesday.ItemHeight = 21;
-            this.lsbWednesday.Location = new System.Drawing.Point(347, 54);
-            this.lsbWednesday.Name = "lsbWednesday";
-            this.lsbWednesday.Size = new System.Drawing.Size(338, 193);
-            this.lsbWednesday.TabIndex = 2;
-            // 
-            // lsbThuesday
-            // 
-            this.lsbThuesday.FormattingEnabled = true;
-            this.lsbThuesday.ItemHeight = 21;
-            this.lsbThuesday.Location = new System.Drawing.Point(3, 274);
-            this.lsbThuesday.Name = "lsbThuesday";
-            this.lsbThuesday.Size = new System.Drawing.Size(338, 193);
-            this.lsbThuesday.TabIndex = 1;
-            // 
-            // lsbMonday
-            // 
-            this.lsbMonday.FormattingEnabled = true;
-            this.lsbMonday.ItemHeight = 21;
-            this.lsbMonday.Location = new System.Drawing.Point(7, 54);
-            this.lsbMonday.Name = "lsbMonday";
-            this.lsbMonday.Size = new System.Drawing.Size(338, 193);
-            this.lsbMonday.TabIndex = 0;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
@@ -2038,23 +1824,61 @@
             this.Banner.TabIndex = 0;
             this.Banner.TabStop = false;
             // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(1113, 57);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(58, 21);
-            this.label44.TabIndex = 19;
-            this.label44.Text = "Week";
-            // 
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(1113, 91);
+            this.label45.Location = new System.Drawing.Point(6, 97);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(49, 21);
-            this.label45.TabIndex = 20;
-            this.label45.Text = "Year";
+            this.label45.Size = new System.Drawing.Size(54, 21);
+            this.label45.TabIndex = 25;
+            this.label45.Text = "Year:";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(6, 63);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(63, 21);
+            this.label44.TabIndex = 24;
+            this.label44.Text = "Week:";
+            // 
+            // txbTempYear
+            // 
+            this.txbTempYear.Location = new System.Drawing.Point(97, 94);
+            this.txbTempYear.Name = "txbTempYear";
+            this.txbTempYear.Size = new System.Drawing.Size(100, 28);
+            this.txbTempYear.TabIndex = 23;
+            // 
+            // txbTempWeek
+            // 
+            this.txbTempWeek.Location = new System.Drawing.Point(97, 60);
+            this.txbTempWeek.Name = "txbTempWeek";
+            this.txbTempWeek.Size = new System.Drawing.Size(100, 28);
+            this.txbTempWeek.TabIndex = 22;
+            // 
+            // btnFillWeek
+            // 
+            this.btnFillWeek.Location = new System.Drawing.Point(10, 137);
+            this.btnFillWeek.Name = "btnFillWeek";
+            this.btnFillWeek.Size = new System.Drawing.Size(190, 45);
+            this.btnFillWeek.TabIndex = 21;
+            this.btnFillWeek.Text = "Button fill week";
+            this.btnFillWeek.UseVisualStyleBackColor = true;
+            this.btnFillWeek.Click += new System.EventHandler(this.btnFillWeek_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label44);
+            this.groupBox1.Controls.Add(this.label45);
+            this.groupBox1.Controls.Add(this.btnFillWeek);
+            this.groupBox1.Controls.Add(this.txbTempWeek);
+            this.groupBox1.Controls.Add(this.txbTempYear);
+            this.groupBox1.Location = new System.Drawing.Point(556, 228);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(206, 233);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Auto Scheduling";
             // 
             // MediaBazaar
             // 
@@ -2102,11 +1926,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.crtStatAttendence)).EndInit();
             this.tabLogout.ResumeLayout(false);
             this.tabLogout.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Banner)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2254,28 +2078,12 @@
         private System.Windows.Forms.Button btAddEmployee;
         private System.Windows.Forms.Button btRemoveEmployee;
         private System.Windows.Forms.Button btClear;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button btnFillWeek;
-        private System.Windows.Forms.ListBox lblScheduleStatus;
-        private System.Windows.Forms.ListBox lsbSaturday;
-        private System.Windows.Forms.ListBox lsbFriday;
-        private System.Windows.Forms.ListBox lsbThursday;
-        private System.Windows.Forms.ListBox lsbWednesday;
-        private System.Windows.Forms.ListBox lsbThuesday;
-        private System.Windows.Forms.ListBox lsbMonday;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.TextBox txbTempYear;
-        private System.Windows.Forms.TextBox txbTempWeek;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox txbTempYear;
+        private System.Windows.Forms.TextBox txbTempWeek;
+        private System.Windows.Forms.Button btnFillWeek;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

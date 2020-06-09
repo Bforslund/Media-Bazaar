@@ -22,9 +22,10 @@ namespace WindowsFormsApp1
         /// <param name="activeMonth"></param>
         public void LoadShifts(ActiveMonth activeMonth)
         {
+            
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
-            DateTime date = DateTime.Now;
-            DateTime firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+            //DateTime date = DateTime.Now;
+            DateTime firstDayOfMonth = new DateTime(activeMonth.Year, activeMonth.Month, 1);
             DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
             //select all the dates between the first day of the month and the last day of the month
