@@ -67,6 +67,11 @@ namespace WindowsFormsApp1
             updateEmployeeList();
             updateListOutstandingRequests();
             updateListCompletedRequests();
+
+
+            UpdateDepartmentList();
+            btRemoveDepartment.Hide();
+            btUpdateDepartment.Hide();
         }
 
         private void tbcMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,8 +98,8 @@ namespace WindowsFormsApp1
                 mcdSchedule.ActiveMonth.Month = DateTime.Now.Month;
                 mcdSchedule.ActiveMonth.Year = DateTime.Now.Year;
 
-                txbTempYear.Text = DateTime.Now.Year.ToString();
-                txbTempWeek.Text = (DateTime.Now.DayOfYear / 7).ToString();
+                //txbTempYear.Text = DateTime.Now.Year.ToString();
+                //txbTempWeek.Text = (DateTime.Now.DayOfYear / 7).ToString();
 
                 lsbScheduleEmployees.DataSource = employeeController.GetEmployees();
 
@@ -836,12 +841,12 @@ namespace WindowsFormsApp1
             {
                 RestockItem selectedRestockItem = lsbRequestsOutstanding.SelectedItem as RestockItem;
 
-                // Increase increaseForm = new Increase(selectedProduct, productcontroller);
-
-                //increaseForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
-                //increaseForm.Show();
-                //selectedProduct. Convert(ToInt32(txtBoxRestock.Text));
                 int amount = Convert.ToInt32(txtBoxRestock.Text);
+                if(amount < 0)
+                {
+                    MessageBox.Show("Given amount must be above 0");
+                    return;
+                }
                 selectedRestockItem.IncreaseRestockItem(selectedRestockItem, amount);
 
                 updateListOutstandingRequests();
@@ -938,7 +943,12 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void resetChart_Click(object sender, EventArgs e)
+        {
+            resetChart();
+        }
+
+        private void resetChart()
         {
             foreach (var series in chartProfit.Series)
             {
@@ -974,12 +984,6 @@ namespace WindowsFormsApp1
 
             }
             decimal totalOut = monthList.Sum(item => item.EmployeeCosts);
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void dtpStatDate_ValueChanged(object sender, EventArgs e)
@@ -989,6 +993,7 @@ namespace WindowsFormsApp1
                 series.Points.Clear();
             }
 
+            resetChart();
             reloadChart();
         }
 
@@ -1008,7 +1013,8 @@ namespace WindowsFormsApp1
         private void btnFillWeek_Click(object sender, EventArgs e)
         {
 
-            var confirmResult = MessageBox.Show("Your about to generate a schedule this may take a while.\n " +
+            var confirmResult = MessageBox.Show("You will generate a schedule for an entire week\n" +
+                                                "The generation may take a while.\n " +
                                                 "During the generation the program will freeze \n " +
                                                 "Do you whish to continue",
                                                 "Warning",
@@ -1016,19 +1022,8 @@ namespace WindowsFormsApp1
             if (confirmResult == DialogResult.Yes)
             {
                 AutoClosingMessageBox.Show("Generation is starting", "Notification", 2000);
-                int year = 2020;
-                int week = 1;
-                try
-                {
-                    year = Convert.ToInt32(txbTempYear.Text);
-                    week = Convert.ToInt32(txbTempWeek.Text);
-                }
-                catch
-                {
-                    AutoClosingMessageBox.Show("Non valid values entered defaults will be used\n" +
-                                                "Program will continue automaticly", "Notification", 7500);
-                }
-
+                int year = dtpAutoSchedule.Value.Year;
+                int week = GetIso8601WeekOfYear(dtpAutoSchedule.Value);
 
                 //lblScheduleStatus.Text = "Scheduling";
                 AutoSchedule autoSchedule = new AutoSchedule();
@@ -1053,6 +1048,21 @@ namespace WindowsFormsApp1
             }
         }
 
+        public static int GetIso8601WeekOfYear(DateTime time)
+        {
+            // Seriously cheat.  If its Monday, Tuesday or Wednesday, then it'll 
+            // be the same week# as whatever Thursday, Friday or Saturday are,
+            // and we always get those right
+            DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(time);
+            if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
+            {
+                time = time.AddDays(3);
+            }
+
+            // Return the week of our adjusted day
+            return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+        }
+
         public void LoadSchedule()
         {
             ScheduleEnableButton();
@@ -1070,6 +1080,39 @@ namespace WindowsFormsApp1
             ScheduleUnassignEnabble();
         }
 
-        
+        private void btnRestockManage2_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                RestockItem selectedRestockItem = lsbRequestsOutstanding.SelectedItem as RestockItem;
+
+                int amount = Convert.ToInt32(txtBoxRestock.Text);
+                if (amount < 0)
+                {
+                    MessageBox.Show("Given amount must be above 0");
+                    return;
+                }
+                amount = amount * -1;
+                selectedRestockItem.IncreaseRestockItem(selectedRestockItem, amount);
+
+                updateListOutstandingRequests();
+                updateListCompletedRequests();
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("format"))
+                {
+                    MessageBox.Show("Increase/Decrease with a valid numerical value");
+                }
+                MessageBox.Show("Select a product to initiate the restock");
+            }
+        }
+
+        private void tbcStatistics_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            resetChart();
+        }
     }
 }
