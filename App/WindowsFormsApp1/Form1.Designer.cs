@@ -77,7 +77,7 @@
             this.txbLoginPassword = new System.Windows.Forms.TextBox();
             this.txbLoginUsername = new System.Windows.Forms.TextBox();
             this.tabDepartments = new System.Windows.Forms.TabPage();
-            this.cbManager = new System.Windows.Forms.ComboBox();
+            this.cmbManager = new System.Windows.Forms.ComboBox();
             this.tbMax = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.tbMin = new System.Windows.Forms.TextBox();
@@ -87,7 +87,7 @@
             this.tbDepartmentName = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbSearchDepartments = new System.Windows.Forms.TextBox();
             this.btUpdateDepartment = new System.Windows.Forms.Button();
             this.btAddDepartment = new System.Windows.Forms.Button();
             this.btRemoveDepartment = new System.Windows.Forms.Button();
@@ -105,7 +105,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGenerateEmployee = new System.Windows.Forms.Button();
             this.txbEmployeePassword = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.txbEmployeeUsername = new System.Windows.Forms.TextBox();
@@ -169,6 +169,7 @@
             this.btnRestockManage = new System.Windows.Forms.Button();
             this.tabSchedule = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpAutoSchedule = new System.Windows.Forms.DateTimePicker();
             this.btnFillWeek = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tabStatistics = new System.Windows.Forms.TabPage();
@@ -189,7 +190,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Banner = new System.Windows.Forms.PictureBox();
-            this.dtpAutoSchedule = new System.Windows.Forms.DateTimePicker();
             this.groupSInformation.SuspendLayout();
             this.groupBoxSAssign.SuspendLayout();
             this.tbcMain.SuspendLayout();
@@ -247,7 +247,7 @@
             // lblSSearch
             // 
             this.lblSSearch.AutoSize = true;
-            this.lblSSearch.Location = new System.Drawing.Point(914, 422);
+            this.lblSSearch.Location = new System.Drawing.Point(919, 422);
             this.lblSSearch.Name = "lblSSearch";
             this.lblSSearch.Size = new System.Drawing.Size(72, 21);
             this.lblSSearch.TabIndex = 14;
@@ -255,7 +255,7 @@
             // 
             // txbScheduleEmployeeSearch
             // 
-            this.txbScheduleEmployeeSearch.Location = new System.Drawing.Point(1002, 419);
+            this.txbScheduleEmployeeSearch.Location = new System.Drawing.Point(1007, 419);
             this.txbScheduleEmployeeSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbScheduleEmployeeSearch.Name = "txbScheduleEmployeeSearch";
             this.txbScheduleEmployeeSearch.Size = new System.Drawing.Size(180, 28);
@@ -278,7 +278,7 @@
             this.groupSInformation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupSInformation.Name = "groupSInformation";
             this.groupSInformation.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupSInformation.Size = new System.Drawing.Size(541, 233);
+            this.groupSInformation.Size = new System.Drawing.Size(547, 233);
             this.groupSInformation.TabIndex = 12;
             this.groupSInformation.TabStop = false;
             this.groupSInformation.Text = "Information for selected date";
@@ -287,7 +287,7 @@
             // 
             this.btnScheduleUnassign.BackColor = System.Drawing.Color.Red;
             this.btnScheduleUnassign.ForeColor = System.Drawing.Color.White;
-            this.btnScheduleUnassign.Location = new System.Drawing.Point(273, 190);
+            this.btnScheduleUnassign.Location = new System.Drawing.Point(281, 190);
             this.btnScheduleUnassign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnScheduleUnassign.Name = "btnScheduleUnassign";
             this.btnScheduleUnassign.Size = new System.Drawing.Size(256, 36);
@@ -361,6 +361,7 @@
             // 
             // cmbScheduleAssignedShift
             // 
+            this.cmbScheduleAssignedShift.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbScheduleAssignedShift.FormattingEnabled = true;
             this.cmbScheduleAssignedShift.Items.AddRange(new object[] {
             "Morning",
@@ -377,7 +378,7 @@
             // 
             this.lsbAssignedEmployees.FormattingEnabled = true;
             this.lsbAssignedEmployees.ItemHeight = 21;
-            this.lsbAssignedEmployees.Location = new System.Drawing.Point(273, 21);
+            this.lsbAssignedEmployees.Location = new System.Drawing.Point(281, 21);
             this.lsbAssignedEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lsbAssignedEmployees.Name = "lsbAssignedEmployees";
             this.lsbAssignedEmployees.Size = new System.Drawing.Size(256, 151);
@@ -387,7 +388,7 @@
             // 
             this.lsbScheduleEmployees.FormattingEnabled = true;
             this.lsbScheduleEmployees.ItemHeight = 21;
-            this.lsbScheduleEmployees.Location = new System.Drawing.Point(918, 39);
+            this.lsbScheduleEmployees.Location = new System.Drawing.Point(923, 39);
             this.lsbScheduleEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lsbScheduleEmployees.Name = "lsbScheduleEmployees";
             this.lsbScheduleEmployees.Size = new System.Drawing.Size(264, 361);
@@ -472,6 +473,7 @@
             // 
             // cmbScheduleAssign
             // 
+            this.cmbScheduleAssign.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbScheduleAssign.FormattingEnabled = true;
             this.cmbScheduleAssign.Items.AddRange(new object[] {
             "Morning",
@@ -570,6 +572,7 @@
             this.txbLoginPassword.PasswordChar = '*';
             this.txbLoginPassword.Size = new System.Drawing.Size(132, 28);
             this.txbLoginPassword.TabIndex = 1;
+            this.txbLoginPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbLoginPassword_KeyPress);
             // 
             // txbLoginUsername
             // 
@@ -581,7 +584,7 @@
             // 
             // tabDepartments
             // 
-            this.tabDepartments.Controls.Add(this.cbManager);
+            this.tabDepartments.Controls.Add(this.cmbManager);
             this.tabDepartments.Controls.Add(this.tbMax);
             this.tabDepartments.Controls.Add(this.label33);
             this.tabDepartments.Controls.Add(this.tbMin);
@@ -591,7 +594,7 @@
             this.tabDepartments.Controls.Add(this.tbDepartmentName);
             this.tabDepartments.Controls.Add(this.label29);
             this.tabDepartments.Controls.Add(this.label28);
-            this.tabDepartments.Controls.Add(this.textBox1);
+            this.tabDepartments.Controls.Add(this.txbSearchDepartments);
             this.tabDepartments.Controls.Add(this.btUpdateDepartment);
             this.tabDepartments.Controls.Add(this.btAddDepartment);
             this.tabDepartments.Controls.Add(this.btRemoveDepartment);
@@ -604,14 +607,15 @@
             this.tabDepartments.Text = "Departments";
             this.tabDepartments.UseVisualStyleBackColor = true;
             // 
-            // cbManager
+            // cmbManager
             // 
-            this.cbManager.FormattingEnabled = true;
-            this.cbManager.Location = new System.Drawing.Point(540, 123);
-            this.cbManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbManager.Name = "cbManager";
-            this.cbManager.Size = new System.Drawing.Size(289, 29);
-            this.cbManager.TabIndex = 60;
+            this.cmbManager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbManager.FormattingEnabled = true;
+            this.cmbManager.Location = new System.Drawing.Point(540, 123);
+            this.cmbManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbManager.Name = "cmbManager";
+            this.cmbManager.Size = new System.Drawing.Size(289, 29);
+            this.cmbManager.TabIndex = 60;
             // 
             // tbMax
             // 
@@ -696,14 +700,14 @@
             this.label28.TabIndex = 50;
             this.label28.Text = "Search:";
             // 
-            // textBox1
+            // txbSearchDepartments
             // 
-            this.textBox1.Location = new System.Drawing.Point(107, 433);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 28);
-            this.textBox1.TabIndex = 49;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.txbSearchDepartments.Location = new System.Drawing.Point(107, 433);
+            this.txbSearchDepartments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbSearchDepartments.Name = "txbSearchDepartments";
+            this.txbSearchDepartments.Size = new System.Drawing.Size(185, 28);
+            this.txbSearchDepartments.TabIndex = 49;
+            this.txbSearchDepartments.TextChanged += new System.EventHandler(this.txbSearchDepartments_TextChanged);
             // 
             // btUpdateDepartment
             // 
@@ -789,7 +793,6 @@
             this.txbEmployeeSearch.Name = "txbEmployeeSearch";
             this.txbEmployeeSearch.Size = new System.Drawing.Size(195, 28);
             this.txbEmployeeSearch.TabIndex = 15;
-            this.txbEmployeeSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txbEmployeePhone
             // 
@@ -919,7 +922,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btnGenerateEmployee);
             this.groupBox3.Controls.Add(this.txbEmployeePassword);
             this.groupBox3.Controls.Add(this.label24);
             this.groupBox3.Controls.Add(this.txbEmployeeUsername);
@@ -933,18 +936,18 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Login info";
             // 
-            // button1
+            // btnGenerateEmployee
             // 
-            this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(512, 20);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(226, 59);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "Generate Username and Password";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnGenerateEmployee.BackColor = System.Drawing.Color.Red;
+            this.btnGenerateEmployee.ForeColor = System.Drawing.Color.White;
+            this.btnGenerateEmployee.Location = new System.Drawing.Point(512, 20);
+            this.btnGenerateEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGenerateEmployee.Name = "btnGenerateEmployee";
+            this.btnGenerateEmployee.Size = new System.Drawing.Size(226, 59);
+            this.btnGenerateEmployee.TabIndex = 37;
+            this.btnGenerateEmployee.Text = "Generate Username and Password";
+            this.btnGenerateEmployee.UseVisualStyleBackColor = false;
+            this.btnGenerateEmployee.Click += new System.EventHandler(this.btnGenerateEmployee_Click);
             // 
             // txbEmployeePassword
             // 
@@ -1002,6 +1005,7 @@
             // 
             // cmbEmployeeContract
             // 
+            this.cmbEmployeeContract.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployeeContract.FormattingEnabled = true;
             this.cmbEmployeeContract.Items.AddRange(new object[] {
             "Fulltime",
@@ -1102,9 +1106,9 @@
             // 
             // cmbEmployeePrivilege
             // 
+            this.cmbEmployeePrivilege.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployeePrivilege.FormattingEnabled = true;
             this.cmbEmployeePrivilege.Items.AddRange(new object[] {
-            "-",
             "Employee",
             "Administrator",
             "Manager"});
@@ -1116,6 +1120,7 @@
             // 
             // cmbEmployeeDepartment
             // 
+            this.cmbEmployeeDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployeeDepartment.FormattingEnabled = true;
             this.cmbEmployeeDepartment.Location = new System.Drawing.Point(519, 117);
             this.cmbEmployeeDepartment.Margin = new System.Windows.Forms.Padding(4);
@@ -1477,7 +1482,7 @@
             // 
             // txtBoxRestock2
             // 
-            this.txtBoxRestock2.Location = new System.Drawing.Point(767, 316);
+            this.txtBoxRestock2.Location = new System.Drawing.Point(778, 316);
             this.txtBoxRestock2.Margin = new System.Windows.Forms.Padding(4);
             this.txtBoxRestock2.Name = "txtBoxRestock2";
             this.txtBoxRestock2.Size = new System.Drawing.Size(167, 28);
@@ -1539,7 +1544,7 @@
             // 
             // txtBoxRestock
             // 
-            this.txtBoxRestock.Location = new System.Drawing.Point(767, 278);
+            this.txtBoxRestock.Location = new System.Drawing.Point(778, 278);
             this.txtBoxRestock.Margin = new System.Windows.Forms.Padding(4);
             this.txtBoxRestock.Name = "txtBoxRestock";
             this.txtBoxRestock.Size = new System.Drawing.Size(167, 28);
@@ -1608,12 +1613,19 @@
             // 
             this.groupBox1.Controls.Add(this.dtpAutoSchedule);
             this.groupBox1.Controls.Add(this.btnFillWeek);
-            this.groupBox1.Location = new System.Drawing.Point(556, 228);
+            this.groupBox1.Location = new System.Drawing.Point(562, 228);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(352, 233);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Auto Scheduling";
+            // 
+            // dtpAutoSchedule
+            // 
+            this.dtpAutoSchedule.Location = new System.Drawing.Point(6, 49);
+            this.dtpAutoSchedule.Name = "dtpAutoSchedule";
+            this.dtpAutoSchedule.Size = new System.Drawing.Size(336, 28);
+            this.dtpAutoSchedule.TabIndex = 25;
             // 
             // btnFillWeek
             // 
@@ -1628,7 +1640,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(914, 9);
+            this.label7.Location = new System.Drawing.Point(919, 9);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 21);
@@ -1812,6 +1824,7 @@
             // 
             // cmbStatEmployee
             // 
+            this.cmbStatEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatEmployee.FormattingEnabled = true;
             this.cmbStatEmployee.Location = new System.Drawing.Point(851, 368);
             this.cmbStatEmployee.Margin = new System.Windows.Forms.Padding(4);
@@ -1879,13 +1892,6 @@
             this.Banner.Size = new System.Drawing.Size(160, 123);
             this.Banner.TabIndex = 0;
             this.Banner.TabStop = false;
-            // 
-            // dtpAutoSchedule
-            // 
-            this.dtpAutoSchedule.Location = new System.Drawing.Point(6, 49);
-            this.dtpAutoSchedule.Name = "dtpAutoSchedule";
-            this.dtpAutoSchedule.Size = new System.Drawing.Size(336, 28);
-            this.dtpAutoSchedule.TabIndex = 25;
             // 
             // MediaBazaar
             // 
@@ -2023,7 +2029,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txbEmployeeSearch;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGenerateEmployee;
         private System.Windows.Forms.DateTimePicker dtpEmployeeHire;
         private System.Windows.Forms.DateTimePicker dtpEmployeeBirthday;
         private System.Windows.Forms.TabPage tabLogin;
@@ -2039,7 +2045,7 @@
         private System.Windows.Forms.TextBox tbDepartmentName;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbSearchDepartments;
         private System.Windows.Forms.Button btUpdateDepartment;
         private System.Windows.Forms.Button btAddDepartment;
         private System.Windows.Forms.Button btRemoveDepartment;
@@ -2050,7 +2056,7 @@
         private System.Windows.Forms.TextBox tbMin;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.ComboBox cbManager;
+        private System.Windows.Forms.ComboBox cmbManager;
         private System.Windows.Forms.Label lblSellPrice;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;

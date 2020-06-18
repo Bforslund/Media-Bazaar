@@ -41,38 +41,6 @@ namespace WindowsFormsApp1
 
         }
 
-        private void LoadAtStart() // Everything that needs to be filled at start!
-        {
-            // lsbEmployees.DataSource = employeeController.GetEmployees();
-            cmbStatEmployee.DataSource = employeeController.GetEmployees();
-
-            //Comment out this to disable the login
-            tbcMain.TabPages.Remove(tabEmployees);
-            tbcMain.TabPages.Remove(tabProducts);
-            tbcMain.TabPages.Remove(tabProductRestock);
-            tbcMain.TabPages.Remove(tabSchedule);
-            tbcMain.TabPages.Remove(tabStatistics);
-            tbcMain.TabPages.Remove(tabDepartments);
-            tbcMain.TabPages.Remove(tabLogout);
-            foreach (Personal p in employeeController.GetAllEmployees())
-            {
-                cbManager.Items.Add(p);
-            }
-
-            foreach (Department d in departmentcontroller.GetDepartments())
-            {
-                cmbEmployeeDepartment.Items.Add(d);
-            }
-
-            updateEmployeeList();
-            updateListOutstandingRequests();
-            updateListCompletedRequests();
-
-
-            UpdateDepartmentList();
-            btRemoveDepartment.Hide();
-            btUpdateDepartment.Hide();
-        }
 
         private void tbcMain_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -133,6 +101,58 @@ namespace WindowsFormsApp1
             }
         }
 
+        #region misc functions
+        private void LoadAtStart() // Everything that needs to be filled at start!
+        {
+            // lsbEmployees.DataSource = employeeController.GetEmployees();
+            cmbStatEmployee.DataSource = employeeController.GetEmployees();
+
+            //Comment out this to disable the login
+            tbcMain.TabPages.Remove(tabEmployees);
+            tbcMain.TabPages.Remove(tabProducts);
+            tbcMain.TabPages.Remove(tabProductRestock);
+            tbcMain.TabPages.Remove(tabSchedule);
+            tbcMain.TabPages.Remove(tabStatistics);
+            tbcMain.TabPages.Remove(tabDepartments);
+            tbcMain.TabPages.Remove(tabLogout);
+            foreach (Personal p in employeeController.GetAllEmployees())
+            {
+                cmbManager.Items.Add(p);
+            }
+
+            foreach (Department d in departmentcontroller.GetDepartments())
+            {
+                cmbEmployeeDepartment.Items.Add(d);
+            }
+
+            updateEmployeeList();
+            updateListOutstandingRequests();
+            updateListCompletedRequests();
+
+            SetDefaultComboboxValues();
+
+            UpdateDepartmentList();
+            btRemoveDepartment.Hide();
+            btUpdateDepartment.Hide();
+        }
+
+        public void NoDatabaseConnection(MySqlException ex)
+        {
+            MessageBox.Show("No connection to Database\nAppliction will be closed\n" + ex.ToString());
+            this.Close();
+        }
+
+        private void SetDefaultComboboxValues()
+        {
+            cmbEmployeeContract.SelectedIndex = 0;
+            cmbEmployeeDepartment.SelectedIndex = 0;
+            cmbEmployeePrivilege.SelectedIndex = 0;
+            cmbScheduleAssign.SelectedIndex = 0;
+            cmbScheduleAssignedShift.SelectedIndex = 0;
+            cmbManager.SelectedIndex = 0;
+        }
+        #endregion
+
         #region productsTab
         private void btAdd_Click(object sender, EventArgs e)
         {
@@ -142,30 +162,6 @@ namespace WindowsFormsApp1
             UpdateProductsList();
         }
 
-        private void lbProducts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Product selectedProduct = (Product)lsbProducts.SelectedItem;
-
-            if (selectedProduct != null)
-            {
-                lblProductName.Text = selectedProduct.Name;
-                lblProductType.Text = selectedProduct.Type;
-                lblProductStock.Text = selectedProduct.Stock.ToString();
-                lblProductDepartment.Text = selectedProduct.Department.Name;
-                lblProductBuyPrice.Text = selectedProduct.Buyingprice.ToString();
-                lblSellPrice.Text = selectedProduct.Sellingprice.ToString();
-                if (selectedProduct.Stock < 10)
-                {
-                    lblProductStock.BackColor = Color.Red;
-                }
-                else
-                {
-                    lblProductStock.BackColor = Color.Transparent;
-                }
-                btnProductUpdate.Show();
-                btnProductRemove.Show();
-            }
-        }
 
         private void btRemove_Click(object sender, EventArgs e)
         {
@@ -195,18 +191,29 @@ namespace WindowsFormsApp1
 
         }
 
-        //private void btCrease_Click(object sender, EventArgs e)
-        //{
-        //    Product selectedProduct = (Product)lsbProducts.SelectedItem;
-        //    Increase creaseForm = new Increase(selectedProduct, productcontroller);
-
-        //    creaseForm.FormClosing += new FormClosingEventHandler(ChildFormClosing);
-        //    creaseForm.Show();
-        //}
-
-        private void ChildFormClosing(object sender, FormClosingEventArgs e)
+        private void lbProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateProductsList();
+            Product selectedProduct = (Product)lsbProducts.SelectedItem;
+
+            if (selectedProduct != null)
+            {
+                lblProductName.Text = selectedProduct.Name;
+                lblProductType.Text = selectedProduct.Type;
+                lblProductStock.Text = selectedProduct.Stock.ToString();
+                lblProductDepartment.Text = selectedProduct.Department.Name;
+                lblProductBuyPrice.Text = selectedProduct.Buyingprice.ToString();
+                lblSellPrice.Text = selectedProduct.Sellingprice.ToString();
+                if (selectedProduct.Stock < 10)
+                {
+                    lblProductStock.BackColor = Color.Red;
+                }
+                else
+                {
+                    lblProductStock.BackColor = Color.Transparent;
+                }
+                btnProductUpdate.Show();
+                btnProductRemove.Show();
+            }
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
@@ -214,8 +221,13 @@ namespace WindowsFormsApp1
             lsbProducts.DataSource = productcontroller.FilterProducts(txbProductsSearch.Text);
         }
 
+        private void ChildFormClosing(object sender, FormClosingEventArgs e)
+        {
+            UpdateProductsList();
+        }
+
         #region functions
-        public void UpdateProductsList()
+        private void UpdateProductsList()
         {
             lsbProducts.DataSource = null;
 
@@ -230,7 +242,6 @@ namespace WindowsFormsApp1
         }
         #endregion
         #endregion
-
 
         #region schedule tab
         private void mcdSchedule_DayClick(object sender, Pabo.Calendar.DayClickEventArgs e)
@@ -254,15 +265,15 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void mcdSchedule_MonthChanged(object sender, Pabo.Calendar.MonthChangedEventArgs e)
+        {
+            LoadSchedule();
+        }
+
         private void lsbScheduleEmployees_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblScheduleAssignedEmployee.Text = lsbScheduleEmployees.SelectedItem.ToString();
 
-            ScheduleEnableButton();
-        }
-
-        private void cmbScheduleAssign_SelectedIndexChanged(object sender, EventArgs e)
-        {
             ScheduleEnableButton();
         }
 
@@ -271,14 +282,54 @@ namespace WindowsFormsApp1
             lsbScheduleEmployees.DataSource = employeeController.FilterEmployees(txbScheduleEmployeeSearch.Text);
         }
 
-        private void mcdSchedule_MonthChanged(object sender, Pabo.Calendar.MonthChangedEventArgs e)
+        private void cmbScheduleAssign_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadSchedule();
+            ScheduleEnableButton();
         }
+
         private void cmbScheduleAssignedShift_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadAssignedEmployees();
         }
+
+        private void btnFillWeek_Click(object sender, EventArgs e)
+        {
+
+            var confirmResult = MessageBox.Show("You will generate a schedule for an entire week\n" +
+                                                "The generation may take a while.\n " +
+                                                "During the generation the program will freeze \n " +
+                                                "Do you whish to continue",
+                                                "Warning",
+                                                MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                AutoClosingMessageBox.Show("Generation is starting", "Notification", 2000);
+                int year = dtpAutoSchedule.Value.Year;
+                int week = GetIso8601WeekOfYear(dtpAutoSchedule.Value);
+
+                //lblScheduleStatus.Text = "Scheduling";
+                AutoSchedule autoSchedule = new AutoSchedule();
+
+
+                try
+                {
+                    List<List<List<Personal>>> scheduled = autoSchedule.AutoScheduleEmployees(week, year);
+                }
+                catch (MySqlException ex)
+                {
+                    NoDatabaseConnection(ex);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
+                LoadSchedule();
+
+                AutoClosingMessageBox.Show("Generation has finished", "Notification", 4000);
+            }
+        }
+
         private void btnScheduleAssign_Click(object sender, EventArgs e)
         {
 
@@ -294,6 +345,7 @@ namespace WindowsFormsApp1
             LoadAssignedEmployees();
             LoadCalenderColors();
         }
+
         private void btnScheduleUnassign_Click(object sender, EventArgs e)
         {
             calenderManager.RemoveEmployee(mcdSchedule.SelectedDates[0], cmbScheduleAssignedShift.SelectedIndex, ((Personal)lsbAssignedEmployees.SelectedItem).Id, mcdSchedule.ActiveMonth);
@@ -351,29 +403,48 @@ namespace WindowsFormsApp1
             }
         }
 
-        #endregion
-        #endregion
-
-        public void NoDatabaseConnection(MySqlException ex)
+        private static int GetIso8601WeekOfYear(DateTime time)
         {
-            MessageBox.Show("No connection to Database\nAppliction will be closed\n" + ex.ToString());
-            this.Close();
+            // Seriously cheat.  If its Monday, Tuesday or Wednesday, then it'll 
+            // be the same week# as whatever Thursday, Friday or Saturday are,
+            // and we always get those right
+            DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(time);
+            if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
+            {
+                time = time.AddDays(3);
+            }
+
+            // Return the week of our adjusted day
+            return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
         }
 
+        private void LoadSchedule()
+        {
+            ScheduleEnableButton();
+
+            try
+            {
+                calenderManager.LoadShifts(mcdSchedule.ActiveMonth);
+            }
+            catch (MySqlException ex)
+            {
+                NoDatabaseConnection(ex);
+            }
+
+            LoadCalenderColors();
+            ScheduleUnassignEnabble();
+        }
+
+        #endregion
+        #endregion
+
         #region employee tab
-        private void button1_Click(object sender, EventArgs e)
+        private void btnGenerateEmployee_Click(object sender, EventArgs e)
         {
             txbEmployeeUsername.Text = RandomString(5);
             txbEmployeePassword.Text = RandomString(8);
         }
 
-        public static string RandomString(int length)
-        {
-            Random rand = new Random();
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[rand.Next(s.Length)]).ToArray());
-        }
         private void btClear_Click(object sender, EventArgs e)
         {
 
@@ -391,6 +462,7 @@ namespace WindowsFormsApp1
             txbEmployeeWage.Clear();
 
         }
+
         private void btAddEmployee_Click(object sender, EventArgs e)
         {
             try
@@ -410,17 +482,34 @@ namespace WindowsFormsApp1
                 string password = txbEmployeePassword.Text;
                 double wage = Convert.ToDouble(txbEmployeeWage.Text);
 
+                if(email.Length < 4)
+                {
+                    MessageBox.Show("Entered non valid email");
+                    return;
+                }
+                if(wage < 1)
+                {
+                    MessageBox.Show("Entered non valid wage");
+                    return;
+                }
+                if(firstname.Length < 2 || lastname.Length < 2)
+                {
+                    MessageBox.Show("Enterd non valid firstname or lastname");
+                    return;
+                }
+
                 Employee newEmployee = new Employee(email, firstname, lastname, privilage, username, password, adress, birthDay, allergies, contract, department, hiredate, phoneNumber, wage);
                 employeeController.saveEmployeeData(newEmployee);
                 MessageBox.Show("Employee added");
 
+                updateEmployeeList();
             }
             catch (Exception)
             {
 
                 MessageBox.Show("Did you fill in everything correct? Check again");
             }
-            updateEmployeeList();
+
         }
 
         private void btUpdateEmployee_Click(object sender, EventArgs e)
@@ -476,16 +565,7 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        public void updateEmployeeList()
-        {
-            lsbEmployees.DataSource = null;
 
-
-            lsbEmployees.DataSource = employeeController.GetEmployees();
-
-
-
-        }
         private void lsbEmployees_SelectedIndexChanged(object sender, EventArgs e)
         {
             btUpdateEmployee.Show();
@@ -523,20 +603,428 @@ namespace WindowsFormsApp1
 
         }
 
-        private void refreshListView()
+        #region functions
+        public static string RandomString(int length)
         {
-            employeeController.GetEmployees();
+            Random rand = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[rand.Next(s.Length)]).ToArray());
         }
 
+        private void updateEmployeeList()
+        {
+            lsbEmployees.DataSource = null;
+
+
+            lsbEmployees.DataSource = employeeController.GetEmployees();
+
+
+
+        }
+
+        private static bool IsNumeric(string s)
+        {
+            foreach (char c in s)
+            {
+                if (!char.IsDigit(c) && c != '.')
+                {
+                    MessageBox.Show("Enter a correct number");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private static bool IsValid(string emailaddress)
+        {
+            try
+            {
+
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Enter a valid email adress!");
+                return false;
+            }
+        }
+        #endregion
         #endregion
 
-        #region stats tab
+        #region login tab
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            login();
+        }
 
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void txbLoginPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                login();
+            }
+        }
+        #region functions
+        public void login()
+        {
+            stats.login(txbLoginUsername.Text, txbLoginPassword.Text);
+
+            //Administration has all tabs and the most privilages
+            if (stats.userRole == 2)
+            {
+                tbcMain.TabPages.Remove(tabLogin);
+
+                tbcMain.TabPages.Add(tabDepartments);
+                tbcMain.TabPages.Add(tabEmployees);
+                tbcMain.TabPages.Add(tabProducts);
+                tbcMain.TabPages.Add(tabProductRestock);
+                tbcMain.TabPages.Add(tabSchedule);
+                tbcMain.TabPages.Add(tabStatistics);
+                tbcMain.TabPages.Add(tabLogout);
+            }
+
+            //Manager can view a few tabs but not edit them (So he cant mess anything up)
+            // Mail from Andre "The manager of the shop will only see the statistics. The actual management of the business process is delegated to the administration. "
+            else if (stats.userRole == 3)
+            {
+                //tbcMain.TabPages.Add(tabStatistics);
+                //tbcMain.TabPages.Add(tabEmployees);
+                //tbcMain.TabPages.Add(tabSchedule);
+                //tbcMain.TabPages.Add(tabLogout);
+            }
+
+            //Employee has the least privilages can only acces products page
+            else if (stats.userRole == 1)
+            {
+                tbcMain.TabPages.Remove(tabLogin);
+                tbcMain.TabPages.Add(tabProductRestock);
+                // tbcMain.TabPages.Add(tabProducts); 
+                tbcMain.TabPages.Add(tabLogout);
+            }
+        }
+        #endregion
+        #endregion
+
+        #region departmentsTab
+        private void btAddDepartment_Click(object sender, EventArgs e)
+        {
+            bool success;
+            success = AddDepartments();
+            if (success)
+            {
+                MessageBox.Show("Department successfully added!");
+                tbDepartmentName.Clear();
+                UpdateDepartmentList();
+            }
+            else
+            {
+                MessageBox.Show("You did not fill everything\n" +
+                                "Please fill in everything and try again");
+            }
+        }
+
+        private void btUpdateDepartment_Click(object sender, EventArgs e)
+        {
+            Department selectedDepartment = (Department)lbDepartments.SelectedItem;
+
+            bool success;
+            success = UpdateDepartments();
+            if (success)
+            {
+                MessageBox.Show("Department successfully Updated!");
+                UpdateDepartmentList();
+                tbDepartmentName.Clear();
+            }
+            else
+            {
+                MessageBox.Show("You did not fill everything\n" +
+                                "Please fill in everything and try again");
+            }
+        }
+
+        private void btRemoveDepartment_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this department ??",
+                                                "Confirm Delete!!",
+                                                MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                // If 'Yes', do something here.
+                Department selectedDepartment = (Department)lbDepartments.SelectedItem;
+                departmentcontroller.DeleteDepartment(selectedDepartment);
+                UpdateDepartmentList();
+            }
+            else
+            {
+                UpdateDepartmentList();
+            }
+        }
+
+        private void lbDepartments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Department selectedDepartment = (Department)lbDepartments.SelectedItem;
+
+            if (selectedDepartment != null)
+            {
+                tbDepartmentName.Text = selectedDepartment.Name;
+                cmbManager.SelectedItem = employeeController.GetEmployee(selectedDepartment.Manager_id);
+                tbMax.Text = selectedDepartment.Max_employees.ToString();
+                tbMin.Text = selectedDepartment.Min_employees.ToString();
+
+                btUpdateDepartment.Show();
+                btRemoveDepartment.Show();
+            }
+        }
+
+        private void txbSearchDepartments_TextChanged(object sender, EventArgs e)
         {
 
+            lsbEmployees.DataSource = employeeController.FilterEmployees(txbEmployeeSearch.Text);
+
         }
+
+        #region functions
+        private bool UpdateDepartments()
+        {
+            bool success;
+            Department selectedDepartment = (Department)lbDepartments.SelectedItem;
+            try
+            {
+
+                selectedDepartment.Name = tbDepartmentName.Text;
+                selectedDepartment.Manager_id = ((Personal)cmbManager.SelectedItem).Id;
+                selectedDepartment.Min_employees = Convert.ToInt32(tbMin.Text);
+                selectedDepartment.Max_employees = Convert.ToInt32(tbMax.Text);
+                departmentcontroller.UpdateDepartment(selectedDepartment);
+                success = true;
+            }
+            catch
+            {
+
+                success = false;
+            }
+            return success;
+        }
+
+        private bool AddDepartments()
+        {
+            bool success;
+            try
+            {
+
+                string name = tbDepartmentName.Text;
+                Personal manager = (Personal)cmbManager.SelectedItem;
+                int min = Convert.ToInt32(tbMin.Text);
+                int max = Convert.ToInt32(tbMax.Text);
+
+                Department newDepartment = new Department(name, manager.Id, min, max);
+                departmentcontroller.AddDepartment(newDepartment);
+                success = true;
+            }
+            catch
+            {
+                success = false;
+            }
+            return success;
+
+        }
+
+        public void UpdateDepartmentList()
+        {
+            lbDepartments.DataSource = null;
+
+            try
+            {
+                lbDepartments.DataSource = departmentcontroller.GetDepartments();
+            }
+            catch (MySqlException ex)
+            {
+                NoDatabaseConnection(ex);
+            }
+
+        }
+        #endregion
+        #endregion
+
+        #region restock tab
+        private void btnRestockManage2_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                RestockItem selectedRestockItem = lsbRequestsOutstanding.SelectedItem as RestockItem;
+
+                int amount = Convert.ToInt32(txtBoxRestock.Text);
+                if (amount < 0)
+                {
+                    MessageBox.Show("Given amount must be above 0");
+                    return;
+                }
+                amount = amount * -1;
+                selectedRestockItem.IncreaseRestockItem(selectedRestockItem, amount);
+
+                updateListOutstandingRequests();
+                updateListCompletedRequests();
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("format"))
+                {
+                    MessageBox.Show("Increase/Decrease with a valid numerical value");
+                }
+                MessageBox.Show("Select a product to initiate the restock");
+            }
+        }
+
+        private void btnProductstockRequest_Click(object sender, EventArgs e)
+        {
+            if (lsbProducts.SelectedIndex >= 0)
+            {
+                Product restockRequestProduct = (Product)lsbProducts.SelectedItem;
+                //TODO get the name or username of the user initiating the request
+                restockItem.RequestRestockOfitem(restockRequestProduct, DateTime.Now);
+                updateListOutstandingRequests(); // update the list
+                MessageBox.Show("Product restock request successfull");
+            }
+            else
+            {
+                MessageBox.Show("No product selected");
+            }
+        }
+
+        private void btnRestockManage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RestockItem selectedRestockItem = lsbRequestsOutstanding.SelectedItem as RestockItem;
+
+                int amount = Convert.ToInt32(txtBoxRestock.Text);
+                if (amount < 0)
+                {
+                    MessageBox.Show("Given amount must be above 0");
+                    return;
+                }
+                selectedRestockItem.IncreaseRestockItem(selectedRestockItem, amount);
+
+                updateListOutstandingRequests();
+                updateListCompletedRequests();
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("format"))
+                {
+                    MessageBox.Show("Increase/Decrease with a valid numerical value");
+                }
+                MessageBox.Show("Select a product to initiate the restock");
+            }
+        }
+
+        private void btnRejectRestock_Click(object sender, EventArgs e)
+        {
+            //todo not finished
+
+            RestockItem restockItemToReject = lsbRequestsOutstanding.SelectedItem as RestockItem;
+
+
+            //TODO rejected "tag", add date of rejection, error handling
+            try
+            {
+                restockItemToReject.RejectRequest(restockItemToReject, 0, rejectMessage.Text);
+                updateListOutstandingRequests();
+                updateListCompletedRequests();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong, use numbers and add a message!");
+            }
+
+            // lbCompletedRequests.Items.Add(rejectedProduct);
+
+            //?List view version
+            // lvCompletedRequests.Columns.Add("Status", 20, HorizontalAlignment.Left); 
+
+            //ListViewItem item = new ListViewItem();
+
+            //item.Text = rejectedProduct.ToString(); // Or whatever display text you need
+            //item.Tag = rejectedProduct;
+
+            // Setup other things like SubItems, Font, ...
+
+            //lvCompletedRequests.Items.Add(item);
+
+
+        }
+
+        #region functions
+        public void updateListOutstandingRequests()
+        {
+            //TODO check
+            lsbRequestsOutstanding.Items.Clear();
+            if (restockItem.GetOutstandingData().Count > 0)
+            {
+                foreach (RestockItem item in restockItem.GetOutstandingData())
+                {
+                    lsbRequestsOutstanding.Items.Add(item);
+                }
+            }
+
+        }
+        public void updateListCompletedRequests()
+        {
+            //TODO check
+
+            lbCompletedRequests.Items.Clear();
+
+            foreach (RestockItem item in restockItem.GetCompeletedData())
+            {
+                lbCompletedRequests.Items.Add(item);
+            }
+        }
+        #endregion
+        #endregion
+
+        #region statistics tab
+        private void resetChart_Click(object sender, EventArgs e)
+        {
+            resetChart();
+        }
+
+        private void dtpStatDate_ValueChanged(object sender, EventArgs e)
+        {
+            foreach (var series in chartProfit.Series)
+            {
+                series.Points.Clear();
+            }
+
+            resetChart();
+            reloadChart();
+        }
+
+        private void cmbStatEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            crtStatAttendence.Series["Attendance"].Points.Clear();
+
+            Employee emp = cmbStatEmployee.SelectedItem as Employee;
+
+            int absent = usr.checkAttendance(cmbStatEmployee.SelectedItem.ToString(), 0);
+            int present = usr.checkAttendance(cmbStatEmployee.SelectedItem.ToString(), 1);
+
+            crtStatAttendence.Series["Attendance"].Points.AddXY("Present", present);
+            crtStatAttendence.Series["Attendance"].Points.AddXY("Absent", absent);
+        }
+
+        private void tbcStatistics_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            resetChart();
+        }
+
         #region functions
         private void loadData()
         {
@@ -601,352 +1089,6 @@ namespace WindowsFormsApp1
 
             }
         }
-        #endregion
-
-        #endregion
-
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            stats.login(txbLoginUsername.Text, txbLoginPassword.Text);
-
-            //Administration has all tabs and the most privilages
-            if (stats.userRole == 2)
-            {
-                tbcMain.TabPages.Remove(tabLogin);
-
-                tbcMain.TabPages.Add(tabDepartments);
-                tbcMain.TabPages.Add(tabEmployees);
-                tbcMain.TabPages.Add(tabProducts);
-                tbcMain.TabPages.Add(tabProductRestock);
-                tbcMain.TabPages.Add(tabSchedule);
-                tbcMain.TabPages.Add(tabStatistics);
-                tbcMain.TabPages.Add(tabLogout);
-            }
-
-            //Manager can view a few tabs but not edit them (So he cant mess anything up)
-            // Mail from Andre "The manager of the shop will only see the statistics. The actual management of the business process is delegated to the administration. "
-            else if (stats.userRole == 3)
-            {
-                //tbcMain.TabPages.Add(tabStatistics);
-                //tbcMain.TabPages.Add(tabEmployees);
-                //tbcMain.TabPages.Add(tabSchedule);
-                //tbcMain.TabPages.Add(tabLogout);
-            }
-
-            //Employee has the least privilages can only acces products page
-            else if (stats.userRole == 1)
-            {
-                tbcMain.TabPages.Remove(tabLogin);
-                tbcMain.TabPages.Add(tabProductRestock);
-                // tbcMain.TabPages.Add(tabProducts); 
-                tbcMain.TabPages.Add(tabLogout);
-            }
-        }
-
-        public static bool IsNumeric(string s)
-        {
-            foreach (char c in s)
-            {
-                if (!char.IsDigit(c) && c != '.')
-                {
-                    MessageBox.Show("Enter a correct number");
-                    return false;
-                }
-            }
-
-            return true;
-        }
-        public static bool IsValid(string emailaddress)
-        {
-            try
-            {
-
-                MailAddress m = new MailAddress(emailaddress);
-
-                return true;
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Enter a valid email adress!");
-                return false;
-            }
-        }
-
-        private void dateTimePicker1_ValueChanged_2(object sender, EventArgs e)
-        {
-            foreach (var series in chartProfit.Series)
-            {
-                series.Points.Clear();
-            }
-
-            reloadChart();
-        }
-
-        private void cbEmployees_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            crtStatAttendence.Series["Attendance"].Points.Clear();
-
-            int absent = usr.checkAttendance(cmbStatEmployee.SelectedValue.ToString(), 0);
-            int present = usr.checkAttendance(cmbStatEmployee.SelectedValue.ToString(), 1);
-
-            crtStatAttendence.Series["Attendance"].Points.AddXY("Present", present);
-            crtStatAttendence.Series["Attendance"].Points.AddXY("Absent", absent);
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-            lsbEmployees.DataSource = employeeController.FilterEmployees(txbEmployeeSearch.Text);
-
-        }
-
-
-        #region departmentsTab
-        private void btAddDepartment_Click(object sender, EventArgs e)
-        {
-            bool success;
-            success = AddDepartments();
-            if (success)
-            {
-                MessageBox.Show("Department successfully added!");
-                tbDepartmentName.Clear();
-                UpdateDepartmentList();
-            }
-            else
-            {
-                MessageBox.Show("Try again!");
-            }
-        }
-        private bool AddDepartments()
-        {
-            bool success;
-            try
-            {
-
-                string name = tbDepartmentName.Text;
-                Personal manager = (Personal)cbManager.SelectedItem;
-                int min = Convert.ToInt32(tbMin.Text);
-                int max = Convert.ToInt32(tbMax.Text);
-
-                Department newDepartment = new Department(name, manager.Id, min, max);
-                departmentcontroller.AddDepartment(newDepartment);
-                success = true;
-            }
-            catch
-            {
-                success = false;
-            }
-            return success;
-
-        }
-        private void btUpdateDepartment_Click(object sender, EventArgs e)
-        {
-            Department selectedDepartment = (Department)lbDepartments.SelectedItem;
-
-            bool success;
-            success = UpdateDepartments();
-            if (success)
-            {
-                MessageBox.Show("Department successfully Updated!");
-                UpdateDepartmentList();
-                tbDepartmentName.Clear();
-            }
-            else
-            {
-                MessageBox.Show("Try again!");
-            }
-        }
-        private bool UpdateDepartments()
-        {
-            bool success;
-            Department selectedDepartment = (Department)lbDepartments.SelectedItem;
-            try
-            {
-
-                selectedDepartment.Name = tbDepartmentName.Text;
-                selectedDepartment.Manager_id = ((Personal)cbManager.SelectedItem).Id;
-                selectedDepartment.Min_employees = Convert.ToInt32(tbMin.Text);
-                selectedDepartment.Max_employees = Convert.ToInt32(tbMax.Text);
-                departmentcontroller.UpdateDepartment(selectedDepartment);
-                success = true;
-            }
-            catch
-            {
-
-                success = false;
-            }
-            return success;
-        }
-
-        private void btRemoveDepartment_Click(object sender, EventArgs e)
-        {
-            var confirmResult = MessageBox.Show("Are you sure you want to delete this department ??",
-                                                "Confirm Delete!!",
-                                                MessageBoxButtons.YesNo);
-            if (confirmResult == DialogResult.Yes)
-            {
-                // If 'Yes', do something here.
-                Department selectedDepartment = (Department)lbDepartments.SelectedItem;
-                departmentcontroller.DeleteDepartment(selectedDepartment);
-                UpdateDepartmentList();
-            }
-            else
-            {
-                UpdateDepartmentList();
-            }
-        }
-        private void lbDepartments_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Department selectedDepartment = (Department)lbDepartments.SelectedItem;
-
-            if (selectedDepartment != null)
-            {
-                tbDepartmentName.Text = selectedDepartment.Name;
-                cbManager.SelectedItem = employeeController.GetEmployee(selectedDepartment.Manager_id);
-                tbMax.Text = selectedDepartment.Max_employees.ToString();
-                tbMin.Text = selectedDepartment.Min_employees.ToString();
-
-                btUpdateDepartment.Show();
-                btRemoveDepartment.Show();
-            }
-        }
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-            lbDepartments.DataSource = departmentcontroller.FilterDepartments(textBox1.Text);
-        }
-        public void UpdateDepartmentList()
-        {
-            lbDepartments.DataSource = null;
-
-            try
-            {
-                lbDepartments.DataSource = departmentcontroller.GetDepartments();
-            }
-            catch (MySqlException ex)
-            {
-                NoDatabaseConnection(ex);
-            }
-
-        }
-
-
-
-        #endregion
-
-        private void btnRestockManage_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                RestockItem selectedRestockItem = lsbRequestsOutstanding.SelectedItem as RestockItem;
-
-                int amount = Convert.ToInt32(txtBoxRestock.Text);
-                if(amount < 0)
-                {
-                    MessageBox.Show("Given amount must be above 0");
-                    return;
-                }
-                selectedRestockItem.IncreaseRestockItem(selectedRestockItem, amount);
-
-                updateListOutstandingRequests();
-                updateListCompletedRequests();
-
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message.Contains("format"))
-                {
-                    MessageBox.Show("Increase/Decrease with a valid numerical value");
-                }
-                MessageBox.Show("Select a product to initiate the restock");
-            }
-        }
-
-        private void btnRejectRestock_Click(object sender, EventArgs e)
-        {
-            //todo not finished
-
-            RestockItem restockItemToReject = lsbRequestsOutstanding.SelectedItem as RestockItem;
-
-
-            //TODO rejected "tag", add date of rejection, error handling
-            try
-            {
-                restockItemToReject.RejectRequest(restockItemToReject, 0, rejectMessage.Text);
-                updateListOutstandingRequests();
-                updateListCompletedRequests();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Something went wrong, use numbers and add a message!");
-            }
-
-            // lbCompletedRequests.Items.Add(rejectedProduct);
-
-            //?List view version
-            // lvCompletedRequests.Columns.Add("Status", 20, HorizontalAlignment.Left); 
-
-            //ListViewItem item = new ListViewItem();
-
-            //item.Text = rejectedProduct.ToString(); // Or whatever display text you need
-            //item.Tag = rejectedProduct;
-
-            // Setup other things like SubItems, Font, ...
-
-            //lvCompletedRequests.Items.Add(item);
-
-
-        }
-
-        #region restockMethods
-
-        public void updateListOutstandingRequests()
-        {
-            //TODO check
-            lsbRequestsOutstanding.Items.Clear();
-            if (restockItem.GetOutstandingData().Count > 0)
-            {
-                foreach (RestockItem item in restockItem.GetOutstandingData())
-                {
-                    lsbRequestsOutstanding.Items.Add(item);
-                }
-            }
-
-        }
-        public void updateListCompletedRequests()
-        {
-            //TODO check
-
-            lbCompletedRequests.Items.Clear();
-
-            foreach (RestockItem item in restockItem.GetCompeletedData())
-            {
-                lbCompletedRequests.Items.Add(item);
-            }
-        }
-        #endregion
-
-        private void btnProductstockRequest_Click(object sender, EventArgs e)
-        {
-            if (lsbProducts.SelectedIndex >= 0)
-            {
-                Product restockRequestProduct = (Product)lsbProducts.SelectedItem;
-                //TODO get the name or username of the user initiating the request
-                restockItem.RequestRestockOfitem(restockRequestProduct, DateTime.Now);
-                updateListOutstandingRequests(); // update the list
-                MessageBox.Show("Product restock request successfull");
-            }
-            else
-            {
-                MessageBox.Show("No product selected");
-            }
-        }
-
-        private void resetChart_Click(object sender, EventArgs e)
-        {
-            resetChart();
-        }
 
         private void resetChart()
         {
@@ -985,134 +1127,7 @@ namespace WindowsFormsApp1
             }
             decimal totalOut = monthList.Sum(item => item.EmployeeCosts);
         }
-
-        private void dtpStatDate_ValueChanged(object sender, EventArgs e)
-        {
-            foreach (var series in chartProfit.Series)
-            {
-                series.Points.Clear();
-            }
-
-            resetChart();
-            reloadChart();
-        }
-
-        private void cmbStatEmployee_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            crtStatAttendence.Series["Attendance"].Points.Clear();
-
-            Employee emp = cmbStatEmployee.SelectedItem as Employee;
-
-            int absent = usr.checkAttendance(cmbStatEmployee.SelectedItem.ToString(), 0);
-            int present = usr.checkAttendance(cmbStatEmployee.SelectedItem.ToString(), 1);
-
-            crtStatAttendence.Series["Attendance"].Points.AddXY("Present", present);
-            crtStatAttendence.Series["Attendance"].Points.AddXY("Absent", absent);
-        }
-
-        private void btnFillWeek_Click(object sender, EventArgs e)
-        {
-
-            var confirmResult = MessageBox.Show("You will generate a schedule for an entire week\n" +
-                                                "The generation may take a while.\n " +
-                                                "During the generation the program will freeze \n " +
-                                                "Do you whish to continue",
-                                                "Warning",
-                                                MessageBoxButtons.YesNo);
-            if (confirmResult == DialogResult.Yes)
-            {
-                AutoClosingMessageBox.Show("Generation is starting", "Notification", 2000);
-                int year = dtpAutoSchedule.Value.Year;
-                int week = GetIso8601WeekOfYear(dtpAutoSchedule.Value);
-
-                //lblScheduleStatus.Text = "Scheduling";
-                AutoSchedule autoSchedule = new AutoSchedule();
-
-
-                try
-                {
-                    List<List<List<Personal>>> scheduled = autoSchedule.AutoScheduleEmployees(week, year);
-                }
-                catch (MySqlException ex)
-                {
-                    NoDatabaseConnection(ex);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-
-                LoadSchedule();
-
-                AutoClosingMessageBox.Show("Generation has finished", "Notification", 4000);
-            }
-        }
-
-        public static int GetIso8601WeekOfYear(DateTime time)
-        {
-            // Seriously cheat.  If its Monday, Tuesday or Wednesday, then it'll 
-            // be the same week# as whatever Thursday, Friday or Saturday are,
-            // and we always get those right
-            DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(time);
-            if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
-            {
-                time = time.AddDays(3);
-            }
-
-            // Return the week of our adjusted day
-            return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
-        }
-
-        public void LoadSchedule()
-        {
-            ScheduleEnableButton();
-
-            try
-            {
-                calenderManager.LoadShifts(mcdSchedule.ActiveMonth);
-            }
-            catch (MySqlException ex)
-            {
-                NoDatabaseConnection(ex);
-            }
-
-            LoadCalenderColors();
-            ScheduleUnassignEnabble();
-        }
-
-        private void btnRestockManage2_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                RestockItem selectedRestockItem = lsbRequestsOutstanding.SelectedItem as RestockItem;
-
-                int amount = Convert.ToInt32(txtBoxRestock.Text);
-                if (amount < 0)
-                {
-                    MessageBox.Show("Given amount must be above 0");
-                    return;
-                }
-                amount = amount * -1;
-                selectedRestockItem.IncreaseRestockItem(selectedRestockItem, amount);
-
-                updateListOutstandingRequests();
-                updateListCompletedRequests();
-
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message.Contains("format"))
-                {
-                    MessageBox.Show("Increase/Decrease with a valid numerical value");
-                }
-                MessageBox.Show("Select a product to initiate the restock");
-            }
-        }
-
-        private void tbcStatistics_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            resetChart();
-        }
+        #endregion
+        #endregion
     }
 }
