@@ -22,11 +22,9 @@ namespace WindowsFormsApp1
         private int status;
         private string message;
 
-
-        public string UserId { get; set; }
-        public string ProductID { get; set; }
-        public string ProductName { get; set; }
-
+        public int ID { get { return this.id; } }
+        public string UserId { get { return this.userId; } set { } }
+        public string ProductID { get { return this.productID; } set { } }
         public DateTime DateOfRestock { get; set; }
         public int AmountOfrestock { get; set; }
         public int Status { get; set; }
@@ -127,14 +125,16 @@ namespace WindowsFormsApp1
         }
         private void increaseInRestock(RestockItem r, int amount)
         {
+            int newStock = r.Stock + amount;
+
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             try
             {
                 databaseConnection.Open();
 
-                string sql = "UPDATE restock SET amount = (amount+@amount), approved=1 WHERE id=@id";
+                string sql = "UPDATE restock SET amount = @amount, approved=1 WHERE id=@id";
                 MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
-                cmd.Parameters.AddWithValue("@amount", amount);
+                cmd.Parameters.AddWithValue("@amount", newStock);
                 cmd.Parameters.AddWithValue("@id", r.Id);
 
                 cmd.ExecuteNonQuery();
@@ -153,18 +153,22 @@ namespace WindowsFormsApp1
                 databaseConnection.Close();
             }
         }
+        
         private void increaseInProducts(RestockItem r, int value)
         {
+            int newStock = r.Stock+ value;
+
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             try
             {
+                
                 databaseConnection.Open();
 
-                string sql = "UPDATE products SET stock = (stock + @value) WHERE id = @id";
+                string sql = "UPDATE products SET stock = @newStock WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
-                cmd.Parameters.AddWithValue("@stock", r.Stock);
-                cmd.Parameters.AddWithValue("@id", r.Id);
-                cmd.Parameters.AddWithValue("@value", value);
+                //cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@newStock", newStock);
+                cmd.Parameters.AddWithValue("@id", r.ProductID);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -215,7 +219,7 @@ namespace WindowsFormsApp1
             List<RestockItem> retlist = new List<RestockItem>();
             try
             {
-                string query = "SELECT r.id, u.username, p.name, r.date, r.amount, r.approved, r.message FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved = 1 OR r.approved = 0";
+                string query = "SELECT r.id, u.username, p.name,r.date, r.amount, r.approved, r.message FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved = 1 OR r.approved = 0";
 
                 databaseConnection.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);

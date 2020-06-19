@@ -168,6 +168,7 @@ namespace WindowsFormsApp1
                 }
                 btnProductUpdate.Show();
                 btnProductRemove.Show();
+                btnProductstockRequest.Show();
             }
         }
 
@@ -842,7 +843,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                RestockItem selectedRestockItem = lsbRequestsOutstanding.SelectedItem as RestockItem;
+                RestockItem selectedRestockItem = (RestockItem)lsbRequestsOutstanding.SelectedItem;
 
                 // Increase increaseForm = new Increase(selectedProduct, productcontroller);
 
@@ -851,7 +852,6 @@ namespace WindowsFormsApp1
                 //selectedProduct. Convert(ToInt32(txtBoxRestock.Text));
                 int amount = Convert.ToInt32(txtBoxRestock.Text);
                 selectedRestockItem.IncreaseRestockItem(selectedRestockItem, amount);
-
                 updateListOutstandingRequests();
                 updateListCompletedRequests();
 
@@ -864,6 +864,10 @@ namespace WindowsFormsApp1
                 }
                 MessageBox.Show("Select a product to initiate the restock");
             }
+            finally
+            {
+                txtBoxRestock.Clear();
+            }   
         }
 
         private void btnRejectRestock_Click(object sender, EventArgs e)
@@ -906,13 +910,14 @@ namespace WindowsFormsApp1
       
         public void updateListOutstandingRequests()
         {
+
             //TODO check
             lsbRequestsOutstanding.Items.Clear();
             if (restockItem.GetOutstandingData().Count > 0)
             {
                 foreach (RestockItem item in restockItem.GetOutstandingData())
                 {
-                    lsbRequestsOutstanding.Items.Add(item);
+                    lsbRequestsOutstanding.Items.Add((RestockItem)item);
                 }
             }
 
