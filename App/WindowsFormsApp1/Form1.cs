@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
-
+using Mediabazaar;
 
 namespace WindowsFormsApp1
 {
@@ -19,6 +19,8 @@ namespace WindowsFormsApp1
         ProductController productcontroller;
         CalenderManager calenderManager;
         EmployeeController employeeController;
+        RestockItemController restockItemController;
+
         Stats stats;
         User usr;
         DepartmentController departmentcontroller;
@@ -33,6 +35,7 @@ namespace WindowsFormsApp1
             calenderManager = new CalenderManager();
             employeeController = new EmployeeController();
             departmentcontroller = new DepartmentController();
+            restockItemController = new RestockItemController();
             restockItem = new RestockItem();
             stats = new Stats();
             usr = new User();
@@ -851,7 +854,7 @@ namespace WindowsFormsApp1
                 //increaseForm.Show();
                 //selectedProduct. Convert(ToInt32(txtBoxRestock.Text));
                 int amount = Convert.ToInt32(txtBoxRestock.Text);
-                selectedRestockItem.IncreaseRestockItem(selectedRestockItem, amount);
+                restockItemController.IncreaseRestockItem(selectedRestockItem, amount);
                 updateListOutstandingRequests();
                 updateListCompletedRequests();
 
@@ -880,7 +883,7 @@ namespace WindowsFormsApp1
             //TODO rejected "tag", add date of rejection, error handling
             try
             {
-                restockItemToReject.RejectRequest(restockItemToReject, 0, rejectMessage.Text);
+                restockItemController.RejectRequest(restockItemToReject, 0, rejectMessage.Text);
                 updateListOutstandingRequests();
                 updateListCompletedRequests();
             }
@@ -913,9 +916,9 @@ namespace WindowsFormsApp1
 
             //TODO check
             lsbRequestsOutstanding.Items.Clear();
-            if (restockItem.GetOutstandingData().Count > 0)
+            if (restockItemController.GetOutstandingData().Count > 0)
             {
-                foreach (RestockItem item in restockItem.GetOutstandingData())
+                foreach (RestockItem item in restockItemController.GetOutstandingData())
                 {
                     lsbRequestsOutstanding.Items.Add((RestockItem)item);
                 }
@@ -928,7 +931,7 @@ namespace WindowsFormsApp1
 
             lbCompletedRequests.Items.Clear();
 
-            foreach (RestockItem item in restockItem.GetCompeletedData())
+            foreach (RestockItem item in restockItemController.GetCompeletedData())
             {
                 lbCompletedRequests.Items.Add(item);
             }
@@ -941,7 +944,7 @@ namespace WindowsFormsApp1
             {
                 Product restockRequestProduct = (Product)lsbProducts.SelectedItem;
                 //TODO get the name or username of the user initiating the request
-                restockItem.RequestRestockOfitem(restockRequestProduct, DateTime.Now);
+                restockItemController.RequestRestockOfitem(restockRequestProduct, DateTime.Now);
                 updateListOutstandingRequests(); // update the list
                 MessageBox.Show("Product restock request successfull");
             }
