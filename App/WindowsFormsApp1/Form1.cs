@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Mail;
 using Mediabazaar;
+using System.Globalization;
 
 namespace WindowsFormsApp1
 {
@@ -216,6 +217,7 @@ namespace WindowsFormsApp1
                 }
                 btnProductUpdate.Show();
                 btnProductRemove.Show();
+                btnProductstockRequest.Show();
             }
         }
 
@@ -869,7 +871,7 @@ namespace WindowsFormsApp1
                     return;
                 }
                 amount = amount * -1;
-                selectedRestockItem.IncreaseRestockItem(selectedRestockItem, amount);
+                restockItemController.IncreaseRestockItem(selectedRestockItem, amount);
 
                 updateListOutstandingRequests();
                 updateListCompletedRequests();
@@ -891,7 +893,7 @@ namespace WindowsFormsApp1
             {
                 Product restockRequestProduct = (Product)lsbProducts.SelectedItem;
                 //TODO get the name or username of the user initiating the request
-                restockItem.RequestRestockOfitem(restockRequestProduct, DateTime.Now);
+                restockItemController.RequestRestockOfitem(restockRequestProduct, DateTime.Now);
                 updateListOutstandingRequests(); // update the list
                 MessageBox.Show("Product restock request successfull");
             }
@@ -913,7 +915,7 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Given amount must be above 0");
                     return;
                 }
-                selectedRestockItem.IncreaseRestockItem(selectedRestockItem, amount);
+                restockItemController.IncreaseRestockItem(selectedRestockItem, amount);
 
                 updateListOutstandingRequests();
                 updateListCompletedRequests();
