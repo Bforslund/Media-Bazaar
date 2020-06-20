@@ -127,7 +127,8 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    MessageBox.Show("Try again!");
+                    MessageBox.Show("You did not fill everything\n" +
+                                    "Please fill in everything and try again");
                 }
                 
             }
@@ -142,7 +143,8 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    MessageBox.Show("Try again!");
+                    MessageBox.Show("You did not fill everything\n" +
+                                    "Please fill in everything and try again");
                 }
             }
         }

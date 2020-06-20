@@ -113,7 +113,7 @@ namespace WindowsFormsApp1
                         if (scheduledEmployees[d][s].Count() < shift.GetMinAssigned())
                         {
                             //checks if the employee was assigned in the previous shift
-                            if (!previousShift.Contains(TempEmployeeList[i].ToString()))
+                            if (!previousShift.Contains(TempEmployeeList[i].ToString()))    
                             {
                                 //checks if shiftPreference matches
                                 if (employee.GetShiftPreference().Contains(s) || employee.GetShiftPreference().Count() == 0)
@@ -142,7 +142,7 @@ namespace WindowsFormsApp1
             Day selectedDay = null;
 
             string query;
-            query = $"SELECT * FROM `day` WHERE day = CAST(N'{day.ToString("yyyy-MM-dd")}' AS Date)";
+            query = $"SELECT * FROM day WHERE day = CAST(N'{day.ToString("yyyy-MM-dd")}' AS Date)";
 
             MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
             commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
@@ -227,7 +227,7 @@ namespace WindowsFormsApp1
 
             Day selectedDay = null;
             string query;
-            query = $"SELECT * FROM `day` WHERE id = {dayId}";
+            query = $"SELECT * FROM day WHERE id = {dayId}";
 
             commandDatabase = new MySqlCommand(query, databaseConnection);
             commandDatabase.CommandTimeout = DatabaseInfo.connectionTimeout;
@@ -279,7 +279,7 @@ namespace WindowsFormsApp1
                 shift = 2;
 
                 string query = "SELECT u.firstname, u.lastname ";
-                query += "FROM `users` u, `users_has_shift` uhs, `shift` s, `day` d WHERE ";
+                query += "FROM users u, users_has_shift uhs, shift s, day d WHERE ";
                 query += $"d.day = CAST(N'{date.ToString("yyyy-MM-dd")}' AS Date) AND ";
                 query += "d.id = s.day_id AND ";
                 query += $"s.shifttype = {shift} AND ";
@@ -334,7 +334,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                string deleteQuery = $"DELETE FROM `users_has_shift` WHERE users_id = @userId AND shift_id = @shiftId";
+                string deleteQuery = $"DELETE FROM users_has_shift WHERE users_id = @userId AND shift_id = @shiftId";
                 databaseConnection.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(deleteQuery, databaseConnection);
                 commandDatabase.Parameters.AddWithValue("@userId", employeeId);

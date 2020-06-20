@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoClosingMessageBox.cs" />
     <Compile Include="AutoSchedule.cs" />
     <Compile Include="CalenderManager.cs" />
     <Compile Include="DatabaseInfo.cs" />
