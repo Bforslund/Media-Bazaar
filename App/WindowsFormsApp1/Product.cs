@@ -84,7 +84,17 @@ namespace WindowsFormsApp1
             get { return min_stock; }
             set { min_stock = value; }
         }
-
+        public Product(string name, double profit)
+        {
+            this.Name = name;
+            this.Sellingprice = profit;
+        }
+        public Product(string name, int amount, double profit)
+        {
+            this.Name = name;
+            this.Stock = amount;
+            this.Sellingprice = profit;
+        }
         public Product(string name, int amount)
         {
             this.Name = name;
@@ -99,7 +109,6 @@ namespace WindowsFormsApp1
         {
 
         }
-
 
         public Product(string type, string name, double sellingPrice, double buyingPrice, int stock, int min_stock, Department department) 
             : this(0, type, name, sellingPrice, buyingPrice, stock, min_stock, department)

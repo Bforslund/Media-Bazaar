@@ -984,18 +984,20 @@ namespace WindowsFormsApp1
         #region statistics tab
         private void resetChart_Click(object sender, EventArgs e)
         {
-            if (lsbProducts.SelectedIndex >= 0)
-            {
-                Product restockRequestProduct = (Product)lsbProducts.SelectedItem;
-                //TODO get the name or username of the user initiating the request
-                restockItemController.RequestRestockOfitem(restockRequestProduct, DateTime.Now);
-                updateListOutstandingRequests(); // update the list
-                MessageBox.Show("Product restock request successfull");
-            }
-            else
-            {
-                MessageBox.Show("No product selected");
-            }
+            //if (lsbProducts.SelectedIndex >= 0)
+            //{
+            //    Product restockRequestProduct = (Product)lsbProducts.SelectedItem;
+            //    //TODO get the name or username of the user initiating the request
+            //    restockItemController.RequestRestockOfitem(restockRequestProduct, DateTime.Now);
+            //    updateListOutstandingRequests(); // update the list
+            //    MessageBox.Show("Product restock request successfull");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No product selected");
+            //}
+
+            resetChart();
         }
 
         private void dtpStatDate_ValueChanged(object sender, EventArgs e)
@@ -1005,8 +1007,25 @@ namespace WindowsFormsApp1
                 series.Points.Clear();
             }
 
-            resetChart();
-            reloadChart();
+            List<StoreStats> monthList = new List<StoreStats>();
+
+            string theDate = dtpStatDate.Value.ToString("yyyy-MM-dd");
+            DateTime last_date = new DateTime(dtpStatDate.Value.Year, dtpStatDate.Value.Month, DateTime.DaysInMonth(dtpStatDate.Value.Year, dtpStatDate.Value.Month));
+            DateTime first_date = new DateTime(dtpStatDate.Value.Year, dtpStatDate.Value.Month, 1);
+
+            string firstDate = first_date.ToString("yyyy-MM-dd");
+            string lastDate = last_date.ToString("yyyy-MM-dd");
+
+
+            monthList.Add(stats.loadEmployeeCostStats(firstDate, lastDate));
+            foreach (StoreStats item in monthList)
+            {
+                chartProfit.Series["Salary costs"].Points.AddXY(item.Month, item.EmployeeCosts);
+                chartProfit.Series["Sales income"].Points.AddXY(item.Month, item.SalesIn);
+                chartProfit.Series["Order costs"].Points.AddXY(item.Month, item.ProdCosts);
+                chartProfit.Series["Profit"].Points.AddXY(item.Month, item.SalesIn - (item.EmployeeCosts + item.ProdCosts));
+
+            }
         }
 
         private void cmbStatEmployee_SelectedIndexChanged(object sender, EventArgs e)
@@ -1025,6 +1044,7 @@ namespace WindowsFormsApp1
         private void tbcStatistics_SelectedIndexChanged(object sender, EventArgs e)
         {
             resetChart();
+
         }
 
         #region functions
@@ -1041,8 +1061,19 @@ namespace WindowsFormsApp1
                 }
                 foreach (Product item in stats.GetDepartmentData())
                 {
-                    chartDepartSales.Series["Amount"].Points.AddXY(item.Name, item.Stock);
+                    chartDepartSales.Series["Amount Sold"].Points.AddXY(item.Name, item.Stock);
 
+                }
+
+                List<Product> dummyList = new List<Product>();
+                dummyList.Add(new Product("Mobilephones", 4312.50));
+                dummyList.Add(new Product("Instruments", 950.00));
+
+
+                foreach (Product item in dummyList)
+                {
+                    string add = item.Name + " " + item.Sellingprice;
+                    lbDepartSales.Items.Add(add);
                 }
             }
             catch (MySqlException ex)
@@ -1099,6 +1130,7 @@ namespace WindowsFormsApp1
                 series.Points.Clear();
             }
 
+
             //crtStatProducts.
             //chartDepartSales
             foreach (var item in crtStatProducts.Series)
@@ -1115,21 +1147,16 @@ namespace WindowsFormsApp1
 
 
 
-            for (int begin = 1, end = 2; begin <= 12; begin++, end++)
-            {
-                monthList.Add(stats.loadEmployeeCostStats("2020-" + begin + "-01", "2020-" + end + "-01"));
-            }
-            foreach (StoreStats item in monthList)
-            {
-                chartProfit.Series["Salary costs"].Points.AddXY(item.Month, item.EmployeeCosts);
-                chartProfit.Series["Sales income"].Points.AddXY(item.Month, item.SalesIn);
-                chartProfit.Series["Order costs"].Points.AddXY(item.Month, item.ProdCosts);
-                chartProfit.Series["Profit"].Points.AddXY(item.Month, item.SalesIn - (item.EmployeeCosts + item.ProdCosts));
-
-            }
+            loadData();
             decimal totalOut = monthList.Sum(item => item.EmployeeCosts);
         }
         #endregion
+
         #endregion
+
+        private void label37_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
