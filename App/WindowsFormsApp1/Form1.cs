@@ -40,6 +40,8 @@ namespace WindowsFormsApp1
             restockItem = new RestockItem();
             stats = new Stats();
             usr = new User();
+            lsbRequestsOutstanding.HorizontalScrollbar = true;
+            lbCompletedRequests.HorizontalScrollbar = true;
 
             LoadAtStart();
 
