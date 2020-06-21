@@ -857,36 +857,8 @@ namespace WindowsFormsApp1
         #endregion
 
         #region restock tab
-        private void btnRestockDecreaseStock_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                RestockItem selectedRestockItem = lsbRequestsOutstanding.SelectedItem as RestockItem;
-
-                int amount = Convert.ToInt32(txtBoxRestock.Text);
-                if (amount < 0)
-                {
-                    MessageBox.Show("Given amount must be above 0");
-                    return;
-                }
-                amount = amount * -1;
-                restockItemController.IncreaseRestockItem(selectedRestockItem, amount);
-
-                updateListOutstandingRequests();
-                updateListCompletedRequests();
-
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message.Contains("format"))
-                {
-                    MessageBox.Show("Increase/Decrease with a valid numerical value");
-                }
-                MessageBox.Show("Select a product to initiate the restock");
-            }
-        }
-
+       
+        //requesting a product restock
         private void btnProductstockRequest_Click(object sender, EventArgs e)
         {
             if (lsbProducts.SelectedIndex >= 0)
@@ -902,24 +874,22 @@ namespace WindowsFormsApp1
                 MessageBox.Show("No product selected");
             }
         }
+        //Increasing stock
 
-        private void btnRestockManage_Click(object sender, EventArgs e)
+        private void btnRestockIncrease_Click(object sender, EventArgs e)
         {
             try
             {
                 RestockItem selectedRestockItem = (RestockItem)lsbRequestsOutstanding.SelectedItem;
 
-                int amount = Convert.ToInt32(txtBoxRestock.Text);
+                int amount = Convert.ToInt32(txtBoxRestockAmountIncrease.Text);
                 if (amount < 0)
                 {
                     MessageBox.Show("Given amount must be above 0");
                     return;
                 }
                 restockItemController.IncreaseRestockItem(selectedRestockItem, amount);
-
-                updateListOutstandingRequests();
-                updateListCompletedRequests();
-
+                updateRestockData();
             }
             catch (Exception ex)
             {
@@ -931,8 +901,35 @@ namespace WindowsFormsApp1
             }
             finally
             {
-                txtBoxRestock.Clear();
+                txtBoxRestockAmountIncrease.Clear();
             }   
+        }
+        //Decreasing stock
+        private void btnRestockDecreaseStock_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RestockItem selectedRestockItem = lsbRequestsOutstanding.SelectedItem as RestockItem;
+
+                int amount = Convert.ToInt32(txtBoxRestockAmountDecrease.Text);
+                if (amount < 0)
+                {
+                    MessageBox.Show("Given amount must be above 0");
+                    return;
+                }
+                amount = amount * -1;
+                restockItemController.IncreaseRestockItem(selectedRestockItem, amount);
+
+                updateRestockData();
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("format"))
+                {
+                    MessageBox.Show("Increase/Decrease with a valid numerical value");
+                }
+                MessageBox.Show("Select a product to initiate the restock");
+            }
         }
 
         private void btnRejectRestock_Click(object sender, EventArgs e)
@@ -958,8 +955,6 @@ namespace WindowsFormsApp1
         }
         public void updateListOutstandingRequests()
         {
-
-            //TODO check
             lsbRequestsOutstanding.Items.Clear();
             if (restockItemController.GetOutstandingData().Count > 0)
             {
@@ -974,8 +969,9 @@ namespace WindowsFormsApp1
         {
             //TODO check
 
+            //lbCompletedRequests.DataSource = null;
+            //lbCompletedRequests.DataSource = restockItemController.GetCompeletedData();
             lbCompletedRequests.Items.Clear();
-
             foreach (RestockItem item in restockItemController.GetCompeletedData())
             {
                 lbCompletedRequests.Items.Add(item.ToStringWithMsg());

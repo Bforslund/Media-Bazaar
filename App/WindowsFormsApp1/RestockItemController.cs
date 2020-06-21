@@ -83,8 +83,8 @@ namespace Mediabazaar
         private void increaseInRestock(RestockItem r, int amount)
         {
             int newStock = r.Stock + amount;
-
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
+
             try
             {
                 databaseConnection.Open();
@@ -95,7 +95,6 @@ namespace Mediabazaar
                 cmd.Parameters.AddWithValue("@id", r.Id);
 
                 cmd.ExecuteNonQuery();
-
             }
             catch (MySqlException ex)
             {
@@ -116,13 +115,14 @@ namespace Mediabazaar
             int newStock = r.Stock + value;
 
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
+            string sql = "UPDATE products SET stock = @newStock WHERE id = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
+
             try
             {
 
                 databaseConnection.Open();
 
-                string sql = "UPDATE products SET stock = @newStock WHERE id = @id";
-                MySqlCommand cmd = new MySqlCommand(sql, databaseConnection);
                 //cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@newStock", newStock);
                 cmd.Parameters.AddWithValue("@id", r.ProductId);
@@ -147,27 +147,30 @@ namespace Mediabazaar
         public List<RestockItem> GetOutstandingData()
         {
             retlistOutstanding.Clear();
-
-            //? something broken
-            //TODO display the product name
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
+            //r.id, u.username, p.name, r.date, r.amount
+
+            string query = "SELECT * FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved IS NULL ";
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+            MySqlDataReader reader;
+
             try
             {
-                string query = "SELECT r.id, u.username, p.name, r.date, r.amount FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved IS NULL ";
-
-                MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
                 databaseConnection.Open();
 
-                MySqlDataReader reader = commandDatabase.ExecuteReader();
+                reader = commandDatabase.ExecuteReader();
                 //int id, string userId, string productId, DateTime dateOfRestock, int amountOfRestock
                 while (reader.Read())
                 {
-                    int _id = Convert.ToInt32(reader["id"]);
-                    string _username = reader["username"].ToString();
-                    string _productName = Convert.ToString(reader["name"]);
-                    DateTime _dateOfRequest = Convert.ToDateTime(reader["date"]);
-                    int _amountToRestock = GetNullable(reader, 4, reader.GetInt32);
-                    RestockItem r = new RestockItem(_id, _username, _productName, _dateOfRequest, _amountToRestock);
+                    //int _id = Convert.ToInt32(reader["id"]);
+                    //string _username = reader["username"].ToString();
+                    //string _productName = (reader["name"]).ToString();
+                    //DateTime _dateOfRequest = Convert.ToDateTime(reader["date"]);
+                    //int _amountToRestock = GetNullable(reader, 4, reader.GetInt32);
+                    //RestockItem r = new RestockItem(_id, _username, _productName, _dateOfRequest, _amountToRestock);
+                    
+                    RestockItem r = new RestockItem(Convert.ToInt32(reader["id"]), reader["username"].ToString(), (reader["name"]).ToString(), Convert.ToDateTime(reader["date"]), GetNullable(reader, 4, reader.GetInt32));
+
                     retlistOutstanding.Add(r);
                 }
                 databaseConnection.Close();
@@ -180,13 +183,15 @@ namespace Mediabazaar
         }
         public List<RestockItem> GetCompeletedData()
         {
+            retlistCompleted.Clear();
+
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
+            string query = "SELECT r.id, u.username, p.name,r.date, r.amount, r.approved, r.message FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved = 1 OR r.approved = 0";
+            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+
             try
             {
-                string query = "SELECT r.id, u.username, p.name,r.date, r.amount, r.approved, r.message FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved = 1 OR r.approved = 0";
-
                 databaseConnection.Open();
-                MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
 
                 MySqlDataReader reader = commandDatabase.ExecuteReader();
 
@@ -207,6 +212,10 @@ namespace Mediabazaar
             {
 
                 throw;
+            }
+            finally
+            {
+
             }
         }
         #endregion
