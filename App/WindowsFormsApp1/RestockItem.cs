@@ -10,7 +10,7 @@ namespace WindowsFormsApp1
 {
     class RestockItem : Product
     {
-        private int id;
+        private int restockId;
         private string userId;
         private string productId; //id of the product being restocked
         private DateTime dateOfRestock;
@@ -18,12 +18,12 @@ namespace WindowsFormsApp1
         private int status;
         private string message;
 
-        public int Id { get { return this.id; } set {
+        public int RestockId { get { return this.restockId; } set {
                 if (value <0)
                 {
                     throw new ArgumentNullException();
                 }
-                id = value;
+                restockId = value;
             } }
         public string UserId { get { return this.userId; } set {
                 if (value == null)
@@ -87,12 +87,12 @@ namespace WindowsFormsApp1
         public override string ToString()
         {
 
-            return $"{base.Id}, {this.UserId}, {this.ProductId}, {this.DateOfRestock.ToString("dd MMMM yyyy, hh:mm")}";
+            return $"{base.Id}, {this.UserId}, {this.ProductId}, {this.DateOfRestock.ToString("dd MMMM yyyy")}";
 
         }
         public string ToStringWithMsg()
         {
-            return $"{base.Id}, {this.UserId}, {this.ProductId}, {this.DateOfRestock.ToString("dd MMMM yyyy, hh:mm")}, Q: {this.AmountOfRestock}, S: {this.Status} \n {this.Message}";
+            return $"{base.Id}, {this.UserId}, {this.ProductId}, {this.DateOfRestock.ToString("dd MMMM yyyy")}, Q: {this.AmountOfRestock}, S: {this.Status} \n {this.Message}";
         }
         
     }

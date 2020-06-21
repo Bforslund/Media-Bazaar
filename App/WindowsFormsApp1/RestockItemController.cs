@@ -10,7 +10,7 @@ namespace Mediabazaar
 {
     class RestockItemController
     {
-        List<RestockItem> retlistOutstanding = new List<RestockItem>();
+     
         List<RestockItem> retlistCompleted = new List<RestockItem>();
 
         //!inserting an item to the outstanding requests list
@@ -120,12 +120,11 @@ namespace Mediabazaar
 
             try
             {
-
                 databaseConnection.Open();
 
                 //cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@newStock", newStock);
-                cmd.Parameters.AddWithValue("@id", r.ProductId);
+                cmd.Parameters.AddWithValue("@id", r.Id);
                 cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
@@ -146,30 +145,28 @@ namespace Mediabazaar
         //!Getting the data
         public List<RestockItem> GetOutstandingData()
         {
-            retlistOutstanding.Clear();
+            List<RestockItem> retlistOutstanding = new List<RestockItem>();
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
             //r.id, u.username, p.name, r.date, r.amount
-
-            string query = "SELECT * FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved IS NULL ";
-            MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
-            MySqlDataReader reader;
-
             try
             {
+                string query = "SELECT * FROM restock r INNER JOIN products p ON r.products = p.id INNER JOIN users u ON r.users=u.id WHERE r.approved IS NULL ";
                 databaseConnection.Open();
+                MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+                MySqlDataReader reader;
 
                 reader = commandDatabase.ExecuteReader();
                 //int id, string userId, string productId, DateTime dateOfRestock, int amountOfRestock
                 while (reader.Read())
                 {
-                    //int _id = Convert.ToInt32(reader["id"]);
-                    //string _username = reader["username"].ToString();
-                    //string _productName = (reader["name"]).ToString();
-                    //DateTime _dateOfRequest = Convert.ToDateTime(reader["date"]);
-                    //int _amountToRestock = GetNullable(reader, 4, reader.GetInt32);
-                    //RestockItem r = new RestockItem(_id, _username, _productName, _dateOfRequest, _amountToRestock);
-                    
-                    RestockItem r = new RestockItem(Convert.ToInt32(reader["id"]), reader["username"].ToString(), (reader["name"]).ToString(), Convert.ToDateTime(reader["date"]), GetNullable(reader, 4, reader.GetInt32));
+                    int _id = Convert.ToInt32(reader["id"]);
+                    string _username = reader["username"].ToString();
+                    string _productName = (reader["name"]).ToString();
+                    DateTime _dateOfRequest = Convert.ToDateTime(reader["date"]);
+                    int _amountToRestock = GetNullable(reader, 4, reader.GetInt32);
+                    RestockItem r = new RestockItem(_id, _username, _productName, _dateOfRequest, _amountToRestock);
+
+                    //RestockItem r = new RestockItem(Convert.ToInt32(reader["id"]), reader["username"].ToString(), (reader["name"]).ToString(), Convert.ToDateTime(reader["date"]), GetNullable(reader, 4, reader.GetInt32));
 
                     retlistOutstanding.Add(r);
                 }
