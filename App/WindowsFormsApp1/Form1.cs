@@ -935,15 +935,14 @@ namespace WindowsFormsApp1
         private void btnRejectRestock_Click(object sender, EventArgs e)
         {
             RestockItem restockItemToReject = lsbRequestsOutstanding.SelectedItem as RestockItem;
-            //TODO rejected "tag", add date of rejection, error handling
             try
             {
-                restockItemController.RejectRequest(restockItemToReject, 0, rejectMessage.Text);
+                restockItemController.RejectRequest(restockItemToReject, rejectMessage.Text);
                 updateRestockData();
             }
-            catch (Exception ex)
+            catch (Exception ex)    
             {
-                MessageBox.Show("Something went wrong, use numbers and add a message!");
+                MessageBox.Show("Something went wrong, please add a reason");
             }
         }
 
