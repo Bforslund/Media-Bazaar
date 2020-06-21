@@ -58,6 +58,7 @@ namespace WindowsFormsApp1
                 status = value;
             } }
         public string Message { get { return this.message; } set {
+                this.message = value;
             } }
 
         public RestockItem(int id, string userId, string productID, DateTime dateOfRestock, int amountOfRestock, int status, string message) : base(id, amountOfRestock)
@@ -86,12 +87,12 @@ namespace WindowsFormsApp1
         public override string ToString()
         {
 
-            return $"{base.Id} {this.UserId} {this.ProductId} {this.DateOfRestock.ToString("dddd, dd MMMM yyyy, hh:mm")} {this.AmountOfRestock}";
+            return $"{base.Id}, {this.UserId}, {this.ProductId}, {this.DateOfRestock.ToString("dd MMMM yyyy, hh:mm")}";
 
         }
         public string ToStringWithMsg()
         {
-            return $"{base.Id} {this.UserId} {this.ProductId} {this.DateOfRestock.ToString("dddd, dd MMMM yyyy, hh:mm")} {this.AmountOfRestock} {this.Status} {this.Message}";
+            return $"{base.Id}, {this.UserId}, {this.ProductId}, {this.DateOfRestock.ToString("dd MMMM yyyy, hh:mm")}, Q: {this.AmountOfRestock}, S: {this.Status} \n {this.Message}";
         }
         
     }

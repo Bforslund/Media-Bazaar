@@ -157,7 +157,7 @@
             this.tabProductRestock = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.txtBoxRestock2 = new System.Windows.Forms.TextBox();
-            this.btnRestockManage2 = new System.Windows.Forms.Button();
+            this.btnRestockDecreaseStock = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnRejectRestock = new System.Windows.Forms.Button();
@@ -1428,7 +1428,7 @@
             // 
             this.tabProductRestock.Controls.Add(this.label4);
             this.tabProductRestock.Controls.Add(this.txtBoxRestock2);
-            this.tabProductRestock.Controls.Add(this.btnRestockManage2);
+            this.tabProductRestock.Controls.Add(this.btnRestockDecreaseStock);
             this.tabProductRestock.Controls.Add(this.label11);
             this.tabProductRestock.Controls.Add(this.label8);
             this.tabProductRestock.Controls.Add(this.btnRejectRestock);
@@ -1464,18 +1464,18 @@
             this.txtBoxRestock2.Size = new System.Drawing.Size(126, 24);
             this.txtBoxRestock2.TabIndex = 39;
             // 
-            // btnRestockManage2
+            // btnRestockDecreaseStock
             // 
-            this.btnRestockManage2.BackColor = System.Drawing.Color.Red;
-            this.btnRestockManage2.ForeColor = System.Drawing.Color.White;
-            this.btnRestockManage2.Location = new System.Drawing.Point(222, 262);
-            this.btnRestockManage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnRestockManage2.Name = "btnRestockManage2";
-            this.btnRestockManage2.Size = new System.Drawing.Size(160, 34);
-            this.btnRestockManage2.TabIndex = 38;
-            this.btnRestockManage2.Text = "Decrease stock";
-            this.btnRestockManage2.UseVisualStyleBackColor = false;
-            this.btnRestockManage2.Click += new System.EventHandler(this.btnRestockManage2_Click);
+            this.btnRestockDecreaseStock.BackColor = System.Drawing.Color.Red;
+            this.btnRestockDecreaseStock.ForeColor = System.Drawing.Color.White;
+            this.btnRestockDecreaseStock.Location = new System.Drawing.Point(222, 262);
+            this.btnRestockDecreaseStock.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRestockDecreaseStock.Name = "btnRestockDecreaseStock";
+            this.btnRestockDecreaseStock.Size = new System.Drawing.Size(160, 34);
+            this.btnRestockDecreaseStock.TabIndex = 38;
+            this.btnRestockDecreaseStock.Text = "Decrease stock";
+            this.btnRestockDecreaseStock.UseVisualStyleBackColor = false;
+            this.btnRestockDecreaseStock.Click += new System.EventHandler(this.btnRestockDecreaseStock_Click);
             // 
             // label11
             // 
@@ -1541,7 +1541,7 @@
             this.lbCompletedRequests.ItemHeight = 19;
             this.lbCompletedRequests.Location = new System.Drawing.Point(508, 25);
             this.lbCompletedRequests.Name = "lbCompletedRequests";
-            this.lbCompletedRequests.Size = new System.Drawing.Size(447, 175);
+            this.lbCompletedRequests.Size = new System.Drawing.Size(479, 175);
             this.lbCompletedRequests.TabIndex = 31;
             // 
             // lsbRequestsOutstanding
@@ -2062,7 +2062,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtBoxRestock2;
-        private System.Windows.Forms.Button btnRestockManage2;
+        private System.Windows.Forms.Button btnRestockDecreaseStock;
         private System.Windows.Forms.DateTimePicker dtpAutoSchedule;
     }
 }

@@ -857,7 +857,7 @@ namespace WindowsFormsApp1
         #endregion
 
         #region restock tab
-        private void btnRestockManage2_Click(object sender, EventArgs e)
+        private void btnRestockDecreaseStock_Click(object sender, EventArgs e)
         {
 
             try
@@ -937,41 +937,25 @@ namespace WindowsFormsApp1
 
         private void btnRejectRestock_Click(object sender, EventArgs e)
         {
-            //todo not finished
-
             RestockItem restockItemToReject = lsbRequestsOutstanding.SelectedItem as RestockItem;
-
-
             //TODO rejected "tag", add date of rejection, error handling
             try
             {
                 restockItemController.RejectRequest(restockItemToReject, 0, rejectMessage.Text);
-                updateListOutstandingRequests();
-                updateListCompletedRequests();
+                updateRestockData();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Something went wrong, use numbers and add a message!");
             }
-
-            // lbCompletedRequests.Items.Add(rejectedProduct);
-
-            //?List view version
-            // lvCompletedRequests.Columns.Add("Status", 20, HorizontalAlignment.Left); 
-
-            //ListViewItem item = new ListViewItem();
-
-            //item.Text = rejectedProduct.ToString(); // Or whatever display text you need
-            //item.Tag = rejectedProduct;
-
-            // Setup other things like SubItems, Font, ...
-
-            //lvCompletedRequests.Items.Add(item);
-
-
         }
 
         #region functions
+        public void updateRestockData()
+        {
+            updateListOutstandingRequests();
+            updateListCompletedRequests();
+        }
         public void updateListOutstandingRequests()
         {
 
@@ -994,7 +978,7 @@ namespace WindowsFormsApp1
 
             foreach (RestockItem item in restockItemController.GetCompeletedData())
             {
-                lbCompletedRequests.Items.Add(item);
+                lbCompletedRequests.Items.Add(item.ToStringWithMsg());
             }
         }
         #endregion
