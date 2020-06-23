@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         public List<Product> GetData()
         {
             string query = "SELECT id, type, name, buy_price, sell_price, stock, department, min_stock FROM `products`";
-
+            prodlist.Clear();
             try
             {
                 databaseConnection.Open();
@@ -134,7 +134,7 @@ namespace WindowsFormsApp1
         public List<Product> GetDepartmentDataLb()
         {
             prodlist.Clear();
-            string query = "SELECT d.name as prdName, SUM(amount) as total SUM(amount) * p.sell_price as profit FROM saleshistory sh INNER JOIN products p ON sh.products_id = p.id INNER JOIN department d ON p.department = d.id GROUP BY d.name";
+            string query = "SELECT d.name as prdName, SUM(amount) as total, sh.products_id * p.sell_price as profit FROM saleshistory sh INNER JOIN products p ON sh.products_id = p.id INNER JOIN department d ON p.department = d.id GROUP BY d.name";
             //string query = "SELECT var1, var2, var3 FROM foo";
             try
             {

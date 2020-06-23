@@ -1065,14 +1065,9 @@ namespace WindowsFormsApp1
 
                 }
 
-                List<Product> dummyList = new List<Product>();
-                dummyList.Add(new Product("Mobilephones", 4312.50));
-                dummyList.Add(new Product("Instruments", 950.00));
-
-
-                foreach (Product item in dummyList)
+                foreach (Product item in stats.GetDepartmentDataLb())
                 {
-                    string add = item.Name + " " + item.Sellingprice;
+                    string add = item.Name + " " + item.Sellingprice.ToString("C");
                     lbDepartSales.Items.Add(add);
                 }
             }
