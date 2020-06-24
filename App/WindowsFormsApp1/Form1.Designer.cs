@@ -192,6 +192,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Banner = new System.Windows.Forms.PictureBox();
+            this.lbDepStats = new System.Windows.Forms.ListBox();
+            this.label35 = new System.Windows.Forms.Label();
             this.groupSInformation.SuspendLayout();
             this.groupBoxSAssign.SuspendLayout();
             this.tbcMain.SuspendLayout();
@@ -1649,6 +1651,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label35);
+            this.tabPage1.Controls.Add(this.lbDepStats);
             this.tabPage1.Controls.Add(this.label34);
             this.tabPage1.Controls.Add(this.lbDepartSales);
             this.tabPage1.Controls.Add(this.crtStatProducts);
@@ -1884,6 +1888,25 @@
             this.Banner.TabIndex = 0;
             this.Banner.TabStop = false;
             // 
+            // lbDepStats
+            // 
+            this.lbDepStats.FormattingEnabled = true;
+            this.lbDepStats.ItemHeight = 19;
+            this.lbDepStats.Location = new System.Drawing.Point(352, 189);
+            this.lbDepStats.Name = "lbDepStats";
+            this.lbDepStats.Size = new System.Drawing.Size(120, 80);
+            this.lbDepStats.TabIndex = 43;
+            this.lbDepStats.SelectedIndexChanged += new System.EventHandler(this.lbDepStats_SelectedIndexChanged);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(352, 170);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(98, 19);
+            this.label35.TabIndex = 44;
+            this.label35.Text = "Departments";
+            // 
             // MediaBazaar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2089,6 +2112,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart crtStatProducts;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.ListBox lbDepartSales;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.ListBox lbDepStats;
     }
 }
 

@@ -96,6 +96,7 @@ namespace WindowsFormsApp1
             }
             if (tbcMain.SelectedTab == tabStatistics)
             {
+                resetChart();
                 loadData();
             }
             if (tbcMain.SelectedTab == tabDepartments)
@@ -1070,6 +1071,12 @@ namespace WindowsFormsApp1
                     string add = item.Name + " " + item.Sellingprice.ToString("C");
                     lbDepartSales.Items.Add(add);
                 }
+                foreach (Product item in stats.GetDepartmentData())
+                {
+                    lbDepStats.Items.Add(item.Name);
+
+                }
+
             }
             catch (MySqlException ex)
             {
@@ -1138,6 +1145,8 @@ namespace WindowsFormsApp1
                 item.Points.Clear();
             }
 
+            lbDepStats.Items.Clear();
+            lbDepartSales.Items.Clear();
             List<StoreStats> monthList = new List<StoreStats>();
 
 
@@ -1152,6 +1161,20 @@ namespace WindowsFormsApp1
         private void label37_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lbDepStats_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (var series in chartDepartSales.Series)
+            {
+                series.Points.Clear();
+            }
+            string text = lbDepStats.GetItemText(lbDepStats.SelectedItem);
+            foreach (Product item in stats.GetDepByDep(text))
+            {
+                chartDepartSales.Series["Amount Sold"].Points.AddXY(item.Name, item.Stock);
+
+            }
         }
     }
 }

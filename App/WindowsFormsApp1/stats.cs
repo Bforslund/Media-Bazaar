@@ -163,6 +163,39 @@ namespace WindowsFormsApp1
                 throw;
             }
         }
+        public List<Product> GetDepByDep(string depName)
+        {
+            prodlist.Clear();
+            string query = "SELECT p.name as prdName, SUM(amount) as total, sh.products_id * p.sell_price as profit FROM saleshistory sh INNER JOIN products p ON sh.products_id = p.id INNER JOIN department d ON p.department = d.id WHERE d.name = @depName";
+            //string query = "SELECT var1, var2, var3 FROM foo";
+            try
+            {
+                databaseConnection.Open();
+                MySqlCommand commandDatabase = new MySqlCommand(query, databaseConnection);
+                commandDatabase.Parameters.AddWithValue("@depName", depName);
+                commandDatabase.CommandTimeout = 60;
+                MySqlDataReader reader;
+
+                reader = commandDatabase.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    prodlist.Add(new Product(reader["prdName"].ToString(), Convert.ToInt32(reader["total"]), Convert.ToDouble((reader["profit"]))));
+
+                }
+                databaseConnection.Close();
+                return prodlist;
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception)
+            {
+                databaseConnection.Close();
+                throw;
+            }
+        }
         public void login(string usr, string pwd)
         {
             MySqlConnection databaseConnection = new MySqlConnection(DatabaseInfo.connectionString);
